@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" data-theme="console">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components/bundle.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="../components/bundle.js"></script><title>ToastStack — preview</title></head>
+<body>
+<div id="root" class="st-root"></div>
+<script>
+  var S = window.Starter, h = React.createElement, F = React.Fragment;
+  function both(fn) {
+    return h('div', { className: 'st-pair' }, ['console', 'portal'].map(function (t) {
+      return h('div', { key: t, 'data-theme': t, className: 'st-theme' }, h('p', { className: 'st-theme-name' }, t === 'console' ? 'Console' : 'Portal'), fn(t));
+    }));
+  }
+  function state(label, el) { return h('div', { className: 'st-state', key: label }, el, h('span', { className: 'st-state-name' }, label)); }
+  ReactDOM.createRoot(document.getElementById('root')).render(both(function (t) {
+    var toasts = [{ id: 1, tone: 'success', message: 'User \u201cPriya Sharma\u201d marked inactive.' }, { id: 2, tone: 'error', message: 'This could not be done. Please try again.' }];
+    return h('div', { className: 'st-row', style: { alignItems: 'flex-start' } },
+      h('div', { className: 'st-frame', style: { flex: '1 1 520px', height: '260px' } },
+        h(S.AppHeader, { appName: t === 'console' ? 'Admin Console' : 'Starter Portal', count: 1 }),
+        h(S.ToastStack, { toasts: toasts })),
+      h('div', { className: 'st-frame', style: { width: '390px', maxWidth: '100%', height: '260px' } },
+        h(S.MobileMenu, { appName: t === 'console' ? 'Admin Console' : 'Starter Portal', count: 1, open: false, items: [] }),
+        h(S.ToastStack, { toasts: toasts, placement: 'mobile' })));
+  }));
+</script>
+</body>
+</html>

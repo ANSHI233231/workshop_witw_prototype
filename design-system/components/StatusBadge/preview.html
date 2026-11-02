@@ -1,0 +1,22 @@
+<!-- @dsCard group="Status" height=150 subtitle="Success, warning, info, danger, neutral" -->
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>StatusBadge — preview</title></head>
+<body>
+<div id="root" class="st-root"></div>
+<script>
+  var S = window.Starter, h = React.createElement, F = React.Fragment;
+  function both(fn) {
+    return h('div', { className: 'st-pair' }, ['console', 'portal'].map(function (t) {
+      return h('div', { key: t, 'data-theme': t, className: 'st-theme' }, h('p', { className: 'st-theme-name' }, t === 'console' ? 'Console' : 'Portal'), fn(t));
+    }));
+  }
+  function state(label, el) { return h('div', { className: 'st-state', key: label }, el, h('span', { className: 'st-state-name' }, label)); }
+  ReactDOM.createRoot(document.getElementById('root')).render(both(function () {
+    return h('div', { className: 'st-row' },
+      h(S.StatusBadge, { tone: 'success' }, 'Active'), h(S.StatusBadge, { tone: 'warning' }, 'Draft'),
+      h(S.StatusBadge, { tone: 'info' }, 'Queued'), h(S.StatusBadge, { tone: 'danger' }, 'Failed'), h(S.StatusBadge, { tone: 'neutral' }, 'Inactive'));
+  }));
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!-- @dsCard group="Actions" height=260 subtitle="Edit and change password — normal, hover, focus, disabled" -->
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>IconButton — preview</title></head>
+<body>
+<div id="root" class="st-root"></div>
+<script>
+  var S = window.Starter, h = React.createElement, F = React.Fragment;
+  function both(fn) {
+    return h('div', { className: 'st-pair' }, ['console', 'portal'].map(function (t) {
+      return h('div', { key: t, 'data-theme': t, className: 'st-theme' }, h('p', { className: 'st-theme-name' }, t === 'console' ? 'Console' : 'Portal'), fn(t));
+    }));
+  }
+  function state(label, el) { return h('div', { className: 'st-state', key: label }, el, h('span', { className: 'st-state-name' }, label)); }
+  var STATES = [['Normal'], ['Hover', 'hover'], ['Focus', 'focus'], ['Disabled', null, true]];
+  ReactDOM.createRoot(document.getElementById('root')).render(both(function () {
+    return h('div', { className: 'st-col' }, [['pencil', 'Edit'], ['key-round', 'Change Password']].map(function (ic) {
+      return h('div', { className: 'st-row', key: ic[0] }, STATES.map(function (s) { return state(s[0], h(S.IconButton, { icon: ic[0], label: ic[1], tooltip: false, state: s[1], disabled: s[2] })); }));
+    }));
+  }));
+</script>
+</body>
+</html>

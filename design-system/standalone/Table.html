@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" data-theme="console">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components/bundle.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="../components/bundle.js"></script><title>Table — preview</title></head>
+<body>
+<div id="root" class="st-root"></div>
+<script>
+  var S = window.Starter, h = React.createElement, F = React.Fragment;
+  function both(fn) {
+    return h('div', { className: 'st-pair' }, ['console', 'portal'].map(function (t) {
+      return h('div', { key: t, 'data-theme': t, className: 'st-theme' }, h('p', { className: 'st-theme-name' }, t === 'console' ? 'Console' : 'Portal'), fn(t));
+    }));
+  }
+  function state(label, el) { return h('div', { className: 'st-state', key: label }, el, h('span', { className: 'st-state-name' }, label)); }
+  var ROWS = [
+    { id: 1, name: 'Starter Admin', mobile: '90000 00800', email: 'admin@example.com', role: 'Super Admin', active: true },
+    { id: 2, name: 'Priya Sharma', mobile: '90000 00802', email: 'priya.sharma@example.test', role: '', active: true, hover: true },
+    { id: 3, name: 'Rahul Verma', mobile: '90000 00801', email: 'rahul.verma@example.test', role: '', active: false }
+  ];
+  var COLS = [
+    { key: 'name', title: 'Name' }, { key: 'username', title: 'Username' }, { key: 'mobile', title: 'Mobile' }, { key: 'email', title: 'Email' }, { key: 'role', title: 'Role' },
+    { key: 'status', title: 'Status', align: 'center', render: function (r) { return h(S.StatusBadge, { tone: r.active ? 'success' : 'neutral' }, r.active ? 'Active' : 'Inactive'); } }
+  ];
+  ReactDOM.createRoot(document.getElementById('root')).render(both(function () {
+    return h(S.Table, { columns: COLS, rows: ROWS,
+      filters: h(F, null, h(S.SearchInput, { placeholder: 'Search by name, mobile, email…' }), h(S.Select, { label: 'Role', options: ['Role: All'] }), h(S.Select, { label: 'Status', options: ['Status: All'] }), h(S.Button, { variant: 'text', icon: 'rotate-ccw' }, 'Reset')),
+      renderActions: function (r) { return h(F, null, h(S.IconButton, { icon: 'pencil', label: 'Edit ' + r.name, tooltip: 'Edit' }), h(S.IconButton, { icon: 'key-round', label: 'Change password for ' + r.name, tooltip: 'Change Password' }), h(S.Toggle, { label: (r.active ? 'Deactivate ' : 'Activate ') + r.name, checked: r.active })); } });
+  }));
+</script>
+</body>
+</html>

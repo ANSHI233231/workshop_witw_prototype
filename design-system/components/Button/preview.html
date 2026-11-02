@@ -1,0 +1,22 @@
+<!-- @dsCard group="Actions" height=440 subtitle="Primary, secondary, text, danger — normal, hover, focus, disabled" -->
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Button — preview</title></head>
+<body>
+<div id="root" class="st-root"></div>
+<script>
+  var S = window.Starter, h = React.createElement, F = React.Fragment;
+  function both(fn) {
+    return h('div', { className: 'st-pair' }, ['console', 'portal'].map(function (t) {
+      return h('div', { key: t, 'data-theme': t, className: 'st-theme' }, h('p', { className: 'st-theme-name' }, t === 'console' ? 'Console' : 'Portal'), fn(t));
+    }));
+  }
+  function state(label, el) { return h('div', { className: 'st-state', key: label }, el, h('span', { className: 'st-state-name' }, label)); }
+  var STATES = [['Normal'], ['Hover', 'hover'], ['Focus', 'focus'], ['Disabled', null, true]];
+  function row(v, t, ic) { return h('div', { className: 'st-row', key: v }, STATES.map(function (s) { return state(s[0], h(S.Button, { variant: v, icon: ic, state: s[1], disabled: s[2] }, t)); })); }
+  ReactDOM.createRoot(document.getElementById('root')).render(both(function () {
+    return h('div', { className: 'st-col' }, row('primary', 'Add User', 'plus'), row('secondary', 'Export', 'file-down'), row('text', 'Reset', 'rotate-ccw'), row('danger', 'Delete'));
+  }));
+</script>
+</body>
+</html>

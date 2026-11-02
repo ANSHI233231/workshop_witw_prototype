@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" data-theme="console">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components/bundle.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="../components/bundle.js"></script><title>SearchSelect — preview</title></head>
+<body>
+<div id="root" class="st-root"></div>
+<script>
+  var S = window.Starter, h = React.createElement, F = React.Fragment;
+  function both(fn) {
+    return h('div', { className: 'st-pair' }, ['console', 'portal'].map(function (t) {
+      return h('div', { key: t, 'data-theme': t, className: 'st-theme' }, h('p', { className: 'st-theme-name' }, t === 'console' ? 'Console' : 'Portal'), fn(t));
+    }));
+  }
+  function state(label, el) { return h('div', { className: 'st-state', key: label }, el, h('span', { className: 'st-state-name' }, label)); }
+  function grid(min, kids) { return h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(' + min + 'px, 1fr))', gap: 'var(--space-lg) var(--space-xl)', alignItems: 'start' } }, kids); }
+  function cell(label, el, tall) { return h('div', { key: label, className: 'st-state', style: { minHeight: tall ? tall + 'px' : null, alignItems: 'stretch' } }, h('span', { className: 'st-state-name' }, label), el); }
+  var ROLES = [
+    { value: 'super', label: 'Super Admin', detail: 'Every app and setting', badge: 'System' },
+    { value: 'admin', label: 'Admin', detail: 'Users, logs and jobs' },
+    { value: 'editor', label: 'Editor', detail: 'Templates and translations' },
+    { value: 'support', label: 'Support', detail: 'Notifications, read-only elsewhere' },
+    { value: 'viewer', label: 'Viewer', detail: 'Read-only' },
+    { value: 'auditor', label: 'Auditor', detail: 'Audit and error logs', badge: 'Custom' }
+  ];
+  var base = { options: ROLES, placeholder: 'Select a role', searchPlaceholder: 'Search role…', emptyText: 'No roles found.', width: 'md', focusOnOpen: false };
+  function sel(x) { return h(S.SearchSelect, Object.assign({}, base, x)); }
+  ReactDOM.createRoot(document.getElementById('root')).render(both(function () {
+    return h('div', { className: 'st-col', style: { gap: 'var(--space-xl)' } },
+      grid(240, [
+        cell('Closed, empty', sel({})),
+        cell('Closed, chosen (with badge)', sel({ value: 'super' })),
+        cell('Disabled', sel({ value: 'admin', disabled: true })),
+        cell('Error', h(S.FormField, { label: 'Role', required: true, error: 'Select a role.' }, sel({ invalid: true })))
+      ]),
+      grid(290, [
+        cell('Open — clear option first, chosen in bold', sel({ defaultOpen: true, value: 'admin', clearLabel: 'All roles' }), 370),
+        cell('Search typed: “ad” (matches the second line too)', sel({ defaultOpen: true, defaultQuery: 'ad', clearLabel: 'All roles' }), 370),
+        cell('Highlighted option (arrow keys or mouse)', sel({ defaultOpen: true, defaultActive: 3 }), 370),
+        cell('In a filter bar: panel at least 260 px', h('div', { className: 'st-filter-bar', style: { padding: 0, border: 0 } }, sel({ defaultOpen: true, width: 'sm', value: 'auditor', clearLabel: 'All roles', placeholder: 'Role: All' })), 370),
+        cell('No matches', sel({ defaultOpen: true, defaultQuery: 'finance' }), 150)
+      ]));
+  }));
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!-- @dsCard group="Inputs" height=2700 subtitle="Loads 20 at a time from the server — closed, open, search, highlight, loading, no matches, disabled, error" -->
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>ServerSelect — preview</title></head>
+<body>
+<div id="root" class="st-root"></div>
+<script>
+  var S = window.Starter, h = React.createElement, F = React.Fragment;
+  function both(fn) {
+    return h('div', { className: 'st-pair' }, ['console', 'portal'].map(function (t) {
+      return h('div', { key: t, 'data-theme': t, className: 'st-theme' }, h('p', { className: 'st-theme-name' }, t === 'console' ? 'Console' : 'Portal'), fn(t));
+    }));
+  }
+  function state(label, el) { return h('div', { className: 'st-state', key: label }, el, h('span', { className: 'st-state-name' }, label)); }
+  function grid(min, kids) { return h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(' + min + 'px, 1fr))', gap: 'var(--space-lg) var(--space-xl)', alignItems: 'start' } }, kids); }
+  function cell(label, el, tall) { return h('div', { key: label, className: 'st-state', style: { minHeight: tall ? tall + 'px' : null, alignItems: 'stretch' } }, h('span', { className: 'st-state-name' }, label), el); }
+  var FIRST = ['Priya', 'Rahul', 'Ananya', 'Vikram', 'Neha', 'Arjun', 'Kavya', 'Rohan', 'Isha', 'Aditya', 'Meera', 'Karan', 'Sneha', 'Dev', 'Pooja'];
+  var LAST = ['Sharma', 'Verma', 'Iyer', 'Rao', 'Nair'];
+  var ROLE = ['Admin', 'Editor', 'Viewer', 'Support'];
+  var USERS = [{ value: 'u0', label: 'Starter Admin', context: 'Super Admin', detail: '90000 00800 · admin@example.com' }];
+  for (var i = 0; i < 74; i++) {
+    var f = FIRST[i % FIRST.length], l = LAST[Math.floor(i / FIRST.length) % LAST.length];
+    USERS.push({ value: 'u' + (i + 1), label: f + ' ' + l, context: ROLE[i % ROLE.length], detail: '90000 00' + String(801 + i) + ' · ' + f.toLowerCase() + '.' + l.toLowerCase() + '@example.test' });
+  }
+  function search(q) { q = (q || '').toLowerCase(); return USERS.filter(function (u) { return !q || (u.label + ' ' + u.context + ' ' + u.detail).toLowerCase().indexOf(q) >= 0; }); }
+  function load(q, offset, limit) {
+    return new Promise(function (res) { setTimeout(function () { var all = search(q); res({ items: all.slice(offset, offset + limit), hasMore: offset + limit < all.length }); }, 350); });
+  }
+  function never() { return new Promise(function () {}); }
+  function firstPageOnly(q, offset, limit) { if (offset) return never(); var all = search(q); return Promise.resolve({ items: all.slice(0, limit), hasMore: all.length > limit }); }
+  var base = { load: load, allLabel: 'All users', placeholder: 'Select a user', searchPlaceholder: 'Search user…', width: 'md', focusOnOpen: false };
+  function sel(x) { return h(S.ServerSelect, Object.assign({}, base, x)); }
+  ReactDOM.createRoot(document.getElementById('root')).render(both(function () {
+    return h('div', { className: 'st-col', style: { gap: 'var(--space-xl)' } },
+      grid(240, [
+        cell('Closed, empty', sel({})),
+        cell('Closed, chosen', sel({ value: USERS[1] })),
+        cell('Disabled', sel({ value: USERS[1], disabled: true })),
+        cell('Error', h(S.FormField, { label: 'User', required: true, error: 'Select a user.' }, sel({ invalid: true })))
+      ]),
+      grid(340, [
+        cell('Loading… at first open', sel({ defaultOpen: true, load: never }), 160),
+        cell('Open — first 20, “All users” first, chosen in bold', sel({ defaultOpen: true, value: USERS[1] }), 420),
+        cell('Search typed: “sharma” (first 20 matches)', sel({ defaultOpen: true, defaultQuery: 'sharma' }), 420),
+        cell('Highlighted option, with context and details', sel({ defaultOpen: true, defaultActive: 3 }), 420),
+        cell('Loading the next 20 (scrolled to the end)', sel({ defaultOpen: true, load: firstPageOnly, defaultActive: 20 }), 420),
+        cell('No matches', sel({ defaultOpen: true, defaultQuery: 'finance' }), 160)
+      ]));
+  }));
+</script>
+</body>
+</html>

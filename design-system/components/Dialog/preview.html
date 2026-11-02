@@ -1,0 +1,26 @@
+<!-- @dsCard group="Overlays" height=1160 subtitle="Medium dialog — Add User" -->
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Dialog — preview</title></head>
+<body>
+<div id="root" class="st-root"></div>
+<script>
+  var S = window.Starter, h = React.createElement, F = React.Fragment;
+  function both(fn) {
+    return h('div', { className: 'st-pair' }, ['console', 'portal'].map(function (t) {
+      return h('div', { key: t, 'data-theme': t, className: 'st-theme' }, h('p', { className: 'st-theme-name' }, t === 'console' ? 'Console' : 'Portal'), fn(t));
+    }));
+  }
+  function state(label, el) { return h('div', { className: 'st-state', key: label }, el, h('span', { className: 'st-state-name' }, label)); }
+  ReactDOM.createRoot(document.getElementById('root')).render(both(function () {
+    return h('div', { className: 'st-frame', style: { height: '500px' } },
+      h(S.Dialog, { title: 'Add User', footer: h(F, null, h(S.Button, { variant: 'secondary' }, 'Cancel'), h(S.Button, { variant: 'primary', icon: 'save' }, 'Save')) },
+        h('div', { className: 'st-grid-2' },
+          h(S.FormField, { label: 'Name', required: true, placeholder: 'Enter full name', error: 'Enter a name.' }),
+          h(S.FormField, { label: 'Mobile', required: true, placeholder: 'Enter 10-digit mobile number' }),
+          h(S.FormField, { label: 'Email', placeholder: 'Enter email' }),
+          h(S.FormField, { label: 'Role', as: 'select', placeholder: 'Select role', options: ['Super Admin'] }))));
+  }));
+</script>
+</body>
+</html>

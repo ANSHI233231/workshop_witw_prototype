@@ -1,0 +1,26 @@
+<!-- @dsCard group="Notifications" height=360 subtitle="Unread and read, with kind marker" -->
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>NotificationItem — preview</title></head>
+<body>
+<div id="root" class="st-root"></div>
+<script>
+  var S = window.Starter, h = React.createElement, F = React.Fragment;
+  function both(fn) {
+    return h('div', { className: 'st-pair' }, ['console', 'portal'].map(function (t) {
+      return h('div', { key: t, 'data-theme': t, className: 'st-theme' }, h('p', { className: 'st-theme-name' }, t === 'console' ? 'Console' : 'Portal'), fn(t));
+    }));
+  }
+  function state(label, el) { return h('div', { className: 'st-state', key: label }, el, h('span', { className: 'st-state-name' }, label)); }
+  var NOTES = [
+    { kind: 'test', unread: true, time: 'Yesterday, 02:38 PM', children: h(F, null, 'Test notification from ', h('b', null, 'the system'), ': ', h('b', null, 'Notifications are working.')) },
+    { kind: 'test', time: 'Yesterday, 02:35 PM', children: h(F, null, 'Test notification from ', h('b', null, 'the system'), ': ', h('b', null, 'Notifications are working.')) },
+    { kind: 'jobs', time: 'Yesterday, 02:35 PM', children: h(F, null, 'The background job ', h('b', null, 'Test failing job'), ' failed') },
+    { kind: 'account', time: '29 Oct 2026, 02:38 PM', children: h(F, null, 'Your password was changed') }
+  ];
+  ReactDOM.createRoot(document.getElementById('root')).render(both(function () {
+    return h('div', { className: 'st-ntp' }, h('ul', { className: 'st-ntp-l' }, [NOTES[0], NOTES[2]].map(function (n, i) { return h(S.NotificationItem, Object.assign({ key: i }, n)); })));
+  }));
+</script>
+</body>
+</html>

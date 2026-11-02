@@ -1,0 +1,34 @@
+{
+  "v": 3,
+  "assetGroups": {},
+  "blobs": {},
+  "createdOnFiles": {
+    "at": "2026-10-30T13:20:12Z",
+    "v": 1
+  },
+  "docs": {
+    "readme": "project/README.md",
+    "sections": []
+  },
+  "groups": [],
+  "lastChange": {
+    "by": "Aayush",
+    "at": "2026-10-30T14:37:24Z",
+    "via": "Cowork",
+    "note": "Added SearchSelect and ServerSelect (dropdowns with search)."
+  },
+  "layout": "files",
+  "libraries": [
+    {
+      "name": "react",
+      "version": "18"
+    },
+    {
+      "name": "react-dom",
+      "version": "18"
+    }
+  ],
+  "namespace": "Starter",
+  "sections": {},
+  "title": "Starter"
+}

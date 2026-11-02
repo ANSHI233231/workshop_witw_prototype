@@ -1,0 +1,33 @@
+<!-- @dsCard group="Shell" height=1420 subtitle="Phone menu open at 390px" -->
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>MobileMenu — preview</title></head>
+<body>
+<div id="root" class="st-root"></div>
+<script>
+  var S = window.Starter, h = React.createElement, F = React.Fragment;
+  function both(fn) {
+    return h('div', { className: 'st-pair' }, ['console', 'portal'].map(function (t) {
+      return h('div', { key: t, 'data-theme': t, className: 'st-theme' }, h('p', { className: 'st-theme-name' }, t === 'console' ? 'Console' : 'Portal'), fn(t));
+    }));
+  }
+  function state(label, el) { return h('div', { className: 'st-state', key: label }, el, h('span', { className: 'st-state-name' }, label)); }
+  var NAV = [
+    { label: 'Dashboard', icon: 'layout-dashboard' },
+    { section: 'Platform' },
+    { label: 'User & Role', icon: 'users', open: true, children: [{ label: 'Users' }, { label: 'Roles' }] },
+    { label: 'System', icon: 'settings', open: true, children: [
+      { label: 'Notification', children: [{ label: 'Notification Templates' }, { label: 'Delivery Log' }] },
+      { label: 'Logs', open: true, children: [{ label: 'Audit Log' }, { label: 'System Logs' }, { label: 'Error Logs' }] },
+      { label: 'Background Jobs' },
+      { label: 'Languages', children: [{ label: 'Language Master' }, { label: 'App Translations' }] },
+      { label: 'Tech Documentation' }
+    ] }
+  ];
+  ReactDOM.createRoot(document.getElementById('root')).render(both(function () {
+    return h('div', { className: 'st-frame', style: { width: '390px', maxWidth: '100%', height: '640px' } },
+      h(S.MobileMenu, { appName: 'Admin Console', count: 1, items: NAV, active: 'Users' }));
+  }));
+</script>
+</body>
+</html>

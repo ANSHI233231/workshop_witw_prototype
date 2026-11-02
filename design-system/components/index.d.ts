@@ -1,0 +1,96 @@
+import type * as React from 'react';
+
+/** Lucide icons the app uses (stroke 2). */
+export type IconName = 'search' | 'pencil' | 'key-round' | 'bell' | 'plus' | 'file-down' | 'rotate-ccw' | 'x' | 'menu' | 'chevron-down' | 'chevron-right' | 'chevron-left' | 'layout-dashboard' | 'users' | 'settings' | 'shield-check' | 'lock' | 'log-out' | 'eye' | 'triangle-alert' | 'check' | 'check-check' | 'save' | 'arrow-left' | 'clock' | 'mail' | 'circle-check' | 'circle-alert';
+/** Forces a visual state in previews; real hover and focus come from the browser. */
+export type PreviewState = 'hover' | 'focus';
+export type FieldWidth = 'xs' | 'sm' | 'md' | 'lg';
+
+export interface IconProps { name: IconName; size?: 'sm' | 'md' | 'lg'; className?: string }
+export declare function Icon(props: IconProps): React.ReactElement;
+
+export interface ButtonProps { variant?: 'primary' | 'secondary' | 'text' | 'danger'; size?: 'sm'; block?: boolean; icon?: IconName; href?: string; disabled?: boolean; type?: 'button' | 'submit'; state?: PreviewState; onClick?: () => void; children?: React.ReactNode }
+export declare function Button(props: ButtonProps): React.ReactElement;
+
+export interface IconButtonProps { icon: IconName; label: string; tooltip?: string | false; danger?: boolean; on?: boolean; disabled?: boolean; state?: PreviewState; onClick?: () => void; children?: React.ReactNode }
+export declare function IconButton(props: IconButtonProps): React.ReactElement;
+
+export interface SearchInputProps { placeholder?: string; value?: string; label?: string; width?: FieldWidth; invalid?: boolean; disabled?: boolean; state?: PreviewState; onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void }
+export declare function SearchInput(props: SearchInputProps): React.ReactElement;
+
+export interface SelectProps { options: Array<string | { value: string; label: string }>; value?: string; label?: string; width?: FieldWidth; invalid?: boolean; disabled?: boolean; state?: PreviewState; onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void }
+export declare function Select(props: SelectProps): React.ReactElement;
+
+export interface FormFieldProps { label: string; required?: boolean; helper?: string; error?: string; placeholder?: string; value?: string; type?: string; as?: 'input' | 'select'; options?: string[]; aside?: React.ReactNode; id?: string; autoComplete?: string; disabled?: boolean; state?: PreviewState; children?: React.ReactNode }
+export declare function FormField(props: FormFieldProps): React.ReactElement;
+
+export interface ToggleProps { checked?: boolean; label: string; tooltip?: string; disabled?: boolean; state?: PreviewState; onChange?: (next: boolean) => void }
+export declare function Toggle(props: ToggleProps): React.ReactElement;
+
+export interface StatusBadgeProps { tone?: 'success' | 'warning' | 'info' | 'danger' | 'neutral'; children: React.ReactNode }
+export declare function StatusBadge(props: StatusBadgeProps): React.ReactElement;
+
+export interface TableColumn<R> { key: string; title: string; align?: 'center'; render?: (row: R) => React.ReactNode }
+export interface TableProps<R = Record<string, unknown>> { title?: string; columns: TableColumn<R>[]; rows: R[]; total?: number; start?: number; page?: number; pages?: number; tabs?: React.ReactNode; filters?: React.ReactNode; renderActions?: (row: R) => React.ReactNode }
+export declare function Table<R>(props: TableProps<R>): React.ReactElement;
+
+export interface CardProps { title?: string; action?: React.ReactNode; text?: string; children?: React.ReactNode }
+export declare function Card(props: CardProps): React.ReactElement;
+
+export interface KpiCardProps { label: string; icon?: IconName; value: React.ReactNode; meta?: string }
+export declare function KpiCard(props: KpiCardProps): React.ReactElement;
+
+export interface DialogProps { title: string; error?: React.ReactNode; icon?: IconName; size?: 'sm' | 'md'; open?: boolean; onClose?: () => void; footer?: React.ReactNode; children?: React.ReactNode }
+export declare function Dialog(props: DialogProps): React.ReactElement | null;
+
+export interface TabsProps { items: Array<string | { label: string; icon?: IconName; count?: number; disabled?: boolean; state?: PreviewState }>; active?: number; variant?: 'pill' | 'underline'; onChange?: (index: number) => void }
+export declare function Tabs(props: TabsProps): React.ReactElement;
+
+export interface PageHeaderProps { breadcrumb?: string[]; title: string; description?: string; actions?: React.ReactNode }
+export declare function PageHeader(props: PageHeaderProps): React.ReactElement;
+
+export interface AppHeaderProps { appName?: string; logo?: React.ReactNode; role?: string; languages?: string[]; count?: number; userName?: string; bellOpen?: boolean; bellCurrent?: boolean; menuOpen?: boolean; onBell?: () => void; onMenu?: () => void }
+export declare function AppHeader(props: AppHeaderProps): React.ReactElement;
+
+export interface NotificationItemProps { children?: React.ReactNode; text?: string; time?: string; kind?: 'test' | 'jobs' | 'account'; unread?: boolean; initial?: string; href?: string }
+export declare function NotificationItem(props: NotificationItemProps): React.ReactElement;
+
+export interface NotificationPopoverProps { items: NotificationItemProps[]; allHref?: string }
+export declare function NotificationPopover(props: NotificationPopoverProps): React.ReactElement;
+
+export interface SideLink { label: string; href?: string; open?: boolean; children?: SideLink[] }
+export type SidebarItem = { section: string } | { label: string; icon?: IconName; href?: string; open?: boolean; children?: SideLink[] };
+export interface SidebarProps { items: SidebarItem[]; active?: string; label?: string }
+export declare function Sidebar(props: SidebarProps): React.ReactElement;
+
+export interface MobileMenuProps extends SidebarProps { appName?: string; userName?: string; count?: number; open?: boolean; onClose?: () => void }
+export declare function MobileMenu(props: MobileMenuProps): React.ReactElement;
+
+export interface FooterProps { text?: string; children?: React.ReactNode }
+export declare function Footer(props: FooterProps): React.ReactElement;
+
+export interface SignInProps { appName?: string; headline?: string; lede?: string; points?: string[]; title?: string; subtitle?: string; submitLabel?: string; forgotHref?: string; idError?: string }
+export declare function SignIn(props: SignInProps): React.ReactElement;
+
+export interface NotFoundProps { code?: string; title?: string; message?: string; actions?: React.ReactNode; backHref?: string; contactHref?: string }
+export declare function NotFound(props: NotFoundProps): React.ReactElement;
+
+export interface ToastProps { tone?: 'success' | 'error'; children: React.ReactNode; onClose?: () => void; autoClose?: boolean; duration?: number }
+export declare function Toast(props: ToastProps): React.ReactElement;
+
+export interface ToastItem { id?: string | number; tone?: 'success' | 'error'; message: React.ReactNode }
+export interface ToastStackProps { toasts: ToastItem[]; placement?: 'desktop' | 'mobile'; onClose?: (id: string | number) => void }
+export declare function ToastStack(props: ToastStackProps): React.ReactElement;
+
+export interface DialogErrorProps { children: React.ReactNode }
+export declare function DialogError(props: DialogErrorProps): React.ReactElement;
+
+export interface SearchSelectOption { value: string | number; label: string; detail?: string; badge?: string }
+export interface SearchSelectProps { options: SearchSelectOption[]; value?: string | number | null; onChange?: (value: string | number | null, option: SearchSelectOption | null) => void; placeholder?: string; searchPlaceholder?: string; clearLabel?: string; emptyText?: string; width?: FieldWidth; label?: string; id?: string; disabled?: boolean; invalid?: boolean; defaultOpen?: boolean; defaultQuery?: string; defaultActive?: number; focusOnOpen?: boolean }
+export declare function SearchSelect(props: SearchSelectProps): React.ReactElement;
+
+export interface ServerSelectItem { value: string | number; label: string; context?: string; detail?: string }
+export interface ServerSelectProps { load: (query: string, offset: number, limit: number) => Promise<{ items: ServerSelectItem[]; hasMore: boolean }>; value?: ServerSelectItem | null; onChange?: (item: ServerSelectItem | null) => void; allLabel?: string; placeholder?: string; searchPlaceholder?: string; emptyText?: string; pageSize?: number; debounce?: number; width?: FieldWidth; label?: string; id?: string; disabled?: boolean; invalid?: boolean; defaultOpen?: boolean; defaultQuery?: string; defaultActive?: number; focusOnOpen?: boolean }
+export declare function ServerSelect(props: ServerSelectProps): React.ReactElement;
+
+declare global { interface Window { Starter: { Icon: typeof Icon; Button: typeof Button; IconButton: typeof IconButton; SearchInput: typeof SearchInput; Select: typeof Select; FormField: typeof FormField; Toggle: typeof Toggle; StatusBadge: typeof StatusBadge; Table: typeof Table; Card: typeof Card; KpiCard: typeof KpiCard; Dialog: typeof Dialog; Tabs: typeof Tabs; PageHeader: typeof PageHeader; AppHeader: typeof AppHeader; NotificationItem: typeof NotificationItem; NotificationPopover: typeof NotificationPopover; Sidebar: typeof Sidebar; MobileMenu: typeof MobileMenu; Footer: typeof Footer; SignIn: typeof SignIn; NotFound: typeof NotFound; Toast: typeof Toast; ToastStack: typeof ToastStack; DialogError: typeof DialogError; SearchSelect: typeof SearchSelect; ServerSelect: typeof ServerSelect } } }
