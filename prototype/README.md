@@ -5,7 +5,7 @@ A clickable prototype of the Starter app, in one HTML file: the Console (admin) 
 ## Open it
 
 1. Double-click `starter-prototype.html` to open it in Chrome, Edge, Firefox or Safari.
-2. No internet or server is needed. Only the Inter font loads from Google Fonts when online. Offline, the browser's default sans-serif is used.
+2. No internet or server is needed. Only the Roboto font loads from Google Fonts when online. Offline, the browser's default sans-serif is used.
 3. It opens on **Admin-Sign-In**. To open any board directly, add its name after `#` in the address bar, e.g. `starter-prototype.html#Admin-Language-Translation` or `#Web-Dashboard.mobile`.
 4. The browser's Back and Forward buttons move between boards.
 

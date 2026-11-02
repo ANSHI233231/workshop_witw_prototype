@@ -11,13 +11,13 @@ It has two jobs:
 
 | Path | What | Status |
 |---|---|---|
-| `design-system/` | The Starter design system: tokens (colours per theme, type, spacing, sizes), 27 components and their guidelines, and a standalone page per component. Start with [design-system/README.md](design-system/README.md) and [design-system/HOW-TO-USE.md](design-system/HOW-TO-USE.md) | Ready |
+| `design-system/` | The WITW Design System (the Starter design system in the WITW theme): tokens (colours per theme, type, spacing, sizes), 27 components and their guidelines, and a standalone page per component. Start with [design-system/README.md](design-system/README.md) and [design-system/HOW-TO-USE.md](design-system/HOW-TO-USE.md) | Ready |
 | `prototype/` | The clickable prototype in one file, `starter-prototype.html`: the 22 boards of the Console (16) and the Portal (6), each at Desktop (1366 px) and Mobile (390 px), working on shared sample data. Its [README](prototype/README.md) lists the boards, the sample data and everything that works | Ready |
 
 ## Viewing it
 
-- **Design system:** open `design-system/standalone/index.html` in a browser (it needs an internet connection for React and the Inter font). If your browser blocks local files, run `npx serve .` and open `/design-system/standalone/`.
-- **Prototype:** double-click `prototype/starter-prototype.html` (Chrome, Edge, Firefox or Safari; no server, works offline except the Inter font). It opens on Admin-Sign-In. The bar at the top of every screen:
+- **Design system:** open `design-system/standalone/index.html` in a browser (it needs an internet connection for React and the Roboto font). If your browser blocks local files, run `npx serve .` and open `/design-system/standalone/`.
+- **Prototype:** double-click `prototype/starter-prototype.html` (Chrome, Edge, Firefox or Safari; no server, works offline except the Roboto font). It opens on Admin-Sign-In. The bar at the top of every screen:
 
   | Control | What it does |
   |---|---|
@@ -30,7 +30,7 @@ It has two jobs:
 
 ## Two themes, one system
 
-The Console and the Portal share everything except the main colour family: Console is slate (`#334155`), Portal is blue (`#1D4ED8`). A board sets its theme with `data-theme="console"` or `data-theme="portal"`; changing a theme's colours in the design system changes every board, so a new project can rebrand in one place.
+Both apps use the Walk Into The Wild (WITW) theme, green `#09422D`: the Portal uses WITW's website values exactly, the Console WITW's colours refined for admin screens. They share components, sizes, spacing and layout. A board sets its theme with `data-theme="console"` or `data-theme="portal"`; changing a theme's colours in the design system changes every board, so a new project can rebrand in one place.
 
 ## Rules
 

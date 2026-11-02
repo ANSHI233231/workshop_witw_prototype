@@ -1,6 +1,6 @@
-# Starter design system — local copy
+# WITW Design System — local copy
 
-Exported from the Starter design system on 30 Oct 2026 (the version with SearchSelect and ServerSelect).
+Exported from the WITW Design System on 2 Nov 2026: the Starter design system (with SearchSelect and ServerSelect) in the Walk Into The Wild theme. The components still load as `window.Starter`.
 
 ## What's here
 
@@ -19,7 +19,7 @@ Exported from the Starter design system on 30 Oct 2026 (the version with SearchS
 
 ## Viewing it
 
-Open `standalone/index.html` in a browser. The pages load React 18.3.1 from unpkg and Inter from Google Fonts, so they need an internet connection. If your browser blocks local files, serve the folder (`npx serve .` or `python3 -m http.server`) and open `/standalone/`.
+Open `standalone/index.html` in a browser. The pages load React 18.3.1 from unpkg and Roboto from Google Fonts, so they need an internet connection. If your browser blocks local files, serve the folder (`npx serve .` or `python3 -m http.server`) and open `/standalone/`.
 
 ## Using it in a page
 

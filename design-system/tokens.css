@@ -1,86 +1,102 @@
-/* Starter — generated from tokens.json */
+/* WITW Design System — generated from tokens.json */
 
 :root, [data-theme="console"] {
-  --primary: #334155;
-  --primary-hover: #1E293B;
-  --primary-active: #0F172A;
-  --primary-soft: #F1F5F9;
-  --primary-soft-border: #CBD5E1;
+  --primary: #09422D;
+  --primary-hover: #073A28;
+  --primary-active: #073A28;
+  --primary-soft: #E7EFEB;
+  --primary-soft-border: #B5C6C0;
   --on-primary: #FFFFFF;
-  --accent-1: #94A3B8;
-  --accent-2: #475569;
-  --accent-3: #CBD5E1;
-  --focus-ring: rgba(51, 65, 85, 0.40);
-  --background: #F6F7F9;
+  --accent-1: #F9D600;
+  --accent-2: #FD5634;
+  --accent-3: #E7EFEB;
+  --focus-ring: rgba(9, 66, 45, 0.40);
+  --background: #F5F5F5;
   --surface: #FFFFFF;
-  --surface-alt: #F9FAFB;
-  --border: #E3E6EB;
-  --border-strong: #CBD1D9;
-  --text: #1F2937;
-  --text-muted: #5B6472;
-  --text-subtle: #8A93A0;
-  --overlay: rgba(15, 23, 42, 0.45);
-  --tooltip: #1F2937;
-  --required: #D92D20;
-  --danger: #C0271D;
-  --danger-hover: #A11F17;
-  --danger-soft: #FEF1F0;
-  --success: #157F3B;
-  --success-soft: #ECF8F0;
-  --warning: #A15C07;
-  --warning-soft: #FEF6E7;
-  --info: #1D63B8;
-  --info-soft: #EEF4FC;
+  --surface-alt: #F5F5F5;
+  --border: #D1D5DB;
+  --border-strong: #D1D5DB;
+  --text: #1E1E1E;
+  --text-muted: #4B4B4B;
+  --text-subtle: #6B6B6B;
+  --overlay: rgba(30, 30, 30, 0.45);
+  --tooltip: #1E1E1E;
+  --required: #B91C1C;
+  --danger: #B91C1C;
+  --danger-hover: #991B1B;
+  --danger-fill: #B91C1C;
+  --on-danger: #FFFFFF;
+  --danger-soft: #FEF2F2;
+  --success: #047857;
+  --success-soft: #ECFDF5;
+  --warning: #B45309;
+  --warning-soft: #FFFBEB;
+  --info: #1D4ED8;
+  --info-soft: #EFF6FF;
   --badge-success-text: var(--success);
   --badge-success-bg: var(--success-soft);
-  --badge-success-dot: #22A04B;
+  --badge-success-dot: #10B981;
   --badge-warning-text: var(--warning);
   --badge-warning-bg: var(--warning-soft);
-  --badge-warning-dot: #E5900B;
+  --badge-warning-dot: #F59E0B;
   --badge-info-text: var(--info);
   --badge-info-bg: var(--info-soft);
-  --badge-info-dot: #3B82D6;
+  --badge-info-dot: #3B82F6;
   --badge-danger-text: var(--danger);
   --badge-danger-bg: var(--danger-soft);
-  --badge-danger-dot: #E0463B;
-  --badge-neutral-text: #4B5563;
-  --badge-neutral-bg: #F1F3F5;
-  --badge-neutral-dot: #9AA3AF;
+  --badge-danger-dot: #EF4444;
+  --badge-neutral-text: #4B4B4B;
+  --badge-neutral-bg: #F5F5F5;
+  --badge-neutral-dot: #6B6B6B;
   --image-badge: rgba(0, 0, 0, 0.6);
-  --avatar-bg: #E7EAF0;
-  --avatar-text: #4A5568;
-  --count-chip-bg: #EEF0F5;
-  --notify-jobs: #D97706;
-  --notify-account: #2563EB;
-  --notify-test: #16A34A;
-  --tag-jobs-text: #B45309;
-  --tag-jobs-bg: #FFF4E5;
-  --tag-account-text: #2563EB;
-  --tag-account-bg: #EFF4FF;
-  --tag-test-text: #15803D;
-  --tag-test-bg: #ECFDF3;
+  --avatar-bg: #F5F5F5;
+  --avatar-text: #4B4B4B;
+  --count-chip-bg: #F5F5F5;
+  --count-badge-bg: #FD5634;
+  --count-badge-text: #1E1E1E;
+  --notify-jobs: var(--warning);
+  --notify-account: var(--info);
+  --notify-test: var(--success);
+  --tag-jobs-text: var(--warning);
+  --tag-jobs-bg: var(--warning-soft);
+  --tag-account-text: var(--info);
+  --tag-account-bg: var(--info-soft);
+  --tag-test-text: var(--success);
+  --tag-test-bg: var(--success-soft);
   --event-saffron: #F0993A;
   --event-sky-blue: #3FAEE0;
   --event-brown: #A86A2C;
   --event-peach: #F2B36A;
   --event-maroon: #7B1E2E;
   --event-green: #2E9E5B;
-  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
-  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.10);
-  --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.18);
-  --shadow-popover: 0 12px 32px rgba(16, 24, 40, 0.16);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-popover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 [data-theme="portal"] {
-  --primary: #1D4ED8;
-  --primary-hover: #1E40AF;
-  --primary-active: #1E3A8A;
-  --primary-soft: #EFF4FF;
-  --primary-soft-border: #C7D7FE;
+  --primary: #09422D;
+  --primary-hover: #FD5634;
+  --primary-active: #073A28;
+  --primary-soft: #FAF7F3;
+  --primary-soft-border: #D1D5DB;
   --on-primary: #FFFFFF;
-  --accent-1: #93B4FD;
-  --accent-2: #3B6FF0;
-  --accent-3: #C7D7FE;
-  --focus-ring: rgba(29, 78, 216, 0.40);
+  --accent-1: #F9D600;
+  --accent-2: #FD5634;
+  --accent-3: #99FF33;
+  --focus-ring: rgba(9, 66, 45, 0.50);
+  --text-subtle: #7A7A7A;
+  --overlay: rgba(9, 66, 45, 0.50);
+  --tooltip: #262626;
+  --required: #EF4444;
+  --danger: #EF4444;
+  --danger-hover: #ECCB00;
+  --danger-fill: #F9D600;
+  --on-danger: #1E1E1E;
+  --success: #10B981;
+  --warning: #F59E0B;
+  --info: #3B82F6;
   --badge-success-text: var(--success);
   --badge-success-bg: var(--success-soft);
   --badge-warning-text: var(--warning);
@@ -89,6 +105,16 @@
   --badge-info-bg: var(--info-soft);
   --badge-danger-text: var(--danger);
   --badge-danger-bg: var(--danger-soft);
+  --badge-neutral-dot: #808080;
+  --notify-jobs: var(--warning);
+  --notify-account: var(--info);
+  --notify-test: var(--success);
+  --tag-jobs-text: var(--warning);
+  --tag-jobs-bg: var(--warning-soft);
+  --tag-account-text: var(--info);
+  --tag-account-bg: var(--info-soft);
+  --tag-test-text: var(--success);
+  --tag-test-bg: var(--success-soft);
 }
 :root {
   --space-xs: 4px;
@@ -98,9 +124,9 @@
   --space-xl: 24px;
   --space-2xl: 32px;
   --radius-sm: 4px;
-  --radius-md: 6px;
+  --radius-md: 8px;
   --radius-lg: 8px;
-  --radius-xl: 10px;
+  --radius-xl: 12px;
   --radius-full: 9999px;
   --header-height: 56px;
   --sidebar-width: 240px;
@@ -164,9 +190,10 @@
   --z-modal: 60;
   --z-toast: 70;
   --z-tooltip: 80;
-  --font-sans: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+  --font-sans: Roboto, system-ui, -apple-system, "Segoe UI", "Noto Sans", sans-serif;
+  --font-display: "Devator Exp", Roboto, system-ui, sans-serif;
 }
-.page-title { font-family: var(--font-sans); font-size: 20px; line-height: 28px; font-weight: 600; }
+.page-title { font-family: var(--font-display); font-size: 20px; line-height: 28px; font-weight: 600; }
 .section { font-family: var(--font-sans); font-size: 16px; line-height: 24px; font-weight: 600; }
 .table-title { font-family: var(--font-sans); font-size: 16px; line-height: 24px; font-weight: 600; }
 .subheading { font-family: var(--font-sans); font-size: 14px; line-height: 20px; font-weight: 600; }
@@ -180,9 +207,9 @@
 .button { font-family: var(--font-sans); font-size: 14px; line-height: 20px; font-weight: 500; }
 .badge { font-family: var(--font-sans); font-size: 12px; line-height: 16px; font-weight: 500; }
 .menu { font-family: var(--font-sans); font-size: 14px; line-height: 20px; font-weight: 500; }
-.auth-headline { font-family: var(--font-sans); font-size: 36px; line-height: 44px; font-weight: 600; }
+.auth-headline { font-family: var(--font-display); font-size: 36px; line-height: 44px; font-weight: 600; }
 .auth-lede { font-family: var(--font-sans); font-size: 16px; line-height: 24px; font-weight: 400; }
-.error-code { font-family: var(--font-sans); font-size: 96px; line-height: 1; font-weight: 700; letter-spacing: -0.02em; }
+.error-code { font-family: var(--font-display); font-size: 96px; line-height: 1; font-weight: 700; letter-spacing: -0.02em; }
 .error-text { font-family: var(--font-sans); font-size: 15px; line-height: 24px; font-weight: 400; }
 .popover-title { font-family: var(--font-sans); font-size: 15px; line-height: 20px; font-weight: 600; }
 .popover-text { font-family: var(--font-sans); font-size: 13px; line-height: 18px; font-weight: 400; }

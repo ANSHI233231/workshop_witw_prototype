@@ -12,10 +12,10 @@
   },
   "groups": [],
   "lastChange": {
-    "by": "Aayush",
-    "at": "2026-10-30T14:37:24Z",
-    "via": "Cowork",
-    "note": "Added SearchSelect and ServerSelect (dropdowns with search)."
+    "by": "ANSHI233231",
+    "at": "2026-11-02T13:55:28Z",
+    "via": "Claude Code",
+    "note": "Walk Into The Wild theme: colours, fonts, radius and shadows; renamed WITW Design System."
   },
   "layout": "files",
   "libraries": [
@@ -30,5 +30,5 @@
   ],
   "namespace": "Starter",
   "sections": {},
-  "title": "Starter"
+  "title": "WITW Design System anshika"
 }

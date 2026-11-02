@@ -2,13 +2,13 @@
 <html lang="en" data-theme="console">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="../tokens.css">
 <link rel="stylesheet" href="../components/bundle.css">
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
 <script src="../components/bundle.js"></script>
-<title>Starter</title>
+<title>WITW Design System</title>
 <style>
   html, body { margin: 0; height: 100%; }
   body { background: var(--background); color: var(--text); font-family: var(--font-sans); overflow: hidden; }
@@ -16,14 +16,14 @@
   .art { position: absolute; top: 0; left: 480px; width: 480px; height: 288px; overflow: hidden; }
   .art svg { display: block; width: 480px; height: 288px; }
   .brand { fill: var(--primary); }
-  .deep { fill: var(--primary-active); }
+  .deep { fill: var(--accent-2); }
   .tint { fill: var(--primary-soft-border); }
-  .accent { fill: var(--accent-2); }
+  .accent { fill: var(--primary); }
   .blk { rx: var(--radius-lg); }
   .pill { rx: var(--space-md); }
   .tile { fill: var(--accent-1); rx: var(--radius-md); }
   .words { position: absolute; left: var(--space-xl); bottom: var(--space-xl); max-width: 440px; }
-  .name { margin: 0; font-size: 104px; line-height: .92; font-weight: 600; letter-spacing: -.02em; color: var(--text); }
+  .name { margin: 0; font-family: var(--font-display); font-size: 64px; line-height: .95; font-weight: 700; letter-spacing: -.02em; color: var(--text); }
   .tag { margin: var(--space-sm) 0 0 4px; font-size: 14px; line-height: 20px; color: var(--text-muted); }
 </style>
 </head>
@@ -32,9 +32,9 @@
 <div class="art" aria-hidden="true">
 <svg viewBox="0 0 480 288" width="480" height="288">
 <!--
-  blocks      primary 176×272 bled off the top (the theme's one colour, largest) · primary-active 112×136 bleeding off the right · primary-soft-border 160×96 as relief (primary-soft vanishes on background) · accent-2 a 64×24 pill (badge-sized) — ≈30% of 960×288
+  blocks      primary (WITW green) 176×272 bled off the top, largest · accent-2 (WITW orange) 112×136 bleeding off the right · primary-soft-border 160×96 as relief (primary-soft vanishes on background) · primary a 64×24 pill (badge-sized) — ≈30% of 960×288
   arrangement one tall primary slab with satellites; bottoms on one line space-xl above the edge, space-lg gutters
-  pattern     modular tiles, from a dense admin UI of tables and controls: 24px (space-xl) tiles at a 32px (space-2xl) pitch, some merged two-wide like the toolbar's controls, in accent-1 above the tint
+  pattern     modular tiles, from a dense admin UI of tables and controls: 24px (space-xl) tiles at a 32px (space-2xl) pitch, some merged two-wide like the toolbar's controls, in accent-1 (WITW yellow) above the tint
   scales      sides in space-lg multiples; gutters space-lg; tile space-xl at pitch space-2xl; corners radius-lg on blocks, radius-md on tiles, the pill rx space-md (half its 24px height)
 -->
 <rect class="brand blk" x="16" y="-8" width="176" height="272"/>
@@ -58,8 +58,8 @@
 </svg>
 </div>
 <div class="words">
-<h1 class="name">Starter</h1>
-<p class="tag">Console and Portal: one system, two themes.</p>
+<h1 class="name">WITW Design System</h1>
+<p class="tag">Walk Into The Wild for the Console and the Portal: one system, two themes.</p>
 </div>
 </div>
 </body>
