@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" data-theme="console">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components/bundle.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="../components/bundle.js"></script><title>SafariCard — preview</title></head>
+<body>
+<div id="root" class="st-root"></div>
+<script>
+  var S = window.Starter, h = React.createElement, F = React.Fragment;
+  function theme(t, el) { return h('div', { className: 'st-pair' }, h('div', { 'data-theme': t, className: 'st-theme' }, h('p', { className: 'st-theme-name' }, t === 'console' ? 'Console' : 'Portal (website)'), el)); }
+  var IMG = {"mark": "../assets/Logos/witw-mark.png", "word": "../assets/Logos/witw-wordmark.png", "plan": "../assets/Icons/nav-plan-safari.png", "pack": "../assets/Icons/nav-safari-packages.png", "shared": "../assets/Icons/nav-shared-safari.png", "grass": "../assets/Images/footer-grass.png", "grassland": "../assets/Images/safari-grassland.jpg", "cliff": "../assets/Images/safari-cliff.jpg", "forest": "../assets/Images/safari-forest.jpg"};
+  ReactDOM.createRoot(document.getElementById('root')).render(theme('portal', h('div', { className: 'wb-grid', style: { gridTemplateColumns: 'repeat(4, minmax(0, 1fr))' } },
+    h(S.SafariCard, { image: IMG.grassland, month: 'Mar', day: 6, safaris: 4, seats: '5 of 6', title: 'Kaziranga rhinos and birds', host: 'Kavya Reddy', hostInitials: 'KR', park: 'Kaziranga Tiger Reserve', faces: [{ initials: 'RV', name: 'Rahul Verma' }], action: 'join' }),
+    h(S.SafariCard, { image: IMG.cliff, month: 'Dec', day: 12, safaris: 4, seats: '3 of 5', title: 'Tigers of Bandhavgarh', host: 'Riya Sharma', hostInitials: 'RS', park: 'Bandhavgarh Tiger Reserve', faces: [{ initials: 'AV', name: 'Amit Verma' }, { initials: 'NS', name: 'Neha Singh' }, { initials: 'RP', name: 'Raj Patel' }], more: 4, action: 'leave' }),
+    h(S.SafariCard, { image: IMG.forest, month: 'Jan', day: 9, safaris: 3, seats: '4 of 6', title: 'Leopards of Jhalana', host: 'Ananya Iyer', hostInitials: 'AI', park: 'Jhalana Leopard Reserve', faces: [{ initials: 'KM', name: 'Karan Malhotra' }, { initials: 'RM', name: 'Rohan Mehta' }, { initials: 'MJ', name: 'Meera Joshi' }], action: 'view' }),
+    h(S.SafariCard, { image: IMG.grassland, month: 'Dec', day: 26, safaris: 5, seats: '6 of 6', title: 'Corbett birding trail', host: 'Sanjay Gupta', hostInitials: 'SG', park: 'Corbett Tiger Reserve', faces: [{ initials: 'AV', name: 'Amit Verma' }, { initials: 'PS', name: 'Priya Sharma' }], more: 4, action: 'full' }))));
+</script>
+</body>
+</html>

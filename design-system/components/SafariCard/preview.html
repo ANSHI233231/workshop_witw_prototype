@@ -1,0 +1,18 @@
+<!-- @dsCard group="Shared Safari" height=470 subtitle="Join, joined (Leave), own (View) and Seat full" -->
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>SafariCard — preview</title></head>
+<body>
+<div id="root" class="st-root"></div>
+<script>
+  var S = window.Starter, h = React.createElement, F = React.Fragment;
+  function theme(t, el) { return h('div', { className: 'st-pair' }, h('div', { 'data-theme': t, className: 'st-theme' }, h('p', { className: 'st-theme-name' }, t === 'console' ? 'Console' : 'Portal (website)'), el)); }
+  var IMG = {"mark": "/_blob/2e725624cda8706e6cb43d2c6f9e1e4f", "word": "/_blob/125ba9aaaeb5334df4356fb4a903caaa", "plan": "/_blob/4806cbaa8618fac63132749206f9ab03", "pack": "/_blob/80bf9cbb562564ae94550b5f77ed6f30", "shared": "/_blob/2d411b6149faef3bfcab3947bcfe65e9", "grass": "/_blob/e27c4dfc94154c2b1be2f4c188c7eb6a", "grassland": "/_blob/cdd482e4b79b2b9a6dee5122708fa275", "cliff": "/_blob/a2a10b184f0c6c4b1998b7b9e5a21822", "forest": "/_blob/533a1e37ab0613d2a0b76b1cdd821a93"};
+  ReactDOM.createRoot(document.getElementById('root')).render(theme('portal', h('div', { className: 'wb-grid', style: { gridTemplateColumns: 'repeat(4, minmax(0, 1fr))' } },
+    h(S.SafariCard, { image: IMG.grassland, month: 'Mar', day: 6, safaris: 4, seats: '5 of 6', title: 'Kaziranga rhinos and birds', host: 'Kavya Reddy', hostInitials: 'KR', park: 'Kaziranga Tiger Reserve', faces: [{ initials: 'RV', name: 'Rahul Verma' }], action: 'join' }),
+    h(S.SafariCard, { image: IMG.cliff, month: 'Dec', day: 12, safaris: 4, seats: '3 of 5', title: 'Tigers of Bandhavgarh', host: 'Riya Sharma', hostInitials: 'RS', park: 'Bandhavgarh Tiger Reserve', faces: [{ initials: 'AV', name: 'Amit Verma' }, { initials: 'NS', name: 'Neha Singh' }, { initials: 'RP', name: 'Raj Patel' }], more: 4, action: 'leave' }),
+    h(S.SafariCard, { image: IMG.forest, month: 'Jan', day: 9, safaris: 3, seats: '4 of 6', title: 'Leopards of Jhalana', host: 'Ananya Iyer', hostInitials: 'AI', park: 'Jhalana Leopard Reserve', faces: [{ initials: 'KM', name: 'Karan Malhotra' }, { initials: 'RM', name: 'Rohan Mehta' }, { initials: 'MJ', name: 'Meera Joshi' }], action: 'view' }),
+    h(S.SafariCard, { image: IMG.grassland, month: 'Dec', day: 26, safaris: 5, seats: '6 of 6', title: 'Corbett birding trail', host: 'Sanjay Gupta', hostInitials: 'SG', park: 'Corbett Tiger Reserve', faces: [{ initials: 'AV', name: 'Amit Verma' }, { initials: 'PS', name: 'Priya Sharma' }], more: 4, action: 'full' }))));
+</script>
+</body>
+</html>

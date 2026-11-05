@@ -1,23 +1,12 @@
 {
   "v": 3,
-  "assetGroups": {},
-  "blobs": {},
-  "createdOnFiles": {
-    "at": "2026-10-30T13:20:12Z",
-    "v": 1
-  },
-  "docs": {
-    "readme": "project/README.md",
-    "sections": []
-  },
-  "groups": [],
-  "lastChange": {
-    "by": "ANSHI233231",
-    "at": "2026-11-02T13:55:28Z",
-    "via": "Claude Code",
-    "note": "Walk Into The Wild theme: colours, fonts, radius and shadows; renamed WITW Design System."
-  },
   "layout": "files",
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-11-02T14:12:35Z"
+  },
+  "title": "WITW Design System anshika",
+  "namespace": "Starter",
   "libraries": [
     {
       "name": "react",
@@ -28,7 +17,124 @@
       "version": "18"
     }
   ],
-  "namespace": "Starter",
   "sections": {},
-  "title": "WITW Design System anshika"
+  "groups": [
+    "Logos",
+    "Icons",
+    "Images"
+  ],
+  "assetGroups": {
+    "Logos": {
+      "name": "Logos",
+      "tile": "l",
+      "order": [
+        "witw-mark.png",
+        "witw-wordmark.png"
+      ],
+      "files": {
+        "witw-mark.png": {
+          "name": "witw-mark.png",
+          "blob": "2e725624cda8706e6cb43d2c6f9e1e4f",
+          "size": 2073,
+          "type": "image/png"
+        },
+        "witw-wordmark.png": {
+          "name": "witw-wordmark.png",
+          "blob": "125ba9aaaeb5334df4356fb4a903caaa",
+          "size": 10843,
+          "type": "image/png"
+        }
+      }
+    },
+    "Icons": {
+      "name": "Icons",
+      "tile": "s",
+      "order": [
+        "nav-plan-safari.png",
+        "nav-safari-packages.png",
+        "nav-shared-safari.png"
+      ],
+      "files": {
+        "nav-plan-safari.png": {
+          "name": "nav-plan-safari.png",
+          "blob": "4806cbaa8618fac63132749206f9ab03",
+          "size": 1399,
+          "type": "image/png"
+        },
+        "nav-safari-packages.png": {
+          "name": "nav-safari-packages.png",
+          "blob": "80bf9cbb562564ae94550b5f77ed6f30",
+          "size": 921,
+          "type": "image/png"
+        },
+        "nav-shared-safari.png": {
+          "name": "nav-shared-safari.png",
+          "blob": "2d411b6149faef3bfcab3947bcfe65e9",
+          "size": 1517,
+          "type": "image/png"
+        }
+      }
+    },
+    "Images": {
+      "name": "Images",
+      "tile": "l",
+      "order": [
+        "hero.jpg",
+        "footer-grass.png",
+        "safari-grassland.jpg",
+        "safari-cliff.jpg",
+        "safari-forest.jpg",
+        "default-cover.jpg"
+      ],
+      "files": {
+        "hero.jpg": {
+          "name": "hero.jpg",
+          "blob": "5fea177381dd9c40efb95e46a2190175",
+          "size": 8808,
+          "type": "image/jpeg"
+        },
+        "footer-grass.png": {
+          "name": "footer-grass.png",
+          "blob": "e27c4dfc94154c2b1be2f4c188c7eb6a",
+          "size": 85048,
+          "type": "image/png"
+        },
+        "safari-grassland.jpg": {
+          "name": "safari-grassland.jpg",
+          "blob": "cdd482e4b79b2b9a6dee5122708fa275",
+          "size": 38610,
+          "type": "image/jpeg"
+        },
+        "safari-cliff.jpg": {
+          "name": "safari-cliff.jpg",
+          "blob": "a2a10b184f0c6c4b1998b7b9e5a21822",
+          "size": 18705,
+          "type": "image/jpeg"
+        },
+        "safari-forest.jpg": {
+          "name": "safari-forest.jpg",
+          "blob": "533a1e37ab0613d2a0b76b1cdd821a93",
+          "size": 18285,
+          "type": "image/jpeg"
+        },
+        "default-cover.jpg": {
+          "name": "default-cover.jpg",
+          "blob": "4e5c9bd6a9ed43283a386f3d148eebb2",
+          "size": 4193,
+          "type": "image/jpeg"
+        }
+      }
+    }
+  },
+  "blobs": {},
+  "docs": {
+    "readme": "project/README.md",
+    "sections": []
+  },
+  "lastChange": {
+    "by": "ANSHI233231",
+    "at": "2026-11-05T12:39:32Z",
+    "via": "Claude Code",
+    "note": "Re-extracted from docs/prototype (codebase design system) and added the WITW website shell and Shared Safari components, logos, icons and images."
+  }
 }

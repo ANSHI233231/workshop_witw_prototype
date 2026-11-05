@@ -16,15 +16,13 @@
   .art { position: absolute; top: 0; left: 480px; width: 480px; height: 288px; overflow: hidden; }
   .art svg { display: block; width: 480px; height: 288px; }
   .brand { fill: var(--primary); }
-  .deep { fill: var(--accent-2); }
-  .tint { fill: var(--primary-soft-border); }
-  .accent { fill: var(--primary); }
+  .deep { fill: var(--primary-active); }
+  .sun { fill: var(--accent-1); }
+  .accent { fill: var(--accent-2); }
   .blk { rx: var(--radius-lg); }
-  .pill { rx: var(--space-md); }
-  .tile { fill: var(--accent-1); rx: var(--radius-md); }
   .words { position: absolute; left: var(--space-xl); bottom: var(--space-xl); max-width: 440px; }
-  .name { margin: 0; font-family: var(--font-display); font-size: 64px; line-height: .95; font-weight: 700; letter-spacing: -.02em; color: var(--text); }
-  .tag { margin: var(--space-sm) 0 0 4px; font-size: 14px; line-height: 20px; color: var(--text-muted); }
+  .name { margin: 0; font-family: var(--font-display); font-size: 64px; line-height: .95; font-weight: 700; letter-spacing: -.01em; color: var(--text); }
+  .tag { margin: var(--space-sm) 0 0 2px; font-size: 14px; line-height: 20px; color: var(--text-muted); }
 </style>
 </head>
 <body>
@@ -32,34 +30,23 @@
 <div class="art" aria-hidden="true">
 <svg viewBox="0 0 480 288" width="480" height="288">
 <!--
-  blocks      primary (WITW green) 176×272 bled off the top, largest · accent-2 (WITW orange) 112×136 bleeding off the right · primary-soft-border 160×96 as relief (primary-soft vanishes on background) · primary a 64×24 pill (badge-sized) — ≈30% of 960×288
-  arrangement one tall primary slab with satellites; bottoms on one line space-xl above the edge, space-lg gutters
-  pattern     modular tiles, from a dense admin UI of tables and controls: 24px (space-xl) tiles at a 32px (space-2xl) pitch, some merged two-wide like the toolbar's controls, in accent-1 (WITW yellow) above the tint
-  scales      sides in space-lg multiples; gutters space-lg; tile space-xl at pitch space-2xl; corners radius-lg on blocks, radius-md on tiles, the pill rx space-md (half its 24px height)
+  blocks      primary 176×304 slab bled off top and bottom (WITW's forest green, largest) · accent-2 orange 96×144 bleeding off the top right · accent-1 a 96px disc (the sun) · primary-active hills — ≈35% of 960×288
+  arrangement one tall green slab with satellites: the sun between slab and orange block, hills rising off the bottom edge
+  pattern     a literal motif for "Walk Into The Wild": half-disc hills on the horizon, radius space-2xl and space-xl × 2, from the sun-and-landscape the name calls up
+  scales      gutters space-lg; slab and block corners radius-lg; sun r = space-xl × 2; hills r = space-2xl (32) and 48; horizon on the bottom edge
 -->
-<rect class="brand blk" x="16" y="-8" width="176" height="272"/>
-<rect class="tint blk" x="208" y="120" width="160" height="96"/>
-<rect class="deep blk" x="384" y="128" width="112" height="136"/>
-<rect class="accent pill" x="208" y="240" width="64" height="24"/>
-<rect class="tile" x="208" y="16" width="24" height="24"/>
-<rect class="tile" x="240" y="16" width="56" height="24"/>
-<rect class="tile" x="304" y="16" width="24" height="24"/>
-<rect class="tile" x="336" y="16" width="24" height="24"/>
-<rect class="tile" x="368" y="16" width="56" height="24"/>
-<rect class="tile" x="432" y="16" width="24" height="24"/>
-<rect class="tile" x="208" y="48" width="56" height="24"/>
-<rect class="tile" x="272" y="48" width="24" height="24"/>
-<rect class="tile" x="304" y="48" width="24" height="24"/>
-<rect class="tile" x="336" y="48" width="56" height="24"/>
-<rect class="tile" x="400" y="48" width="24" height="24"/>
-<rect class="tile" x="208" y="80" width="24" height="24"/>
-<rect class="tile" x="240" y="80" width="24" height="24"/>
-<rect class="tile" x="272" y="80" width="56" height="24"/>
+<rect class="brand blk" x="16" y="-16" width="176" height="320"/>
+<rect class="accent blk" x="400" y="-16" width="96" height="160"/>
+<circle class="sun" cx="296" cy="88" r="48"/>
+<path class="deep" d="M208 288 a48 48 0 0 1 96 0 z"/>
+<path class="deep" d="M288 288 a32 32 0 0 1 64 0 z"/>
+<path class="deep" d="M336 288 a48 48 0 0 1 96 0 z"/>
+<path class="deep" d="M416 288 a32 32 0 0 1 64 0 z"/>
 </svg>
 </div>
 <div class="words">
-<h1 class="name">WITW Design System</h1>
-<p class="tag">Walk Into The Wild for the Console and the Portal: one system, two themes.</p>
+<h1 class="name">WITW Design<br>System</h1>
+<p class="tag">Walk Into The Wild: the Console and the Website, one system.</p>
 </div>
 </div>
 </body>

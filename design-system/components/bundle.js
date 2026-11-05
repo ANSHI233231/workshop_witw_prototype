@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"Starter","components":[{"name":"Icon"},{"name":"Button"},{"name":"IconButton"},{"name":"SearchInput"},{"name":"Select"},{"name":"FormField"},{"name":"Toggle"},{"name":"StatusBadge"},{"name":"Table"},{"name":"Card"},{"name":"KpiCard"},{"name":"Dialog"},{"name":"Tabs"},{"name":"PageHeader"},{"name":"AppHeader"},{"name":"NotificationItem"},{"name":"NotificationPopover"},{"name":"Sidebar"},{"name":"MobileMenu"},{"name":"Footer"},{"name":"SignIn"},{"name":"NotFound"},{"name":"Toast"},{"name":"ToastStack"},{"name":"DialogError"},{"name":"SearchSelect"},{"name":"ServerSelect"}]} */
+/* @ds-bundle: {"format":4,"namespace":"Starter","components":[{"name":"Icon"},{"name":"Button"},{"name":"IconButton"},{"name":"SearchInput"},{"name":"Select"},{"name":"FormField"},{"name":"Toggle"},{"name":"StatusBadge"},{"name":"Table"},{"name":"Card"},{"name":"KpiCard"},{"name":"Dialog"},{"name":"Tabs"},{"name":"PageHeader"},{"name":"AppHeader"},{"name":"NotificationItem"},{"name":"NotificationPopover"},{"name":"Sidebar"},{"name":"MobileMenu"},{"name":"Footer"},{"name":"SignIn"},{"name":"NotFound"},{"name":"Toast"},{"name":"ToastStack"},{"name":"DialogError"},{"name":"SearchSelect"},{"name":"ServerSelect"},{"name":"SiteHeader"},{"name":"SiteHero"},{"name":"SiteFooter"},{"name":"SiteDialog"},{"name":"SafariCard"},{"name":"SafariFilters"},{"name":"FilterChip"},{"name":"SafariSummary"},{"name":"SitePanel"},{"name":"Comment"},{"name":"RadioList"},{"name":"WebNotificationItem"},{"name":"DetailList"},{"name":"PinButton"},{"name":"JoinedLeft"}]} */
 (function () {
   var React = window.React, h = React.createElement, Fragment = React.Fragment;
   function cx() { return Array.prototype.filter.call(arguments, Boolean).join(' '); }
@@ -484,4 +484,198 @@
     Table: Table, Card: Card, KpiCard: KpiCard, Dialog: Dialog, Tabs: Tabs, PageHeader: PageHeader, AppHeader: AppHeader, NotificationItem: NotificationItem,
     NotificationPopover: NotificationPopover, Sidebar: Sidebar, MobileMenu: MobileMenu, Footer: Footer, SignIn: SignIn, NotFound: NotFound, Toast: Toast, ToastStack: ToastStack, DialogError: DialogError, SearchSelect: SearchSelect, ServerSelect: ServerSelect };
   window.Starter = Object.assign(window.Starter || {}, api);
+})();
+
+/* WITW website shell and Shared Safari components, from the Shared Safari boards (W1–W9, C1–C7). */
+(function () {
+  var React = window.React, h = React.createElement, Fragment = React.Fragment, S = window.Starter;
+  function cx() { return Array.prototype.filter.call(arguments, Boolean).join(' '); }
+  /* The boards' own Lucide glyphs (inner SVG markup, stroke 2). */
+  var G = {"mail":"<rect width=\"20\" height=\"16\" x=\"2\" y=\"4\" rx=\"2\"></rect><path d=\"m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7\"></path>","map-pin":"<path d=\"M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0\"></path><circle cx=\"12\" cy=\"10\" r=\"3\"></circle>","calendar":"<path d=\"M8 2v4\"></path><path d=\"M16 2v4\"></path><rect width=\"18\" height=\"18\" x=\"3\" y=\"4\" rx=\"2\"></rect><path d=\"M3 10h18\"></path>","users":"<path d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\"></path><circle cx=\"9\" cy=\"7\" r=\"4\"></circle><path d=\"M22 21v-2a4 4 0 0 0-3-3.87\"></path><path d=\"M16 3.13a4 4 0 0 1 0 7.75\"></path>","car":"<path d=\"M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2\"></path><circle cx=\"7\" cy=\"17\" r=\"2\"></circle><path d=\"M9 17h6\"></path><circle cx=\"17\" cy=\"17\" r=\"2\"></circle>","hotel":"<rect width=\"16\" height=\"20\" x=\"4\" y=\"2\" rx=\"2\"></rect><path d=\"M9 22v-4h6v4\"></path><path d=\"M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01\"></path>","indian-rupee":"<path d=\"M6 3h12\"></path><path d=\"M6 8h12\"></path><path d=\"m6 13 8.5 8\"></path><path d=\"M6 13h3\"></path><path d=\"M9 13c6.667 0 6.667-10 0-10\"></path>","facebook":"<path d=\"M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z\"></path>","x-brand":"<path d=\"M4 4l11.733 16H20L8.267 4z\"></path><path d=\"M4 20l6.768-6.768\"></path><path d=\"M20 4l-6.768 6.768\"></path>","instagram":"<rect width=\"20\" height=\"20\" x=\"2\" y=\"2\" rx=\"5\" ry=\"5\"></rect><path d=\"M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z\"></path><line x1=\"17.5\" x2=\"17.51\" y1=\"6.5\" y2=\"6.5\"></line>","whatsapp":"<path d=\"M7.9 20A9 9 0 1 0 4 16.1L2 22Z\"></path>","linkedin":"<path d=\"M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z\"></path><rect width=\"4\" height=\"12\" x=\"2\" y=\"9\"></rect><circle cx=\"4\" cy=\"4\" r=\"2\"></circle>","telegram":"<path d=\"M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z\"></path><path d=\"m21.854 2.147-10.94 10.939\"></path>","link":"<path d=\"M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71\"></path><path d=\"M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71\"></path>","flag":"<path d=\"M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z\"></path><line x1=\"4\" x2=\"4\" y1=\"22\" y2=\"15\"></line>","pin":"<path d=\"M12 17v5\"></path><path d=\"M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z\"></path>","circle-user":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><circle cx=\"12\" cy=\"10\" r=\"3\"></circle><path d=\"M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662\"></path>","binoculars":"<path d=\"M10 10h4\"></path><path d=\"M19 7V4a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v3\"></path><path d=\"M20 21a2 2 0 0 0 2-2v-3.851c0-1.39-2-2.962-2-4.829V8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v11a2 2 0 0 0 2 2z\"></path><path d=\"M 22 16 L 2 16\"></path><path d=\"M4 21a2 2 0 0 1-2-2v-3.851c0-1.39 2-2.962 2-4.829V8a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v11a2 2 0 0 1-2 2z\"></path><path d=\"M9 7V4a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v3\"></path>"};
+  function Glyph(p) {
+    return h('svg', { className: cx('st-icon', p.className), viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': 'true', focusable: 'false', dangerouslySetInnerHTML: { __html: G[p.name] || '' } });
+  }
+  function Avatar(p) { return h('span', { className: cx('st-avatar', p.className), title: p.title }, p.children); }
+
+  /* ---- Website shell ---- */
+  function SiteHeader(p) {
+    var nav = p.nav || [];
+    var user = p.user;
+    return h('header', { className: 'wb-head' },
+      h('a', { className: 'wb-logo', href: p.logoHref || '#', 'aria-label': 'Walk Into The Wild home' }, p.logo ? h('img', { src: p.logo, alt: 'Walk Into The Wild' }) : null),
+      h('nav', { className: 'wb-nav', 'aria-label': 'Website' }, nav.map(function (n, i) {
+        var on = n.current, off = !on && !n.href;
+        return h('a', { key: i, className: on ? 'is-on' : off ? 'is-off' : null, href: n.href, 'aria-current': on ? 'page' : undefined }, n.icon ? h('img', { src: n.icon, alt: '' }) : null, n.label);
+      })),
+      h('div', { className: 'wb-right' }, user ? [
+        h('div', { key: 'b', className: 'wb-wrap' }, h('button', { type: 'button', className: 'wb-ic is-bell', 'aria-label': 'Notifications', 'aria-haspopup': 'dialog', 'aria-expanded': false, onClick: p.onBell },
+          h(Glyph, { name: 'mail' }), p.count ? h('span', { className: 'wb-cnt' }, p.count) : null)),
+        h('div', { key: 'u', className: 'wb-wrap' }, h('button', { type: 'button', className: 'wb-ic', 'aria-label': 'Account: ' + (user.name || ''), 'aria-haspopup': 'true', 'aria-expanded': false, onClick: p.onAccount },
+          h('span', { className: 'wb-me' }, user.initial || (user.name || '?').charAt(0))))
+      ] : h('a', { className: 'wb-ic', href: p.signInHref || '#', 'aria-label': 'Sign in' }, h(Glyph, { name: 'circle-user' }))));
+  }
+  function SiteHero(p) {
+    return h('section', { className: 'wb-hero' }, h('h1', null, p.title), p.text ? h('p', null, p.text) : null);
+  }
+  var FOOT = {
+    about: ['We offer a seamless experience, connecting you with multiple safari tour operators and providing all the essential details you need to make informed decisions about your wildlife safari, all at no cost.',
+      'Our shared safari feature connects you with fellow safari enthusiasts, enabling you to form a group and embark on a shared safari adventure together.'],
+    policy: ['Privacy Policy', 'Terms & Conditions', 'Refund Policy'],
+    links: ['About Us', 'Contact us', 'FAQs'],
+    address: 'New Delhi, India', email: 'support@walkintothewild.in', instagram: 'walkintothewild.in',
+    developer: 'Developed by Mediarc Technologies Private Limited', copyright: 'Copyright © 2025 | All rights reserved'
+  };
+  function SiteFooter(p) {
+    var f = Object.assign({}, FOOT, p);
+    function link(l, i) { return typeof l === 'string' ? h('a', { key: i, className: 'is-off' }, l) : h('a', { key: i, href: l.href }, l.label); }
+    return h('footer', { className: 'wb-foot' },
+      f.grass ? h('img', { className: 'wb-grass', src: f.grass, alt: '' }) : null,
+      h('div', { className: 'wb-cols' },
+        h('div', null, h('h2', null, 'About Us'), f.about.map(function (t, i) { return h('p', { key: i }, t); })),
+        h('div', null, h('h2', null, 'Policy'), f.policy.map(link)),
+        h('div', null, h('h2', null, 'Useful Links'), f.links.map(link)),
+        h('div', null, h('h2', null, 'Contact Info'),
+          h('p', { className: 'wb-line' }, h('b', null, 'Address:'), ' ' + f.address),
+          h('p', { className: 'wb-line' }, h('b', null, 'Email:'), ' ' + f.email),
+          h('a', { className: 'wb-insta is-off' }, h('span', null, h(Glyph, { name: 'instagram' })), f.instagram))),
+      h('div', { className: 'wb-bottom' }, f.wordmark ? h('img', { src: f.wordmark, alt: 'Walk Into The Wild' }) : null, h('span', null, f.developer), h('span', null, f.copyright)));
+  }
+  function SiteDialog(p) {
+    if (p.open === false) return null;
+    var steps = p.steps || 0, step = p.step || 1;
+    return h('div', { className: 'st-overlay', onClick: p.onClose },
+      h('form', { className: 'st-modal wb-modal', role: 'dialog', 'aria-modal': 'true', 'aria-label': p.title, noValidate: true, onClick: function (e) { e.stopPropagation(); }, onSubmit: function (e) { e.preventDefault(); } },
+        h('div', { className: 'wb-mh' }, h('h2', null, p.title), h('button', { type: 'button', 'aria-label': 'Close', onClick: p.onClose }, h(S.Icon, { name: 'x' }))),
+        h('div', { className: 'wb-mb' }, p.children),
+        h('div', { className: 'wb-mf' },
+          h('button', { type: 'button', className: 'wb-tb is-muted', onClick: p.onCancel || p.onClose }, p.cancelLabel || 'Cancel'),
+          h('button', { type: 'button', className: 'wb-tb', onClick: p.onNext }, p.nextLabel || (steps && step < steps ? 'Next' : 'Save'))),
+        steps > 1 ? h('div', { className: 'wb-dots', 'aria-label': 'Step ' + step + ' of ' + steps },
+          Array.apply(null, Array(steps)).map(function (_, i) { return h('span', { key: i, className: cx('wb-dot', i + 1 === step && 'is-on') }); })) : null));
+  }
+
+  /* ---- Shared Safari, website ---- */
+  var ACTIONS = { join: ['Join Safari', 'st-btn-primary'], view: ['View Safari', 'st-btn-secondary'], leave: ['Leave Safari', 'st-btn-secondary wb-leave'], full: ['Seat Full', 'st-btn-secondary is-full'] };
+  function SafariCard(p) {
+    var a = ACTIONS[p.action || 'join'] || ACTIONS.join, faces = p.faces || [];
+    return h('div', { className: 'wb-card', onClick: p.onOpen },
+      h('div', { className: 'wb-img' }, p.image ? h('img', { src: p.image, alt: '' }) : null, p.month ? h('span', { className: 'wb-date' }, p.month, h('br'), p.day) : null),
+      h('div', { className: cx('wb-strip', (p.full || p.action === 'full') && 'is-full') }, h('span', null, 'Safaris', h('b', null, p.safaris)), h('span', null, 'Seats', h('b', null, p.seats))),
+      h('div', { className: 'wb-body' },
+        h('h3', { className: 'wb-title' }, h('a', { href: p.href || '#' }, p.title)),
+        h('div', { className: 'wb-host' }, h(Avatar, null, p.hostInitials),
+          h('div', null, h('div', { className: 'wb-by' }, h('b', null, p.host), ' has shared a safari'),
+            h('div', { className: 'wb-park' }, h(Glyph, { name: 'map-pin' }), h('span', null, p.park)))),
+        h('div', { className: 'wb-cfoot' },
+          h('div', { className: 'wb-faces' },
+            faces.length ? h('span', { className: 'wb-stack' }, faces.map(function (f, i) { return h(Avatar, { key: i, title: f.name }, f.initials); }), p.more ? h(Avatar, { className: 'wb-more' }, '+' + p.more) : null) : null,
+            h('span', { className: 'ss-cap' }, (p.joined != null ? p.joined : faces.length + (p.more || 0)) + ' joined')),
+          h('button', { type: 'button', className: cx('st-btn', a[1], 'wb-join'), onClick: function (e) { e.stopPropagation(); if (p.onAction) p.onAction(p.action || 'join'); } }, p.actionLabel || a[0]))));
+  }
+  function inr(n) { return '₹' + Number(n).toLocaleString('en-IN'); }
+  function Range(p) {
+    return h('div', { className: 'st-field' }, h('span', { className: 'st-label' }, p.label),
+      h('div', { className: 'wb-range' },
+        h('input', { type: 'range', min: p.min, max: p.max, step: p.step || 1, 'aria-label': p.lowLabel, defaultValue: p.from != null ? p.from : p.min }),
+        h('input', { type: 'range', min: p.min, max: p.max, step: p.step || 1, 'aria-label': p.highLabel, defaultValue: p.to != null ? p.to : p.max })),
+      h('div', { className: 'wb-range-v' }, h('span', null, p.minText), h('span', null, p.maxText)));
+  }
+  function Checks(p) {
+    var on = p.checked || [];
+    return h('div', { className: 'st-field' }, h('span', { className: 'st-label' }, p.label),
+      h('div', { className: 'ss-checks' }, p.options.map(function (o, i) { return h('label', { key: i, className: 'st-check' }, h('input', { type: 'checkbox', defaultChecked: on.indexOf(o) >= 0 }), o); })));
+  }
+  function SafariFilters(p) {
+    var price = p.price || { min: 100, max: 50000, step: 100 }, count = p.safaris || { min: 1, max: 10 };
+    function sel(id, label, opts) {
+      return h('div', { className: 'st-field' }, h('label', { className: 'st-label', htmlFor: id }, label),
+        h('select', { id: id, className: 'st-select' }, h('option', { value: '' }, 'Any / All'), (opts || []).map(function (o, i) { return h('option', { key: i, value: i + 1 }, o); })));
+    }
+    return h('aside', { className: 'wb-side' },
+      p.onOrganise !== false && p.organise !== false ? h('button', { type: 'button', className: 'st-btn st-btn-primary wb-org', onClick: p.onOrganise }, p.organiseLabel || '+ Organize a Shared Safari') : null,
+      h('div', { className: 'wb-filters', 'aria-label': 'Filters' }, h('h2', null, 'Select Filters'),
+        sel('f-park', 'Safari Park', p.parks), sel('f-month', 'Month', p.months),
+        h(Range, { label: 'Budget Price Per Person', min: price.min, max: price.max, step: price.step, from: price.from, to: price.to, lowLabel: 'Lowest price per person', highLabel: 'Highest price per person', minText: inr(price.from != null ? price.from : price.min), maxText: inr(price.to != null ? price.to : price.max) + '+' }),
+        h(Range, { label: 'Total Safaris', min: count.min, max: count.max, from: count.from, to: count.to, lowLabel: 'Fewest safaris', highLabel: 'Most safaris', minText: String(count.from != null ? count.from : count.min), maxText: (count.to != null ? count.to : count.max) + '+' }),
+        h(Checks, { label: 'Theme', options: p.themes || ['Photography', 'Safari Experience'], checked: p.checked }),
+        h(Checks, { label: 'Stay Category', options: p.stays || ['Premium', 'Standard', 'Economical', 'Not Included', 'Forest Rest House', 'Home Stay'], checked: p.checked })));
+  }
+  function FilterChip(p) {
+    return h('span', { className: 'ss-chip' }, p.label, h('button', { type: 'button', className: 'st-iconbtn', 'aria-label': 'Remove ' + p.label, onClick: p.onRemove }, h(S.Icon, { name: 'x' })));
+  }
+  var FACT_ICON = { trip: 'calendar', seats: 'users', safaris: 'car', stay: 'hotel', theme: 'binoculars', cost: 'indian-rupee' };
+  var SOCIAL = [['Facebook', 'facebook', 'rgb(59, 89, 152)'], ['X', 'x-brand', 'rgb(0, 0, 0)'], ['Instagram', 'instagram', 'rgb(225, 48, 108)'], ['WhatsApp', 'whatsapp', 'rgb(37, 211, 102)'],
+    ['LinkedIn', 'linkedin', 'rgb(10, 102, 194)'], ['Telegram', 'telegram', 'rgb(34, 158, 217)'], ['Copy link', 'link', 'rgb(244, 194, 13)']];
+  function SafariSummary(p) {
+    return h('section', { className: 'ss3-top' },
+      h('div', { className: 'ss3-head' },
+        h('div', { className: 'ss3-main' },
+          h('div', { className: 'ss3-pic' }, p.image ? h('img', { src: p.image, alt: '' }) : null),
+          h('div', { className: 'ss3-info' },
+            h('div', { className: 'ss3-title' }, h('h1', null, p.title), p.badge || null),
+            h('span', { className: 'ss3-dates' }, p.dates),
+            h('span', { className: 'ss3-park' }, h(Glyph, { name: 'map-pin' }), h('span', null, p.park)),
+            h('span', { className: 'ss3-org' }, 'Organized by ', h('b', null, p.organiser)))),
+        h('div', { className: 'ss3-facts' }, (p.facts || []).map(function (f, i) {
+          return h('div', { key: i, className: 'ss3-fact' }, h(Glyph, { name: FACT_ICON[f.icon] || f.icon }), h('div', null, h('div', { className: 'ss3-fl' }, f.label), h('div', { className: 'ss3-fv' }, f.value)));
+        }))),
+      h('div', { className: 'ss3-share' },
+        p.share === false ? h('span') : h('div', { className: 'ss3-sl' }, h('span', null, p.shareLabel || 'Share this safari with your friends:'),
+          h('div', { className: 'ss3-soc' }, SOCIAL.map(function (s) { return h('span', { key: s[0], title: s[0], 'aria-label': s[0], style: { background: s[2] } }, h(Glyph, { name: s[1] })); }))),
+        h('div', { className: 'ss3-acts' }, p.actions)));
+  }
+  function SitePanel(p) {
+    var head = p.onTitle
+      ? h('button', { type: 'button', className: 'ss3-bh ss3-bh-btn', 'aria-haspopup': 'dialog', onClick: p.onTitle }, p.icon ? h(Glyph, { name: p.icon }) : null, h('span', null, p.title))
+      : h('div', { className: 'ss3-bh' }, p.icon ? h(Glyph, { name: p.icon }) : null, p.title);
+    return h('div', { className: 'ss3-box2' }, head,
+      h('div', { className: 'ss3-bb' }, p.text ? h('p', { className: 'ss-pre' }, p.text) : null,
+        p.faces ? h('div', { className: 'ss3-faces' }, p.faces.map(function (f, i) { return h(Avatar, { key: i, className: 'ss3-face', title: f.name }, f.initials); })) : null,
+        p.children),
+      p.note ? h('div', { className: 'ss3-note' }, h('p', { className: 'ss3-empty' }, p.note)) : null);
+  }
+  function Comment(p) {
+    var one = h('div', { className: 'ss3-c', key: 'c' }, h(Avatar, { className: 'ss-av' }, p.initials),
+      h('div', { className: 'ss3-cb' },
+        h('div', { className: 'ss3-ch' },
+          h('span', null, h('span', { className: 'ss3-cn' }, p.name + (p.host ? ' (Host)' : '')), ' ', h('span', { className: 'ss-cap' }, '· ' + p.time)),
+          p.canFlag === false ? null : h('span', { className: 'ss3-cacts' }, h('button', { type: 'button', className: 'st-iconbtn', 'aria-label': 'Flag this comment', 'data-tooltip': 'Flag', onClick: p.onFlag }, h(Glyph, { name: 'flag' })))),
+        h('p', { className: 'ss3-ct' }, p.text)));
+    if (!p.replies || !p.replies.length) return one;
+    return h(Fragment, null, one, p.replies.map(function (r, i) { return h('div', { key: i, className: 'ss3-reply' }, h(Comment, Object.assign({}, r, { replies: null }))); }));
+  }
+  function RadioList(p) {
+    return h('div', { role: 'radiogroup', 'aria-label': p.label }, p.options.map(function (o, i) {
+      o = typeof o === 'string' ? { value: o, label: o } : o;
+      return h('label', { key: i, className: 'ss-radio', style: p.tight ? { padding: '4px 0px' } : undefined },
+        h('input', { type: 'radio', name: p.name, value: o.value, defaultChecked: p.value === o.value, onChange: p.onChange ? function () { p.onChange(o.value); } : undefined }),
+        h('span', null, o.label, o.hint ? h('small', null, o.hint) : null));
+    }));
+  }
+  function WebNotificationItem(p) {
+    return h('a', { className: cx('wn-i', p.unread && 'is-unread'), href: p.href || '#' }, h(Avatar, null, p.initials),
+      h('span', null, h('span', { className: 'wn-t' }, p.children || p.text),
+        h('span', { className: 'wn-m' }, p.tag ? h(S.StatusBadge, { tone: p.tag.tone }, p.tag.label) : null, h('span', null, p.time))),
+      p.unread ? h('span', { className: 'wn-dot', 'aria-label': 'Unread' }) : null);
+  }
+
+  /* ---- Shared Safari, console ---- */
+  function DetailList(p) {
+    var dl = h('dl', { className: p.columns === 2 ? 'ssc-dl' : 'ss-dl' }, (p.items || []).map(function (it, i) {
+      return h(Fragment, { key: i }, h('dt', null, it[0]), h('dd', null, it[1] == null || it[1] === '' ? h('span', { className: 'empty-value' }, '–') : it[1]));
+    }));
+    return p.title ? h('div', { className: 'ss-stack-lg' }, h('span', { className: 'ss-group' }, p.title), dl) : dl;
+  }
+  function PinButton(p) {
+    var label = p.pinned ? 'Unpin' : 'Pin';
+    return h('button', { type: 'button', className: cx('st-iconbtn', 'ssc-pinbtn', p.pinned && 'is-on'), 'aria-pressed': !!p.pinned, 'aria-label': label, 'data-tooltip': label, onClick: p.onToggle }, h(Glyph, { name: 'pin', className: 'ssc-pin' }));
+  }
+  function JoinedLeft(p) {
+    return h('span', { className: 'ssc-jl' },
+      h('button', { type: 'button', className: 'st-btn st-btn-text', 'aria-label': 'Joined: ' + p.joined, onClick: p.onJoined }, p.joined), '/',
+      h('button', { type: 'button', className: 'st-btn st-btn-text', 'aria-label': 'Left: ' + p.left, onClick: p.onLeft }, p.left));
+  }
+
+  Object.assign(S, { SiteHeader: SiteHeader, SiteHero: SiteHero, SiteFooter: SiteFooter, SiteDialog: SiteDialog, SafariCard: SafariCard, SafariFilters: SafariFilters, FilterChip: FilterChip,
+    SafariSummary: SafariSummary, SitePanel: SitePanel, Comment: Comment, RadioList: RadioList, WebNotificationItem: WebNotificationItem, DetailList: DetailList, PinButton: PinButton, JoinedLeft: JoinedLeft });
 })();

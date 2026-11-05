@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en" data-theme="console">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components/bundle.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="../components/bundle.js"></script><title>SiteHeader — preview</title></head>
+<body>
+<div id="root" class="st-root"></div>
+<script>
+  var S = window.Starter, h = React.createElement, F = React.Fragment;
+  function theme(t, el) { return h('div', { className: 'st-pair' }, h('div', { 'data-theme': t, className: 'st-theme' }, h('p', { className: 'st-theme-name' }, t === 'console' ? 'Console' : 'Portal (website)'), el)); }
+  var IMG = {"mark": "../assets/Logos/witw-mark.png", "word": "../assets/Logos/witw-wordmark.png", "plan": "../assets/Icons/nav-plan-safari.png", "pack": "../assets/Icons/nav-safari-packages.png", "shared": "../assets/Icons/nav-shared-safari.png", "grass": "../assets/Images/footer-grass.png", "grassland": "../assets/Images/safari-grassland.jpg", "cliff": "../assets/Images/safari-cliff.jpg", "forest": "../assets/Images/safari-forest.jpg"};
+  ReactDOM.createRoot(document.getElementById('root')).render(theme('portal', h('div', { className: 'st-col' }, h(S.SiteHeader, { logo: IMG.mark, nav: [{ label: 'Plan Safari', icon: IMG.plan }, { label: 'Safari Packages', icon: IMG.pack }, { label: 'Shared Safari', icon: IMG.shared, current: true, href: '#' }], user: { name: 'Ananya Iyer', initial: 'A' }, count: 1 }), h(S.SiteHeader, { logo: IMG.mark, nav: [{ label: 'Plan Safari', icon: IMG.plan }, { label: 'Safari Packages', icon: IMG.pack }, { label: 'Shared Safari', icon: IMG.shared, current: true, href: '#' }], user: null }))));
+</script>
+</body>
+</html>

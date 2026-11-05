@@ -1,0 +1,16 @@
+<!-- @dsCard group="Shared Safari" height=620 subtitle="Change status (with hints) and Flag reasons (tight)" -->
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>RadioList — preview</title></head>
+<body>
+<div id="root" class="st-root"></div>
+<script>
+  var S = window.Starter, h = React.createElement, F = React.Fragment;
+  function theme(t, el) { return h('div', { className: 'st-pair' }, h('div', { 'data-theme': t, className: 'st-theme' }, h('p', { className: 'st-theme-name' }, t === 'console' ? 'Console' : 'Portal (website)'), el)); }
+  var IMG = {"mark": "/_blob/2e725624cda8706e6cb43d2c6f9e1e4f", "word": "/_blob/125ba9aaaeb5334df4356fb4a903caaa", "plan": "/_blob/4806cbaa8618fac63132749206f9ab03", "pack": "/_blob/80bf9cbb562564ae94550b5f77ed6f30", "shared": "/_blob/2d411b6149faef3bfcab3947bcfe65e9", "grass": "/_blob/e27c4dfc94154c2b1be2f4c188c7eb6a", "grassland": "/_blob/cdd482e4b79b2b9a6dee5122708fa275", "cliff": "/_blob/a2a10b184f0c6c4b1998b7b9e5a21822", "forest": "/_blob/533a1e37ab0613d2a0b76b1cdd821a93"};
+  ReactDOM.createRoot(document.getElementById('root')).render(theme('portal', h('div', { className: 'st-grid-2' },
+    h(S.Card, { title: 'Change status' }, h(S.RadioList, { name: 'st', label: 'Status', value: 'active', options: [{ value: 'active', label: 'Active', hint: 'Shown to everyone' }, { value: 'seatfull', label: 'Seat full', hint: 'Shown, marked Seat full' }, { value: 'inactive', label: 'Inactive', hint: 'Hidden until you make it active' }] })),
+    h(S.Card, { title: 'Flag this comment' }, h(S.RadioList, { name: 'rs', label: 'Reason', tight: true, options: ['Abusive or Illegal', 'Commercial or Spam', 'Dating / Sexually Explicit', 'Felt Unsafe', 'Shows My Private Information', 'Violates Guidelines', 'Off Topic', 'Other'] })))));
+</script>
+</body>
+</html>

@@ -93,4 +93,56 @@ export interface ServerSelectItem { value: string | number; label: string; conte
 export interface ServerSelectProps { load: (query: string, offset: number, limit: number) => Promise<{ items: ServerSelectItem[]; hasMore: boolean }>; value?: ServerSelectItem | null; onChange?: (item: ServerSelectItem | null) => void; allLabel?: string; placeholder?: string; searchPlaceholder?: string; emptyText?: string; pageSize?: number; debounce?: number; width?: FieldWidth; label?: string; id?: string; disabled?: boolean; invalid?: boolean; defaultOpen?: boolean; defaultQuery?: string; defaultActive?: number; focusOnOpen?: boolean }
 export declare function ServerSelect(props: ServerSelectProps): React.ReactElement;
 
-declare global { interface Window { Starter: { Icon: typeof Icon; Button: typeof Button; IconButton: typeof IconButton; SearchInput: typeof SearchInput; Select: typeof Select; FormField: typeof FormField; Toggle: typeof Toggle; StatusBadge: typeof StatusBadge; Table: typeof Table; Card: typeof Card; KpiCard: typeof KpiCard; Dialog: typeof Dialog; Tabs: typeof Tabs; PageHeader: typeof PageHeader; AppHeader: typeof AppHeader; NotificationItem: typeof NotificationItem; NotificationPopover: typeof NotificationPopover; Sidebar: typeof Sidebar; MobileMenu: typeof MobileMenu; Footer: typeof Footer; SignIn: typeof SignIn; NotFound: typeof NotFound; Toast: typeof Toast; ToastStack: typeof ToastStack; DialogError: typeof DialogError; SearchSelect: typeof SearchSelect; ServerSelect: typeof ServerSelect } } }
+/* ---- WITW website shell and Shared Safari (from the Shared Safari boards) ---- */
+export interface SiteNavItem { label: string; icon?: string; href?: string; current?: boolean }
+export interface SiteHeaderProps { logo: string; logoHref?: string; nav: SiteNavItem[]; user?: { name: string; initial?: string } | null; count?: number; signInHref?: string; onBell?: () => void; onAccount?: () => void }
+export declare function SiteHeader(props: SiteHeaderProps): React.ReactElement;
+
+export interface SiteHeroProps { title: string; text?: string }
+export declare function SiteHero(props: SiteHeroProps): React.ReactElement;
+
+export type SiteLink = string | { label: string; href: string };
+export interface SiteFooterProps { grass?: string; wordmark?: string; about?: string[]; policy?: SiteLink[]; links?: SiteLink[]; address?: string; email?: string; instagram?: string; developer?: string; copyright?: string }
+export declare function SiteFooter(props: SiteFooterProps): React.ReactElement;
+
+export interface SiteDialogProps { title: string; open?: boolean; steps?: number; step?: number; cancelLabel?: string; nextLabel?: string; onClose?: () => void; onCancel?: () => void; onNext?: () => void; children?: React.ReactNode }
+export declare function SiteDialog(props: SiteDialogProps): React.ReactElement | null;
+
+export interface Face { initials: string; name?: string }
+export interface SafariCardProps { image?: string; month?: string; day?: number | string; safaris: number | string; seats: string; full?: boolean; title: string; href?: string; host: string; hostInitials: string; park: string; faces?: Face[]; more?: number; joined?: number; action?: 'join' | 'view' | 'leave' | 'full'; actionLabel?: string; onAction?: (action: string) => void; onOpen?: () => void }
+export declare function SafariCard(props: SafariCardProps): React.ReactElement;
+
+export interface RangeSpec { min: number; max: number; step?: number; from?: number; to?: number }
+export interface SafariFiltersProps { parks?: string[]; months?: string[]; price?: RangeSpec; safaris?: RangeSpec; themes?: string[]; stays?: string[]; checked?: string[]; organise?: boolean; organiseLabel?: string; onOrganise?: () => void }
+export declare function SafariFilters(props: SafariFiltersProps): React.ReactElement;
+
+export interface FilterChipProps { label: string; onRemove?: () => void }
+export declare function FilterChip(props: FilterChipProps): React.ReactElement;
+
+export interface SafariFact { icon: 'trip' | 'seats' | 'safaris' | 'stay' | 'theme' | 'cost'; label: string; value: React.ReactNode }
+export interface SafariSummaryProps { image?: string; title: string; badge?: React.ReactNode; dates: string; park: string; organiser: string; facts?: SafariFact[]; share?: boolean; shareLabel?: string; actions?: React.ReactNode }
+export declare function SafariSummary(props: SafariSummaryProps): React.ReactElement;
+
+export interface SitePanelProps { title: string; icon?: 'users' | 'calendar' | 'flag'; onTitle?: () => void; text?: string; faces?: Face[]; note?: string; children?: React.ReactNode }
+export declare function SitePanel(props: SitePanelProps): React.ReactElement;
+
+export interface CommentProps { initials: string; name: string; host?: boolean; time: string; text: string; canFlag?: boolean; onFlag?: () => void; replies?: CommentProps[] }
+export declare function Comment(props: CommentProps): React.ReactElement;
+
+export interface RadioOption { value: string; label: string; hint?: string }
+export interface RadioListProps { name: string; label: string; options: Array<string | RadioOption>; value?: string; tight?: boolean; onChange?: (value: string) => void }
+export declare function RadioList(props: RadioListProps): React.ReactElement;
+
+export interface WebNotificationItemProps { initials: string; text?: string; children?: React.ReactNode; tag?: { tone: 'success' | 'info' | 'warning' | 'danger' | 'neutral'; label: string }; time: string; unread?: boolean; href?: string }
+export declare function WebNotificationItem(props: WebNotificationItemProps): React.ReactElement;
+
+export interface DetailListProps { items: Array<[string, React.ReactNode]>; columns?: 1 | 2; title?: string }
+export declare function DetailList(props: DetailListProps): React.ReactElement;
+
+export interface PinButtonProps { pinned?: boolean; onToggle?: () => void }
+export declare function PinButton(props: PinButtonProps): React.ReactElement;
+
+export interface JoinedLeftProps { joined: number; left: number; onJoined?: () => void; onLeft?: () => void }
+export declare function JoinedLeft(props: JoinedLeftProps): React.ReactElement;
+
+declare global { interface Window { Starter: { Icon: typeof Icon; Button: typeof Button; IconButton: typeof IconButton; SearchInput: typeof SearchInput; Select: typeof Select; FormField: typeof FormField; Toggle: typeof Toggle; StatusBadge: typeof StatusBadge; Table: typeof Table; Card: typeof Card; KpiCard: typeof KpiCard; Dialog: typeof Dialog; Tabs: typeof Tabs; PageHeader: typeof PageHeader; AppHeader: typeof AppHeader; NotificationItem: typeof NotificationItem; NotificationPopover: typeof NotificationPopover; Sidebar: typeof Sidebar; MobileMenu: typeof MobileMenu; Footer: typeof Footer; SignIn: typeof SignIn; NotFound: typeof NotFound; Toast: typeof Toast; ToastStack: typeof ToastStack; DialogError: typeof DialogError; SearchSelect: typeof SearchSelect; ServerSelect: typeof ServerSelect; SiteHeader: typeof SiteHeader; SiteHero: typeof SiteHero; SiteFooter: typeof SiteFooter; SiteDialog: typeof SiteDialog; SafariCard: typeof SafariCard; SafariFilters: typeof SafariFilters; FilterChip: typeof FilterChip; SafariSummary: typeof SafariSummary; SitePanel: typeof SitePanel; Comment: typeof Comment; RadioList: typeof RadioList; WebNotificationItem: typeof WebNotificationItem; DetailList: typeof DetailList; PinButton: typeof PinButton; JoinedLeft: typeof JoinedLeft } } }

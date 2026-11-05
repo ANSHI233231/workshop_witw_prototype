@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" data-theme="console">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components/bundle.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="../components/bundle.js"></script><title>SiteDialog — preview</title></head>
+<body>
+<div id="root" class="st-root"></div>
+<script>
+  var S = window.Starter, h = React.createElement, F = React.Fragment;
+  function theme(t, el) { return h('div', { className: 'st-pair' }, h('div', { 'data-theme': t, className: 'st-theme' }, h('p', { className: 'st-theme-name' }, t === 'console' ? 'Console' : 'Portal (website)'), el)); }
+  var IMG = {"mark": "../assets/Logos/witw-mark.png", "word": "../assets/Logos/witw-wordmark.png", "plan": "../assets/Icons/nav-plan-safari.png", "pack": "../assets/Icons/nav-safari-packages.png", "shared": "../assets/Icons/nav-shared-safari.png", "grass": "../assets/Images/footer-grass.png", "grassland": "../assets/Images/safari-grassland.jpg", "cliff": "../assets/Images/safari-cliff.jpg", "forest": "../assets/Images/safari-forest.jpg"};
+  ReactDOM.createRoot(document.getElementById('root')).render(theme('portal', h('div', { className: 'st-frame', style: { height: '600px' } }, h(S.SiteDialog, { title: 'Organize a Shared Safari', steps: 3, step: 1 },
+    h(S.FormField, { label: 'Title', required: true, placeholder: 'Enter Title' }),
+    h(S.FormField, { label: 'Select a Safari Park', required: true, as: 'select', placeholder: 'Select a Safari Park', options: ['Bandhavgarh Tiger Reserve'] }),
+    h('div', { className: 'wb-2' }, h(S.FormField, { label: 'Start Date', required: true, type: 'date' }), h(S.FormField, { label: 'End Date', required: true, type: 'date' })),
+    h(S.FormField, { label: 'Number of Safaris', required: true, type: 'number', value: '1', helper: 'Up to 10' })))));
+</script>
+</body>
+</html>
