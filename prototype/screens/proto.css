@@ -1,0 +1,54 @@
+/* Prototype chrome: the switcher bar above every board and the phone frame for Mobile boards. Not part of the app's design. */
+.pt-shell { display: flex; flex-direction: column; height: 100vh; overflow: hidden; background: #E9EBEF; }
+.pt-bar { flex: none; height: 56px; box-sizing: border-box; display: flex; align-items: center; gap: 12px; padding: 0 12px; background: #1F2A37; color: #FFFFFF; font: 500 15px/20px Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; overflow-x: auto; white-space: nowrap; }
+.pt-title { font-weight: 700; padding: 0 4px 0 2px; }
+.pt-apps { display: flex; gap: 4px; }
+.pt-app { display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 8px; color: #E5E7EB; text-decoration: none; }
+.pt-app:hover { background: rgba(255, 255, 255, 0.08); color: #FFFFFF; }
+.pt-app.is-on { background: #334155; color: #FFFFFF; font-weight: 700; }
+.pt-spacer { flex: 1 1 auto; min-width: 8px; }
+.pt-select { flex: 0 1 690px; min-width: 200px; height: 38px; padding: 0 36px 0 16px; border-radius: 8px; border: 1px solid #3B4656; background: #111827 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23E5E7EB' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center; color: #FFFFFF; font: inherit; appearance: none; -webkit-appearance: none; cursor: pointer; }
+.pt-select:focus-visible, .pt-app:focus-visible, .pt-dev:focus-visible { outline: 2px solid #F2C94C; outline-offset: 2px; }
+.pt-devs { display: flex; gap: 6px; }
+.pt-dev { display: inline-flex; align-items: center; height: 38px; padding: 0 14px; border-radius: 8px; border: 1px solid #3B4656; color: #FFFFFF; text-decoration: none; }
+.pt-dev:hover { background: rgba(255, 255, 255, 0.08); }
+.pt-dev.is-on { background: #F2C94C; border-color: #F2C94C; color: #1F2A37; font-weight: 700; }
+.pt-go { display: none; }
+.pt-stage { flex: 1 1 auto; min-height: 0; display: flex; justify-content: center; align-items: flex-start; }
+.pt-screen { position: relative; width: 100%; height: 100%; overflow: auto; transform: translateZ(0); background: #FFFFFF; }
+.pt-phone .pt-stage { padding: 20px 16px; box-sizing: border-box; }
+.pt-phone .pt-screen { width: 390px; max-width: 100%; height: min(844px, 100%); border-radius: 18px; box-shadow: 0 12px 32px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(15, 23, 42, 0.08); }
+/* On the canvas a Mobile board is 390 px wide: the phone fills it */
+@media (max-width: 600px) {
+  .pt-bar { gap: 8px; padding: 0 8px; font-size: 13px; }
+  .pt-title { display: none; }
+  .pt-app, .pt-dev { height: 32px; padding: 0 10px; }
+  .pt-select { min-width: 150px; height: 32px; }
+  .pt-phone .pt-stage { padding: 0; }
+  .pt-phone .pt-screen { width: 100%; height: 100%; border-radius: 0; box-shadow: none; }
+}
+/* Toast: the copied stylesheet lost its 1 px border; restore it (3 px coloured line on the left) */
+.toast { border: 1px solid var(--color-border, #E3E6EB); border-left: 3px solid var(--color-success, #157F3B); }
+.toast.is-error { border-left-color: var(--color-danger, #C0271D); }
+.toast-stack { z-index: 6000; }
+.pt-phone .toast-stack { top: auto; bottom: 12px; left: 12px; right: 12px; }
+.pt-phone .toast { min-width: 0; max-width: none; }
+@media (max-width: 767px) { .toast-stack { top: auto; bottom: 12px; left: 12px; right: 12px; } .toast { min-width: 0; max-width: none; } }
+/* Failure switch in the prototype bar */
+.pt-fail { display: inline-flex; align-items: center; gap: 6px; height: 38px; padding: 0 12px; border-radius: 8px; border: 1px solid #3B4656; cursor: pointer; }
+.pt-fail input { accent-color: #F2C94C; }
+.pt-fail.is-on { border-color: #E0463B; background: rgba(224, 70, 59, 0.18); }
+/* Login as: role picker on the sign-in pages */
+.pt-roles { display: flex; flex-direction: column; gap: 12px; }
+.pt-roles-h { display: flex; align-items: center; gap: 12px; color: var(--color-text-muted, #5B6472); font: var(--text-body, 400 14px/20px Inter, sans-serif); }
+.pt-roles-h::before, .pt-roles-h::after { content: ""; flex: 1; height: 1px; background: var(--color-border, #E3E6EB); }
+.pt-role-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.pt-role { display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid var(--color-border, #E3E6EB); border-radius: var(--radius-lg, 8px); background: var(--color-surface, #FFFFFF); color: var(--color-text, #1F2937); text-align: left; cursor: pointer; font: inherit; }
+.pt-role:hover { background: var(--color-surface-alt, #F9FAFB); }
+.pt-role.is-on { border-color: var(--color-primary); background: var(--color-primary-soft); }
+.pt-role-av { flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: var(--radius-md, 6px); background: var(--color-primary); color: var(--color-on-primary, #FFFFFF); font: 600 13px/16px Inter, system-ui, sans-serif; }
+.pt-role b { display: block; font: var(--text-subheading, 600 14px/20px Inter, sans-serif); }
+.pt-role small { display: block; font: var(--text-caption, 400 12px/16px Inter, sans-serif); color: var(--color-text-muted, #5B6472); }
+@media (max-width: 480px) { .pt-role-grid { grid-template-columns: minmax(0, 1fr); } }
+button.pt-dev { background: transparent; color: #FFFFFF; font: inherit; cursor: pointer; }
+button.pt-dev:hover { background: rgba(255, 255, 255, 0.08); }

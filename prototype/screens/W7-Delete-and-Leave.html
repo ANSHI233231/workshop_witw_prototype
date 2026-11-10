@@ -1,0 +1,1150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Delete and Leave | Portal</title>
+<script>window.__resources = {};</script><script src="./support.js"></script>
+<link rel="stylesheet" href="proto.css">
+<link rel="stylesheet" href="web-app.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+
+.root{min-height:calc(100vh - 56px)}
+.root > .overlay{position:sticky !important;inset:0 !important;height:calc(100vh - 56px);margin-top:calc(56px - 100vh)}
+.ss-dock{position:sticky;top:0;bottom:0;height:calc(100vh - 56px);margin-top:calc(56px - 100vh);pointer-events:none;z-index:6000}
+.ss-dock .toast-stack{position:absolute !important;pointer-events:auto}
+.ss-cover{position:relative;display:grid;place-items:center;background:var(--color-surface-alt);color:var(--color-text-subtle);overflow:hidden}
+.ss-cover img{width:100%;height:100%;object-fit:cover;display:block}
+.ss-cover .icon{width:32px;height:32px}
+.ss-meta{display:flex;align-items:center;gap:var(--space-xs);font:var(--text-body);color:var(--color-text-muted);min-width:0}
+.ss-meta .icon{width:var(--icon-sm);height:var(--icon-sm);flex:0 0 auto;color:var(--color-text-subtle)}
+.ss-row{display:flex;align-items:center;gap:var(--space-sm);flex-wrap:wrap}
+.ss-between{display:flex;align-items:center;justify-content:space-between;gap:var(--space-md)}
+.ss-stack{display:flex;flex-direction:column;gap:var(--space-sm)}
+.ss-stack-lg{display:flex;flex-direction:column;gap:var(--space-lg)}
+.ss-muted{color:var(--color-text-muted);font:var(--text-body)}
+.ss-cap{color:var(--color-text-muted);font:var(--text-caption)}
+.ss-group{font:var(--text-group);text-transform:uppercase;letter-spacing:.04em;color:var(--color-text-muted)}
+.ss-menu{position:relative;display:inline-flex}
+.btn-icon.is-danger{color:var(--color-danger)}
+.us-acts{display:inline-flex;align-items:center;gap:var(--space-xs)}
+.ss-menu .dd{position:absolute;top:calc(100% + 4px);right:0;left:auto;z-index:40;width:200px;border-radius:var(--radius-lg)}
+.ss-chip{display:inline-flex;align-items:center;gap:var(--space-xs);height:28px;padding:0 var(--space-xs) 0 var(--space-md);border:1px solid var(--color-border-strong);border-radius:var(--radius-full);background:var(--color-surface);font:var(--text-label);color:var(--color-text)}
+.ss-chip .btn-icon{width:20px;height:20px}
+.ss-chip .btn-icon .icon{width:14px;height:14px}
+.ss-dl{display:grid;grid-template-columns:140px minmax(0,1fr);gap:var(--space-sm) var(--space-lg);margin:0;font:var(--text-body)}
+.ss-dl dt{color:var(--color-text-muted)}
+.ss-dl dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.ss-pre{white-space:pre-line;font:var(--text-body);margin:0}
+.ss-av{width:32px;height:32px}
+.ss-clickable{cursor:pointer}
+.ss-range{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:var(--space-xs)}
+.ss-sel{display:flex;align-items:center;justify-content:space-between;text-align:left;cursor:pointer}
+.ss-sel .icon{width:var(--icon-sm);height:var(--icon-sm);color:var(--color-text-muted)}
+.ss-sel.is-empty{color:var(--color-text-subtle)}
+.ss-pop{position:absolute;top:calc(100% + 4px);left:0}
+
+.wb{min-height:calc(100vh - 56px);display:flex;flex-direction:column;background:var(--color-background)}
+.wb-head{position:sticky;top:0;z-index:30;display:grid;grid-template-columns:1fr auto 1fr;align-items:stretch;height:84px;padding:0 var(--space-2xl) 0 56px;background:var(--color-primary);color:#fff}
+.wb-logo{display:flex;align-items:center}
+.wb-logo img{height:40px;display:block}
+.wb-nav{display:flex;gap:80px}
+.wb-nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding-top:4px;border-bottom:4px solid transparent;color:#fff;text-decoration:none;font:700 17px/20px var(--font-sans);text-transform:uppercase;letter-spacing:.03em;white-space:nowrap}
+.wb-nav a:hover{color:#fff;text-decoration:none;border-bottom-color:rgba(255,255,255,.35)}
+.wb-nav a.is-on{border-bottom-color:var(--color-accent-1)}
+.wb-nav a.is-off,.wb-nav a.is-off:hover{cursor:default;border-bottom-color:transparent}
+.wb-nav img{height:26px;display:block}
+.wb-right{justify-self:end;display:flex;align-items:center;gap:var(--space-sm)}
+.wb-ic{position:relative;display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:var(--radius-full);background:none;color:#fff;cursor:pointer;text-decoration:none}
+.wb-ic:hover{background:rgba(255,255,255,.12);color:#fff}
+.wb-ic .icon{width:30px;height:30px}
+.wb-ic.is-bell .icon{width:30px;height:30px}
+.wb-me{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--color-success);color:#fff;font:500 20px/1 var(--font-sans)}
+.wb-cnt{position:absolute;top:6px;right:6px;min-width:16px;height:16px;padding:0 4px;border-radius:var(--radius-full);background:var(--color-accent-2);color:#fff;font:600 10px/16px var(--font-sans);text-align:center}
+.wb-wrap{position:relative}
+.wb-pop{position:absolute;top:calc(100% + 6px);right:0;z-index:50}
+.wb-pop .dd{position:static;width:240px;border-radius:var(--radius-lg);color:var(--color-text)}
+.wb-pop .ntp{position:static !important;color:var(--color-text)}
+.wb-hero{display:grid;place-items:center;align-content:center;gap:8px;height:150px;padding:0 var(--space-lg);background:#0d1d14 url(img/bd589cc1dd9b11d0dceff8c749c5b406.jpg) center/cover no-repeat;color:#fff;text-align:center}
+.wb-hero h1{margin:0;font:700 42px/1.1 var(--font-display, var(--font-sans));text-transform:uppercase;letter-spacing:.06em}
+.wb-hero p{margin:0;font:400 16px/24px var(--font-sans);color:rgba(255,255,255,.85)}
+.wb-main{flex:1 1 auto}
+.wb-main > .page{max-width:1760px;margin:0 auto;width:100%;box-sizing:border-box;padding:var(--space-2xl) 64px}
+.wb-foot{margin-top:var(--space-2xl);background:var(--color-primary);color:#fff}
+.wb-grass{display:block;width:100%;height:auto;background:var(--color-background)}
+.wb-cols{display:grid;grid-template-columns:1.7fr 1.2fr .8fr 1.1fr;gap:48px;padding:48px 110px 8px}
+.wb-cols h2{margin:0 0 24px;font:500 28px/1.2 var(--font-sans)}
+.wb-cols p{margin:0 0 16px;font:400 17px/32px var(--font-sans)}
+.wb-cols a{display:block;margin-bottom:14px;color:#fff;font:700 17px/24px var(--font-sans);text-decoration:none}
+.wb-cols a:hover{color:var(--color-accent-1)}
+.wb-cols a.is-off{cursor:default}
+.wb-cols a.is-off:hover{color:#fff}
+.wb-cols .wb-line{margin:0 0 18px;font:400 17px/24px var(--font-sans)}
+.wb-insta{display:flex !important;align-items:center;gap:12px;font-weight:400 !important}
+.wb-insta span{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#fff;color:var(--color-primary)}
+.wb-insta .icon{width:22px;height:22px}
+.wb-bottom{position:relative;display:flex;align-items:center;justify-content:space-between;gap:var(--space-lg);margin:24px 50px 0;padding:22px 0 26px;border-top:1px solid #fff;font:400 17px/24px var(--font-sans);text-transform:uppercase}
+.wb-bottom img{height:30px;display:block}
+.wb-up{position:absolute;right:0;top:-28px;display:grid;place-items:center;width:56px;height:56px;border-radius:50%;border:0;background:var(--color-primary);color:#fff;cursor:pointer}
+.wb-up .icon{width:34px;height:34px;stroke-width:3}
+/* safari card, as on the site */
+.wb-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+.wb-card{display:flex;flex-direction:column;overflow:hidden;border-radius:var(--radius-lg);background:var(--color-surface);box-shadow:var(--shadow-md);cursor:pointer;transition:box-shadow var(--duration-fast)}
+.wb-card:hover{box-shadow:var(--shadow-lg)}
+.wb-img{position:relative;aspect-ratio:451/240;background:var(--color-surface-alt)}
+.wb-img{overflow:hidden}
+.wb-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.wb-date{position:absolute;top:10px;right:10px;padding:6px 12px;border-radius:var(--radius-md);background:var(--color-accent-2);color:#fff;text-align:center;font:500 17px/24px var(--font-sans)}
+.wb-img .badge{position:absolute;top:14px;left:14px}
+.wb-strip{display:flex;justify-content:space-between;gap:var(--space-md);padding:13px 24px;background:var(--color-primary);color:#fff;font:500 17px/24px var(--font-sans)}
+.wb-strip.is-full{background:#5f6368}
+.wb-join.is-full{background:var(--color-surface-alt);color:var(--color-text-muted);border:0}
+.wb-join.wb-leave{background:var(--color-surface-alt);color:var(--color-text-muted);border:1px solid var(--color-border)}
+.wb-join.wb-leave:hover{background:var(--color-border);color:var(--color-text)}
+.wb-join.is-full:hover{background:var(--color-border);color:var(--color-text)}
+.wb-strip b{margin-left:8px;font-weight:700}
+.wb-body{display:flex;flex:1 1 auto;flex-direction:column;gap:8px;padding:14px 12px 12px}
+.wb-title{margin:0 0 2px;font:var(--text-section);color:var(--color-text);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.wb-title a{color:inherit;text-decoration:none}
+.wb-host{display:flex;align-items:flex-start;gap:10px}
+.wb-host .avatar{flex:0 0 auto;width:38px;height:38px}
+.wb-by{font:400 14px/20px var(--font-sans);color:var(--color-text-muted)}
+.wb-by b{color:var(--color-primary);font-weight:600}
+.wb-park{display:flex;align-items:center;gap:4px;color:var(--color-primary);font:italic 500 17px/24px var(--font-sans)}
+.wb-park .icon{width:18px;height:18px;fill:currentColor;stroke:#fff}
+.wb-facts{font:var(--text-caption);color:var(--color-text-muted)}
+.wb-price{font:var(--text-subheading);color:var(--color-text)}
+.wb-cfoot{display:flex;align-items:center;justify-content:space-between;gap:var(--space-sm);margin-top:auto;padding-top:12px;border-top:1px solid var(--color-border)}
+.wb-faces{display:flex;align-items:center;gap:8px;min-width:0}
+.wb-stack{display:flex}
+.wb-stack .avatar{width:34px;height:34px;margin-left:-10px;border:2px solid #fff;font-size:11px}
+.wb-stack .avatar:first-child{margin-left:0}
+.wb-more{background:#6b7280 !important;color:#fff !important}
+.wb-join{height:38px;padding:0 20px;border-radius:var(--radius-full);font:500 17px/24px var(--font-sans)}
+
+.ss3-cover{aspect-ratio:21/7;max-height:300px;width:100%;border-radius:var(--radius-md);border:1px solid var(--color-border)}
+.ss3-title{display:flex;align-items:center;gap:var(--space-md);flex-wrap:wrap}
+.ss3{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:var(--space-xl);align-items:start}
+.ss3-side{display:flex;flex-direction:column;gap:var(--space-lg)}
+.ss3-price{font:var(--text-kpi);color:var(--color-text)}
+.ss3-who{display:flex;flex-wrap:wrap;gap:var(--space-md) var(--space-lg);align-items:center}
+.ss3-person{display:inline-flex;align-items:center;gap:var(--space-sm);font:var(--text-body)}
+.ss3-c{display:flex;gap:var(--space-md);padding:var(--space-md) 0;border-top:1px solid var(--color-border)}
+.ss3-c:first-child{border-top:0}
+.ss3-cb{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:4px}
+.ss3-ch{display:flex;align-items:center;gap:var(--space-sm);justify-content:space-between}
+.ss3-cn{font:var(--text-subheading)}
+.ss3-ct{font:var(--text-body);margin:0;white-space:pre-line;overflow-wrap:anywhere}
+.ss3-reply{margin-left:44px;padding-left:var(--space-lg);border-left:2px solid var(--color-border)}
+.ss3-reply .ss3-c{border-top:0;padding:var(--space-sm) 0}
+.ss3-box{display:flex;flex-direction:column;gap:var(--space-sm)}
+.ss3-box .ss-row{justify-content:flex-end}
+.ss3-bar{background:var(--color-surface-alt);border-color:var(--color-border);color:var(--color-text)}
+.ss3-who-list{display:flex;flex-direction:column}
+.ss3-who-list .list-row:first-child{border-top:0}
+.ss-radio{display:flex;gap:var(--space-sm);align-items:flex-start;padding:var(--space-sm) 0;cursor:pointer;font:var(--text-body)}
+.ss-radio input{margin:3px 0 0;accent-color:var(--color-primary)}
+.ss-radio small{display:block;font:var(--text-caption);color:var(--color-text-muted)}
+.ss-danger-link{color:var(--color-danger);padding-left:0}
+.ss-danger-link:hover{color:var(--color-danger)}
+
+.wb-main:has(.ss3-top){background:var(--color-surface-alt)}
+.ss3-top{margin:calc(-1 * var(--space-xl)) -64px 0;padding:var(--space-2xl) 64px var(--space-md);background:var(--color-surface)}
+.ss3-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--space-2xl);align-items:start}
+.ss3-main{display:flex;gap:var(--space-xl);align-items:flex-start;min-width:0}
+.ss3-pic{flex:0 0 200px;width:200px;height:200px;border-radius:var(--radius-lg);overflow:hidden;background:var(--color-surface-alt)}
+.ss3-pic img{width:100%;height:100%;object-fit:cover;display:block}
+.ss3-info{display:flex;flex-direction:column;gap:10px;min-width:0;padding-top:4px}
+.ss3-title{display:flex;align-items:center;gap:var(--space-md);flex-wrap:wrap}
+.ss3-title h1{margin:0;font:800 26px/32px var(--font-display, var(--font-sans));text-transform:uppercase;letter-spacing:.04em;color:var(--color-text);overflow-wrap:anywhere}
+.ss3-heart{display:inline-grid;color:var(--color-text);cursor:default}
+.ss3-heart .icon{width:22px;height:22px}
+.ss3-dates{font:italic 500 20px/26px var(--font-sans);color:var(--color-event-green)}
+.ss3-park{display:flex;align-items:center;gap:8px;font:italic 500 18px/24px var(--font-sans);color:var(--color-text-muted)}
+.ss3-park .icon{width:20px;height:20px;fill:currentColor;stroke:#fff}
+.ss3-org{font:400 15px/22px var(--font-sans);color:var(--color-text)}
+.ss3-org b{font-weight:500}
+.ss3-facts{display:grid;grid-template-columns:repeat(2,minmax(180px,auto));gap:var(--space-xl) var(--space-2xl);padding-left:var(--space-2xl);border-left:1px solid var(--color-border)}
+.ss3-fact{display:flex;gap:10px;align-items:flex-start}
+.ss3-fact .icon{flex:0 0 auto;width:22px;height:22px;color:var(--color-accent-2)}
+.ss3-fl{font:400 14px/20px var(--font-sans);color:var(--color-text-muted)}
+.ss3-fv{font:500 15px/22px var(--font-sans);color:var(--color-text)}
+.ss3-share{display:flex;align-items:center;justify-content:space-between;gap:var(--space-lg);flex-wrap:wrap;margin-top:var(--space-xl);padding-top:var(--space-md);border-top:1px solid var(--color-border)}
+.ss3-sl{display:flex;align-items:center;gap:var(--space-lg);flex-wrap:wrap;font:400 16px/24px var(--font-sans)}
+.ss3-soc{display:flex;gap:10px}
+.ss3-soc span{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;color:#fff;cursor:default}
+.ss3-soc .icon{width:18px;height:18px}
+.ss3-acts{display:flex;align-items:center;gap:var(--space-sm);flex-wrap:wrap}
+.ss3-acts .btn{height:40px;padding:0 var(--space-xl);font:500 15px/20px var(--font-sans)}
+.ss3-acts .banner{margin:0}
+.ss3-bar{margin-top:var(--space-lg)}
+.ss3{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:var(--space-xl);align-items:start;margin-top:var(--space-xl)}
+.ss3-col{display:flex;flex-direction:column;gap:var(--space-xl);min-width:0}
+.ss3-box2{border:1px solid var(--color-border);border-radius:var(--radius-lg);background:var(--color-surface);overflow:hidden}
+.ss3-bh{display:flex;align-items:center;gap:10px;padding:12px 24px;background:var(--color-primary);color:#fff;font:600 16px/24px var(--font-sans)}
+.ss3-bh .icon{width:20px;height:20px}
+.ss3-bb{padding:var(--space-lg) 24px}
+.ss3-bb .ss-pre{margin:0}
+.ss3-bb > .ss3-c{border-top:1px solid var(--color-border);padding:var(--space-lg) 0}
+.ss3-bb > .ss3-c:first-child{border-top:0;padding-top:0}
+.ss3-cn{font:500 16px/22px var(--font-sans)}
+.ss3-ct{font:400 15px/22px var(--font-sans)}
+.ss3-new{display:flex;gap:var(--space-md);padding:var(--space-lg) 24px var(--space-xl);border-top:1px solid var(--color-border)}
+.ss3-new .avatar{flex:0 0 auto;width:36px;height:36px;background:var(--color-event-green);color:#fff}
+.ss3-new .ss3-box{flex:1 1 auto;min-width:0}
+.ss3-new .textarea{min-height:110px}
+.ss3-new .btn-primary,.ss3-reply .btn-primary{border-radius:var(--radius-full);padding:0 var(--space-xl)}
+.ss3-note{padding:var(--space-lg) 24px;border-top:1px solid var(--color-border)}
+.ss3-bh-btn{width:100%;border:0;text-align:left;cursor:pointer;font:600 16px/24px var(--font-sans)}
+.ss3-bh-btn:hover{background:var(--color-primary-active)}
+.ss3-faces{display:flex;flex-wrap:wrap;gap:8px}
+.ss3-face{width:36px;height:36px;font:600 13px/1 var(--font-sans)}
+.ss3-more{background:var(--color-text-muted);color:#fff}
+.ss3-who-dlg .modal-head{background:var(--color-primary);color:#fff;border-bottom:0;border-top-left-radius:inherit;border-top-right-radius:inherit}
+.ss3-who-dlg{overflow:hidden}
+.ss3-who-dlg .modal-head .modal-title{color:#fff;text-transform:uppercase;letter-spacing:.04em}
+.ss3-who-dlg .modal-head .btn-icon{color:#fff}
+.ss3-who-dlg .modal-body{padding:var(--space-lg) var(--space-lg) 0}
+.ss3-who-dlg .table td,.ss3-who-dlg .table th{white-space:nowrap}
+.ss3-who-dlg .table tbody tr:nth-child(even) > td{background:var(--color-surface-alt)}
+.ss3-who-dlg .col-sno{width:56px;text-align:center}
+.ss3-who-name{display:inline-flex;align-items:center;gap:10px}
+.ss3-who-foot{padding:var(--space-md) 0;text-align:center;font:var(--text-body);color:var(--color-text);border-top:1px solid var(--color-border);margin:var(--space-lg) calc(-1 * var(--space-lg)) 0}
+.ss3-plist{display:flex;flex-direction:column;gap:var(--space-md)}
+.ss3-plist .ss3-person{font:500 15px/22px var(--font-sans)}
+.ss3-empty{font:var(--text-body);color:var(--color-text-muted);margin:0}
+
+.ss-radios{display:flex;gap:var(--space-xl);flex-wrap:wrap;min-height:var(--control-h);align-items:center}
+.ss-radios label{display:inline-flex;align-items:center;gap:6px;font:var(--text-body);cursor:pointer}
+.ss-radios input{margin:0;accent-color:var(--color-primary)}
+.wb-ov{padding:var(--space-lg)}
+.wb-modal{max-width:650px;padding:0;overflow:hidden;border-radius:var(--radius-lg);display:flex;flex-direction:column}
+.wb-mh{display:flex;align-items:center;justify-content:space-between;gap:var(--space-md);padding:18px 30px;background:var(--color-primary);color:#fff}
+.wb-mh h2{margin:0;font:700 26px/1.2 var(--font-display, var(--font-sans));text-transform:uppercase;letter-spacing:.06em}
+.wb-mh button{display:grid;place-items:center;width:40px;height:40px;border:0;border-radius:50%;background:none;color:#fff;cursor:pointer}
+.wb-mh button:hover{background:rgba(255,255,255,.12)}
+.wb-mh .icon{width:28px;height:28px}
+.wb-mb{display:flex;flex-direction:column;gap:22px;padding:30px 40px 12px;overflow:auto;max-height:calc(100vh - 290px)}
+.wb-mb .label{font:500 17px/24px var(--font-sans)}
+.wb-mb .input,.wb-mb .select{height:50px;font-size:17px}
+.wb-mb .textarea{min-height:200px;font-size:17px}
+.wb-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.wb-mf{display:flex;justify-content:flex-end;gap:32px;padding:10px 40px 0}
+.wb-tb{padding:8px 0;border:0;background:none;color:var(--color-primary);font:500 19px/24px var(--font-sans);cursor:pointer}
+.wb-tb:hover{text-decoration:underline}
+.wb-tb.is-muted{color:var(--color-text-muted)}
+.wb-dots{display:flex;justify-content:center;gap:10px;padding:10px 0 20px}
+.wb-dot{width:10px;height:10px;border-radius:50%;background:var(--color-border)}
+.wb-dot.is-on{background:var(--color-primary)}
+.wb-cur{display:block;width:100%;aspect-ratio:270/160;object-fit:cover;border-radius:var(--radius-lg)}
+.wb-file{display:block;width:100%;height:50px;padding:0 14px;border:1px solid var(--color-border-strong);border-radius:var(--radius-md);background:var(--color-surface);font:400 17px/48px var(--font-sans);box-sizing:border-box;cursor:pointer}
+.wb-mb .ss{width:100%}
+.wb-mb .ss-pop{position:static;margin-top:4px;min-width:0;box-shadow:none}
+.wb-mb .ss-list{max-height:220px}
+.wb-mb .ss-sel{height:50px;font-size:17px}
+
+.wb-fab{position:absolute;right:24px;bottom:24px;display:grid;place-items:center;width:48px;height:48px;border:2px solid #fff;border-radius:50%;background:var(--color-primary);color:#fff;box-shadow:var(--shadow-md);cursor:pointer;pointer-events:auto}
+.wb-fab:hover{background:var(--color-primary-active)}
+.wb-fab .icon{width:26px;height:26px;stroke-width:2.5}
+.wb-head{height:64px;padding:0 max(64px, calc((100% - 1920px) / 2 + 64px))}
+.wb-logo img{height:30px}
+.wb-nav{gap:48px}
+.wb-nav a{gap:4px;padding-top:3px;border-bottom-width:3px;font:600 13px/16px var(--font-sans);letter-spacing:.04em}
+.wb-nav img{height:20px}
+.wb-ic{width:36px;height:36px}
+.wb-ic .icon,.wb-ic.is-bell .icon{width:22px;height:22px}
+.wb-cnt{top:2px;right:2px}
+.wb-me{width:30px;height:30px;font:500 14px/1 var(--font-sans)}
+.wb-hero{height:112px;gap:4px}
+.wb-hero h1{font:700 26px/1.2 var(--font-display, var(--font-sans));letter-spacing:.05em}
+.wb-hero p{font:var(--text-body)}
+.wb-main > .page{max-width:1920px;padding:var(--space-xl) 64px}
+.wb1{grid-template-columns:280px minmax(0,1fr);gap:var(--space-xl)}
+.wb1-main{gap:var(--space-lg)}
+.wb-side{gap:var(--space-lg)}
+.wb-org{height:36px;border-radius:var(--radius-md);font:var(--text-button)}
+.wb-filters{gap:var(--space-lg);padding:var(--space-lg);border:1px solid var(--color-border);border-radius:var(--radius-md);box-shadow:var(--shadow-sm)}
+.wb-filters h2{font:var(--text-section)}
+.wb-filters .label{font:var(--text-label)}
+.wb-filters .select,.wb-filters .input{height:var(--control-h);font:var(--text-body)}
+.wb-filters .check{font:var(--text-body)}
+.wb-range{height:20px;margin:2px 6px 0}
+.wb-range::before{top:9px}
+.wb-range input::-webkit-slider-thumb{width:16px;height:16px}
+.wb-range input::-moz-range-thumb{width:16px;height:16px}
+.wb-range-v{font:var(--text-caption);color:var(--color-text-muted)}
+.wb-tools{min-height:var(--control-h);gap:var(--space-md)}
+.wb-count{font:var(--text-body);color:var(--color-text-muted)}
+.wb-count b{font:var(--text-subheading);color:var(--color-text)}
+.wb-tools-r{gap:var(--space-sm)}
+.wb-tools-r .input-group{width:240px}
+.wb-tools-r .input,.wb-tools-r .select{height:var(--control-h);font:var(--text-body)}
+.wb-tools-r .select{width:200px}
+.wb-grid{gap:var(--space-lg)}
+.wb-card{border:1px solid var(--color-border);border-radius:var(--radius-md);box-shadow:var(--shadow-sm)}
+.wb-card:hover{box-shadow:var(--shadow-md)}
+.wb-img{aspect-ratio:16/9}
+.wb-date{top:8px;right:8px;padding:4px 8px;font:600 12px/15px var(--font-sans)}
+.wb-strip{padding:7px var(--space-md);font:var(--text-label)}
+.wb-strip b{margin-left:4px}
+.wb-body{gap:6px;padding:var(--space-md)}
+.wb-title{font:var(--text-subheading)}
+.wb-host{gap:var(--space-sm)}
+.wb-host .avatar{width:28px;height:28px}
+.wb-by{font:var(--text-caption)}
+.wb-park{font:italic 500 13px/18px var(--font-sans)}
+.wb-park .icon{width:14px;height:14px}
+.wb-price{font:var(--text-subheading)}
+.wb-cfoot{padding-top:10px}
+.wb-stack .avatar{width:26px;height:26px;margin-left:-8px;font-size:10px}
+.wb-join{height:var(--control-h);padding:0 var(--space-md);font:var(--text-button)}
+.wb-foot{margin-top:var(--space-xl)}
+.wb-cols{max-width:1920px;margin:0 auto;box-sizing:border-box;gap:var(--space-2xl);padding:var(--space-2xl) 64px 0}
+.wb-cols h2{margin:0 0 var(--space-md);font:600 16px/24px var(--font-sans)}
+.wb-cols p,.wb-cols .wb-line{margin:0 0 var(--space-sm);font:400 14px/22px var(--font-sans)}
+.wb-cols a{margin-bottom:var(--space-sm);font:600 14px/22px var(--font-sans)}
+.wb-insta span{width:28px;height:28px}
+.wb-insta .icon{width:16px;height:16px}
+.wb-bottom{max-width:1792px;margin:var(--space-xl) max(64px, calc((100% - 1792px) / 2)) 0;padding:var(--space-lg) 0 var(--space-xl);font:400 12px/18px var(--font-sans)}
+.wb-bottom img{height:22px}
+.wb-up{top:-20px;width:40px;height:40px}
+.wb-up .icon{width:22px;height:22px;stroke-width:2.5}
+.wb-modal{max-width:560px}
+.wb-mh{padding:var(--space-md) var(--space-xl)}
+.wb-mh h2{font:700 18px/24px var(--font-display, var(--font-sans));letter-spacing:.05em}
+.wb-mh button{width:32px;height:32px}
+.wb-mh .icon{width:20px;height:20px}
+.wb-mb{gap:var(--space-lg);padding:var(--space-xl) var(--space-xl) var(--space-sm)}
+.wb-mb .label{font:var(--text-label)}
+.wb-mb .input,.wb-mb .select,.wb-mb .ss-sel{height:var(--control-h);font:var(--text-body)}
+.wb-mb .textarea{min-height:140px;font:var(--text-body)}
+.wb-2{gap:var(--space-lg)}
+.wb-mf{gap:var(--space-xl);padding:var(--space-xs) var(--space-xl) 0}
+.wb-tb{font:var(--text-button)}
+.wb-dots{gap:8px;padding:var(--space-sm) 0 var(--space-lg)}
+.wb-dot{width:8px;height:8px}
+.wb-file{height:var(--control-h);padding:0 var(--space-md);font:400 14px/30px var(--font-sans)}
+.wb-cur{border-radius:var(--radius-md)}
+
+html:has(.overlay) .wb-fab,.root:has(.overlay) .wb-fab{display:none}
+.wb-cfoot .ss-cap{white-space:nowrap}
+.wb-join{flex:0 0 auto;white-space:nowrap}
+.wb-faces{flex:1 1 auto;min-width:0;overflow:hidden}
+
+@media (max-width:1280px){
+.wb-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:1100px){
+.ss3-head{grid-template-columns:minmax(0,1fr);gap:var(--space-lg)}
+.ss3-facts{grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-lg);padding:var(--space-lg) 0 0;border-left:0;border-top:1px solid var(--color-border)}
+.wb-cols{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-xl) var(--space-2xl)}
+.wb-bottom{flex-wrap:wrap;justify-content:center;text-align:center;gap:var(--space-sm) var(--space-lg)}
+.ss5-grid{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:900px){
+.wb1{grid-template-columns:minmax(0,1fr)}
+.ss3{grid-template-columns:minmax(0,1fr)}
+.ss2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.wb-head{padding-left:24px;padding-right:24px}
+.wb-cols,.wb-main > .page{padding-left:24px;padding-right:24px}
+.wb-bottom{margin-left:24px;margin-right:24px}
+.ss3-top{margin-left:-24px;margin-right:-24px;padding-left:24px;padding-right:24px}
+.wb-modal,.modal{max-width:calc(100vw - 32px)}
+}
+@media (max-width:640px){
+.wb-grid,.ss2{grid-template-columns:minmax(0,1fr)}
+.wb-cols{grid-template-columns:minmax(0,1fr)}
+.ss3-main{flex-direction:column}
+.ss3-pic{flex:none;width:100%;height:auto;aspect-ratio:16/10}
+.ss3-facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+.ss3-share{flex-direction:column;align-items:stretch}
+.wb-head{padding-left:16px;padding-right:16px}
+.wb-cols,.wb-main > .page{padding-left:16px;padding-right:16px}
+.ss3-top{margin-left:-16px;margin-right:-16px;padding-left:16px;padding-right:16px}
+}
+</style>
+</helmet>
+<div class="pt-shell"><div class="pt-bar" role="toolbar" aria-label="Prototype controls" data-proto-ui="switcher"><span class="pt-title">Prototype</span><nav class="pt-apps" aria-label="App"><a class="pt-app" href="Admin-Sign-In.html">Console</a><a class="pt-app is-on" aria-current="page" href="W1-Shared-Safaris-list.html" onPointerDown="{{ssGuest}}" onClick="{{ssGuest}}">Portal</a></nav><span class="pt-spacer"></span><select class="pt-select" aria-label="Board" value="{{ptCur}}" onChange="{{ptGo}}"><optgroup label="Console"><option value="0">Console · Admin-Sign-In</option><option value="1">Console · Admin-Forgot-Password</option><option value="2">Console · Admin-Dashboard</option><option value="3">Console · Admin-Users-Roles-Users</option><option value="4">Console · Admin-Users-Roles-Roles</option><option value="5">Console · Admin-Notifications</option><option value="6">Console · Admin-Notification-Templates</option><option value="7">Console · Admin-Delivery-Log</option><option value="8">Console · Admin-Audit-Log</option><option value="9">Console · Admin-System-Logs</option><option value="10">Console · Admin-Error-Logs</option><option value="11">Console · Admin-Background-Jobs</option><option value="12">Console · Admin-Language-Master</option><option value="13">Console · Admin-Language-Translation</option><option value="14">Console · Admin-Tech-Documentation</option><option value="15">Console · Admin-Not-Found</option></optgroup><optgroup label="Portal"><option value="17">Portal · Web-Sign-In</option><option value="38">Portal · Web-Sign-Up</option><option value="18">Portal · Web-Forgot-Password</option><option value="20">Portal · Web-Notifications</option><option value="21">Portal · Web-Not-Found</option></optgroup><optgroup label="Shared Safari · Website"><option value="22">W1 Shared Safaris list</option><option value="23">W2 Safari card</option><option value="24">W3 Shared Safari view</option><option value="25">W4 Who joined</option><option value="26">W5 Organise a Safari / Edit</option><option value="27">W6 Change status</option><option value="28">W7 Delete and Leave</option><option value="29">W8 Flag a comment</option><option value="30">W9 My Shared Safaris</option></optgroup><optgroup label="Shared Safari · Console"><option value="31">C1 Shared Safaris list</option><option value="32">C2 Joined / Left list</option><option value="33">C3 Shared Safari detail, Delete with reason</option><option value="34">C4 Flagged Comments</option><option value="35">C5 Parks list</option><option value="36">C6 Park detail</option><option value="37">C7 Flag Reasons</option></optgroup></select><select class="pt-select" style="flex: 0 0 auto; min-width: 0; width: auto;" aria-label="Dialog" value="{{w7Val}}" onChange="{{setW7Pt}}"><option value="delete">Dialog: Delete this safari?</option><option value="leave">Dialog: Leave this safari?</option></select><button type="button" class="pt-dev" title="Clear everything added or changed in this prototype" onClick="{{ptReset}}">Reset data</button><nav class="pt-devs" aria-label="Device"><a class="pt-dev is-on" aria-current="page" href="W7-Delete-and-Leave.html">Desktop</a><a class="pt-dev" href="W7-Delete-and-Leave.mobile.html">Mobile</a></nav><span class="pt-go" aria-hidden="true"><a id="pt-go-0" data-go="Admin-Sign-In" href="Admin-Sign-In.html" tabindex="-1">Admin-Sign-In</a><a id="pt-go-1" data-go="Admin-Forgot-Password" href="Admin-Forgot-Password.html" tabindex="-1">Admin-Forgot-Password</a><a id="pt-go-2" data-go="Admin-Dashboard" href="Admin-Dashboard.html" tabindex="-1">Admin-Dashboard</a><a id="pt-go-3" data-go="Admin-Users-Roles-Users" href="Admin-Users-Roles-Users.html" tabindex="-1">Admin-Users-Roles-Users</a><a id="pt-go-4" data-go="Admin-Users-Roles-Roles" href="Admin-Users-Roles-Roles.html" tabindex="-1">Admin-Users-Roles-Roles</a><a id="pt-go-5" data-go="Admin-Notifications" href="Admin-Notifications.html" tabindex="-1">Admin-Notifications</a><a id="pt-go-6" data-go="Admin-Notification-Templates" href="Admin-Notification-Templates.html" tabindex="-1">Admin-Notification-Templates</a><a id="pt-go-7" data-go="Admin-Delivery-Log" href="Admin-Delivery-Log.html" tabindex="-1">Admin-Delivery-Log</a><a id="pt-go-8" data-go="Admin-Audit-Log" href="Admin-Audit-Log.html" tabindex="-1">Admin-Audit-Log</a><a id="pt-go-9" data-go="Admin-System-Logs" href="Admin-System-Logs.html" tabindex="-1">Admin-System-Logs</a><a id="pt-go-10" data-go="Admin-Error-Logs" href="Admin-Error-Logs.html" tabindex="-1">Admin-Error-Logs</a><a id="pt-go-11" data-go="Admin-Background-Jobs" href="Admin-Background-Jobs.html" tabindex="-1">Admin-Background-Jobs</a><a id="pt-go-12" data-go="Admin-Language-Master" href="Admin-Language-Master.html" tabindex="-1">Admin-Language-Master</a><a id="pt-go-13" data-go="Admin-Language-Translation" href="Admin-Language-Translation.html" tabindex="-1">Admin-Language-Translation</a><a id="pt-go-14" data-go="Admin-Tech-Documentation" href="Admin-Tech-Documentation.html" tabindex="-1">Admin-Tech-Documentation</a><a id="pt-go-15" data-go="Admin-Not-Found" href="Admin-Not-Found.html" tabindex="-1">Admin-Not-Found</a><a id="pt-go-17" data-go="Web-Sign-In" href="Web-Sign-In.html" tabindex="-1">Web-Sign-In</a><a id="pt-go-38" data-go="Web-Sign-Up" href="Web-Sign-Up.html" tabindex="-1">Web-Sign-Up</a><a id="pt-go-18" data-go="Web-Forgot-Password" href="Web-Forgot-Password.html" tabindex="-1">Web-Forgot-Password</a><a id="pt-go-20" data-go="Web-Notifications" href="Web-Notifications.html" tabindex="-1">Web-Notifications</a><a id="pt-go-21" data-go="Web-Not-Found" href="Web-Not-Found.html" tabindex="-1">Web-Not-Found</a><a id="pt-go-22" data-go="W1-Shared-Safaris-list" href="W1-Shared-Safaris-list.html" tabindex="-1">W1-Shared-Safaris-list</a><a id="pt-go-23" data-go="W2-Safari-card" href="W2-Safari-card.html" tabindex="-1">W2-Safari-card</a><a id="pt-go-24" data-go="W3-Shared-Safari-view" href="W3-Shared-Safari-view.html" tabindex="-1">W3-Shared-Safari-view</a><a id="pt-go-25" data-go="W4-Who-joined" href="W4-Who-joined.html" tabindex="-1">W4-Who-joined</a><a id="pt-go-26" data-go="W5-Organise-a-Safari-Edit" href="W5-Organise-a-Safari-Edit.html" tabindex="-1">W5-Organise-a-Safari-Edit</a><a id="pt-go-27" data-go="W6-Change-status" href="W6-Change-status.html" tabindex="-1">W6-Change-status</a><a id="pt-go-28" data-go="W7-Delete-and-Leave" href="W7-Delete-and-Leave.html" tabindex="-1">W7-Delete-and-Leave</a><a id="pt-go-29" data-go="W8-Flag-a-comment" href="W8-Flag-a-comment.html" tabindex="-1">W8-Flag-a-comment</a><a id="pt-go-30" data-go="W9-My-Shared-Safaris" href="W9-My-Shared-Safaris.html" tabindex="-1">W9-My-Shared-Safaris</a><a id="pt-go-31" data-go="C1-Shared-Safaris-list" href="C1-Shared-Safaris-list.html" tabindex="-1">C1-Shared-Safaris-list</a><a id="pt-go-32" data-go="C2-Joined-Left-list" href="C2-Joined-Left-list.html" tabindex="-1">C2-Joined-Left-list</a><a id="pt-go-33" data-go="C3-Shared-Safari-detail" href="C3-Shared-Safari-detail.html" tabindex="-1">C3-Shared-Safari-detail</a><a id="pt-go-34" data-go="C4-Flagged-Comments" href="C4-Flagged-Comments.html" tabindex="-1">C4-Flagged-Comments</a><a id="pt-go-35" data-go="C5-Parks-list" href="C5-Parks-list.html" tabindex="-1">C5-Parks-list</a><a id="pt-go-36" data-go="C6-Park-detail" href="C6-Park-detail.html" tabindex="-1">C6-Park-detail</a><a id="pt-go-37" data-go="C7-Flag-Reasons" href="C7-Flag-Reasons.html" tabindex="-1">C7-Flag-Reasons</a></span></div>
+<div class="pt-stage">
+<div class="pt-screen">
+<div class="root" data-portal="web" data-board="W7-Delete-and-Leave">
+<sc-if value="{{pwOpen}}" hint-placeholder-val="{{no}}"><div class="overlay" onClick="{{closePw}}"><form class="modal pw-modal" onSubmit="{{submitPw}}" role="dialog" onClick="{{keep}}" aria-modal="true" aria-labelledby="pw-title"><div class="modal-head"><h2 class="modal-title" id="pw-title"><span class="pw-ic"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect> <path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></span>Change Password</h2><button type="button" class="btn-icon" aria-label="Close" onClick="{{closePw}}"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path> <path d="m6 6 12 12"></path></svg></button></div><div class="modal-body"><sc-if value="{{dlgErrOn}}" hint-placeholder-val="{{no}}"><div class="banner banner-danger" role="alert" style="margin-bottom: var(--space-lg);">{{dlgErr}}</div></sc-if><dl class="pw-info"><dt>Name</dt><dd>{{me.name}}</dd><dt>Username</dt><dd>–</dd><dt>Email</dt><dd>{{me.email}}</dd><dt>Role</dt><dd>–</dd><dt>Status</dt><dd><span class="badge badge-success">Active</span></dd><dt>Password updated</dt><dd>29 Oct 2026, 02:38 PM</dd></dl><div class="pw-stack"><div class="{{E.pw.current.fcls}}"><label class="label" for="pw-current">Current Password<span class="req" aria-hidden="true">*</span></label><div class="pw-in"><input id="pw-current" name="current" class="input" placeholder="Enter current password" autocomplete="current-password" type="password" aria-invalid="{{E.pw.current.inv}}"><button class="btn-icon" aria-label="Show password" type="button"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg></button></div><sc-if value="{{E.pw.current.on}}" hint-placeholder-val="{{no}}"><span class="error" role="alert">{{E.pw.current.msg}}</span></sc-if></div><div class="{{E.pw.new.fcls}}"><label class="label" for="pw-new">New Password<span class="req" aria-hidden="true">*</span></label><div class="pw-in"><input id="pw-new" name="new" class="input" placeholder="Enter new password" autocomplete="new-password" type="password" aria-invalid="{{E.pw.new.inv}}"><button class="btn-icon" aria-label="Show password" type="button"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg></button></div><sc-if value="{{E.pw.new.on}}" hint-placeholder-val="{{no}}"><span class="error" role="alert">{{E.pw.new.msg}}</span></sc-if></div><div class="{{E.pw.confirm.fcls}}"><label class="label" for="pw-confirm">Confirm Password<span class="req" aria-hidden="true">*</span></label><div class="pw-in"><input id="pw-confirm" name="confirm" class="input" placeholder="Confirm new password" autocomplete="new-password" type="password" aria-invalid="{{E.pw.confirm.inv}}"><button class="btn-icon" aria-label="Show password" type="button"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg></button></div><sc-if value="{{E.pw.confirm.on}}" hint-placeholder-val="{{no}}"><span class="error" role="alert">{{E.pw.confirm.msg}}</span></sc-if></div></div></div><div class="modal-foot"><button type="button" class="btn btn-secondary" onClick="{{closePw}}">Cancel</button><button type="button" onClick="{{submitPw}}" class="btn btn-primary">Change Password</button></div></form></div></sc-if>
+<div class="wb">
+<header class="wb-head">
+<a class="wb-logo" href="{{W.home}}" aria-label="Walk Into The Wild home"><img src="img/076c716d13a6ac27e3fe5c048db345d3.png" alt="Walk Into The Wild"></a>
+<nav class="wb-nav" aria-label="Website"><a class="is-off"><img src="img/ccd89a60192678c6aab6ae93afc3d7b9.png" alt="">Plan Safari</a><a class="is-off"><img src="img/8c7a75fe5ed2f36d0ec3b078da5d6f95.png" alt="">Safari Packages</a><a class="is-on" aria-current="page" href="{{B.W1}}"><img src="img/a882db3b17941ef865bbbf5775313e7c.png" alt="">Shared Safari</a></nav>
+<div class="wb-right"><sc-if value="{{signedIn}}" hint-placeholder-val="{{yes}}"><div class="wb-wrap"><button type="button" class="wb-ic is-bell" aria-label="Notifications" aria-haspopup="dialog" aria-expanded="{{bellExp}}" onClick="{{toggleBell}}"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg><sc-if value="{{bellNOn}}" hint-placeholder-val="{{yes}}"><span class="wb-cnt">{{bellN}}</span></sc-if></button><sc-if value="{{bellOpen}}" hint-placeholder-val="{{no}}"><div class="wb-pop"><div class="ntp" role="dialog" aria-label="Notifications">
+<div class="ntp-h"><b>Notifications</b><span class="ntp-c">{{bellN}} new</span><button type="button" class="ntp-mk" onClick="{{bellMarkAllSS}}">Mark all as read</button></div>
+<div class="ntp-l">
+<sc-for list="{{bellList}}" as="n" hint-placeholder-count="2">
+<a class="{{n.cls}}" href="{{n.href}}" onPointerDown="{{n.open}}"><span class="ntp-av">{{n.ini}}<span class="ntp-k is-account"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span></span><span class="ntp-t"><span class="ntp-p"><b>{{n.name}}</b><span>{{n.mid}}</span><b>{{n.title}}</b><span>{{n.post}}</span></span><small>{{n.at}}</small></span><span class="ntp-dot" aria-hidden="true"></span></a>
+</sc-for>
+</div>
+<a class="ntp-f" href="{{W.notes}}">Show all notifications</a>
+</div></div></sc-if></div><div class="wb-wrap"><button type="button" class="wb-ic" aria-label="Account: {{me.name}}" aria-haspopup="true" aria-expanded="{{ddExp}}" onClick="{{toggleDd}}"><span class="wb-me">{{me.first}}</span></button><sc-if value="{{ddOpen}}" hint-placeholder-val="{{no}}"><div class="wb-pop"><div class="dd" role="menu">
+<div class="dd-who">
+<div class="list-title">{{me.name}}</div>
+<div class="list-meta">{{me.email}}</div>
+</div>
+<a class="mega-link" href="{{B.W9}}"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 10h4"></path><path d="M19 7V4a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v3"></path><path d="M20 21a2 2 0 0 0 2-2v-3.851c0-1.39-2-2.962-2-4.829V8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v11a2 2 0 0 0 2 2z"></path><path d="M 22 16 L 2 16"></path><path d="M4 21a2 2 0 0 1-2-2v-3.851c0-1.39 2-2.962 2-4.829V8a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v11a2 2 0 0 1-2 2z"></path><path d="M9 7V4a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v3"></path></svg>My Shared Safaris</a>
+<button type="button" class="mega-link dd-btn" onClick="{{openPw}}"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>Change Password</button>
+<div class="dd-sep"></div>
+<a class="mega-link" href="{{W.signin}}" onPointerDown="{{logout}}" onClick="{{logout}}"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 17 5-5-5-5"></path><path d="M21 12H9"></path><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path></svg>Log Out</a>
+</div></div></sc-if></div></sc-if><sc-if value="{{guest}}" hint-placeholder-val="{{no}}"><a class="wb-ic" href="{{W.signin}}" aria-label="Sign in"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="10" r="3"></circle><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"></path></svg></a></sc-if></div>
+</header>
+<section class="wb-hero"><h1>Shared Safari</h1></section>
+<main class="wb-main">
+<div class="page">
+<sc-if value="{{ok}}" hint-placeholder-val="{{yes}}">
+<section class="ss3-top">
+<div class="ss3-head">
+<div class="ss3-main"><div class="ss3-pic"><img src="{{v.cover}}" alt=""></div>
+<div class="ss3-info"><div class="ss3-title"><h1>{{v.title}}</h1><sc-if value="{{v.badgeOn}}" hint-placeholder-val="{{no}}"><span class="{{v.badgeCls}}">{{v.badge}}</span></sc-if></div>
+<span class="ss3-dates">{{v.dates}}</span>
+<span class="ss3-park"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg><span>{{v.park}}</span></span>
+<span class="ss3-org">Organized by <b>{{v.host}}</b></span></div></div>
+<div class="ss3-facts"><div class="ss3-fact"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg><div><div class="ss3-fl">Trip Duration</div><div class="ss3-fv">{{v.dur}}</div></div></div><div class="ss3-fact"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg><div><div class="ss3-fl">Available Seats</div><div class="ss3-fv">{{v.avail}}</div></div></div><div class="ss3-fact"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><path d="M9 17h6"></path><circle cx="17" cy="17" r="2"></circle></svg><div><div class="ss3-fl">Safaris</div><div class="ss3-fv">{{v.safarisTxt}}</div></div></div><div class="ss3-fact"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="16" height="20" x="4" y="2" rx="2"></rect><path d="M9 22v-4h6v4"></path><path d="M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"></path></svg><div><div class="ss3-fl">Stay Category</div><div class="ss3-fv">{{v.stay}}</div></div></div><div class="ss3-fact"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 10h4"></path><path d="M19 7V4a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v3"></path><path d="M20 21a2 2 0 0 0 2-2v-3.851c0-1.39-2-2.962-2-4.829V8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v11a2 2 0 0 0 2 2z"></path><path d="M 22 16 L 2 16"></path><path d="M4 21a2 2 0 0 1-2-2v-3.851c0-1.39 2-2.962 2-4.829V8a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v11a2 2 0 0 1-2 2z"></path><path d="M9 7V4a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v3"></path></svg><div><div class="ss3-fl">Theme</div><div class="ss3-fv">{{v.purpose}}</div></div></div><div class="ss3-fact"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12"></path><path d="M6 8h12"></path><path d="m6 13 8.5 8"></path><path d="M6 13h3"></path><path d="M9 13c6.667 0 6.667-10 0-10"></path></svg><div><div class="ss3-fl">Cost</div><div class="ss3-fv">{{v.cost}}</div></div></div></div>
+</div>
+<sc-if value="{{v.started}}" hint-placeholder-val="{{no}}"><div class="banner ss3-bar" role="status"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg><span>This safari has already started.</span></div></sc-if>
+<div class="ss3-share"><div class="ss3-sl"><span>Share this safari with your friends:</span><div class="ss3-soc"><span style="background: #3b5998;" title="Facebook" aria-label="Facebook"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></span><span style="background: #000;" title="X" aria-label="X"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4l11.733 16H20L8.267 4z"></path><path d="M4 20l6.768-6.768"></path><path d="M20 4l-6.768 6.768"></path></svg></span><span style="background: #e1306c;" title="Instagram" aria-label="Instagram"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg></span><span style="background: #25d366;" title="WhatsApp" aria-label="WhatsApp"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg></span><span style="background: #0a66c2;" title="LinkedIn" aria-label="LinkedIn"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></span><span style="background: #229ed9;" title="Telegram" aria-label="Telegram"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path><path d="m21.854 2.147-10.94 10.939"></path></svg></span><span style="background: #f4c20d;" title="Copy link" aria-label="Copy link"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></span></div></div><sc-if value="{{v.notStarted}}" hint-placeholder-val="{{yes}}"><div class="ss3-acts"><sc-if value="{{act.join}}" hint-placeholder-val="{{no}}"><button type="button" class="btn btn-primary" onClick="{{join}}">Join Safari</button></sc-if><sc-if value="{{act.guestJoin}}" hint-placeholder-val="{{no}}"><a class="btn btn-primary" href="{{W.signin}}">Join Safari</a></sc-if><sc-if value="{{act.member}}" hint-placeholder-val="{{no}}"><span class="banner banner-success"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="m16 9-5.5 5.5L8 12"></path></svg><span>You&#39;ve joined this safari.</span></span><button type="button" class="btn btn-secondary" onClick="{{openLeave}}">Leave Safari</button></sc-if><sc-if value="{{act.host}}" hint-placeholder-val="{{no}}"><button type="button" class="btn btn-secondary" onClick="{{editSafari}}">Update Safari</button><button type="button" class="btn btn-primary" onClick="{{openStatus}}">Change Status</button></sc-if></div></sc-if></div>
+</section>
+<div class="ss3">
+<div class="ss3-col"><div class="ss3-box2"><div class="ss3-bh">Safari Plan</div><div class="ss3-bb"><p class="ss-pre">{{v.plan}}</p></div></div>
+<div class="ss3-box2"><div class="ss3-bh">{{v.commentsTitle}}</div>
+<sc-if value="{{v.anyComments}}" hint-placeholder-val="{{yes}}"><div class="ss3-bb"><sc-for list="{{comments}}" as="c" hint-placeholder-count="3">
+<div class="ss3-c"><span class="avatar ss-av">{{c.ini}}</span><div class="ss3-cb"><div class="ss3-ch"><span><span class="ss3-cn">{{c.name}}</span> <span class="ss-cap">· {{c.ago}}</span></span><span class="ss3-cacts"><sc-if value="{{c.canFlag}}" hint-placeholder-val="{{no}}"><button type="button" class="btn-icon" aria-label="Flag this comment" data-tooltip="Flag" onClick="{{c.flag}}"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" x2="4" y1="22" y2="15"></line></svg></button></sc-if><sc-if value="{{c.canOwn}}" hint-placeholder-val="{{no}}"><button type="button" class="btn-icon" aria-label="Edit your comment" data-tooltip="Edit" onClick="{{c.startEdit}}"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path><path d="m15 5 4 4"></path></svg></button><button type="button" class="btn-icon is-danger" aria-label="Delete your comment" data-tooltip="Delete" onClick="{{c.del}}"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path><line x1="10" x2="10" y1="11" y2="17"></line><line x1="14" x2="14" y1="11" y2="17"></line></svg></button></sc-if></span></div><sc-if value="{{c.notEditing}}" hint-placeholder-val="{{yes}}"><p class="ss3-ct">{{c.text}}</p></sc-if><sc-if value="{{c.editing}}" hint-placeholder-val="{{no}}"><div class="ss3-box"><div class="{{CE.edit.fcls}}"><textarea class="textarea" rows="3" aria-label="Edit your comment" value="{{cm.editText}}" onInput="{{cm.setEdit}}" aria-invalid="{{CE.edit.inv}}"></textarea><sc-if value="{{CE.edit.on}}" hint-placeholder-val="{{no}}"><span class="error" role="alert">{{CE.edit.msg}}</span></sc-if></div><div class="ss-row"><button type="button" class="btn btn-secondary" onClick="{{cm.cancelEdit}}">Cancel</button><button type="button" class="btn btn-primary" onClick="{{cm.saveEdit}}">Save</button></div></div></sc-if><sc-if value="{{c.canReply}}" hint-placeholder-val="{{no}}"><div><button type="button" class="btn btn-text" style="padding-left: 0; height: 24px;" onClick="{{c.reply}}"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 10 20 15 15 20"></polyline><path d="M4 4v7a4 4 0 0 0 4 4h12"></path></svg>Reply</button></div></sc-if></div></div>
+<sc-if value="{{c.hasReplies}}" hint-placeholder-val="{{no}}"><div class="ss3-reply"><sc-for list="{{c.replies}}" as="r" hint-placeholder-count="1"><div class="ss3-c"><span class="avatar ss-av">{{r.ini}}</span><div class="ss3-cb"><div class="ss3-ch"><span><span class="ss3-cn">{{r.name}}</span> <span class="ss-cap">· {{r.ago}}</span></span><span class="ss3-cacts"><sc-if value="{{r.canFlag}}" hint-placeholder-val="{{no}}"><button type="button" class="btn-icon" aria-label="Flag this comment" data-tooltip="Flag" onClick="{{r.flag}}"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" x2="4" y1="22" y2="15"></line></svg></button></sc-if><sc-if value="{{r.canOwn}}" hint-placeholder-val="{{no}}"><button type="button" class="btn-icon" aria-label="Edit your comment" data-tooltip="Edit" onClick="{{r.startEdit}}"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path><path d="m15 5 4 4"></path></svg></button><button type="button" class="btn-icon is-danger" aria-label="Delete your comment" data-tooltip="Delete" onClick="{{r.del}}"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path><line x1="10" x2="10" y1="11" y2="17"></line><line x1="14" x2="14" y1="11" y2="17"></line></svg></button></sc-if></span></div><sc-if value="{{r.notEditing}}" hint-placeholder-val="{{yes}}"><p class="ss3-ct">{{r.text}}</p></sc-if><sc-if value="{{r.editing}}" hint-placeholder-val="{{no}}"><div class="ss3-box"><div class="{{CE.edit.fcls}}"><textarea class="textarea" rows="3" aria-label="Edit your comment" value="{{cm.editText}}" onInput="{{cm.setEdit}}" aria-invalid="{{CE.edit.inv}}"></textarea><sc-if value="{{CE.edit.on}}" hint-placeholder-val="{{no}}"><span class="error" role="alert">{{CE.edit.msg}}</span></sc-if></div><div class="ss-row"><button type="button" class="btn btn-secondary" onClick="{{cm.cancelEdit}}">Cancel</button><button type="button" class="btn btn-primary" onClick="{{cm.saveEdit}}">Save</button></div></div></sc-if></div></div>
+</sc-for></div></sc-if>
+<sc-if value="{{c.replyOpen}}" hint-placeholder-val="{{no}}"><div class="ss3-reply"><div class="ss3-box"><div class="{{CE.reply.fcls}}"><label class="sr-only" for="cm-reply">Write a reply</label><textarea id="cm-reply" class="textarea" rows="2" placeholder="Write a reply…" value="{{cm.reply}}" onInput="{{cm.setReply}}" aria-invalid="{{CE.reply.inv}}"></textarea><sc-if value="{{CE.reply.on}}" hint-placeholder-val="{{no}}"><span class="error" role="alert">{{CE.reply.msg}}</span></sc-if></div><div class="ss-row"><button type="button" class="btn btn-secondary" onClick="{{cm.cancelReply}}">Cancel</button><button type="button" class="btn btn-primary" onClick="{{cm.postReply}}">Post Reply</button></div></div></div></sc-if>
+</sc-for></div></sc-if>
+<sc-if value="{{v.noComments}}" hint-placeholder-val="{{no}}"><div class="ss3-bb"><p class="ss3-empty">No comments yet.</p></div></sc-if>
+<sc-if value="{{cm.box}}" hint-placeholder-val="{{no}}"><div class="ss3-new"><span class="avatar">{{me.first}}</span><div class="ss3-box"><div class="{{CE.text.fcls}}"><label class="sr-only" for="cm-new">Write a comment</label><textarea id="cm-new" class="textarea" rows="4" placeholder="Write a comment…" value="{{cm.text}}" onInput="{{cm.setText}}" aria-invalid="{{CE.text.inv}}"></textarea><sc-if value="{{CE.text.on}}" hint-placeholder-val="{{no}}"><span class="error" role="alert">{{CE.text.msg}}</span></sc-if></div><div class="ss-row"><button type="button" class="btn btn-primary" onClick="{{cm.post}}">Post Comment</button></div></div></div></sc-if>
+<sc-if value="{{cm.joinMsg}}" hint-placeholder-val="{{no}}"><div class="ss3-note"><p class="ss3-empty">Join this safari to comment.</p></div></sc-if>
+<sc-if value="{{cm.guestMsg}}" hint-placeholder-val="{{no}}"><div class="ss3-note"><p class="ss3-empty">Sign in and join this safari to comment.</p></div></sc-if>
+</div>
+</div>
+<div class="ss3-col"><div class="ss3-box2"><button type="button" class="ss3-bh ss3-bh-btn" onClick="{{openWho}}" aria-haspopup="dialog"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg><span>{{v.whoHead}}</span></button><div class="ss3-bb"><sc-if value="{{v.anyJoined}}" hint-placeholder-val="{{yes}}"><div class="ss3-faces"><sc-for list="{{whoFirst}}" as="p" hint-placeholder-count="3"><span class="avatar ss3-face" title="{{p.name}}">{{p.ini}}</span></sc-for><sc-if value="{{v.moreOn}}" hint-placeholder-val="{{no}}"><span class="avatar ss3-face ss3-more">{{v.more}}</span></sc-if></div></sc-if><sc-if value="{{v.noJoined}}" hint-placeholder-val="{{no}}"><p class="ss3-empty">No one is interested yet.</p></sc-if></div></div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{na}}" hint-placeholder-val="{{no}}"><div class="card"><div class="state"><svg class="icon state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 10h4"></path><path d="M19 7V4a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v3"></path><path d="M20 21a2 2 0 0 0 2-2v-3.851c0-1.39-2-2.962-2-4.829V8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v11a2 2 0 0 0 2 2z"></path><path d="M 22 16 L 2 16"></path><path d="M4 21a2 2 0 0 1-2-2v-3.851c0-1.39 2-2.962 2-4.829V8a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v11a2 2 0 0 1-2 2z"></path><path d="M9 7V4a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v3"></path></svg><p class="state-title">This safari is not available.</p><a class="btn btn-secondary" href="{{B.W1}}">Back to Shared Safaris</a></div></div></sc-if>
+
+</div>
+</main>
+<footer class="wb-foot">
+<img class="wb-grass" src="img/b90086b5d56ce7304dd2d35355a8a3c5.png" alt="">
+<div class="wb-cols">
+<div><h2>About Us</h2><p>We offer a seamless experience, connecting you with multiple safari tour operators and providing all the essential details you need to make informed decisions about your wildlife safari, all at no cost.</p><p>Our shared safari feature connects you with fellow safari enthusiasts, enabling you to form a group and embark on a shared safari adventure together.</p></div>
+<div><h2>Policy</h2><a class="is-off">Privacy Policy</a><a class="is-off">Terms &amp; Conditions</a><a class="is-off">Refund Policy</a></div>
+<div><h2>Useful Links</h2><a class="is-off">About Us</a><a class="is-off">Contact us</a><a class="is-off">FAQs</a></div>
+<div><h2>Contact Info</h2><p class="wb-line"><b>Address:</b> New Delhi, India</p><p class="wb-line"><b>Email:</b> support@walkintothewild.in</p><a class="wb-insta is-off"><span><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg></span>walkintothewild.in</a></div>
+</div>
+<div class="wb-bottom"><img src="img/02b34b47eb66148d1f927ef5c8ef02fa.png" alt="Walk Into The Wild"><span>Developed by Mediarc Technologies Private Limited</span><span>Copyright © 2025 | All rights reserved</span></div>
+</footer>
+</div>
+<sc-if value="{{dlgWho}}" hint-placeholder-val="{{no}}">
+<div class="overlay" onClick="{{closeDlg}}">
+<div class="modal ss3-who-dlg" role="dialog" aria-modal="true" aria-labelledby="who-t" onClick="{{keep}}">
+<div class="modal-head">
+<h2 class="modal-title" id="who-t">{{v.whoTitle}}</h2>
+<button type="button" class="btn-icon" aria-label="Close" onClick="{{closeDlg}}"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+</div>
+<div class="modal-body">
+<div class="table-scroll"><table class="table"><thead><tr><th scope="col" class="col-sno">S.No</th><th scope="col">Name</th><th scope="col">Joined On</th></tr></thead><tbody><tr hidden="{{whoAll__off.r0}}"><td class="col-sno">{{whoAll__s.r0.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r0.ini}}</span>{{whoAll__s.r0.name}}</span></td><td>{{whoAll__s.r0.at}}</td></tr><tr hidden="{{whoAll__off.r1}}"><td class="col-sno">{{whoAll__s.r1.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r1.ini}}</span>{{whoAll__s.r1.name}}</span></td><td>{{whoAll__s.r1.at}}</td></tr><tr hidden="{{whoAll__off.r2}}"><td class="col-sno">{{whoAll__s.r2.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r2.ini}}</span>{{whoAll__s.r2.name}}</span></td><td>{{whoAll__s.r2.at}}</td></tr><tr hidden="{{whoAll__off.r3}}"><td class="col-sno">{{whoAll__s.r3.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r3.ini}}</span>{{whoAll__s.r3.name}}</span></td><td>{{whoAll__s.r3.at}}</td></tr><tr hidden="{{whoAll__off.r4}}"><td class="col-sno">{{whoAll__s.r4.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r4.ini}}</span>{{whoAll__s.r4.name}}</span></td><td>{{whoAll__s.r4.at}}</td></tr><tr hidden="{{whoAll__off.r5}}"><td class="col-sno">{{whoAll__s.r5.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r5.ini}}</span>{{whoAll__s.r5.name}}</span></td><td>{{whoAll__s.r5.at}}</td></tr><tr hidden="{{whoAll__off.r6}}"><td class="col-sno">{{whoAll__s.r6.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r6.ini}}</span>{{whoAll__s.r6.name}}</span></td><td>{{whoAll__s.r6.at}}</td></tr><tr hidden="{{whoAll__off.r7}}"><td class="col-sno">{{whoAll__s.r7.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r7.ini}}</span>{{whoAll__s.r7.name}}</span></td><td>{{whoAll__s.r7.at}}</td></tr><tr hidden="{{whoAll__off.r8}}"><td class="col-sno">{{whoAll__s.r8.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r8.ini}}</span>{{whoAll__s.r8.name}}</span></td><td>{{whoAll__s.r8.at}}</td></tr><tr hidden="{{whoAll__off.r9}}"><td class="col-sno">{{whoAll__s.r9.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r9.ini}}</span>{{whoAll__s.r9.name}}</span></td><td>{{whoAll__s.r9.at}}</td></tr><tr hidden="{{whoAll__off.r10}}"><td class="col-sno">{{whoAll__s.r10.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r10.ini}}</span>{{whoAll__s.r10.name}}</span></td><td>{{whoAll__s.r10.at}}</td></tr><tr hidden="{{whoAll__off.r11}}"><td class="col-sno">{{whoAll__s.r11.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r11.ini}}</span>{{whoAll__s.r11.name}}</span></td><td>{{whoAll__s.r11.at}}</td></tr><tr hidden="{{whoAll__off.r12}}"><td class="col-sno">{{whoAll__s.r12.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r12.ini}}</span>{{whoAll__s.r12.name}}</span></td><td>{{whoAll__s.r12.at}}</td></tr><tr hidden="{{whoAll__off.r13}}"><td class="col-sno">{{whoAll__s.r13.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r13.ini}}</span>{{whoAll__s.r13.name}}</span></td><td>{{whoAll__s.r13.at}}</td></tr><tr hidden="{{whoAll__off.r14}}"><td class="col-sno">{{whoAll__s.r14.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r14.ini}}</span>{{whoAll__s.r14.name}}</span></td><td>{{whoAll__s.r14.at}}</td></tr><tr hidden="{{whoAll__off.r15}}"><td class="col-sno">{{whoAll__s.r15.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r15.ini}}</span>{{whoAll__s.r15.name}}</span></td><td>{{whoAll__s.r15.at}}</td></tr><tr hidden="{{whoAll__off.r16}}"><td class="col-sno">{{whoAll__s.r16.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r16.ini}}</span>{{whoAll__s.r16.name}}</span></td><td>{{whoAll__s.r16.at}}</td></tr><tr hidden="{{whoAll__off.r17}}"><td class="col-sno">{{whoAll__s.r17.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r17.ini}}</span>{{whoAll__s.r17.name}}</span></td><td>{{whoAll__s.r17.at}}</td></tr><tr hidden="{{whoAll__off.r18}}"><td class="col-sno">{{whoAll__s.r18.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r18.ini}}</span>{{whoAll__s.r18.name}}</span></td><td>{{whoAll__s.r18.at}}</td></tr><tr hidden="{{whoAll__off.r19}}"><td class="col-sno">{{whoAll__s.r19.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r19.ini}}</span>{{whoAll__s.r19.name}}</span></td><td>{{whoAll__s.r19.at}}</td></tr><tr hidden="{{whoAll__off.r20}}"><td class="col-sno">{{whoAll__s.r20.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r20.ini}}</span>{{whoAll__s.r20.name}}</span></td><td>{{whoAll__s.r20.at}}</td></tr><tr hidden="{{whoAll__off.r21}}"><td class="col-sno">{{whoAll__s.r21.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r21.ini}}</span>{{whoAll__s.r21.name}}</span></td><td>{{whoAll__s.r21.at}}</td></tr><tr hidden="{{whoAll__off.r22}}"><td class="col-sno">{{whoAll__s.r22.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r22.ini}}</span>{{whoAll__s.r22.name}}</span></td><td>{{whoAll__s.r22.at}}</td></tr><tr hidden="{{whoAll__off.r23}}"><td class="col-sno">{{whoAll__s.r23.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r23.ini}}</span>{{whoAll__s.r23.name}}</span></td><td>{{whoAll__s.r23.at}}</td></tr><tr hidden="{{whoAll__off.r24}}"><td class="col-sno">{{whoAll__s.r24.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r24.ini}}</span>{{whoAll__s.r24.name}}</span></td><td>{{whoAll__s.r24.at}}</td></tr><tr hidden="{{whoAll__off.r25}}"><td class="col-sno">{{whoAll__s.r25.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r25.ini}}</span>{{whoAll__s.r25.name}}</span></td><td>{{whoAll__s.r25.at}}</td></tr><tr hidden="{{whoAll__off.r26}}"><td class="col-sno">{{whoAll__s.r26.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r26.ini}}</span>{{whoAll__s.r26.name}}</span></td><td>{{whoAll__s.r26.at}}</td></tr><tr hidden="{{whoAll__off.r27}}"><td class="col-sno">{{whoAll__s.r27.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r27.ini}}</span>{{whoAll__s.r27.name}}</span></td><td>{{whoAll__s.r27.at}}</td></tr><tr hidden="{{whoAll__off.r28}}"><td class="col-sno">{{whoAll__s.r28.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r28.ini}}</span>{{whoAll__s.r28.name}}</span></td><td>{{whoAll__s.r28.at}}</td></tr><tr hidden="{{whoAll__off.r29}}"><td class="col-sno">{{whoAll__s.r29.sno}}</td><td><span class="ss3-who-name"><span class="avatar ss-av">{{whoAll__s.r29.ini}}</span>{{whoAll__s.r29.name}}</span></td><td>{{whoAll__s.r29.at}}</td></tr></tbody></table></div><div class="ss3-who-foot">{{v.whoShowing}}</div>
+</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{dlgStatus}}" hint-placeholder-val="{{no}}">
+<div class="overlay" onClick="{{closeDlg}}">
+<div class="modal is-sm" role="dialog" aria-modal="true" aria-labelledby="st-t" onClick="{{keep}}">
+<div class="modal-head">
+<h2 class="modal-title" id="st-t">Change status</h2>
+<button type="button" class="btn-icon" aria-label="Close" onClick="{{closeDlg}}"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+</div>
+<div class="modal-body">
+<div role="radiogroup" aria-label="Status"><sc-for list="{{statusOpts}}" as="o" hint-placeholder-count="3"><label class="ss-radio"><input type="radio" name="ss-status" value="{{o.v}}" checked="{{o.on}}" onChange="{{o.pick}}"><span>{{o.t}}<small>{{o.d}}</small></span></label></sc-for></div><div style="border-top: 1px solid var(--color-border); margin-top: var(--space-lg); padding-top: var(--space-md);"><button type="button" class="btn btn-text ss-danger-link" onClick="{{openDelete}}"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path><line x1="10" x2="10" y1="11" y2="17"></line><line x1="14" x2="14" y1="11" y2="17"></line></svg>Delete this safari</button></div>
+</div>
+<div class="modal-foot">
+<button type="button" class="btn btn-secondary" onClick="{{closeDlg}}">Cancel</button>
+<button type="button" class="btn btn-primary" onClick="{{saveStatus}}">Save</button>
+</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{dlgDelete}}" hint-placeholder-val="{{no}}">
+<div class="overlay" onClick="{{closeDlg}}">
+<div class="modal is-sm" role="dialog" aria-modal="true" aria-labelledby="del-t" onClick="{{keep}}">
+<div class="modal-head">
+<h2 class="modal-title" id="del-t">Delete this safari?</h2>
+<button type="button" class="btn-icon" aria-label="Close" onClick="{{closeDlg}}"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+</div>
+<div class="modal-body">
+<p class="ss-muted" style="margin: 0;">This can&#39;t be undone.</p>
+</div>
+<div class="modal-foot">
+<button type="button" class="btn btn-secondary" onClick="{{closeDlg}}">Cancel</button>
+<button type="button" class="btn btn-danger" onClick="{{doDelete}}">Delete</button>
+</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{dlgLeave}}" hint-placeholder-val="{{no}}">
+<div class="overlay" onClick="{{closeDlg}}">
+<div class="modal is-sm" role="dialog" aria-modal="true" aria-labelledby="lv-t" onClick="{{keep}}">
+<div class="modal-head">
+<h2 class="modal-title" id="lv-t">Leave this safari?</h2>
+<button type="button" class="btn-icon" aria-label="Close" onClick="{{closeDlg}}"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+</div>
+<div class="modal-body">
+<p class="ss-muted" style="margin: 0;">You can join again later.</p>
+</div>
+<div class="modal-foot">
+<button type="button" class="btn btn-secondary" onClick="{{closeDlg}}">Cancel</button>
+<button type="button" class="btn btn-primary" onClick="{{doLeave}}">Leave</button>
+</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{dlgFlag}}" hint-placeholder-val="{{no}}">
+<div class="overlay" onClick="{{closeDlg}}">
+<div class="modal is-sm" role="dialog" aria-modal="true" aria-labelledby="fl-t" onClick="{{keep}}">
+<div class="modal-head">
+<h2 class="modal-title" id="fl-t">Flag this comment</h2>
+<button type="button" class="btn-icon" aria-label="Close" onClick="{{closeDlg}}"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+</div>
+<div class="modal-body">
+<div class="ss-stack-lg"><div class="{{FE.reason.fcls}}"><span class="label">Reason<span class="req" aria-hidden="true">*</span></span><div role="radiogroup" aria-label="Reason"><sc-for list="{{reasonOpts}}" as="o" hint-placeholder-count="8"><label class="ss-radio" style="padding: 4px 0;"><input type="radio" name="ss-reason" value="{{o.t}}" checked="{{o.on}}" onChange="{{o.pick}}"><span>{{o.t}}</span></label></sc-for></div><sc-if value="{{FE.reason.on}}" hint-placeholder-val="{{no}}"><span class="error" role="alert">{{FE.reason.msg}}</span></sc-if></div><div class="{{FE.details.fcls}}">
+<label class="label" for="fl-details">Details<span class="req" aria-hidden="true">*</span></label>
+<textarea id="fl-details" class="textarea" rows="3" value="{{flagDetails}}" onInput="{{setFlagDetails}}" aria-invalid="{{FE.details.inv}}"></textarea>
+<span class="helper">Up to 500 characters</span>
+<sc-if value="{{FE.details.on}}" hint-placeholder-val="{{no}}">
+<span class="error" role="alert">{{FE.details.msg}}</span>
+</sc-if>
+</div>
+</div>
+</div>
+<div class="modal-foot">
+<button type="button" class="btn btn-secondary" onClick="{{closeDlg}}">Cancel</button>
+<button type="button" class="btn btn-primary" onClick="{{doFlag}}"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" x2="4" y1="22" y2="15"></line></svg>Flag</button>
+</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{orgOpen}}" hint-placeholder-val="{{no}}"><div class="overlay wb-ov" onClick="{{orgClose}}"><form class="modal wb-modal" role="dialog" aria-modal="true" aria-labelledby="org-t" onClick="{{keep}}" onSubmit="{{stop}}" novalidate=""><div class="wb-mh"><h2 id="org-t">{{orgTitle}}</h2><button type="button" aria-label="Close" onClick="{{orgClose}}"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button></div><div class="wb-mb"><sc-if value="{{st1}}" hint-placeholder-val="{{yes}}"><div class="{{OE.title.fcls}}"><label class="label" for="o-title">Title<span class="req" aria-hidden="true">*</span></label><input id="o-title" class="input" value="{{fv.title}}" onInput="{{ofs.title}}" aria-invalid="{{OE.title.inv}}" maxlength="255" placeholder="Enter Title"><sc-if value="{{OE.title.on}}" hint-placeholder-val="{{no}}"><span class="error" role="alert">{{OE.title.msg}}</span></sc-if></div>
+<div class="{{OE.park.fcls}}"><label class="label" for="o-park">Select a Safari Park<span class="req" aria-hidden="true">*</span></label><div class="ss"><button type="button" id="o-park" class="select ss-sel {{parkCls}}" aria-haspopup="listbox" aria-expanded="{{parkExp}}" aria-invalid="{{OE.park.inv}}" onClick="{{toggleParks}}"><span>{{parkLabel}}</span><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><sc-if value="{{parksOpen}}" hint-placeholder-val="{{no}}"><div class="ss-pop" role="dialog" aria-label="Choose a safari park"><div class="input-group"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg><input class="input" placeholder="Search park…" aria-label="Search park" value="{{parkQ}}" onInput="{{setParkQ}}"></div><ul class="ss-list" role="listbox" aria-label="Safari parks"><sc-for list="{{parkOpts}}" as="o" hint-placeholder-count="6"><li class="{{o.cls}}" role="option" aria-selected="{{o.sel}}" onClick="{{o.pick}}">{{o.t}}</li></sc-for></ul><sc-if value="{{parkNone}}" hint-placeholder-val="{{no}}"><p class="ss-empty">No parks found.</p></sc-if></div></sc-if></div><sc-if value="{{OE.park.on}}" hint-placeholder-val="{{no}}"><span class="error" role="alert">{{OE.park.msg}}</span></sc-if></div>
+<div class="wb-2"><div class="{{OE.start.fcls}}"><label class="label" for="o-start">Start Date<span class="req" aria-hidden="true">*</span></label><input id="o-start" class="input" value="{{fv.start}}" onInput="{{ofs.start}}" aria-invalid="{{OE.start.inv}}" type="date" min="{{minDate}}" max="{{maxDate}}"><sc-if value="{{OE.start.on}}" hint-placeholder-val="{{no}}"><span class="error" role="alert">{{OE.start.msg}}</span></sc-if></div>
+<div class="{{OE.end.fcls}}"><label class="label" for="o-end">End Date<span class="req" aria-hidden="true">*</span></label><input id="o-end" class="input" value="{{fv.end}}" onInput="{{ofs.end}}" aria-invalid="{{OE.end.inv}}" type="date" min="{{minDate}}"><sc-if value="{{OE.end.on}}" hint-placeholder-val="{{no}}"><span class="error" role="alert">{{OE.end.msg}}</span></sc-if></div>
+</div><div class="{{OE.safaris.fcls}}"><label class="label" for="o-safaris">Number of Safaris<span class="req" aria-hidden="true">*</span></label><input id="o-safaris" class="input" value="{{fv.safaris}}" onInput="{{ofs.safaris}}" aria-invalid="{{OE.safaris.inv}}" type="number" min="1" max="10"><span class="helper">Up to 10</span><sc-if value="{{OE.safaris.on}}" hint-placeholder-val="{{no}}"><span class="error" role="alert">{{OE.safaris.msg}}</span></sc-if></div>
+</sc-if><sc-if value="{{st2}}" hint-placeholder-val="{{no}}"><div class="{{OE.purpose.fcls}}"><label class="label" for="o-purpose">Theme<span class="req" aria-hidden="true">*</span></label><div class="ss-radios" role="radiogroup" aria-label="Theme"><sc-for list="{{purposeOpts}}" as="o" hint-placeholder-count="2"><label><input type="radio" name="o-purpose" value="{{o.t}}" checked="{{o.on}}" onChange="{{o.pick}}">{{o.t}}</label></sc-for></div><sc-if value="{{OE.purpose.on}}" hint-placeholder-val="{{no}}"><span class="error" role="alert">{{OE.purpose.msg}}</span></sc-if></div>
+<div class="wb-2"><div class="{{OE.seats.fcls}}"><label class="label" for="o-seats">Total Seats<span class="req" aria-hidden="true">*</span></label><input id="o-seats" class="input" value="{{fv.seats}}" onInput="{{ofs.seats}}" aria-invalid="{{OE.seats.inv}}" type="number" min="2" max="6"><span class="helper">Up to 6, yours included</span><sc-if value="{{OE.seats.on}}" hint-placeholder-val="{{no}}"><span class="error" role="alert">{{OE.seats.msg}}</span></sc-if></div>
+<div class="{{OE.share.fcls}}"><label class="label" for="o-share">Seats to Share<span class="req" aria-hidden="true">*</span></label><input id="o-share" class="input" value="{{fv.share}}" onInput="{{ofs.share}}" aria-invalid="{{OE.share.inv}}" type="number" min="1" max="5"><span class="helper">Fewer than the total seats</span><sc-if value="{{OE.share.on}}" hint-placeholder-val="{{no}}"><span class="error" role="alert">{{OE.share.msg}}</span></sc-if></div>
+</div><div class="{{OE.price.fcls}}"><span class="label">Price Per Person<span class="req" aria-hidden="true">*</span></span><div class="ss-range"><div class="input-group"><span class="affix">₹</span><input id="o-pfrom" class="input" value="{{fv.pfrom}}" onInput="{{ofs.pfrom}}" aria-invalid="{{OE.pfrom.inv}}" inputmode="numeric" placeholder="From" aria-label="Price per person from"></div><span class="ss-muted">–</span><div class="input-group"><span class="affix">₹</span><input id="o-pto" class="input" value="{{fv.pto}}" onInput="{{ofs.pto}}" aria-invalid="{{OE.pto.inv}}" inputmode="numeric" placeholder="To" aria-label="Price per person to"></div></div><sc-if value="{{OE.price.on}}" hint-placeholder-val="{{no}}"><span class="error" role="alert">{{OE.price.msg}}</span></sc-if></div>
+<div class="{{OE.stay.fcls}}"><label class="label" for="o-stay">Stay Category</label><select id="o-stay" class="select" value="{{fv.stay}}" onChange="{{ofs.stay}}"><option value="">Select a Stay Category</option><option value="Premium">Premium</option><option value="Standard">Standard</option><option value="Economical">Economical</option><option value="Not Included">Not Included</option><option value="Forest Rest House">Forest Rest House</option><option value="Home Stay">Home Stay</option></select><sc-if value="{{OE.stay.on}}" hint-placeholder-val="{{no}}"><span class="error" role="alert">{{OE.stay.msg}}</span></sc-if></div>
+</sc-if><sc-if value="{{st3}}" hint-placeholder-val="{{no}}"><div class="wb-2"><div class="field"><span class="label">Current Display Image</span><img class="wb-cur" src="{{coverSrc}}" alt="Current display image"></div><div class="{{OE.cover.fcls}}"><label class="label" for="o-cover">Select Picture</label><input id="o-cover" class="wb-file" type="file" accept=".png,.jpg,.jpeg,image/png,image/jpeg" onChange="{{pickCover}}"><span class="helper">{{fileName}} · PNG, JPG or JPEG, up to 5 MB</span><sc-if value="{{OE.cover.on}}" hint-placeholder-val="{{no}}"><span class="error" role="alert">{{OE.cover.msg}}</span></sc-if></div>
+</div><div class="{{OE.plan.fcls}}"><label class="label" for="o-plan">Safari Plan<span class="req" aria-hidden="true">*</span></label><textarea id="o-plan" class="textarea" rows="7" placeholder="Enter Plan Details" value="{{fv.plan}}" onInput="{{ofs.plan}}" aria-invalid="{{OE.plan.inv}}"></textarea><span class="helper">Under 1,000 words · {{planWords}}</span><sc-if value="{{OE.plan.on}}" hint-placeholder-val="{{no}}"><span class="error" role="alert">{{OE.plan.msg}}</span></sc-if></div>
+</sc-if></div><div class="wb-mf"><sc-if value="{{st1}}" hint-placeholder-val="{{yes}}"><button type="button" class="wb-tb is-muted" onClick="{{orgClose}}">Cancel</button></sc-if><sc-if value="{{stBack}}" hint-placeholder-val="{{no}}"><button type="button" class="wb-tb is-muted" onClick="{{orgBack}}">back</button></sc-if><sc-if value="{{stNext}}" hint-placeholder-val="{{yes}}"><button type="button" class="wb-tb" onClick="{{orgNext}}">Next</button></sc-if><sc-if value="{{st3}}" hint-placeholder-val="{{no}}"><button type="button" class="wb-tb" onClick="{{orgSubmit}}">{{orgSubmitText}}</button></sc-if></div><div class="wb-dots" aria-label="{{stepLabel}}"><sc-for list="{{dots}}" as="d" hint-placeholder-count="3"><span class="{{d.cls}}"></span></sc-for></div></form></div></sc-if>
+
+<div class="ss-dock"><sc-if value="{{toastOn}}" hint-placeholder-val="{{no}}"><div class="toast-stack"><sc-for list="{{toasts}}" as="t" hint-placeholder-count="0"><div class="{{t.cls}}" role="status"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle> <path d="m16 9-5.5 5.5L8 12"></path></svg><span>{{t.msg}}</span><button type="button" class="btn-icon us-tx" aria-label="Close" data-tooltip="Close" onClick="{{t.close}}"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path> <path d="m6 6 12 12"></path></svg></button></div></sc-for></div></sc-if><sc-if value="{{upOn}}" hint-placeholder-val="{{no}}"><button type="button" class="wb-fab" aria-label="Back to top" onClick="{{toTop}}"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 7-7 7 7"></path><path d="M12 19V5"></path></svg></button></sc-if></div>
+</div>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1366,"height":768}}'>
+class Component extends DCLogic {
+componentDidMount() { this.ptLang(); }
+componentDidUpdate() { this.ptLang(); }
+ptLang() {
+// show every text that has a published translation in the chosen language; the rest stays in English
+var tr = this.__tr || null, low = null, b = document.body;
+if (!b) return;
+if (tr) { low = Object.create(null); Object.keys(tr).forEach(function (k) { low[k.toLowerCase()] = tr[k]; }); }
+var w = document.createTreeWalker(b, NodeFilter.SHOW_TEXT, null), n, list = [];
+while ((n = w.nextNode())) list.push(n);
+list.forEach(function (t) {
+var p = t.parentElement;
+if (!p || p.closest('script,style,.pt-bar,[data-nt]')) return;
+var cur = t.nodeValue;
+if (t.__ptSet !== cur) t.__ptOrig = cur;
+var orig = t.__ptOrig, key = orig.trim(), want = orig;
+if (low && key) { var x = Object.prototype.hasOwnProperty.call(tr, key) ? tr[key] : low[key.toLowerCase()]; if (typeof x === 'string' && x) want = orig.replace(key, function () { return x; }); }
+if (want !== cur) t.nodeValue = want;
+t.__ptSet = want;
+});
+}
+renderVals() {
+var v = this.renderVals0() || {};
+v.ptGo = function (e) { var a = document.getElementById('pt-go-' + e.target.value); if (a) a.click(); };
+v.ptCur = '28';
+v.ptFailCls = v.ptFailOn ? 'pt-fail is-on' : 'pt-fail';
+return v;
+}
+renderVals0() {
+var self = this, s = this.state || {};
+var M = '', CUR = 'ss';
+function L(n) { return n + M + '.html'; }
+/* prototype helpers: forms with validation, toasts, navigation, prefilled inputs */
+var RULES = {"pw": {"current": {"req": "Enter your current password.", "base": "field"}, "new": {"req": "Enter a new password.", "min": 8, "minMsg": "Use at least 8 characters.", "differ": "current", "differMsg": "Use a password different from the current one.", "base": "field"}, "confirm": {"req": "Confirm the new password.", "match": "new", "matchMsg": "The passwords do not match.", "base": "field"}}};
+function fval(f, n) { var el = f.elements[n]; if (!el) return ''; if (el.type === 'checkbox') return !!el.checked; return String(el.value == null ? '' : el.value).trim(); }
+function checkForm(name, f) {
+var r = RULES[name] || {}, e = {}, any = false;
+Object.keys(r).forEach(function (k) {
+var x = r[k], val = fval(f, k), m = null;
+if (x.req && (val === '' || val === false)) m = x.req;
+else if (val !== '' && x.email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(val)) m = x.email;
+else if (val !== '' && x.digits && String(val).replace(/\D/g, '').length !== x.digits) m = x.digitsMsg;
+else if (val !== '' && x.login && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(val) && String(val).replace(/\D/g, '').length !== 10) m = x.login;
+else if (val !== '' && x.min && String(val).length < x.min) m = x.minMsg;
+else if (val !== '' && x.pattern && !new RegExp(x.pattern).test(val)) m = x.patternMsg;
+else if (val !== '' && x.range && (isNaN(+val) || +val < x.range[0] || +val > x.range[1])) m = x.rangeMsg;
+else if (x.match && val !== fval(f, x.match)) m = x.matchMsg;
+else if (x.differ && val !== '' && val === fval(f, x.differ)) m = x.differMsg;
+if (m) { e[k] = m; any = true; }
+});
+return any ? e : null;
+}
+var E = {};
+Object.keys(RULES).forEach(function (fn) {
+var e = (s.err || {})[fn] || {}, o = {};
+Object.keys(RULES[fn]).forEach(function (k) {
+var b = RULES[fn][k].base || 'field', ib = RULES[fn][k].ibase || 'input';
+o[k] = { on: !!e[k], msg: e[k] || '', fcls: b + (e[k] ? ' is-invalid' : ''), icls: ib + (e[k] ? ' is-error' : ''), inv: e[k] ? 'true' : undefined };
+});
+E[fn] = o;
+});
+function form(name, ok) {
+return function (ev) {
+ev.preventDefault();
+if (ev && ev.preventDefault) ev.preventDefault();
+var f = ev.currentTarget.form || ev.currentTarget, e = checkForm(name, f), all = Object.assign({}, s.err || {});
+if (e) { all[name] = e; self.setState({ err: all }); return; }
+delete all[name];
+var data = {};
+Array.prototype.forEach.call(f.elements, function (el) { if (!el.name) return; if (el.type === 'radio') { if (el.checked) data[el.name] = el.value; return; } data[el.name] = el.type === 'checkbox' ? !!el.checked : String(el.value == null ? '' : el.value).trim(); });
+self.setState({ err: all });
+ok(data, f);
+};
+}
+function clearErr(name) { var all = Object.assign({}, s.err || {}); delete all[name]; return all; }
+/* shared prototype data: every board reads and writes the same records, so an action on one board shows on the others */
+var MEM = window.__ptdb || (window.__ptdb = {});
+function store(key, seed) { try { var v = localStorage.getItem('pt-db2:' + key); if (v != null) return JSON.parse(v); } catch (e) {} return key in MEM ? MEM[key] : seed; }
+function save(key, val) { MEM[key] = val; try { localStorage.setItem('pt-db2:' + key, JSON.stringify(val)); } catch (e) {} self.setState({ dbTick: Date.now() }); }
+function nowText() { var d = new Date(), mm = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']; var h = d.getHours(), ap = h >= 12 ? 'PM' : 'AM'; h = h % 12 || 12; return ('0' + d.getDate()).slice(-2) + ' ' + mm[d.getMonth()] + ' ' + d.getFullYear() + ', ' + ('0' + h).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2) + ' ' + ap; }
+function logEvent(action, module, entity) { var list = store('audit', []); list.unshift({ at: nowText(), actor: 'Vikram Mehta', action: action, module: module, entity: entity || '', app: 'Admin Console' }); save('audit', list.slice(0, 10)); }
+function resetData() { Object.keys(MEM).forEach(function (k) { delete MEM[k]; }); try { Object.keys(localStorage).forEach(function (k) { if (k.indexOf('pt-db2:') === 0) localStorage.removeItem(k); }); } catch (e) {} self.__toasts = []; self.setState({ dbTick: Date.now(), users: undefined }); }
+if (!self.__ls) { self.__ls = true; try { window.addEventListener('storage', function () { self.forceUpdate(); }); } catch (e) {} }
+var cRead = store('cnotes', null), wRead = store('wnotes', null);
+var bellC = cRead ? cRead.filter(function (x) { return !x; }).length : 1;
+var bellW = wRead ? wRead.filter(function (x) { return !x; }).length : 2;
+var FAIL = false;
+var PLACE = 'Portal';
+var LANG_SEED = [
+{ id: 1, name: 'English', native: 'English', short: 'EN', code: 'en', active: true, sPortal: true, sWebsite: true, sManage: true, dPortal: true, dWebsite: true, dManage: true },
+{ id: 2, name: 'Hindi', native: 'हिन्दी', short: 'हि', code: 'hi', active: true, sPortal: true, sWebsite: false, sManage: true, dPortal: false, dWebsite: false, dManage: false }];
+var TR_SEED = [['Dashboard', 'डैशबोर्ड'], ['Users', 'उपयोगकर्ता'], ['Roles', 'भूमिकाएँ'], ['Add User', 'उपयोगकर्ता जोड़ें'], ['Save', 'सहेजें'], ['Cancel', 'रद्द करें'], ['Export', 'निर्यात'], ['Reset', 'रीसेट'], ['Notifications', 'सूचनाएँ'], ['Background Jobs', '']]
+.map(function (x, i) { return { id: i + 1, en: x[0], t: { hi: x[1] }, active: true, updated: '30 Oct 2026' }; });
+var LANGS = store('langs', null) || LANG_SEED;
+var uiLang = store('uilang', null);
+function placeLangs(place) { return LANGS.filter(function (g) { return g.active !== false && g['s' + place]; }); }
+function placeCur(place) { var list = placeLangs(place); var on = list.filter(function (g) { return g.code === uiLang; })[0] || list.filter(function (g) { return g['d' + place]; })[0] || list[0] || { code: 'en' }; return on.code; }
+function langBtns(place, cls) {
+var cur = placeCur(place);
+return placeLangs(place).map(function (g) { var on = g.code === cur; return { short: g.short, name: g.name, code: g.code, on: on ? 'true' : 'false', cls: cls + (on ? ' is-on' : ''),
+pick: function () { save('uilang', g.code); } }; });
+}
+/* the published translations for the language this board is shown in; texts without one stay in English */
+var PUB_SEED = { at: '30 Oct 2026, 10:00 AM', map: { hi: {} } };
+TR_SEED.forEach(function (x) { if (x.t.hi) PUB_SEED.map.hi[x.en] = x.t.hi; });
+var PUB = store('trPub', null) || PUB_SEED, UICODE = placeCur(PLACE);
+self.__tr = (UICODE !== 'en' && PUB && PUB.map && PUB.map[UICODE]) || null;
+function toast(msg, kind) {
+var id = (self.__toastN = (self.__toastN || 0) + 1);
+var list = (self.__toasts || []).concat([{ id: id, msg: msg, err: kind === 'err' }]);
+self.__toasts = list; self.setState({ toastTick: id });
+setTimeout(function () { closeToast(id); }, 5000);
+}
+function closeToast(id) {
+self.__toasts = (self.__toasts || []).filter(function (t) { return t.id !== id; });
+self.setState({ toastTick: 'x' + id });
+}
+function download(name, text) {
+try { var blob = new Blob([text], { type: 'text/csv' }); var u = URL.createObjectURL(blob); var a = document.createElement('a'); a.href = u; a.download = name; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(u); a.remove(); }, 1000); } catch (e) {}
+}
+function exportTable(name) {
+var rows = [];
+var t = document.querySelector('.table-card table');
+if (!t) return;
+var head = Array.prototype.map.call(t.querySelectorAll('thead th'), function (c) { return c.innerText.trim(); });
+rows.push(head);
+Array.prototype.forEach.call(t.querySelectorAll('tbody tr'), function (r) { if (r.hidden || r.querySelector('.mt-empty')) return; rows.push(Array.prototype.map.call(r.children, function (c) { return c.innerText.trim(); })); });
+download(name, rows.map(function (r) { return r.map(function (x) { return '"' + String(x).replace(/"/g, '""') + '"'; }).join(','); }).join('\n'));
+}
+function dlgFail(msg) { self.setState({ dlgErr: msg }); }
+function fieldErr(form, errs) { var all = Object.assign({}, s.err || {}); all[form] = errs; self.setState({ err: all }); }
+function nav(board) {
+var a = document.querySelector('[data-go="' + board + '"]');
+if (a) a.click();
+}
+function pre(el) {
+if (el && el.getAttribute('data-pre') !== null && el.getAttribute('data-done') !== '1') {
+if (el.type === 'checkbox') el.checked = el.getAttribute('data-pre') === 'true'; else el.value = el.getAttribute('data-pre'); el.setAttribute('data-done', '1');
+}
+}
+function slots(list, n, keys) {
+var o = {}, k = keys || (list && list[0] ? Object.keys(list[0]) : []), blank = {};
+k.forEach(function (x) { blank[x] = ''; });
+for (var i = 0; i < (n || 30); i++) o['r' + i] = (list && list[i]) || blank;
+return o;
+}
+function off(list, n) { var o = {}; for (var i = 0; i < (n || 30); i++) o['r' + i] = i >= (list || []).length; return o; }
+function tableFilter(id, texts, sels) {
+var st = (s.tf || {})[id] || {}, q = (st.q || '').toLowerCase(), vals = st.v || {};
+function put(patch) { var all = Object.assign({}, s.tf || {}); all[id] = Object.assign({}, st, patch); self.setState({ tf: all }); }
+var offm = {}, n = 0;
+texts.forEach(function (t, i) {
+var ok = !q || t.indexOf(q) >= 0;
+sels.forEach(function (m, k) { var v = vals[k]; if (ok && v && m[v]) ok = t.indexOf(m[v].toLowerCase()) >= 0; });
+offm['r' + i] = !ok; if (ok) n++;
+});
+var F = { q: st.q || '', off: offm, total: n, any: n > 0, showing: n ? 'Showing 1–' + n + ' of ' + n : 'Showing 0 of 0',
+setQ: function (e) { put({ q: e.target.value }); }, reset: function () { put({ q: '', v: {} }); } };
+sels.forEach(function (m, k) { F['v' + k] = vals[k] || ''; F['s' + k] = function (e) { var nv = Object.assign({}, vals); nv[k] = e.target.value; put({ v: nv }); }; });
+return F;
+}
+var lib = { E: E, pre: pre, langC: langBtns('Manage', 'lang-btn'), langCm: langBtns('Manage', 'mdr-lb'), langW: langBtns('Portal', 'lang-btn'), bellC: bellC, bellW: bellW, bellCOn: bellC > 0, bellWOn: bellW > 0, ptReset: function () { resetData(); toast('Prototype data reset.'); },
+toasts: (self.__toasts || []).map(function (t) { return { msg: t.msg, cls: t.err ? 'toast is-error' : 'toast', close: function () { closeToast(t.id); } }; }),
+toastOn: (self.__toasts || []).length > 0,
+dlgErrOn: !!s.dlgErr, dlgErr: s.dlgErr || '',
+ptFailOn: FAIL, togglePtFail: function () { var nv = !FAIL; try { localStorage.setItem('pt-fail-v2', nv ? '1' : '0'); } catch (e) {} self.setState({ ptFail: nv }); } };
+
+var G = { ssg: ['ssl', 'flags', 'parks', 'reasons'], user: ['users', 'roles'], sys: ['templates', 'delivery', 'audit', 'syslogs', 'errors', 'jobs', 'langmaster', 'trans', 'docs'], notif: ['templates', 'delivery'], logs: ['audit', 'syslogs', 'errors'], lang: ['langmaster', 'trans'] };
+function inG(g) { return G[g].indexOf(CUR) >= 0; }
+function op(g) { return s['g_' + g] === undefined ? inG(g) : !!s['g_' + g]; }
+var lc = {}, ac = {};
+['dash', 'ssl', 'flags', 'parks', 'reasons', 'users', 'roles', 'templates', 'delivery', 'audit', 'syslogs', 'errors', 'jobs', 'langmaster', 'trans', 'docs'].forEach(function (k) {
+var on = k === CUR;
+lc[k] = k === 'dash' ? (on ? 'side-item is-active' : 'side-item') : (on ? 'side-link is-current' : 'side-link');
+ac[k] = on ? 'page' : undefined;
+});
+var grp = {};
+['ssg', 'user', 'sys', 'notif', 'logs', 'lang'].forEach(function (g) {
+var o = op(g);
+grp[g] = { open: o, exp: o ? 'true' : 'false', cls: (g === 'user' || g === 'sys' || g === 'ssg' ? 'side-item' : 'side-subbtn') + (inG(g) ? ' is-active' : '') + (o ? ' is-open' : ''),
+toggle: function () { var x = {}; x['g_' + g] = !o; self.setState(x); } };
+});
+var v = Object.assign(lib, {
+no: false, yes: true, lc: lc, ac: ac, grp: grp,
+B: { W1: L('W1-Shared-Safaris-list'), W2: L('W2-Safari-card'), W3: L('W3-Shared-Safari-view'), W4: L('W4-Who-joined'), W5: L('W5-Organise-a-Safari-Edit'), W6: L('W6-Change-status'), W7: L('W7-Delete-and-Leave'), W8: L('W8-Flag-a-comment'), W9: L('W9-My-Shared-Safaris'), C1: L('C1-Shared-Safaris-list'), C2: L('C2-Joined-Left-list'), C3: L('C3-Shared-Safari-detail'), C4: L('C4-Flagged-Comments'), C5: L('C5-Parks-list'), C6: L('C6-Park-detail'), C7: L('C7-Flag-Reasons') },
+W: { home: L('W1-Shared-Safaris-list'), signin: L('Web-Sign-In'), forgot: L('Web-Forgot-Password'), dash: L('W1-Shared-Safaris-list'), notes: L('Web-Notifications') },
+bellCls: 'btn-icon nt-bell',
+B: { W1: L('W1-Shared-Safaris-list'), W2: L('W2-Safari-card'), W3: L('W3-Shared-Safari-view'), W4: L('W4-Who-joined'), W5: L('W5-Organise-a-Safari-Edit'), W6: L('W6-Change-status'), W7: L('W7-Delete-and-Leave'), W8: L('W8-Flag-a-comment'), W9: L('W9-My-Shared-Safaris'), C1: L('C1-Shared-Safaris-list'), C2: L('C2-Joined-Left-list'), C3: L('C3-Shared-Safari-detail'), C4: L('C4-Flagged-Comments'), C5: L('C5-Parks-list'), C6: L('C6-Park-detail'), C7: L('C7-Flag-Reasons') },
+ssGuest: function () { (window.__ptdb || (window.__ptdb = {})).ssWho = 'guest'; try { localStorage.setItem('pt-db2:ssWho', JSON.stringify('guest')); } catch (e) {} },
+L: { dash: L('Admin-Dashboard'), users: L('Admin-Users-Roles-Users'), roles: L('Admin-Users-Roles-Roles'), templates: L('Admin-Notification-Templates'), delivery: L('Admin-Delivery-Log'), notes: L('Admin-Notifications'), audit: L('Admin-Audit-Log'), syslogs: L('Admin-System-Logs'), errors: L('Admin-Error-Logs'), jobs: L('Admin-Background-Jobs'), langmaster: L('Admin-Language-Master'), trans: L('Admin-Language-Translation'), docs: L('Admin-Tech-Documentation'), signin: L('Admin-Sign-In'), forgot: L('Admin-Forgot-Password') },
+navOpen: !!s.nav, navExp: s.nav ? 'true' : 'false', asideCls: s.nav ? 'sidebar is-open' : 'sidebar', toggleNav: function () { self.setState({ nav: !s.nav }); }, closeNav: function () { self.setState({ nav: false }); },
+bellOpen: !!s.bell, bellExp: s.bell ? 'true' : 'false', toggleBell: function () { self.setState({ bell: !s.bell, dd: false }); },
+ddOpen: !!s.dd, ddExp: s.dd ? 'true' : 'false', ddCls: s.dd ? 'user-menu is-open' : 'user-menu', toggleDd: function () { self.setState({ dd: !s.dd, bell: false }); },
+pwOpen: !!s.pw, openPw: function () { self.setState({ pw: true, dd: false, dlgErr: null, err: clearErr('pw') }); }, closePw: function () { self.setState({ pw: false, dlgErr: null, err: clearErr('pw') }); },
+submitPw: form('pw', function () { if (FAIL) { dlgFail('The password could not be updated. Please try again.'); return; } self.setState({ pw: false, dlgErr: null }); toast('Password updated.'); }),
+keep: function (e) { e.stopPropagation(); },
+bellI0: (cRead ? cRead[0] : false) ? 'ntp-i' : 'ntp-i is-unread',
+bellMarkAll: function () { if (FAIL) { toast('This could not be done. Please try again.', 'err'); return; } save('cnotes', [true, true, true]); toast('All notifications marked as read.'); },
+stop: function (e) { e.preventDefault(); },
+closeDlg: function () { self.setState({ dlg: null, err: null, dlgErr: null }); },
+saveClose: function (e) { e.preventDefault(); self.setState({ dlg: null, err: null }); }
+});
+var H = { form: form, toast: toast, nav: nav, clearErr: clearErr, fval: fval, slots: slots, off: off, tableFilter: tableFilter, fail: FAIL, dlgFail: dlgFail, fieldErr: fieldErr, langs: LANGS, trSeed: TR_SEED, pubSeed: PUB_SEED, langSeed: LANG_SEED, download: download, exportTable: exportTable, err: function (m) { toast(m, 'err'); }, store: store, save: save, log: logEvent, now: nowText };
+var p = this.pageVals(s, self, H) || {};
+(function ptAuto(o, depth) { Object.keys(o).forEach(function (k) { var x = o[k];
+if (Array.isArray(x)) { var sl = {}, off = {}, blank = { m: {}, acts: [] }; for (var i = 0; i < 30; i++) { sl['r' + i] = x[i] || x[x.length - 1] || blank; off['r' + i] = i >= x.length; } o[k + '__s'] = sl; o[k + '__off'] = off; }
+else if (typeof x === 'boolean') o[k + '__not'] = !x;
+else if (x && typeof x === 'object' && depth < 1 && Object.getPrototypeOf(x) === Object.prototype) ptAuto(x, depth + 1); }); })(p, 0);
+for (var k in p) v[k] = p[k];
+return v;
+}
+pageVals(s, self, H) {
+/* Shared Safari: sample data and the rules from the workflow, shared by every Shared Safari board */
+var TODAY = '2026-11-03';
+var MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+var MONTH_FULL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+var REGION = { 1: 'North India', 2: 'Central India', 3: 'West India', 4: 'East India', 5: 'South India', 6: 'North East India' };
+var PARKS = [["Achanakmar Tiger Reserve", "achanakmar-tiger-reserve", 2, "", 3500, 4500, 22.482019, 81.784562, "https://www.tigersofachanakmar.org/gypsy_booking"], ["Amrabad Tiger Reserve", "amrabad-tiger-reserve", 5, "", 6000, 7000, 16.267919, 78.721559, "https://amrabadtigerreserve.com/booking/"], ["Anamalai Tiger Reserve", "anamalai-tiger-reserve", 5, "", 3000, 5000, 10.4733618, 76.9541563, "https://www.atrpollachi.com/"], ["Bandhavgarh Tiger Reserve", "bandhavgarh-tiger-reserve", 2, "", 7000, 9000, 23.721942, 81.019378, "https://forest.mponline.gov.in/"], ["Bandipur Tiger Reserve", "bandipur-tiger-reserve", 5, "", 4000, 6000, 11.693962, 76.635841, "https://bandipurtigerreserve.org/"], ["Bhadra Tiger Reserve", "bhadra-tiger-reserve", 5, "", 4000, 5000, 13.676467, 75.662013, "https://karnatakatourism.org/tour-item/bhadra-wildlife-sanctuary-and-tiger-reserve/"], ["Bhitarkanika National Park", "bhitarkanika-national-park", 4, "", null, null, 20.7213839, 86.8684941, null], ["Bor Tiger Reserve", "bor-tiger-reserve", 3, "", 4000, 6000, 20.9563427, 78.6875904, "https://safaribooking.mahaforest.gov.in/"], ["Buxa Tiger Reserve", "buxa-tiger-reserve", 4, "", 3000, 5000, 26.6209081, 89.5306593, "https://www.wbtourism.gov.in/Wildlife/details?template_id=1&id=63e90cfa0e6185b3d60e9407"], ["Corbett Tiger Reserve", "corbett-tiger-reserve", 1, "", 7000, 8000, 29.5261, 79.099519, "https://corbettgov.org/"], ["Dudhwa Tiger Reserve", "dudhwa-tiger-reserve", 1, "", 4000, 5000, 28.465838, 80.619582, "https://upecotourism.in/CheckAvailability.aspx"], ["Gir National Park", "gir-national-park", 3, "", 4000, 5000, 21.16898, 70.5984588, "https://girlion.gujarat.gov.in/GirJungleTrailBooking.aspx"], ["Great Himalayan National Park", "great-himalayan-national-park", 1, "", null, null, 31.7987579, 77.5163223, "https://www.greathimalayannationalpark.org/"], ["Hemis National Park", "hemis-national-park", 1, "", null, null, 33.7586344, 77.3683476, null], ["Jawai Leopard Safari", "jawai-leopard-safari", 3, "", 4000, 6000, 25.0990146, 73.142545, null], ["Jhalana Leopard Reserve", "jhalana-leopard-conservation-reserve", 1, "", 5000, 6000, 26.855245, 75.833594, "https://aaranyak.forest.rajasthan.gov.in/MiddleWare/SubModuleFMDSS1?linkparam=YdgSMPLU6mrPPz6aVjWElAjRGk9WE1sdwTdQCGGBVRxaZOjYqEOdEQ=="], ["Kali Tiger Reserve", "kali-tiger-reserve", 5, "", 5000, 6000, 15.1607136, 74.6096285, "https://www.junglelodges.com/resort/kali-adventure-camp/"], ["Kangchenjunga National Park", "kangchenjunga-national-park", 6, "", null, null, 27.6844011, 88.3920526, "N/A"], ["Kanha Tiger Reserve", "kanha-tiger-reserve", 2, "", 7000, 9000, 22.154756, 80.672751, "https://forest.mponline.gov.in/"], ["Kawal Tiger Reserve", "kawal-tiger-reserve", 5, "", 3000, 4000, 19.1565428, 78.8762146, "https://telanganatourism.gov.in/partials/destinations/wildlife/mancherial/kawal-wildlife-sanctuary.html"], ["Kaziranga Tiger Reserve", "kaziranga-tiger-reserve", 6, "", 3500, 4500, 26.589364, 93.400903, "https://kazirangasafari.in/booking"], ["Kuno National Park", "kuno-national-park", 2, "", 5000, 7000, 25.7508083, 77.1131346, null], ["Manas Tiger Reserve", "manas-tiger-reserve", 6, "", 3500, 4500, 26.659314, 91.001075, "https://manasnptr.in/user/index"], ["Melghat Tiger Reserve", "melghat-tiger-reserve", 3, "", 4000, 6000, 21.405319, 77.147992, "https://www.magicalmelghat.in/"], ["Mudumalai Tiger Reserve", "mudumalai-tiger-reserve", 5, "", 2000, 3000, 11.581053, 76.582254, "https://www.mudumalaitigerreserve.com/"], ["Mukandra Hills Tiger Reserve", "mukandra-hills-tiger-reserve", 3, "", 4000, 6000, 24.9639969, 75.6723582, "https://aaranyak.forest.rajasthan.gov.in/"], ["Nagarhole Tiger Reserve", "nagarhole-tiger-reserve", 5, "", 700, 1000, 12.071545, 76.150717, "https://www.nagaraholetigerreserve.com/"], ["Nagarjunsagar-Srisailam Tiger Reserve", "nagarjunsagar-srisailam-tiger-reserve", 5, "", 3000, 8000, 15.9943513, 78.9118639, "https://nstr.co.in/"], ["Nanda Devi National Park", "nanda-devi-biosphere-reserve", 1, "", null, null, 30.710048, 79.7563491, "https://uttarakhandtourism.gov.in/destination/nanda-devi-national-park"], ["Nawegaon-Nagzira Tiger Reserve", "nawegaon-nagzira-tiger-reserve", 3, "", 4000, 6000, 21.2692986, 79.9578386, "https://nationalpark.mahaonline.gov.in/User/Availability.aspx"], ["Orang Tiger Reserve", "orang-tiger-reserve", 6, "", 2500, 3000, 26.5883714, 92.3081119, "https://orangnptr.in/"], ["Pakke Tiger Reserve", "pakke-tige-reserve", 6, "", 4000, 6000, 26.9387058, 92.9784419, null], ["Palamau Tiger Reserve", "palamau-tiger-reserve", 1, "", 1500, 2000, 23.6852083, 84.2358177, "https://www.palamautigerreserve.in/"], ["Panna Tiger Reserve", "panna-tiger-reserve", 2, "", 7000, 9000, 24.730568, 80.010289, "https://forest.mponline.gov.in/"], ["Parambikulam Tiger Reserve", "parambikulam-tiger-reserve", 5, "", 500, 1500, 10.443694, 76.813436, "https://www.parambikulam.org/"], ["Pench Tiger Reserve - Madhya Pradesh", "pench-tiger-reserve-madhya-pradesh", 2, "", 7000, 9000, 21.739045, 79.336976, "https://forest.mponline.gov.in/"], ["Pench Tiger Reserve - Maharastra", "pench-tiger-reserve-maharastra", 3, "", 7000, 9000, 21.577269, 79.28748, "https://safaribooking.mahaforest.gov.in/"], ["Peppara Wildlife Sanctuary", "peppara-wildlife-sanctuary", 5, "", null, null, 8.6233073, 77.1384951, "https://www.keralatourism.org/destination/peppara-wildlife-sanctuary-thiruvananthapuram/242"], ["Periyar Tiger Reserve", "periyar-tiger-reserve", 5, "", 6000, 8000, 9.6034726, 77.1671315, "https://www.periyartigerreserve.org/Login"], ["Pilibhit Tiger Reserve", "pilibhit-tiger-reserve", 1, "", 4000, 5000, 28.6893741, 80.079217, "https://pilibhittigerreserve.in/"], ["Pin Valley National Park", "pin-valley-national-park", 1, "", null, null, 31.9997213, 77.8834575, "https://hplahaulspiti.nic.in/pin-valley-national-park/"], ["Rajaji Tiger Reserve", "rajaji-tiger-reserve", 1, "", 4000, 6000, 29.9711056, 78.2114719, "https://rajajitigerreserve.uk.gov.in/"], ["Ramgarh Vishdhari Tiger Reserve", "ramgarh-vishdhari-tiger-reserve", 3, "", 4000, 6000, 25.4767143, 75.662604, "https://aaranyak.forest.rajasthan.gov.in/"], ["Ranthambore Tiger Reserve", "ranthambore-tiger-reserve", 3, "", 8000, 10000, 26.04751, 76.420062, "https://aaranyak.forest.rajasthan.gov.in/MiddleWare/SubModuleFMDSS1?linkparam=YdgSMPLU6mrPPz6aVjWElAjRGk9WE1sdwTdQCGGBVRxaZOjYqEOdEQ=="], ["Ripu-Chirang Reserve Forest", "chirang-reserve-forest", 3, "", null, null, 26.549285, 90.7065395, null], ["Sahyadri Tiger Reserve", "sahyadri-tiger-reserve", 3, "", 500, 1000, 17.3473931, 73.6731913, "https://www.sahyadritigers.org/index.php"], ["Sanjay-Dubri Tiger Reserve", "sanjay-dubri-tiger-reserve", 2, "", 4000, 5000, 24.0741811, 81.5712849, "https://forest.mponline.gov.in/"], ["Sariska Tiger Reserve", "sariska-tiger-reserve", 3, "", 8000, 9000, 27.3919541, 76.375266, "https://aaranyak.forest.rajasthan.gov.in/MiddleWare/SubModuleFMDSS1?linkparam=YdgSMPLU6mrPPz6aVjWElAjRGk9WE1sdwTdQCGGBVRxaZOjYqEOdEQ=="], ["Satpura Tiger Reserve", "satpura-tiger-reserve", 2, "", 7000, 9000, 22.576499, 78.14383, "https://forest.mponline.gov.in/"], ["Similipal Tiger Reserve", "similipal-tiger-reserve", 4, "", 6000, 8000, 21.9519833, 86.0708179, "https://www.similipal.org/"], ["Singalila National Park", "singalila-national-park", 6, "", 6000, 8000, 27.030732, 88.0591142, null], ["Sundarbans Tiger Reserve", "sundarbans-tiger-reserve", 4, "", 3000, 5000, 22.135241, 88.82047, "https://sundarbantigerreserve.org/"], ["Tadoba-Andhari Tiger Reserve", "tadoba-andhari-tiger-reserve", 3, "", 5000, 7000, 20.271717, 79.387742, "https://mytadoba.mahaforest.gov.in/wildlife-safaris"], ["Udanti-Sitanadi Tiger Reserve", "udanti-sitanadi-tiger-reserve", 2, "", 500, 1000, 20.123653, 82.3764148, "https://udantisitanaditigerreserve.in/"], ["Valmiki Tiger Reserve", "valmiki-tiger-reserve", 4, "", 2000, 3000, 27.433238, 83.921641, "https://valmikitigerreserve.com/?page_id=2397"]].map(function (p, i) { return { id: i + 1, name: p[0], slug: p[1], region: p[2], desc: p[3], min: p[4], max: p[5], lat: p[6], lng: p[7], web: p[8], status: 1 }; });
+var STAYS = ['Premium', 'Standard', 'Economical', 'Not Included', 'Forest Rest House', 'Home Stay'];
+var PURPOSES = ['Photography', 'Safari Experience'];
+var REASONS = ['Abusive or Illegal', 'Commercial or Spam', 'Dating / Sexually Explicit', 'Felt Unsafe', 'Shows My Private Information', 'Violates Guidelines', 'Off Topic', 'Other'];
+var PEOPLE = {
+ananya: { name: 'Ananya Iyer', ini: 'AI', email: 'ananya.iyer@example.test' },
+riya: { name: 'Riya Sharma', ini: 'RS', email: 'riya.sharma@example.test' },
+amit: { name: 'Amit Verma', ini: 'AV', email: 'amit.verma@example.test' },
+neha: { name: 'Neha Singh', ini: 'NS', email: 'neha.singh@example.test' },
+raj: { name: 'Raj Patel', ini: 'RP', email: 'raj.patel@example.test' },
+priya: { name: 'Priya Sharma', ini: 'PS', email: 'priya.sharma@example.test' },
+rahul: { name: 'Rahul Verma', ini: 'RV', email: 'rahul.verma@example.test' },
+kavya: { name: 'Kavya Reddy', ini: 'KR', email: 'kavya.reddy@example.test' },
+arjun: { name: 'Arjun Nair', ini: 'AN', email: 'arjun.nair@example.test' },
+sneha: { name: 'Sneha Kulkarni', ini: 'SK', email: 'sneha.kulkarni@example.test' },
+rohan: { name: 'Rohan Mehta', ini: 'RM', email: 'rohan.mehta@example.test' },
+sanjay: { name: 'Sanjay Gupta', ini: 'SG', email: 'sanjay.gupta@example.test' },
+meera: { name: 'Meera Joshi', ini: 'MJ', email: 'meera.joshi@example.test' },
+karan: { name: 'Karan Malhotra', ini: 'KM', email: 'karan.malhotra@example.test' }
+};
+function parkId(name) { for (var i = 0; i < PARKS.length; i++) if (PARKS[i].name === name) return PARKS[i].id; return 1; }
+function J(who, at) { return { who: who, at: at }; }
+function C(id, who, at, text, replies, flags) { return { id: id, who: who, at: at, text: text, replies: replies || [], flags: flags || [] }; }
+function F(reason, details, who, at) { return { reason: reason, details: details, who: who, at: at, open: true }; }
+var SEED = { v: 2, notes: [
+{ id: 1, to: 'riya', text: '{name} joined your safari {title}.', who: 'arjun', sid: 1, at: '03 Nov 2026 08:55', read: false },
+{ id: 2, to: 'riya', text: '{name} commented on your safari {title}.', who: 'raj', sid: 1, at: '02 Nov 2026 18:05', read: false },
+{ id: 3, to: 'riya', text: '{name} commented on your safari {title}.', who: 'amit', sid: 1, at: '02 Nov 2026 11:40', read: true },
+{ id: 4, to: 'ananya', text: '{name} joined your safari {title}.', who: 'meera', sid: 2, at: '02 Nov 2026 16:20', read: false }
+], safaris: [
+{ id: 1, slug: 'tigers-of-bandhavgarh', title: 'Tigers of Bandhavgarh', park: parkId('Bandhavgarh Tiger Reserve'), purpose: 'Photography', start: '2026-12-12', end: '2026-12-15', safaris: 4, seats: 5, share: 3, from: 8000, to: 12000, stay: 'Standard', host: 'riya', status: 'active', pinned: true, created: '2026-11-02 10:15', updated: '2026-11-03 09:40',
+plan: 'Day 1: arrive at Tala by noon, evening safari in Tala zone.\nDay 2: morning safari in Magadhi zone, afternoon at the fort viewpoint.\nDay 3: morning and evening safaris in Tala zone.\nDay 4: breakfast and drive back to Umaria station.\nCall me on 98101 23456 or write to riya.sharma@example.test before you book your train.',
+joined: [J('amit', '02 Nov 2026 10:42'), J('neha', '02 Nov 2026 11:05'), J('raj', '02 Nov 2026 12:30'), J('priya', '02 Nov 2026 15:12'), J('rahul', '02 Nov 2026 19:48'), J('kavya', '03 Nov 2026 07:30'), J('arjun', '03 Nov 2026 08:55')],
+left: [J('sneha', '02 Nov 2026 17:20'), J('rohan', '03 Nov 2026 09:10')],
+comments: [
+C(1, 'amit', '01 Nov 2026 10:50', 'Is the Tala zone booked already?', [C(11, 'riya', '02 Nov 2026 09:15', 'Yes, for the first two safaris.')]),
+C(2, 'neha', '02 Nov 2026 11:40', 'Which lens works best here? I have a 100–400 mm and a 200–600 mm.', [C(21, 'riya', '02 Nov 2026 13:05', 'The 200–600 mm is better for the Magadhi zone.')]),
+C(6, 'sneha', '02 Nov 2026 16:40', 'Is there a pickup from Umaria station?', [C(61, 'riya', '02 Nov 2026 17:00', 'Yes, at 10 am on day 1.')]),
+C(3, 'raj', '02 Nov 2026 18:05', 'Call me on 98201 45678, I can get you cheaper gypsy bookings for every zone.', [], [F('Commercial or Spam', 'He is selling bookings in the comments.', 'neha', '02 Nov 2026 18:30'), F('Commercial or Spam', 'Advertising his own service.', 'amit', '02 Nov 2026 19:02'), F('Other', 'Shares a phone number to take the talk off the page.', 'priya', '03 Nov 2026 08:10')])
+] },
+{ id: 2, slug: 'leopards-of-jhalana', title: 'Leopards of Jhalana', park: parkId('Jhalana Leopard Reserve'), purpose: 'Safari Experience', start: '2027-01-09', end: '2027-01-11', safaris: 3, seats: 6, share: 4, from: 5500, to: 7000, stay: 'Home Stay', host: 'ananya', status: 'active', pinned: false, created: '2026-11-01 18:30', updated: '2026-11-01 18:30',
+plan: 'Day 1: reach Jaipur by afternoon, evening safari in Jhalana.\nDay 2: morning safari, old city walk after lunch.\nDay 3: last morning safari, then home.',
+joined: [J('karan', '01 Nov 2026 20:10'), J('rohan', '02 Nov 2026 09:45'), J('meera', '02 Nov 2026 16:20')], left: [],
+comments: [C(4, 'karan', '01 Nov 2026 20:15', 'Can we add a sunset at Nahargarh on day 2?', [C(41, 'ananya', '01 Nov 2026 21:02', 'Good idea, I will add it to the plan.')])] },
+{ id: 3, slug: 'corbett-birding-trail', title: 'Corbett birding trail', park: parkId('Corbett Tiger Reserve'), purpose: 'Photography', start: '2026-12-26', end: '2026-12-29', safaris: 5, seats: 6, share: 5, from: 9000, to: 14000, stay: 'Premium', host: 'ananya', status: 'seatfull', pinned: false, created: '2026-10-28 12:05', updated: '2026-11-02 08:15',
+plan: 'Four days in Dhikala and Bijrani for birds and tigers.\nDay 1: drive from Delhi, evening safari in Bijrani.\nDays 2–3: Dhikala, morning and evening drives.\nDay 4: morning drive, back to Delhi.',
+joined: [J('amit', '28 Oct 2026 14:00'), J('priya', '29 Oct 2026 09:30'), J('arjun', '29 Oct 2026 18:15'), J('kavya', '30 Oct 2026 10:05'), J('sanjay', '31 Oct 2026 12:40'), J('meera', '01 Nov 2026 07:55')], left: [], comments: [] },
+{ id: 4, slug: 'tadoba-weekend', title: 'Tadoba weekend', park: parkId('Tadoba-Andhari Tiger Reserve'), purpose: 'Safari Experience', start: '2027-02-13', end: '2027-02-15', safaris: 3, seats: 4, share: 2, from: 6000, to: 8000, stay: 'Economical', host: 'ananya', status: 'inactive', pinned: false, created: '2026-10-20 09:00', updated: '2026-10-30 17:45',
+plan: 'A short weekend in the Moharli zone: Friday night train from Nagpur, three safaris, back on Sunday night.',
+joined: [J('rohan', '21 Oct 2026 11:20')], left: [], comments: [] },
+{ id: 5, slug: 'kanha-in-the-rains', title: 'Kanha in the rains', park: parkId('Kanha Tiger Reserve'), purpose: 'Photography', start: '2026-08-02', end: '2026-08-04', safaris: 2, seats: 4, share: 2, from: 7000, to: 9500, stay: 'Forest Rest House', host: 'ananya', status: 'active', pinned: false, created: '2026-07-05 16:40', updated: '2026-07-20 10:10',
+plan: 'Two monsoon drives in the buffer zone, a night at the forest rest house in Mukki.',
+joined: [J('neha', '06 Jul 2026 10:00'), J('raj', '08 Jul 2026 13:25'), J('kavya', '12 Jul 2026 19:40')], left: [],
+comments: [C(5, 'neha', '07 Jul 2026 09:30', 'Are the buffer zones open in August?', [C(51, 'ananya', '07 Jul 2026 12:00', 'Yes, Khapa and Sijhora stay open in the rains.')])] },
+{ id: 6, slug: 'gir-lions-in-winter', title: 'Gir lions in winter', park: parkId('Gir National Park'), purpose: 'Safari Experience', start: '2026-11-01', end: '2026-11-04', safaris: 3, seats: 6, share: 4, from: 4500, to: 6000, stay: 'Standard', host: 'amit', status: 'active', pinned: false, created: '2026-10-30 11:20', updated: '2026-10-30 11:20',
+plan: 'Three jungle trails in Gir for the Asiatic lions, with a stay at Sasan Gir.\nDay 1: reach Sasan by afternoon.\nDay 2: morning and afternoon trails.\nDay 3: morning trail, then Junagadh.',
+joined: [J('ananya', '31 Oct 2026 09:10'), J('rahul', '31 Oct 2026 12:00')], left: [], comments: [C(7, 'ananya', '01 Nov 2026 09:00', 'Which zone is best for lions in the morning?', [C(71, 'amit', '01 Nov 2026 10:15', 'Zone 1 near Sasan, start at 6:30.')])] },
+{ id: 7, slug: 'pench-by-jeep', title: 'Pench by jeep', park: parkId('Pench Tiger Reserve - Madhya Pradesh'), purpose: 'Photography', start: '2027-01-23', end: '2027-01-26', safaris: 4, seats: 5, share: 3, from: 7500, to: 10000, stay: 'Premium', host: 'neha', status: 'active', pinned: false, created: '2026-10-29 15:35', updated: '2026-10-31 10:00',
+plan: 'Four drives in Turia and Karmajhiri gates, looking for the Pench wild dogs.',
+joined: [J('ananya', '30 Oct 2026 08:20'), J('sanjay', '30 Oct 2026 13:00'), J('karan', '01 Nov 2026 18:45'), J('meera', '02 Nov 2026 10:30')], left: [J('arjun', '31 Oct 2026 22:05')], comments: [] },
+{ id: 8, slug: 'ranthambore-tiger-trail', title: 'Ranthambore tiger trail', park: parkId('Ranthambore Tiger Reserve'), purpose: 'Photography', start: '2026-11-02', end: '2026-11-05', safaris: 4, seats: 6, share: 4, from: 10000, to: 15000, stay: 'Premium', host: 'rahul', status: 'seatfull', pinned: false, created: '2026-10-15 10:05', updated: '2026-10-27 18:30',
+plan: 'Canter-free trip: four gypsy safaris in zones 2, 3 and 4, with a stay near the Ranthambore Road.',
+joined: [J('priya', '15 Oct 2026 12:00'), J('amit', '16 Oct 2026 09:00'), J('kavya', '18 Oct 2026 21:10'), J('raj', '20 Oct 2026 11:45'), J('neha', '22 Oct 2026 14:30')], left: [], comments: [] },
+{ id: 9, slug: 'kaziranga-rhinos-and-birds', title: 'Kaziranga rhinos and birds', park: parkId('Kaziranga Tiger Reserve'), purpose: 'Safari Experience', start: '2027-03-06', end: '2027-03-09', safaris: 4, seats: 6, share: 5, from: 6500, to: 9000, stay: 'Home Stay', host: 'kavya', status: 'active', pinned: false, created: '2026-11-02 20:10', updated: '2026-11-02 20:10',
+plan: 'Jeep safaris in the Central and Western ranges, an elephant-back morning in Bagori, and birds at Panbari.',
+joined: [J('rahul', '03 Nov 2026 07:05')], left: [], comments: [] },
+{ id: 10, slug: 'periyar-in-june', title: 'Periyar in June', park: parkId('Periyar Tiger Reserve'), purpose: 'Safari Experience', start: '2027-06-12', end: '2027-06-14', safaris: 2, seats: 4, share: 3, from: 3000, to: 4500, stay: 'Not Included', host: 'arjun', status: 'active', pinned: false, created: '2026-10-25 08:30', updated: '2026-10-25 08:30',
+plan: 'A boat safari on Periyar Lake and a bamboo rafting day, with time for the spice gardens of Thekkady.',
+joined: [], left: [], comments: [] },
+{ id: 11, slug: 'sundarbans-by-boat', title: 'Sundarbans by boat', park: parkId('Sundarbans Tiger Reserve'), purpose: 'Photography', start: '2027-02-20', end: '2027-02-23', safaris: 3, seats: 6, share: 4, from: 5000, to: 7500, stay: 'Economical', host: 'priya', status: 'active', pinned: false, created: '2026-10-31 13:50', updated: '2026-11-01 09:15',
+plan: 'Three days on a boat through the creeks from Godkhali, with nights at a village home stay.',
+joined: [J('neha', '31 Oct 2026 16:00'), J('arjun', '01 Nov 2026 11:30')], left: [], comments: [] },
+{ id: 12, slug: 'satpura-on-foot', title: 'Satpura on foot', park: parkId('Satpura Tiger Reserve'), purpose: 'Safari Experience', start: '2026-11-28', end: '2026-11-30', safaris: 3, seats: 4, share: 2, from: 4000, to: 5000, stay: 'Forest Rest House', host: 'raj', status: 'deladmin', delReason: 'Commercial or Spam', delDetails: 'The plan sells tour packages with a booking link.', pinned: false, created: '2026-10-26 17:00', updated: '2026-10-28 10:20',
+plan: 'Walking safaris and a canoe ride at Madhai. Book the full package at my travel agency for the best price.',
+joined: [J('karan', '27 Oct 2026 09:00')], left: [], comments: [] },
+{ id: 13, slug: 'nagarhole-elephant-days', title: 'Nagarhole elephant days', park: parkId('Nagarhole Tiger Reserve'), purpose: 'Safari Experience', start: '2026-12-05', end: '2026-12-07', safaris: 2, seats: 3, share: 2, from: 2000, to: 3500, stay: 'Standard', host: 'sanjay', status: 'active', pinned: false, created: '2026-10-22 19:25', updated: '2026-10-22 19:25',
+plan: 'Two drives from Kabini for elephants by the backwaters, and a coracle ride.',
+joined: [J('priya', '23 Oct 2026 08:40')], left: [], comments: [] },
+{ id: 14, slug: 'dudhwa-swamp-deer', title: 'Dudhwa swamp deer', park: parkId('Dudhwa Tiger Reserve'), purpose: 'Photography', start: '2027-01-16', end: '2027-01-18', safaris: 3, seats: 5, share: 3, from: 5000, to: 6500, stay: 'Forest Rest House', host: 'karan', status: 'delhost', pinned: true, created: '2026-10-20 09:30', updated: '2026-11-01 19:20', deletedAt: '01 Nov 2026 19:20',
+plan: 'Three drives in the Sonaripur grasslands for swamp deer and the Dudhwa tigers.',
+joined: [J('meera', '22 Oct 2026 10:00')], left: [J('rohan', '25 Oct 2026 18:30')], comments: [C(8, 'meera', '22 Oct 2026 10:05', 'Is the Sonaripur range open in January?', [])] }
+] };
+
+var DB = H.store('ss', null); if (!DB || DB.v !== SEED.v) DB = SEED;
+function putDB(next) { H.save('ss', next); }
+(DB.parkAdds || []).forEach(function (p) { if (!PARKS.some(function (q) { return q.id === p.id; })) PARKS.push(Object.assign({}, p)); });
+Object.keys(DB.parkEdits || {}).forEach(function (k) { var p = PARKS.filter(function (q) { return q.id === +k; })[0]; if (p) Object.assign(p, DB.parkEdits[k]); });
+function edit(fn) { var next = JSON.parse(JSON.stringify(DB)); fn(next); putDB(next); return next; }
+function reasonsAll() { return DB.reasons || REASONS.map(function (r, i) { return { id: i + 1, name: r, status: 1 }; }); }
+function reasonsActive() { return reasonsAll().filter(function (r) { return r.status !== 0; }).map(function (r) { return r.name; }); }
+function byId(id, db) { return ((db || DB).safaris.filter(function (x) { return x.id === id; })[0]) || null; }
+function park(id) { return PARKS[id - 1] || PARKS[0]; }
+Object.assign(PEOPLE, H.store('ssUsers', {}));
+function person(k) { return PEOPLE[k] || { name: k, ini: String(k).slice(0, 2).toUpperCase(), email: '' }; }
+function rupees(n) { if (n == null || n === '') return ''; var s = String(Math.round(n)), last = s.slice(-3), rest = s.slice(0, -3); if (rest) last = ',' + last; return '₹' + rest.replace(/\B(?=(\d{2})+(?!\d))/g, ',') + last; }
+function priceRange(a, b) { return rupees(a) + ' – ' + rupees(b); }
+function d(iso) { var p = iso.split('-'); return { y: +p[0], m: +p[1] - 1, d: +p[2] }; }
+function dd(n) { return ('0' + n).slice(-2); }
+function dateLong(iso) { var x = d(iso); return x.d + ' ' + MON[x.m] + ' ' + x.y; }
+function range(a, b) { var x = d(a), y = d(b); return x.d + ' ' + MON[x.m] + (x.y !== y.y ? ' ' + x.y : '') + ' – ' + y.d + ' ' + MON[y.m] + ' ' + y.y; }
+function rangeShort(a, b) { var x = d(a), y = d(b); if (x.m === y.m && x.y === y.y) return x.d + '–' + y.d + ' ' + MON[x.m] + ' ' + x.y; return x.d + ' ' + MON[x.m] + ' – ' + y.d + ' ' + MON[y.m] + ' ' + y.y; }
+function rangeConsole(a, b) { var x = d(a), y = d(b); if (x.m === y.m) return x.d + '–' + y.d + ' ' + MON[x.m]; return x.d + ' ' + MON[x.m] + ' – ' + y.d + ' ' + MON[y.m]; }
+function stamp(iso) { var p = iso.split(' '), x = d(p[0]); return dd(x.d) + ' ' + MON[x.m] + ' ' + x.y + ' ' + p[1]; }
+function started(sf) { return sf.start < TODAY; }
+/* prototype switch: accounts that are deactivated (Console › Users) */
+var DEACT = H.store('ssDeact', []);
+function userActive(k) { return DEACT.indexOf(k) < 0; }
+function hostActive(sf) { return userActive(sf.host); }
+function ended(sf) { return sf.end < TODAY; }
+/* the public list: Active and Seat full, started or not, until the end date has passed */
+function isPublic(sf) { return (sf.status === 'active' || sf.status === 'seatfull') && !ended(sf) && hostActive(sf); }
+/* a park's upcoming safaris: Active and Seat full starting today or later */
+function isUpcoming(sf) { return (sf.status === 'active' || sf.status === 'seatfull') && sf.start >= TODAY; }
+/* what the website shows of a safari: current members and comments of active accounts; a comment deleted by its writer takes its replies with it */
+function viewSafari(sf) { if (!sf) return sf; var x = Object.assign({}, sf);
+x.joined = (sf.joined || []).filter(function (j) { return userActive(j.who); });
+x.comments = (sf.comments || []).filter(function (c) { return !c.deleted && userActive(c.who); }).map(function (c) { return Object.assign({}, c, { replies: (c.replies || []).filter(function (r) { return !r.deleted && userActive(r.who); }) }); });
+return x; }
+var STATUS = { active: ['Active', 'badge badge-success'], seatfull: ['Seat full', 'badge badge-warning'], inactive: ['Inactive', 'badge badge-neutral'], deladmin: ['Deleted by admin', 'badge badge-danger'], delhost: ['Deleted by host', 'badge badge-neutral'], over: ['Over', 'badge badge-neutral'] };
+function statusOf(sf, withOver) { var k = withOver && started(sf) && sf.status !== 'deladmin' && sf.status !== 'delhost' ? 'over' : sf.status; return { key: k, text: STATUS[k][0], cls: STATUS[k][1] }; }
+function words(t) { t = String(t || '').trim(); return t ? t.split(/\s+/).length : 0; }
+function mask(t) { return String(t || '').replace(/[\w.+-]+@[\w-]+(\.[\w-]+)+/g, '••••').replace(/(\+?\d[\d\s-]{6,}\d)/g, '••••'); }
+function seatsText(sf) { return sf.share + ' of ' + sf.seats + ' seats shared'; }
+function joinedNow(sf) { return sf.joined || []; }
+function countComments(sf) { return (sf.comments || []).reduce(function (n, c) { return n + 1 + (c.replies || []).length; }, 0); }
+function openFlags(c) { return (c.flags || []).filter(function (f) { return f.open && userActive(f.who); }); }
+function ago(at) {
+var p = at.split(' '), x = d(p[0].split(' ')[0].length === 10 ? p[0] : '2026-01-01');
+return at;
+}
+function agoText(at) {
+var parts = at.split(' '), day = +parts[0], mon = MON.indexOf(parts[1]), yr = +parts[2];
+var t = d(TODAY), a = Date.UTC(yr, mon, day), b = Date.UTC(t.y, t.m, t.d), n = Math.round((b - a) / 86400000);
+if (n <= 0) return 'Today'; if (n === 1) return '1 day ago'; if (n < 30) return n + ' days ago'; return parts[0] + ' ' + parts[1] + ' ' + parts[2];
+}
+function nowStamp() { var x = new Date(), h = x.getHours(); return dd(x.getDate()) + ' ' + MON[x.getMonth()] + ' ' + x.getFullYear() + ' ' + dd(h) + ':' + dd(x.getMinutes()); }
+function nowIso() { var x = new Date(); return x.getFullYear() + '-' + dd(x.getMonth() + 1) + '-' + dd(x.getDate()) + ' ' + dd(x.getHours()) + ':' + dd(x.getMinutes()); }
+function notify(db, to, who, sid, kind) { var id = db.notes.reduce(function (m, x) { return Math.max(m, x.id); }, 0) + 1; db.notes.unshift({ id: id, to: to, who: who, sid: sid, at: nowStamp(), read: false, text: kind === 'join' ? '{name} joined your safari {title}.' : '{name} commented on your safari {title}.' }); }
+
+/* who is looking: a prototype switch, kept for every Shared Safari board */
+var WHO = H.store('ssWho', 'ananya');
+function setWho(k) { H.save('ssWho', k); }
+function flash(msg) { H.save('ssFlash', msg); }
+function takeFlash() { var m = H.store('ssFlash', ''); if (m && !self.__flashDone) { self.__flashDone = true; setTimeout(function () { H.save('ssFlash', ''); H.toast(m); }, 80); } }
+
+var COVERS = ['img/325596d106f2a3c91ac5c3c0a6958337.jpg', 'img/42dea6ed15cf843dfb4e8257177cc768.jpg', 'img/276ef803d0e1df4aa991107c879a7a5d.jpg'];
+var DEFAULT_COVER = 'img/6088aebc0b8d6d903e894f9dd49bf8a6.jpg';
+function coverOf(sf) { return sf.cover || (sf.id <= 13 ? COVERS[(sf.id - 1) % 3] : DEFAULT_COVER); }
+function cardOf(sf) {
+sf = viewSafari(sf);
+var p = park(sf.park), h = person(sf.host), st = statusOf(sf, false);
+return { id: sf.id, title: sf.title, park: p.name, dates: range(sf.start, sf.end), trips: sf.safaris + (sf.safaris === 1 ? ' safari' : ' safaris') + ' · ' + sf.purpose,
+price: priceRange(sf.from, sf.to) + ' per person', seats: seatsText(sf) + ' · ' + joinedNow(sf).length + ' joined', host: 'Hosted by ' + h.name, hostIni: h.ini, full: sf.status === 'seatfull',
+cover: coverOf(sf), hasCover: true, noCover: false,
+mon: MON[d(sf.start).m], day: d(sf.start).d, hostName: h.name, seatsShort: sf.share + ' of ' + sf.seats, safarisN: sf.safaris,
+facts: range(sf.start, sf.end) + ' · ' + sf.purpose, priceLine: priceRange(sf.from, sf.to) + ' per person',
+faces: (sf.joined || []).slice(0, 3).map(function (j) { return { ini: person(j.who).ini, name: person(j.who).name }; }), moreOn: (sf.joined || []).length > 3, more: '+' + Math.max(0, (sf.joined || []).length - 3),
+joinedText: (sf.joined || []).length + ' joined' };
+}
+function bellItems(who) {
+return DB.notes.filter(function (n) { return n.to === who; }).map(function (n) {
+var sf = byId(n.sid), nm = person(n.who).name;
+return { pre: '', name: nm, mid: n.text.indexOf('joined') >= 0 ? ' joined your safari ' : ' commented on your safari ', title: sf ? sf.title : '', post: '.', ini: person(n.who).ini, at: n.at, cls: n.read ? 'ntp-i' : 'ntp-i is-unread', sid: n.sid };
+});
+}
+var ACT_KEY = { 'Make inactive': 'status', 'Make active': 'status', 'View': 'view', 'Edit': 'edit', 'Change status': 'status', 'Delete': 'del', 'Leave': 'leave', 'Pin': 'pin', 'Unpin': 'unpin', 'View flags': 'flags', 'Ignore': 'ignore' };
+function iconActs(list) { return list.map(function (a) { var k = ACT_KEY[a.t] || 'view', o = Object.assign({}, a, { icls: k === 'del' ? 'is-danger' : '' }); o['i_' + k] = true; return o; }); }
+
+
+var STEMS = {"W1": "W1-Shared-Safaris-list", "W2": "W2-Safari-card", "W3": "W3-Shared-Safari-view", "W4": "W4-Who-joined", "W5": "W5-Organise-a-Safari-Edit", "W6": "W6-Change-status", "W7": "W7-Delete-and-Leave", "W8": "W8-Flag-a-comment", "W9": "W9-My-Shared-Safaris", "C1": "C1-Shared-Safaris-list", "C2": "C2-Joined-Left-list", "C3": "C3-Shared-Safari-detail", "C4": "C4-Flagged-Comments", "C5": "C5-Parks-list", "C6": "C6-Park-detail", "C7": "C7-Flag-Reasons"}, MB = '';
+function link(k) { return STEMS[k] + MB + '.html'; }
+function go(k) { H.nav(STEMS[k]); }
+var who = ('riya') || WHO;
+if (false && who === 'guest') who = 'ananya';
+var guest = who === 'guest', me = guest ? { name: '', ini: '', email: '', first: '' } : Object.assign({ first: person(who).name.charAt(0) }, person(who));
+var bl = guest ? [] : bellItems(who);
+var unreadN = bl.filter(function (x) { return x.cls !== 'ntp-i'; }).length;
+function errMap(name, keys) { var e = (s.ferr || {})[name] || {}, o = {}; keys.forEach(function (k) { o[k] = { on: !!e[k], msg: e[k] || '', fcls: 'field' + (e[k] ? ' is-invalid' : ''), inv: e[k] ? 'true' : undefined }; }); return o; }
+function setErr(name, e, extra) { var all = Object.assign({}, s.ferr || {}); if (e) all[name] = e; else delete all[name]; self.setState(Object.assign({ ferr: all }, extra || {})); }
+var PV = {
+me: me, signedIn: !guest, guest: guest, whoVal: who,
+deactVal: DEACT[0] || '', setDeactPt: function (e) { H.save('ssDeact', e.target.value ? [e.target.value] : []); },
+setWhoPt: function (e) { setWho(e.target.value); self.setState({ dd: false, bell: false, dlg: null, menu: null }); },
+logout: function () { (window.__ptdb || (window.__ptdb = {})).ssWho = 'guest'; try { localStorage.setItem('pt-db2:ssWho', JSON.stringify('guest')); } catch (e) {} },
+upOn: (function () { if (!self.__upL) { self.__upL = true; setTimeout(function () { var el = document.querySelector('.pt-screen'); if (el) el.addEventListener('scroll', function () { var on = el.scrollTop > 300; if (on !== !!(self.state || {}).upOn) self.setState({ upOn: on }); }); }, 0); } return !!s.upOn; })(),
+toTop: function () { var el = document.querySelector('.pt-screen'); if (el) el.scrollTo({ top: 0, behavior: 'smooth' }); },
+bellList: bl.map(function (n) { return Object.assign({}, n, { href: link('W3'), open: function () { H.save('ssCur', n.sid); } }); }),
+bellN: unreadN, bellNOn: unreadN > 0,
+bellMarkAllSS: function () { edit(function (db) { db.notes.forEach(function (n) { if (n.to === who) n.read = true; }); }); H.toast('All notifications marked as read.'); }
+};
+takeFlash();
+
+var ORGI = s.org === undefined ? null : s.org;
+if (ORGI && ORGI.mode === 'editMine') { var mine0 = DB.safaris.filter(function (x) { return x.host === who && (x.status === 'active' || x.status === 'seatfull' || x.status === 'inactive') && !started(x); })[0]; ORGI = mine0 ? { mode: 'edit', id: mine0.id, step: 1 } : { mode: 'new', step: 1 }; }
+if (guest) ORGI = null;
+var oesf = ORGI && ORGI.mode === 'edit' ? byId(ORGI.id) : null;
+if (oesf && oesf.host !== who) oesf = null;
+var omode = oesf ? 'edit' : 'new', ostep = ORGI ? (ORGI.step || 1) : 1;
+var okey = (oesf ? 'e' + oesf.id : 'new') + ':' + who;
+var oblank = { park: '', title: '', purpose: '', start: '', end: '', safaris: '1', seats: '', share: '', pfrom: '', pto: '', stay: '', plan: '', cover: '' };
+var oinit = oesf ? { park: String(oesf.park), title: oesf.title, purpose: oesf.purpose, start: oesf.start, end: oesf.end, safaris: String(oesf.safaris), seats: String(oesf.seats), share: String(oesf.share), pfrom: String(oesf.from), pto: String(oesf.to), stay: oesf.stay || '', plan: oesf.plan, cover: oesf.cover || '' } : oblank;
+var fv = (s.formKey === okey && s.fv) ? s.fv : oinit;
+function setV(patch) { self.setState({ formKey: okey, fv: Object.assign({}, fv, patch) }); }
+var ofs = {}; Object.keys(oblank).forEach(function (k) { ofs[k] = function (e) { var p = {}; p[k] = e.target.value; setV(p); }; });
+var ot = d(TODAY), minDate = TODAY, maxDate = (ot.y + 1) + '-' + dd(ot.m + 1) + '-' + dd(ot.d);
+var parkQ = s.parkQ || '';
+var oparks = PARKS.filter(function (p) { return p.status === 1; }).slice().sort(function (a, b) { return a.name < b.name ? -1 : 1; }).filter(function (p) { return !parkQ || p.name.toLowerCase().indexOf(parkQ.toLowerCase()) >= 0; });
+function intOf(x) { x = String(x || '').replace(/,/g, '').trim(); return /^\d+$/.test(x) ? parseInt(x, 10) : NaN; }
+function ovalidate() {
+var e = {}, v = fv;
+if (!String(v.title).trim()) e.title = 'Enter a title.'; else if (v.title.length > 255) e.title = 'Use up to 255 characters.';
+if (!v.park) e.park = 'Select a park.'; else if (park(+v.park).status === 0) e.park = 'This park is no longer active. Select an active park.';
+if (!v.start) e.start = 'Enter a start date.'; else if ((omode !== 'edit' || v.start !== oesf.start) && (v.start < minDate || v.start > maxDate)) e.start = 'Choose a start date from today up to one year ahead.';
+if (!v.end) e.end = 'Enter an end date.'; else if (v.start && v.end <= v.start) e.end = 'End date must be after the start date.';
+var n = intOf(v.safaris); if (v.safaris === '') e.safaris = 'Enter the number of safaris.'; else if (isNaN(n) || n < 1 || n > 10) e.safaris = 'Enter a number from 1 to 10.';
+if (!v.purpose) e.purpose = 'Select a theme.';
+var ts = intOf(v.seats), sh = intOf(v.share);
+if (v.seats === '') e.seats = 'Enter the total seats.'; else if (isNaN(ts) || ts < 2 || ts > 6) e.seats = 'Enter a number up to 6.';
+if (v.share === '') e.share = 'Enter the seats to share.'; else if (isNaN(sh) || sh < 1) e.share = 'Enter at least 1 seat.'; else if (!isNaN(ts) && sh >= ts) e.share = 'Seats to share must be fewer than the total seats.';
+var a = intOf(v.pfrom), b = intOf(v.pto);
+if (v.pfrom === '' || v.pto === '') e.price = 'Enter the price per person, from and to.';
+else if (isNaN(a) || isNaN(b) || a > 1000000 || b > 1000000) e.price = 'Enter whole rupees, up to ₹10,00,000.';
+else if (b < a) e.price = 'The “to” price can\'t be less than the “from” price.';
+if (!String(v.plan).trim()) e.plan = 'Enter a safari plan.'; else if (words(v.plan) >= 1000) e.plan = 'Please provide content within 1000 words.';
+return e;
+}
+var OSTEP = { 1: ['title', 'park', 'start', 'end', 'safaris'], 2: ['purpose', 'seats', 'share', 'price', 'stay'], 3: ['cover', 'plan'] };
+function stepOf(e) { for (var i = 1; i <= 3; i++) if (OSTEP[i].some(function (k) { return e[k]; })) return i; return 0; }
+function openOrg(mode, id) { if (guest) { H.nav('Web-Sign-In'); return; } self.setState({ org: { mode: mode, id: id, step: 1 }, ferr: {}, formKey: null, fv: null, parks: false, fileName: '', dd: false, menu: null, dlg: null }); }
+var ORGV = {
+orgOpen: !!ORGI, orgTitle: omode === 'edit' ? 'Edit your safari' : 'Organize a Shared Safari', orgSubmitText: omode === 'edit' ? 'Save changes' : 'Create',
+st1: ostep === 1, st2: ostep === 2, st3: ostep === 3, stBack: ostep > 1, stNext: ostep < 3, stepLabel: 'Step ' + ostep + ' of 3',
+dots: [1, 2, 3].map(function (i) { return { cls: i === ostep ? 'wb-dot is-on' : 'wb-dot' }; }),
+fv: fv, ofs: ofs, minDate: minDate, maxDate: maxDate, planWords: words(fv.plan) + ' words',
+OE: errMap('org', ['park', 'title', 'purpose', 'start', 'end', 'safaris', 'seats', 'share', 'price', 'stay', 'plan', 'cover']),
+parkLabel: fv.park ? park(+fv.park).name : 'Select a Safari Park', parkCls: fv.park ? '' : 'is-empty',
+parksOpen: !!s.parks, parkExp: s.parks ? 'true' : 'false', toggleParks: function () { var opening = !s.parks; self.setState({ parks: opening, parkQ: '' }); if (opening) setTimeout(function () { var el = document.querySelector('.wb-mb .ss-pop'); if (el && el.scrollIntoView) el.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); var q = el && el.querySelector('input'); if (q) q.focus({ preventScroll: true }); }, 30); },
+parkQ: parkQ, setParkQ: function (e) { self.setState({ parkQ: e.target.value }); },
+parkOpts: oparks.map(function (p) { var on = String(p.id) === String(fv.park); return { t: p.name, sel: on ? 'true' : 'false', cls: on ? 'ss-opt is-active' : 'ss-opt', pick: function () { self.setState({ parks: false, formKey: okey, fv: Object.assign({}, fv, { park: String(p.id) }) }); } }; }),
+parkNone: oparks.length === 0,
+purposeOpts: PURPOSES.map(function (p) { return { t: p, on: fv.purpose === p, pick: function () { setV({ purpose: p }); } }; }),
+coverSrc: fv.cover || (oesf ? coverOf(oesf) : DEFAULT_COVER), fileName: s.fileName || 'No file chosen',
+pickCover: function (e) {
+var file = e.target.files && e.target.files[0]; if (!file) return;
+if (!/^image\/(png|jpeg)$/.test(file.type) || !/\.(png|jpe?g)$/i.test(file.name)) { setErr('org', Object.assign({}, (s.ferr || {}).org || {}, { cover: 'Use a PNG, JPG or JPEG image.' })); return; }
+if (file.size > 5 * 1024 * 1024) { setErr('org', Object.assign({}, (s.ferr || {}).org || {}, { cover: 'Use an image up to 5 MB.' })); return; }
+var ce = Object.assign({}, (s.ferr || {}).org || {}); delete ce.cover; setErr('org', ce);
+var rd = new FileReader(); rd.onload = function () { var cur = self.state.formKey === okey && self.state.fv ? self.state.fv : fv; self.setState({ formKey: okey, fv: Object.assign({}, cur, { cover: rd.result }), fileName: file.name }); }; rd.readAsDataURL(file);
+},
+orgClose: function () { self.setState({ org: null, ferr: {}, parks: false }); },
+orgBack: function () { self.setState({ org: Object.assign({}, ORGI, { step: ostep - 1 }), ferr: {}, parks: false }); },
+orgNext: function () { var e = ovalidate(), o = {}; OSTEP[ostep].forEach(function (k) { if (e[k]) o[k] = e[k]; }); if (Object.keys(o).length) { setErr('org', o); return; } setErr('org', null, { org: Object.assign({}, ORGI, { step: ostep + 1 }), parks: false, formKey: okey, fv: fv }); },
+orgSubmit: function () {
+var e = ovalidate(); if (Object.keys(e).length) { var st = stepOf(e), o = {}; OSTEP[st].forEach(function (k) { if (e[k]) o[k] = e[k]; }); setErr('org', o, { org: Object.assign({}, ORGI, { step: st }) }); return; }
+var v = fv, rec = { park: +v.park, title: v.title.trim(), purpose: v.purpose, start: v.start, end: v.end, safaris: intOf(v.safaris), seats: intOf(v.seats), share: intOf(v.share), from: intOf(v.pfrom), to: intOf(v.pto), stay: v.stay, plan: v.plan, cover: v.cover };
+var id;
+edit(function (db) {
+if (omode === 'edit') { var x = byId(oesf.id, db); Object.assign(x, rec); x.updated = nowIso(); id = x.id; }
+else { id = db.safaris.reduce(function (m, x) { return Math.max(m, x.id); }, 0) + 1; var slug = rec.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); db.safaris.unshift(Object.assign({ id: id, slug: slug, host: who, status: 'active', pinned: false, created: nowIso(), updated: nowIso(), joined: [], left: [], comments: [] }, rec)); }
+});
+setErr('org', null, { org: null });
+H.save('ssCur', id);
+if (omode === 'edit') { H.toast('Safari updated.'); } else { flash('Your safari is live.'); go('W3'); }
+},
+openOrgNew: function () { openOrg('new'); }
+};
+
+var curId = 1 || H.store('ssCur', 1);
+var sf = curId === -1 ? null : viewSafari(byId(curId));
+var isHost = !!sf && sf.host === who;
+var openSt = !!sf && (sf.status === 'active' || sf.status === 'seatfull');
+var visible = !!sf && hostActive(sf) && (openSt || (isHost && sf.status === 'inactive'));
+var st0 = !!sf && started(sf);
+var ok = visible, na = !visible;
+var amIn = !!sf && !guest && sf.joined.some(function (j) { return j.who === who; });
+
+var w7 = H.store('ssW7', 'delete');
+if (w7 === 'leave') { who = 'ananya'; guest = false; me = person('ananya'); isHost = sf.host === who; if (!amIn) { amIn = true; sf = JSON.parse(JSON.stringify(sf)); sf.joined = sf.joined.concat([{ who: 'ananya', at: '03 Nov 2026 10:00' }]); } }
+else { who = 'riya'; guest = false; me = person('riya'); isHost = sf.host === who; amIn = false; }
+PV.me = me; PV.signedIn = true; PV.guest = false; bl = bellItems(who); PV.bellList = bl.map(function (n) { return Object.assign({}, n, { href: link('W3'), open: function () { H.save('ssCur', n.sid); } }); }); unreadN = bl.filter(function (x) { return x.cls !== 'ntp-i'; }).length; PV.bellN = unreadN; PV.bellNOn = unreadN > 0;
+
+var dlg = s.dlg === undefined ? (H.store('ssW7', 'delete') === 'leave' ? 'leave' : 'delete') : s.dlg;
+var hasLeft = !!sf && !guest && !amIn && (sf.left || []).some(function (j) { return j.who === who; });
+var canComment = ok && openSt && (isHost || amIn || hasLeft);
+var v = {}, comments = [];
+if (sf) {
+var p = park(sf.park), h = person(sf.host), stt = statusOf(sf, false);
+v = { title: sf.title, park: p.name, purpose: sf.purpose, dates: range(sf.start, sf.end), safaris: sf.safaris, stay: sf.stay || '–', seats: seatsText(sf), plan: mask(sf.plan),
+price: priceRange(sf.from, sf.to), joinedN: sf.joined.length, whoTitle: 'Who joined (' + sf.joined.length + ')', seeAll: 'See all (' + sf.joined.length + ')', anyJoined: sf.joined.length > 0, noJoined: sf.joined.length === 0, commentsN: countComments(sf), commentsTitle: 'Comments (' + countComments(sf) + ')', host: h.name, hostIni: h.ini,
+badge: stt.text, badgeCls: stt.cls, badgeOn: true, started: st0 && openSt, notStarted: true, cover: coverOf(sf), hasCover: true, noCover: false };
+
+var _d0 = d(sf.start), _d1 = d(sf.end), _days = Math.round((Date.UTC(_d1.y, _d1.m, _d1.d) - Date.UTC(_d0.y, _d0.m, _d0.d)) / 864e5) + 1, _n = _days - 1;
+Object.assign(v, { dur: _n + (_n === 1 ? ' Night, ' : ' Nights, ') + _days + (_days === 1 ? ' Day' : ' Days'), avail: sf.share + '/' + sf.seats,
+safarisTxt: sf.safaris + (sf.safaris === 1 ? ' Shared Safari' : ' Shared Safaris'), cost: priceRange(sf.from, sf.to),
+badgeOn: sf.status !== 'active', whoHead: 'Interested - ' + sf.joined.length, seeAllOn: false, moreOn: sf.joined.length > 8, more: '+' + (sf.joined.length - 8), whoShowing: 'Showing 1 - ' + sf.joined.length + ' of ' + sf.joined.length + ' interested users',
+anyComments: sf.comments.length > 0, noComments: sf.comments.length === 0, commentsTitle: 'Discussion (' + countComments(sf) + ')', whoTitle: 'Interested (' + sf.joined.length + ')' });
+
+var mkC = function (c, isReply, parent) {
+var pp = person(c.who), mine = !guest && c.who === who, mid = 'c' + c.id;
+var editing = s.editId === c.id;
+return { ini: pp.ini, name: pp.name + (c.who === sf.host ? ' (Host)' : ''), ago: agoText(c.at), text: c.text, canFlag: !guest && !mine && openSt,
+canOwn: mine && canComment && (isHost || amIn) && !editing, editing: editing, notEditing: !editing,
+startEdit: function () { self.setState({ editId: c.id, editText: c.text, replyTo: null, ferr: {} }); },
+del: function () { mutate(function (x) { x.comments.forEach(function (cc) { if (cc.id === c.id) cc.deleted = true; (cc.replies || []).forEach(function (r) { if (r.id === c.id) r.deleted = true; }); }); }); self.setState({ editId: null }); H.toast(isReply ? 'Reply deleted.' : 'Comment deleted.'); },
+menuOpen: s.menu === mid, menuExp: s.menu === mid ? 'true' : 'false', menu: function () { self.setState({ menu: s.menu === mid ? null : mid }); },
+flag: function () { self.setState({ menu: null, dlg: 'flag', flagId: c.id, flagReason: '', flagDetails: '', ferr: {} }); },
+canReply: canComment && !isReply, reply: function () { self.setState({ replyTo: c.id, replyText: '', ferr: {} }); },
+replies: (c.replies || []).map(function (r) { return mkC(r, true, c); }), hasReplies: (c.replies || []).length > 0, replyOpen: s.replyTo === c.id && canComment };
+};
+comments = sf.comments.map(function (c) { return mkC(c, false); });
+}
+function mutate(fn) { edit(function (db) { var x = byId(sf.id, db); fn(x, db); x.updated = nowIso(); }); }
+var wordsMsg = function (t) { if (!String(t || '').trim()) return 'Enter a comment.'; if (words(t) >= 200) return 'Please provide content within 200 words.'; return null; };
+var nextCid = function () { var m = 0; DB.safaris.forEach(function (x) { x.comments.forEach(function (c) { m = Math.max(m, c.id); (c.replies || []).forEach(function (r) { m = Math.max(m, r.id); }); }); }); return m + 1; };
+var statusPick = s.statusPick || (sf ? sf.status : 'active');
+var R = {
+ok: ok, na: na, v: v, comments: comments,
+whoFirst: sf ? sf.joined.slice(0, 8).map(function (j) { var pp = person(j.who); return { ini: pp.ini, short: pp.name.split(' ')[0], name: pp.name }; }) : [],
+whoAll: sf ? sf.joined.map(function (j, i) { var pp = person(j.who); return { sno: i + 1, ini: pp.ini, name: pp.name, at: String(j.at || '').split(' ').slice(0, 3).join(' ') }; }) : [],
+act: { guestJoin: guest && !!sf && sf.status === 'active', join: !guest && !isHost && !amIn && !!sf && sf.status === 'active', member: !guest && !isHost && amIn, host: isHost },
+join: function () {
+if (isHost) { H.err('You can\'t join your own safari.'); return; }
+if (sf.status !== 'active' || !hostActive(sf)) { H.err('This safari is not open to join.'); return; }
+mutate(function (x, db) { x.left = (x.left || []).filter(function (j) { return j.who !== who; }); x.joined.push({ who: who, at: nowStamp() }); x.ever = x.ever || x.joined.concat(x.left).map(function (j) { return j.who; }); if (x.ever.indexOf(who) < 0) { x.ever.push(who); notify(db, x.host, who, x.id, 'join'); } });
+H.toast('You\'ve joined this safari.');
+},
+openLeave: function () { self.setState({ dlg: 'leave' }); },
+doLeave: function () { mutate(function (x) { x.ever = x.ever || x.joined.concat(x.left).map(function (j) { return j.who; }); x.joined = x.joined.filter(function (j) { return j.who !== who; }); x.left = (x.left || []).concat([{ who: who, at: nowStamp() }]); }); self.setState({ dlg: null }); H.toast('You\'ve left this safari.'); },
+editSafari: function () { openOrg('edit', sf.id); },
+openStatus: function () { self.setState({ dlg: 'status', statusPick: sf.status }); },
+openWho: function () { self.setState({ dlg: 'who' }); },
+openDelete: function () { self.setState({ dlg: 'delete' }); },
+dlgWho: dlg === 'who' && ok, dlgStatus: dlg === 'status' && ok && isHost, dlgDelete: dlg === 'delete' && ok && isHost, dlgLeave: dlg === 'leave' && ok && amIn, dlgFlag: dlg === 'flag' && ok && !guest,
+statusOpts: [['active', 'Active', 'Shown to everyone'], ['seatfull', 'Seat full', 'Shown, marked Seat full'], ['inactive', 'Inactive', 'Hidden until you make it active']].map(function (o) { return { v: o[0], t: o[1], d: o[2], on: statusPick === o[0], pick: function () { self.setState({ statusPick: o[0] }); } }; }),
+saveStatus: function () { mutate(function (x) { x.status = statusPick; }); self.setState({ dlg: null }); H.toast('Status changed to ' + STATUS[statusPick][0] + '.'); },
+doDelete: function () { mutate(function (x) { x.status = 'delhost'; }); self.setState({ dlg: null }); flash('Safari deleted.'); go('W9'); },
+reasonOpts: reasonsActive().map(function (r) { return { t: r, on: s.flagReason === r, pick: function () { self.setState({ flagReason: r }); } }; }),
+flagDetails: s.flagDetails || '', setFlagDetails: function (e) { self.setState({ flagDetails: e.target.value }); },
+FE: errMap('flag', ['reason', 'details']),
+doFlag: function () {
+var e = {}; if (!s.flagReason) e.reason = 'Select a reason.'; if (!String(s.flagDetails || '').trim()) e.details = 'Enter the details.'; else if (String(s.flagDetails).length > 500) e.details = 'Use up to 500 characters.';
+var fid = s.flagId == null && sf && sf.comments[0] ? sf.comments[0].id : s.flagId;
+var target = null; sf.comments.forEach(function (c) { if (c.id === fid) target = c; (c.replies || []).forEach(function (r) { if (r.id === fid) target = r; }); });
+if (target && target.who === who) { H.err('You can\'t flag your own comment.'); return; }
+if (Object.keys(e).length) { setErr('flag', e); return; }
+mutate(function (x) { x.comments.forEach(function (c) { var all = [c].concat(c.replies || []); all.forEach(function (r) { if (r.id === fid) { r.flags = (r.flags || []).concat([{ reason: s.flagReason, details: s.flagDetails, who: who, at: nowStamp(), open: true }]); } }); }); });
+setErr('flag', null, { dlg: null }); H.toast('Thanks, we\'ll review this comment.');
+},
+cm: { box: canComment, joinMsg: ok && openSt && !guest && !isHost && !amIn && !hasLeft, guestMsg: ok && openSt && guest,
+editText: s.editText || '', setEdit: function (e) { self.setState({ editText: e.target.value }); },
+cancelEdit: function () { setErr('ed', null, { editId: null, editText: '' }); },
+saveEdit: function () { var m = wordsMsg(s.editText); if (m) { setErr('ed', { edit: m }); return; } var id = s.editId, t = s.editText.trim(); mutate(function (x) { x.comments.forEach(function (cc) { if (cc.id === id) cc.text = t; (cc.replies || []).forEach(function (r) { if (r.id === id) r.text = t; }); }); }); setErr('ed', null, { editId: null, editText: '' }); H.toast('Comment updated.'); },
+text: s.cmText || '', setText: function (e) { self.setState({ cmText: e.target.value }); },
+post: function () { var m = wordsMsg(s.cmText); if (m) { setErr('cm', { text: m }); return; } var id = nextCid(); mutate(function (x, db) { x.comments.push({ id: id, who: who, at: nowStamp(), text: s.cmText.trim(), replies: [], flags: [] }); if (x.host !== who) notify(db, x.host, who, x.id, 'comment'); }); setErr('cm', null, { cmText: '' }); },
+reply: s.replyText || '', setReply: function (e) { self.setState({ replyText: e.target.value }); },
+cancelReply: function () { setErr('rp', null, { replyTo: null, replyText: '' }); },
+postReply: function () { var m = wordsMsg(s.replyText); if (m) { setErr('rp', { reply: m }); return; } var id = nextCid(), to = s.replyTo; mutate(function (x, db) { x.comments.forEach(function (c) { if (c.id === to) c.replies.push({ id: id, who: who, at: nowStamp(), text: s.replyText.trim(), flags: [] }); }); if (x.host !== who) notify(db, x.host, who, x.id, 'comment'); }); setErr('rp', null, { replyTo: null, replyText: '' }); } },
+CE: { text: errMap('cm', ['text']).text, reply: errMap('rp', ['reply']).reply, edit: errMap('ed', ['edit']).edit },
+closeDlg: function () { self.setState({ dlg: null, ferr: {}, statusPick: null }); },
+curVal: String(curId), setCurPt: function (e) { H.save('ssCur', +e.target.value); self.setState({ dlg: null, menu: null }); },
+w7Val: w7, setW7Pt: function (e) { H.save('ssW7', e.target.value); self.setState({ dlg: undefined }); },
+};
+
+return Object.assign(PV, R, ORGV);
+
+}
+}
+</script>
+</body>
+</html>
+
+</body>
+</html>
