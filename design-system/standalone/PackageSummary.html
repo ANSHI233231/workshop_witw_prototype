@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en" data-theme="console">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components/bundle.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="../components/bundle.js"></script><title>PackageSummary — preview</title></head>
+<body>
+<div id="root" class="st-root"></div>
+<script>
+  var S = window.Starter, h = React.createElement, F = React.Fragment;
+  function theme(t, el) { return h('div', { className: 'st-pair' }, h('div', { 'data-theme': t, className: 'st-theme' }, h('p', { className: 'st-theme-name' }, t === 'console' ? 'Console / Partner portal' : 'Portal (website)'), el)); }
+  var IMG = {"mark": "../assets/Logos/witw-mark.png", "cliff": "../assets/Images/safari-cliff.jpg", "grassland": "../assets/Images/safari-grassland.jpg", "forest": "../assets/Images/safari-forest.jpg", "hero": "../assets/Images/hero.jpg", "resting": "../assets/Images/safari-tiger-resting.jpg", "elephant": "../assets/Images/park-elephant.jpg", "lodge": "../assets/Images/stay-lodge.jpg", "pool": "../assets/Images/stay-resort-pool.jpg", "badger": "../assets/Images/park-honey-badger.jpg", "cheetahs": "../assets/Images/park-cheetahs.jpg"};
+  ReactDOM.createRoot(document.getElementById('root')).render(theme('portal', h('div', { className: 'pk-top' },
+    h(S.PackageSummary, { tag: { text: 'Bestseller', bg: '#FD5634' }, title: 'Tadoba Tiger Trail – 3 Days', parks: 'Tadoba-Andhari Tiger Reserve', days: '3 Days / 2 Nights', activity: '3 Shared Safaris',
+      facts: [['Vehicle', 'Gypsy / Jeep'], ['Stay', 'Standard'], ['Theme', 'Wildlife Exploration'], ['Start and end place', 'Nagpur → Nagpur'], ['Meals', 'Included', true], ['Pick & Drop', 'Not included', false]] }),
+    h(S.PriceBox, { price: '₹18,500', before: '₹21,000', total: '₹37,000' }))));
+</script>
+</body>
+</html>

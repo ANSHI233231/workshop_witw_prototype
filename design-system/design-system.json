@@ -84,7 +84,14 @@
         "safari-grassland.jpg",
         "safari-cliff.jpg",
         "safari-forest.jpg",
-        "default-cover.jpg"
+        "default-cover.jpg",
+        "safari-tiger-resting.jpg",
+        "park-elephant.jpg",
+        "park-cheetahs.jpg",
+        "park-honey-badger.jpg",
+        "park-honey-badger-square.jpg",
+        "stay-lodge.jpg",
+        "stay-resort-pool.jpg"
       ],
       "files": {
         "hero.jpg": {
@@ -122,6 +129,48 @@
           "blob": "4e5c9bd6a9ed43283a386f3d148eebb2",
           "size": 4193,
           "type": "image/jpeg"
+        },
+        "safari-tiger-resting.jpg": {
+          "name": "safari-tiger-resting.jpg",
+          "blob": "9bb479dc7dc54fbd1528fda0b9d2497f",
+          "size": 15801,
+          "type": "image/jpeg"
+        },
+        "park-elephant.jpg": {
+          "name": "park-elephant.jpg",
+          "blob": "33b5b4f70b75c60585edf05744758af9",
+          "size": 10329,
+          "type": "image/jpeg"
+        },
+        "park-cheetahs.jpg": {
+          "name": "park-cheetahs.jpg",
+          "blob": "68a77745496b3eb49c328ec7f6295352",
+          "size": 13749,
+          "type": "image/jpeg"
+        },
+        "park-honey-badger.jpg": {
+          "name": "park-honey-badger.jpg",
+          "blob": "4daaad4003cb8b8d4ed3fcad024d24d7",
+          "size": 15191,
+          "type": "image/jpeg"
+        },
+        "park-honey-badger-square.jpg": {
+          "name": "park-honey-badger-square.jpg",
+          "blob": "0fe38feb296b602d933248511b4a7322",
+          "size": 9696,
+          "type": "image/jpeg"
+        },
+        "stay-lodge.jpg": {
+          "name": "stay-lodge.jpg",
+          "blob": "c9dbd4f5c4ec31200ba983ba4adeca5b",
+          "size": 19852,
+          "type": "image/jpeg"
+        },
+        "stay-resort-pool.jpg": {
+          "name": "stay-resort-pool.jpg",
+          "blob": "7e06dd8133c79b3abd8f52a9b7bdda5e",
+          "size": 24646,
+          "type": "image/jpeg"
         }
       }
     }
@@ -133,8 +182,8 @@
   },
   "lastChange": {
     "by": "ANSHI233231",
-    "at": "2026-11-05T12:39:32Z",
+    "at": "2026-11-10T07:50:07Z",
     "via": "Claude Code",
-    "note": "Re-extracted from docs/prototype (codebase design system) and added the WITW website shell and Shared Safari components, logos, icons and images."
+    "note": "Added Packages (website, Partner portal, Console) components and photos from the Packages prototype, and the green WITW header for the Console and Partner portal."
   }
 }

@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"Starter","components":[{"name":"Icon"},{"name":"Button"},{"name":"IconButton"},{"name":"SearchInput"},{"name":"Select"},{"name":"FormField"},{"name":"Toggle"},{"name":"StatusBadge"},{"name":"Table"},{"name":"Card"},{"name":"KpiCard"},{"name":"Dialog"},{"name":"Tabs"},{"name":"PageHeader"},{"name":"AppHeader"},{"name":"NotificationItem"},{"name":"NotificationPopover"},{"name":"Sidebar"},{"name":"MobileMenu"},{"name":"Footer"},{"name":"SignIn"},{"name":"NotFound"},{"name":"Toast"},{"name":"ToastStack"},{"name":"DialogError"},{"name":"SearchSelect"},{"name":"ServerSelect"},{"name":"SiteHeader"},{"name":"SiteHero"},{"name":"SiteFooter"},{"name":"SiteDialog"},{"name":"SafariCard"},{"name":"SafariFilters"},{"name":"FilterChip"},{"name":"SafariSummary"},{"name":"SitePanel"},{"name":"Comment"},{"name":"RadioList"},{"name":"WebNotificationItem"},{"name":"DetailList"},{"name":"PinButton"},{"name":"JoinedLeft"}]} */
+/* @ds-bundle: {"format":4,"namespace":"Starter","components":[{"name":"Icon"},{"name":"Button"},{"name":"IconButton"},{"name":"SearchInput"},{"name":"Select"},{"name":"FormField"},{"name":"Toggle"},{"name":"StatusBadge"},{"name":"Table"},{"name":"Card"},{"name":"KpiCard"},{"name":"Dialog"},{"name":"Tabs"},{"name":"PageHeader"},{"name":"AppHeader"},{"name":"NotificationItem"},{"name":"NotificationPopover"},{"name":"Sidebar"},{"name":"MobileMenu"},{"name":"Footer"},{"name":"SignIn"},{"name":"NotFound"},{"name":"Toast"},{"name":"ToastStack"},{"name":"DialogError"},{"name":"SearchSelect"},{"name":"ServerSelect"},{"name":"SiteHeader"},{"name":"SiteHero"},{"name":"SiteFooter"},{"name":"SiteDialog"},{"name":"SafariCard"},{"name":"SafariFilters"},{"name":"FilterChip"},{"name":"SafariSummary"},{"name":"SitePanel"},{"name":"Comment"},{"name":"RadioList"},{"name":"WebNotificationItem"},{"name":"DetailList"},{"name":"PinButton"},{"name":"JoinedLeft"},{"name":"PackageTag"},{"name":"Tag"},{"name":"Banner"},{"name":"Segmented"},{"name":"ColorField"},{"name":"ImagePicker"},{"name":"FormSection"},{"name":"PackageCard"},{"name":"PackageFilters"},{"name":"PageBanner"},{"name":"PackageSummary"},{"name":"PriceBox"},{"name":"ContentTabs"},{"name":"GallerySlider"},{"name":"ItineraryDay"},{"name":"InclusionList"},{"name":"FaqItem"},{"name":"Disclaimer"},{"name":"ParkCard"},{"name":"ParkSummary"},{"name":"ParkMap"},{"name":"NotInUse"},{"name":"HotCold"},{"name":"EntityCell"},{"name":"GalleryCard"},{"name":"StatusPanel"},{"name":"PartnerIdentity"},{"name":"PortalNotification"}]} */
 (function () {
   var React = window.React, h = React.createElement, Fragment = React.Fragment;
   function cx() { return Array.prototype.filter.call(arguments, Boolean).join(' '); }
@@ -491,7 +491,7 @@
   var React = window.React, h = React.createElement, Fragment = React.Fragment, S = window.Starter;
   function cx() { return Array.prototype.filter.call(arguments, Boolean).join(' '); }
   /* The boards' own Lucide glyphs (inner SVG markup, stroke 2). */
-  var G = {"mail":"<rect width=\"20\" height=\"16\" x=\"2\" y=\"4\" rx=\"2\"></rect><path d=\"m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7\"></path>","map-pin":"<path d=\"M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0\"></path><circle cx=\"12\" cy=\"10\" r=\"3\"></circle>","calendar":"<path d=\"M8 2v4\"></path><path d=\"M16 2v4\"></path><rect width=\"18\" height=\"18\" x=\"3\" y=\"4\" rx=\"2\"></rect><path d=\"M3 10h18\"></path>","users":"<path d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\"></path><circle cx=\"9\" cy=\"7\" r=\"4\"></circle><path d=\"M22 21v-2a4 4 0 0 0-3-3.87\"></path><path d=\"M16 3.13a4 4 0 0 1 0 7.75\"></path>","car":"<path d=\"M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2\"></path><circle cx=\"7\" cy=\"17\" r=\"2\"></circle><path d=\"M9 17h6\"></path><circle cx=\"17\" cy=\"17\" r=\"2\"></circle>","hotel":"<rect width=\"16\" height=\"20\" x=\"4\" y=\"2\" rx=\"2\"></rect><path d=\"M9 22v-4h6v4\"></path><path d=\"M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01\"></path>","indian-rupee":"<path d=\"M6 3h12\"></path><path d=\"M6 8h12\"></path><path d=\"m6 13 8.5 8\"></path><path d=\"M6 13h3\"></path><path d=\"M9 13c6.667 0 6.667-10 0-10\"></path>","facebook":"<path d=\"M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z\"></path>","x-brand":"<path d=\"M4 4l11.733 16H20L8.267 4z\"></path><path d=\"M4 20l6.768-6.768\"></path><path d=\"M20 4l-6.768 6.768\"></path>","instagram":"<rect width=\"20\" height=\"20\" x=\"2\" y=\"2\" rx=\"5\" ry=\"5\"></rect><path d=\"M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z\"></path><line x1=\"17.5\" x2=\"17.51\" y1=\"6.5\" y2=\"6.5\"></line>","whatsapp":"<path d=\"M7.9 20A9 9 0 1 0 4 16.1L2 22Z\"></path>","linkedin":"<path d=\"M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z\"></path><rect width=\"4\" height=\"12\" x=\"2\" y=\"9\"></rect><circle cx=\"4\" cy=\"4\" r=\"2\"></circle>","telegram":"<path d=\"M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z\"></path><path d=\"m21.854 2.147-10.94 10.939\"></path>","link":"<path d=\"M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71\"></path><path d=\"M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71\"></path>","flag":"<path d=\"M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z\"></path><line x1=\"4\" x2=\"4\" y1=\"22\" y2=\"15\"></line>","pin":"<path d=\"M12 17v5\"></path><path d=\"M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z\"></path>","circle-user":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><circle cx=\"12\" cy=\"10\" r=\"3\"></circle><path d=\"M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662\"></path>","binoculars":"<path d=\"M10 10h4\"></path><path d=\"M19 7V4a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v3\"></path><path d=\"M20 21a2 2 0 0 0 2-2v-3.851c0-1.39-2-2.962-2-4.829V8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v11a2 2 0 0 0 2 2z\"></path><path d=\"M 22 16 L 2 16\"></path><path d=\"M4 21a2 2 0 0 1-2-2v-3.851c0-1.39 2-2.962 2-4.829V8a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v11a2 2 0 0 1-2 2z\"></path><path d=\"M9 7V4a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v3\"></path>"};
+  var G = {"store":"<path d=\"m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7\"></path><path d=\"M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8\"></path><path d=\"M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4\"></path><path d=\"M2 7h20\"></path><path d=\"M22 7v3a2 2 0 0 1-2 2a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7\"></path>","mail":"<rect width=\"20\" height=\"16\" x=\"2\" y=\"4\" rx=\"2\"></rect><path d=\"m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7\"></path>","map-pin":"<path d=\"M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0\"></path><circle cx=\"12\" cy=\"10\" r=\"3\"></circle>","calendar":"<path d=\"M8 2v4\"></path><path d=\"M16 2v4\"></path><rect width=\"18\" height=\"18\" x=\"3\" y=\"4\" rx=\"2\"></rect><path d=\"M3 10h18\"></path>","users":"<path d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\"></path><circle cx=\"9\" cy=\"7\" r=\"4\"></circle><path d=\"M22 21v-2a4 4 0 0 0-3-3.87\"></path><path d=\"M16 3.13a4 4 0 0 1 0 7.75\"></path>","car":"<path d=\"M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2\"></path><circle cx=\"7\" cy=\"17\" r=\"2\"></circle><path d=\"M9 17h6\"></path><circle cx=\"17\" cy=\"17\" r=\"2\"></circle>","hotel":"<rect width=\"16\" height=\"20\" x=\"4\" y=\"2\" rx=\"2\"></rect><path d=\"M9 22v-4h6v4\"></path><path d=\"M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01\"></path>","indian-rupee":"<path d=\"M6 3h12\"></path><path d=\"M6 8h12\"></path><path d=\"m6 13 8.5 8\"></path><path d=\"M6 13h3\"></path><path d=\"M9 13c6.667 0 6.667-10 0-10\"></path>","facebook":"<path d=\"M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z\"></path>","x-brand":"<path d=\"M4 4l11.733 16H20L8.267 4z\"></path><path d=\"M4 20l6.768-6.768\"></path><path d=\"M20 4l-6.768 6.768\"></path>","instagram":"<rect width=\"20\" height=\"20\" x=\"2\" y=\"2\" rx=\"5\" ry=\"5\"></rect><path d=\"M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z\"></path><line x1=\"17.5\" x2=\"17.51\" y1=\"6.5\" y2=\"6.5\"></line>","whatsapp":"<path d=\"M7.9 20A9 9 0 1 0 4 16.1L2 22Z\"></path>","linkedin":"<path d=\"M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z\"></path><rect width=\"4\" height=\"12\" x=\"2\" y=\"9\"></rect><circle cx=\"4\" cy=\"4\" r=\"2\"></circle>","telegram":"<path d=\"M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z\"></path><path d=\"m21.854 2.147-10.94 10.939\"></path>","link":"<path d=\"M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71\"></path><path d=\"M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71\"></path>","flag":"<path d=\"M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z\"></path><line x1=\"4\" x2=\"4\" y1=\"22\" y2=\"15\"></line>","pin":"<path d=\"M12 17v5\"></path><path d=\"M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z\"></path>","circle-user":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><circle cx=\"12\" cy=\"10\" r=\"3\"></circle><path d=\"M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662\"></path>","binoculars":"<path d=\"M10 10h4\"></path><path d=\"M19 7V4a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v3\"></path><path d=\"M20 21a2 2 0 0 0 2-2v-3.851c0-1.39-2-2.962-2-4.829V8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v11a2 2 0 0 0 2 2z\"></path><path d=\"M 22 16 L 2 16\"></path><path d=\"M4 21a2 2 0 0 1-2-2v-3.851c0-1.39 2-2.962 2-4.829V8a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v11a2 2 0 0 1-2 2z\"></path><path d=\"M9 7V4a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v3\"></path>"};
   function Glyph(p) {
     return h('svg', { className: cx('st-icon', p.className), viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': 'true', focusable: 'false', dangerouslySetInnerHTML: { __html: G[p.name] || '' } });
   }
@@ -511,7 +511,7 @@
         h('div', { key: 'b', className: 'wb-wrap' }, h('button', { type: 'button', className: 'wb-ic is-bell', 'aria-label': 'Notifications', 'aria-haspopup': 'dialog', 'aria-expanded': false, onClick: p.onBell },
           h(Glyph, { name: 'mail' }), p.count ? h('span', { className: 'wb-cnt' }, p.count) : null)),
         h('div', { key: 'u', className: 'wb-wrap' }, h('button', { type: 'button', className: 'wb-ic', 'aria-label': 'Account: ' + (user.name || ''), 'aria-haspopup': 'true', 'aria-expanded': false, onClick: p.onAccount },
-          h('span', { className: 'wb-me' }, user.initial || (user.name || '?').charAt(0))))
+          user.logo !== undefined ? h('span', { className: 'wb-me pk-me' }, user.logo ? h('img', { src: user.logo, alt: '' }) : h(Glyph, { name: 'store' })) : h('span', { className: 'wb-me' }, user.initial || (user.name || '?').charAt(0))))
       ] : h('a', { className: 'wb-ic', href: p.signInHref || '#', 'aria-label': 'Sign in' }, h(Glyph, { name: 'circle-user' }))));
   }
   function SiteHero(p) {
@@ -678,4 +678,228 @@
 
   Object.assign(S, { SiteHeader: SiteHeader, SiteHero: SiteHero, SiteFooter: SiteFooter, SiteDialog: SiteDialog, SafariCard: SafariCard, SafariFilters: SafariFilters, FilterChip: FilterChip,
     SafariSummary: SafariSummary, SitePanel: SitePanel, Comment: Comment, RadioList: RadioList, WebNotificationItem: WebNotificationItem, DetailList: DetailList, PinButton: PinButton, JoinedLeft: JoinedLeft });
+})();
+
+/* Packages: website, Partner portal and Console parts, from the Packages boards (PK-W1–W9, PK-P1–P8, PK-C1–C8). */
+(function () {
+  var React = window.React, h = React.createElement, Fragment = React.Fragment, S = window.Starter;
+  var useState = React.useState, useEffect = React.useEffect;
+  function cx() { return Array.prototype.filter.call(arguments, Boolean).join(' '); }
+  var G = {"award":"<path d=\"m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526\"></path><circle cx=\"12\" cy=\"8\" r=\"6\"></circle>","calendar-days":"<path d=\"M8 2v4\"></path><path d=\"M16 2v4\"></path><rect width=\"18\" height=\"18\" x=\"3\" y=\"4\" rx=\"2\"></rect><path d=\"M3 10h18\"></path>","send":"<path d=\"M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z\"></path><path d=\"m21.854 2.147-10.94 10.939\"></path>","chevron-left":"<path d=\"m15 18-6-6 6-6\"></path>","chevron-right":"<path d=\"m9 18 6-6-6-6\"></path>","map-pinned":"<path d=\"M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0\"></path><circle cx=\"12\" cy=\"10\" r=\"3\"></circle>","indian-rupee":"<path d=\"M6 3h12\"></path><path d=\"M6 8h12\"></path><path d=\"m6 13 8.5 8\"></path><path d=\"M6 13h3\"></path><path d=\"M9 13c6.667 0 6.667-10 0-10\"></path>","map-pin":"<path d=\"M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0\"></path><circle cx=\"12\" cy=\"10\" r=\"3\"></circle>","package-x":"<path d=\"M21 10V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l2-1.14\"></path><path d=\"m7.5 4.27 9 5.15\"></path><polyline points=\"3.29 7 12 12 20.71 7\"></polyline><line x1=\"12\" x2=\"12\" y1=\"22\" y2=\"12\"></line><path d=\"m17 13 5 5m-5 0 5-5\"></path>","image":"<rect width=\"18\" height=\"18\" x=\"3\" y=\"3\" rx=\"2\" ry=\"2\"></rect><circle cx=\"9\" cy=\"9\" r=\"2\"></circle><path d=\"m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21\"></path>","upload":"<path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"></path><polyline points=\"17 8 12 3 7 8\"></polyline><line x1=\"12\" x2=\"12\" y1=\"3\" y2=\"15\"></line>","flame":"<path d=\"M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z\"></path>","snowflake":"<line x1=\"2\" x2=\"22\" y1=\"12\" y2=\"12\"></line><line x1=\"12\" x2=\"12\" y1=\"2\" y2=\"22\"></line><path d=\"m20 16-4-4 4-4\"></path><path d=\"m4 8 4 4-4 4\"></path><path d=\"m16 4-4 4-4-4\"></path><path d=\"m8 20 4-4 4 4\"></path>","info":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M12 16v-4\"></path><path d=\"M12 8h.01\"></path>","store":"<path d=\"m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7\"></path><path d=\"M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8\"></path><path d=\"M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4\"></path><path d=\"M2 7h20\"></path><path d=\"M22 7v3a2 2 0 0 1-2 2a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7\"></path>","search":"<circle cx=\"11\" cy=\"11\" r=\"8\"></circle><path d=\"m21 21-4.3-4.3\"></path>","car-front":"<path d=\"m21 8-2 2-1.5-3.7A2 2 0 0 0 15.646 5H8.4a2 2 0 0 0-1.903 1.257L5 10 3 8\"></path><path d=\"M7 14h.01\"></path><path d=\"M17 14h.01\"></path><rect width=\"18\" height=\"8\" x=\"3\" y=\"10\" rx=\"2\"></rect><path d=\"M5 18v2\"></path><path d=\"M19 18v2\"></path>","circle-check":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"m9 12 2 2 4-4\"></path>","circle-x":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"m15 9-6 6\"></path><path d=\"m9 9 6 6\"></path>","chevron-down":"<path d=\"m6 9 6 6 6-6\"></path>"};
+  function Glyph(p) {
+    return h('svg', { className: cx('st-icon', p.className), viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': 'true', focusable: 'false', dangerouslySetInnerHTML: { __html: G[p.name] || '' } });
+  }
+  function Badge(s) { return s ? h(S.StatusBadge, { tone: s.tone || 'success' }, s.label) : null; }
+
+  /* ---- Small shared parts ---- */
+  function PackageTag(p) {
+    var style = { background: p.bg || 'var(--primary)', color: p.color || '#FFFFFF' };
+    if (p.inline) style.position = 'static';
+    return h('span', { className: 'pk-tag', style: style }, p.text || p.children);
+  }
+  function Tag(p) { return h('span', { className: cx('st-tag', p.tone !== 'plain' && 't-dash') }, p.children); }
+  function Banner(p) {
+    return h('div', { className: cx('st-banner', 'st-banner-' + (p.tone || 'info')), role: p.tone === 'danger' ? 'alert' : 'status' }, p.icon ? h(Glyph, { name: 'info' }) : null, h('span', null, p.children));
+  }
+  function Segmented(p) {
+    var st = useState(p.value != null ? p.value : (p.options[0] || {}).value), v = st[0];
+    var opts = p.options.map(function (o) { return typeof o === 'string' ? { value: o, label: o } : o; });
+    return h('div', { className: 'st-seg pk-seg', role: 'radiogroup', 'aria-label': p.label, style: { gridTemplateColumns: 'repeat(' + opts.length + ', minmax(0, 1fr))' } }, opts.map(function (o) {
+      var on = o.value === v;
+      return h('button', { key: o.value, type: 'button', role: 'radio', 'aria-checked': on, className: on ? 'is-on' : '', onClick: function () { st[1](o.value); if (p.onChange) p.onChange(o.value); } }, o.label);
+    }));
+  }
+  function ColorField(p) {
+    var st = useState(p.value || '#09422D');
+    return h('div', { className: 'st-field' }, h('label', { className: 'st-label', htmlFor: p.id }, p.label),
+      h('div', { className: 'pk-color' }, h('input', { id: p.id, type: 'color', value: st[0], onChange: function (e) { st[1](e.target.value.toUpperCase()); if (p.onChange) p.onChange(e.target.value); } }), h('span', { className: 'ss-cap' }, st[0].toUpperCase())));
+  }
+  function ImagePicker(p) {
+    var logo = p.variant === 'logo';
+    var shown = p.image ? h('img', { className: logo ? null : 'pk-imgprev', src: p.image, alt: (p.label || 'Image') + ' preview' })
+      : h('span', { className: cx(!logo && 'pk-imgprev', 'pk-ph') }, h(Glyph, { name: 'image' }));
+    return h('div', { className: 'st-field' }, h('span', { className: 'st-label' }, p.label),
+      h('div', { className: logo ? 'pk-logo' : 'pk-imgrow' }, shown,
+        h('input', { className: 'pk-file', type: 'file', accept: p.accept || '.jpg,.jpeg,.png', 'aria-label': p.label, tabIndex: -1 }),
+        h('button', { type: 'button', className: 'st-btn st-btn-secondary', onClick: p.onChoose }, h(Glyph, { name: 'upload' }), p.buttonLabel || (logo ? 'Choose logo' : 'Choose image')),
+        p.image && p.removable !== false && !logo ? h('button', { type: 'button', className: 'st-btn st-btn-text', onClick: p.onRemove }, 'Remove') : null),
+      p.helper ? h('span', { className: 'st-helper' }, p.helper) : null);
+  }
+  function FormSection(p) {
+    return h('section', { className: 'pk-sec' }, p.title ? h('h2', null, p.title) : null, p.children);
+  }
+
+  /* ---- Website ---- */
+  function PackageCard(p) {
+    var portal = p.variant === 'portal';
+    var price = h('div', { className: 'pk-price' }, h('b', null, p.price), p.before ? h('s', null, p.before) : null, h('small', null, 'per person'));
+    return h('div', { className: 'wb-card pk-card' },
+      h('div', { className: 'wb-img' }, p.image ? h('img', { src: p.image, alt: '' }) : null, p.tag ? h(PackageTag, p.tag) : null,
+        p.best ? h('span', { className: 'pk-best' }, h(Glyph, { name: 'award' }), 'Best deal') : null),
+      h('div', { className: 'wb-body' },
+        h('h3', { className: 'wb-title' }, h('a', { href: p.href || '#' }, p.title)),
+        portal ? h('span', { className: 'pk-fact' }, h(Glyph, { name: 'map-pin' }), p.park)
+          : h('div', { className: 'wb-park' }, h(Glyph, { name: 'map-pin' }), h('span', null, p.park)),
+        h(portal ? 'span' : 'div', { className: 'pk-fact' }, h(Glyph, { name: 'calendar-days' }), portal ? p.days : h('span', null, p.days)),
+        !portal && p.activity ? h('div', { className: 'pk-fact' }, h(Glyph, { name: 'car-front' }), h('span', null, p.activity)) : null,
+        portal
+          ? h('div', { className: 'pk-cfoot' }, price, h('span', { className: 'ss-row' }, p.live ? h(Tag, null, p.live) : null, Badge(p.status)))
+          : h('div', { className: 'pk-cfoot' },
+              h('div', null, price, h('div', { className: 'pk-pmsg' }, p.message || 'Include taxes and fees'), h('div', { className: 'pk-total' }, 'Total price ' + p.total)),
+              h('a', { className: 'st-btn st-btn-primary wb-join pk-view', href: p.href || '#' }, p.actionLabel || 'View Details'))));
+  }
+  function inr(n) { return '₹' + Number(n).toLocaleString('en-IN'); }
+  function Range(p) {
+    return h('div', { className: 'st-field' }, h('span', { className: 'st-label' }, p.label),
+      h('div', { className: 'wb-range' },
+        h('input', { type: 'range', min: p.min, max: p.max, step: p.step || 1, 'aria-label': p.low, defaultValue: p.min }),
+        h('input', { type: 'range', min: p.min, max: p.max, step: p.step || 1, 'aria-label': p.high, defaultValue: p.max })),
+      h('div', { className: 'wb-range-v' }, h('span', null, p.minText), h('span', null, p.maxText)));
+  }
+  function Checks(label, list) {
+    return h('div', { className: 'st-field' }, h('span', { className: 'st-label' }, label),
+      h('div', { className: 'pk-checks' }, list.map(function (o) { return h('label', { key: o, className: 'st-check' }, h('input', { type: 'checkbox' }), o); })));
+  }
+  var STAYS = ['Premium', 'Standard', 'Economical', 'Not Included', 'Forest Rest House', 'Home Stay'];
+  var FEATURES = ['Multiple Parks', 'Customizable', 'Private Room', 'Shared Room', 'Private Safari', 'Shared Safari', 'Photography Special', 'Forest Rest House Stay', 'Other Activities'];
+  var INCLUSIONS = ['Accommodation', 'Meals', 'Pick & Drop', 'Camera Fee', 'Permit', 'Guide Fee'];
+  function PackageFilters(p) {
+    return h('aside', { className: 'wb-side' },
+      h('div', { className: 'wb-filters pk-filters', 'aria-label': 'Filters' }, h('h2', null, 'Select Filters'),
+        p.search === false ? null : h('div', { className: 'st-field' }, h('label', { className: 'st-label', htmlFor: 'f-q' }, 'Search by name'),
+          h('div', { className: 'st-input-group' }, h(Glyph, { name: 'search' }), h('input', { id: 'f-q', className: 'st-input', placeholder: 'Package name', maxLength: 100 }))),
+        p.park === false ? null : h('div', { className: 'st-field' }, h('label', { className: 'st-label', htmlFor: 'f-park' }, 'Park'),
+          h('div', { className: 'ss pk-ss' }, h('button', { type: 'button', id: 'f-park', className: 'st-select ss-sel is-empty', 'aria-haspopup': 'listbox', 'aria-expanded': false }, h('span', null, 'Any / All'), h(Glyph, { name: 'chevron-down' })))),
+        h(Range, { label: 'Price per person', min: 1000, max: 50000, step: 500, low: 'Lowest price per person', high: 'Highest price per person', minText: inr(1000), maxText: inr(50000) + '+' }),
+        h(Range, { label: 'Nights', min: 0, max: 10, low: 'Fewest nights', high: 'Most nights', minText: '0', maxText: '10+' }),
+        h(Range, { label: 'Number of safaris', min: 1, max: 10, low: 'Fewest safaris', high: 'Most safaris', minText: '1', maxText: '10+' }),
+        Checks('Stay', p.stays || STAYS), Checks('Features', p.features || FEATURES), Checks('Inclusions', p.inclusions || INCLUSIONS),
+        h('button', { type: 'button', className: 'st-btn st-btn-text', onClick: p.onClear }, h(S.Icon, { name: 'rotate-ccw' }), 'Clear all')));
+  }
+  function PageBanner(p) { return h('div', { className: 'pk-ban' }, p.image ? h('img', { src: p.image, alt: '' }) : null); }
+  function PackageSummary(p) {
+    return h('div', { className: 'pk-head' }, p.tag ? h(PackageTag, p.tag) : null, h('h1', null, p.title),
+      h('div', { className: 'wb-park' }, h(Glyph, { name: 'map-pin' }), h('span', null, p.parks)),
+      h('div', { className: 'ss-row' }, h('span', { className: 'pk-fact' }, h(Glyph, { name: 'calendar-days' }), p.days), p.activity ? h('span', { className: 'pk-fact' }, h(Glyph, { name: 'car-front' }), p.activity) : null),
+      p.facts ? h('dl', { className: 'pk-facts' }, p.facts.map(function (f, i) {
+        return h('div', { key: i }, h('dt', null, f[0]), h('dd', { className: f[2] === true ? 'pk-yes' : f[2] === false ? 'pk-no' : null }, f[1]));
+      })) : null);
+  }
+  function PriceBox(p) {
+    return h('aside', { className: 'pk-box', 'aria-label': 'Price' },
+      h('div', { className: 'pk-price' }, h('b', null, p.price), p.before ? h('s', null, p.before) : null, h('small', null, 'per person')),
+      h('div', { className: 'pk-pmsg' }, p.message || 'Include taxes and fees'),
+      h('div', { className: 'pk-total' }, 'Total price ' + p.total),
+      p.note ? h('div', { className: 'pk-note' }, p.note === true ? 'You are signed in as a partner. Quote requests for your packages are in the Partner portal.' : p.note, ' ', h('a', { href: p.noteHref || '#' }, 'Open the Partner portal')) : h('button', { type: 'button', className: 'st-btn st-btn-primary', onClick: p.onAction }, h(Glyph, { name: 'send' }), p.actionLabel || 'Request a quote'));
+  }
+  function ContentTabs(p) {
+    var st = useState(p.active || 0), a = st[0];
+    return h('div', { className: 'pk-tabs' },
+      h('div', { className: 'st-mtabs', role: 'tablist' }, p.tabs.map(function (t, i) {
+        return h('button', { key: i, type: 'button', role: 'tab', 'aria-selected': i === a, className: cx('st-mtab', i === a && 'is-on'), onClick: function () { st[1](i); if (p.onChange) p.onChange(i); } }, t);
+      })),
+      h('div', { className: 'pk-tabp', role: 'tabpanel' }, typeof p.children === 'function' ? p.children(a) : (Array.isArray(p.panels) ? p.panels[a] : p.children)));
+  }
+  function GallerySlider(p) {
+    var photos = p.photos || [], n = photos.length;
+    var st = useState(p.index || 0), i = st[0];
+    useEffect(function () {
+      if (p.autoplay === false || n < 2) return undefined;
+      var t = setInterval(function () { st[1](function (x) { return (x + 1) % n; }); }, 3000);
+      return function () { clearInterval(t); };
+    }, [n, p.autoplay]);
+    if (!n) return null;
+    var ph = photos[i];
+    return h('div', { className: 'ss-stack' }, h('h3', { className: 'pk-h' }, p.title || 'Gallery'),
+      h('div', { className: 'pk-slider' }, h('img', { src: ph.src, alt: ph.title || '' }), h('span', { className: 'pk-pos' }, (i + 1) + ' / ' + n),
+        ph.title || ph.caption ? h('div', { className: 'pk-cap2' }, ph.title ? h('b', null, ph.title) : null, ph.caption || null) : null,
+        h('button', { type: 'button', className: 'pk-arrow is-l', 'aria-label': 'Previous photo', onClick: function () { st[1]((i + n - 1) % n); } }, h(Glyph, { name: 'chevron-left' })),
+        h('button', { type: 'button', className: 'pk-arrow is-r', 'aria-label': 'Next photo', onClick: function () { st[1]((i + 1) % n); } }, h(Glyph, { name: 'chevron-right' }))),
+      h('div', { className: 'pk-dots' }, photos.map(function (_, k) { return h('span', { key: k, className: cx('pk-dot', k === i && 'is-on') }); })));
+  }
+  function ItineraryDay(p) {
+    return h('div', { className: 'pk-day' }, h('span', { className: 'pk-dayn' }, p.label || 'Day ' + p.n),
+      h('div', { className: 'ss-stack' }, h('h3', { className: 'pk-h' }, p.title), h('p', { className: 'pk-p' }, p.text),
+        p.details && p.details.length ? h('dl', { className: 'pk-dl' }, p.details.map(function (d, i) { return h(Fragment, { key: i }, h('dt', null, d[0]), h('dd', null, d[1])); })) : null,
+        p.image ? h('img', { className: 'pk-dayimg', src: p.image, alt: p.title }) : null, p.children));
+  }
+  function InclusionList(p) {
+    return h(Fragment, null,
+      h('div', { className: 'pk-inc' }, p.items.map(function (x, i) {
+        return h('span', { key: i }, h('span', { className: x.included ? 'pk-yes' : 'pk-no' }, h(Glyph, { name: x.included ? 'circle-check' : 'circle-x' })), x.label);
+      })),
+      p.more ? h('div', { className: 'ss-stack' }, h('h3', { className: 'pk-h' }, 'More inclusions'), h('p', { className: 'pk-p' }, p.more)) : null,
+      p.exclusions ? h('div', { className: 'ss-stack' }, h('h3', { className: 'pk-h' }, 'Exclusions'), h('p', { className: 'pk-p' }, p.exclusions)) : null);
+  }
+  function FaqItem(p) {
+    var st = useState(!!p.open);
+    return h('div', { className: 'pk-faq' },
+      h('button', { type: 'button', 'aria-expanded': st[0], onClick: function () { st[1](!st[0]); } }, p.question, h(Glyph, { name: 'chevron-down' })),
+      st[0] ? h('p', null, p.answer) : null);
+  }
+  var DISC = 'This tour is operated by our authorised safari tour operator, not directly by Walk Into The Wild. This tour is governed by the terms and conditions set forth by Walk Into The Wild.';
+  function Disclaimer(p) { return h('p', { className: 'pk-disc' }, p.children || DISC); }
+  function ParkCard(p) {
+    return h('div', { className: 'wb-card pk-park' }, h('a', { className: 'wb-img', href: p.href || '#' }, p.image ? h('img', { src: p.image, alt: '' }) : null),
+      h('div', { className: 'wb-body' }, h('h3', { className: 'wb-title' }, h('a', { href: p.href || '#' }, p.name)),
+        h('span', { className: 'pk-region' }, h(Glyph, { name: 'map-pinned' }), p.region),
+        h('div', { className: 'pk-cfoot' }, h('div', null, h('small', { className: 'pk-pmsg' }, 'Average safari price'), h('div', { className: 'pk-total' }, p.price || '–')),
+          h('a', { className: 'st-btn st-btn-secondary wb-join pk-view', href: p.href || '#' }, 'View Park'))));
+  }
+  function ParkSummary(p) {
+    return h('div', { className: 'pk-head' }, h('h1', null, p.name),
+      h('div', { className: 'ss-row' }, h('span', { className: 'pk-region' }, h(Glyph, { name: 'map-pinned' }), p.region),
+        p.price ? h('span', { className: 'pk-fact' }, h(Glyph, { name: 'indian-rupee' }), 'Average safari price ' + p.price) : null));
+  }
+  function ParkMap(p) {
+    var href = p.href || ('https://www.openstreetmap.org/?mlat=' + p.lat + '&mlon=' + p.lng + '#map=11/' + p.lat + '/' + p.lng);
+    return h('div', { className: 'ss-stack' }, h('h3', { className: 'pk-h' }, p.title || 'Location'),
+      h('div', { className: 'pk-map', role: 'img', 'aria-label': 'Map of ' + p.name },
+        h('span', { className: 'pk-pin' }, h(Glyph, { name: 'map-pin' }), p.name, h('small', { className: 'ss-cap' }, p.lat + ', ' + p.lng)),
+        h('a', { className: 'pk-maplink', href: href, target: '_blank', rel: 'noopener' }, 'Open the map')));
+  }
+  function NotInUse(p) {
+    return h('div', { className: 'st-card pk-nu' }, h(Glyph, { name: 'package-x' }), h('h1', null, p.title || 'Package Not In Use!'),
+      p.name ? h('p', { className: 'ss-muted', style: { margin: 0 } }, p.name) : null,
+      h('a', { className: 'st-btn st-btn-primary', href: p.href || '#' }, p.actionLabel || 'See all packages'));
+  }
+
+  /* ---- Partner portal and Console ---- */
+  function HotCold(p) {
+    var st = useState(p.value || null), v = st[0];
+    function set(x) { var n = v === x ? null : x; st[1](n); if (p.onChange) p.onChange(n); }
+    return h('span', { className: 'pk-mks', role: 'group', 'aria-label': 'Mark' },
+      h('button', { type: 'button', className: cx('pk-mk', v === 'hot' && 'is-hot'), 'aria-pressed': v === 'hot', onClick: function () { set('hot'); } }, h(Glyph, { name: 'flame' }), 'Hot'),
+      h('button', { type: 'button', className: cx('pk-mk', v === 'cold' && 'is-cold'), 'aria-pressed': v === 'cold', onClick: function () { set('cold'); } }, h(Glyph, { name: 'snowflake' }), 'Cold'));
+  }
+  function EntityCell(p) {
+    var lead = p.image ? h('img', { className: 'pk-thumb', src: p.image, alt: '' }) : p.initials ? h('span', { className: 'pk-av' }, p.initials) : null;
+    var text = h('span', null, h('b', null, p.title), p.sub ? h('span', { className: 'pk-sub' }, p.sub) : null, p.reason ? h('span', { className: 'pk-reason' }, p.reason) : null);
+    return lead ? h('span', { className: 'pk-cell' }, lead, text) : text;
+  }
+  function GalleryCard(p) {
+    return h('button', { type: 'button', className: 'pk-gcard', onClick: p.onOpen }, p.image ? h('img', { src: p.image, alt: '' }) : null,
+      h('div', null, h('b', null, p.title), p.meta ? h('span', { className: 'ss-cap' }, p.meta) : null, Badge(p.status)));
+  }
+  function StatusPanel(p) {
+    return h('section', { className: 'pk-sec pk-status' }, Badge(p.status), h('h2', null, p.title), p.text ? h('p', { className: 'ss-muted', style: { margin: 0 } }, p.text) : null, p.action || null);
+  }
+  function PartnerIdentity(p) {
+    var size = p.size || 64;
+    return h('div', { className: 'pk-who' },
+      h('span', { className: 'pk-av', style: { width: size + 'px', height: size + 'px' } }, p.logo ? h('img', { src: p.logo, alt: '' }) : p.initials || h(Glyph, { name: 'store' })),
+      h('div', null, h('b', null, p.name), p.since ? h('small', null, p.since) : null), Badge(p.status));
+  }
+
+  function PortalNotification(p) {
+    return h('button', { type: 'button', className: cx('pk-note-i', p.unread && 'is-unread'), onClick: p.onOpen },
+      h('span', { className: 'st-ntp-av' }, p.initials),
+      h('span', { style: { flex: '1 1 auto' } }, h('span', null, p.before || '', p.who ? h('b', null, p.who) : null, p.after || '', p.children || null), h('small', null, p.time)),
+      p.unread ? h('span', { className: 'pk-udot', 'aria-label': 'Unread' }) : null);
+  }
+
+  Object.assign(S, { PackageTag: PackageTag, PortalNotification: PortalNotification, Tag: Tag, Banner: Banner, Segmented: Segmented, ColorField: ColorField, ImagePicker: ImagePicker, FormSection: FormSection,
+    PackageCard: PackageCard, PackageFilters: PackageFilters, PageBanner: PageBanner, PackageSummary: PackageSummary, PriceBox: PriceBox, ContentTabs: ContentTabs,
+    GallerySlider: GallerySlider, ItineraryDay: ItineraryDay, InclusionList: InclusionList, FaqItem: FaqItem, Disclaimer: Disclaimer, ParkCard: ParkCard,
+    ParkSummary: ParkSummary, ParkMap: ParkMap, NotInUse: NotInUse, HotCold: HotCold, EntityCell: EntityCell, GalleryCard: GalleryCard, StatusPanel: StatusPanel, PartnerIdentity: PartnerIdentity });
 })();

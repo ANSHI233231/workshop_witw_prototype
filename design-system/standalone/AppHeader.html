@@ -18,7 +18,9 @@
   }
   function state(label, el) { return h('div', { className: 'st-state', key: label }, el, h('span', { className: 'st-state-name' }, label)); }
   ReactDOM.createRoot(document.getElementById('root')).render(both(function (t) {
-    return h(S.AppHeader, { appName: t === 'console' ? 'Admin Console' : 'Starter Portal', role: t === 'console' ? 'Super Admin' : null, count: 1, userName: t === 'console' ? 'Starter Admin' : 'Priya Sharma' });
+    var mark = h('span', { className: 'st-mark' }, h('img', { src: '../assets/Logos/witw-mark.png', alt: 'Walk Into The Wild' }));
+    if (t === 'console') return h('div', { className: 'st-col' }, h(S.AppHeader, { appName: 'Admin Console', logo: mark, role: 'Super Admin', count: 3, userName: 'Vikram Mehta' }), h(S.AppHeader, { appName: 'Partner Portal', logo: mark, role: 'Partner', count: 1, userName: 'Rohit Deshmukh' }));
+    return h(S.AppHeader, { appName: 'Starter Portal', role: null, count: 1, userName: 'Priya Sharma' });
   }));
 </script>
 </body>
