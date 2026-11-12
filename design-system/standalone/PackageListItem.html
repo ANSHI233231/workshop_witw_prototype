@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en" data-theme="console">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components/bundle.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="../components/bundle.js"></script><title>PackageListItem — preview</title></head>
+<body>
+<div id="root" class="st-root"></div>
+<script>
+  var S = window.Starter, h = React.createElement, F = React.Fragment;
+  function theme(t, el) { return h('div', { className: 'st-pair' }, h('div', { 'data-theme': t, className: 'st-theme' }, h('p', { className: 'st-theme-name' }, t === 'console' ? 'Console / Partner portal' : 'Portal (website)'), el)); }
+  var IMG = {"mark": "../assets/Logos/witw-mark.png", "barasingha": "../assets/Images/package-barasingha.jpg", "elephant": "../assets/Images/package-elephant.jpg", "catamaran": "../assets/Images/package-catamaran.jpg", "cottage": "../assets/Images/package-cottage.jpg", "jeeps": "../assets/Images/package-jeeps.jpg", "leopard": "../assets/Images/package-leopard.jpg", "river": "../assets/Images/package-river-cruise.jpg", "cheetah": "../assets/Images/package-cheetah.jpg", "cliff": "../assets/Images/safari-cliff.jpg", "forest": "../assets/Images/safari-forest.jpg"};
+  ReactDOM.createRoot(document.getElementById('root')).render(theme('console', h('div', { className: 'pq-pkgs' }, h(S.PackageListItem, { image: IMG.elephant, title: 'Corbett Elephant Trails', meta: 'Corbett Tiger Reserve · 1 Night, 2 Days', price: '₹18,500 per person · live v1' }), h(S.PackageListItem, { image: IMG.barasingha, title: 'Wildlife Marathon - Kanha', meta: 'Kanha Tiger Reserve · 4 Nights, 5 Days', price: '₹1,03,640 per person · live v1' }))));
+</script>
+</body>
+</html>

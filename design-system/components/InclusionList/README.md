@@ -1,6 +1,6 @@
 # InclusionList
 
-A package's inclusions: each one ticked (`success`) or crossed out (`text-muted`), then More inclusions and Exclusions.
+What the package includes and does not, side by side, with more inclusions and exclusions under them.
 
-- **You supply** `items` (Accommodation, Meals, Pick & Drop, Camera Fee, Permit, Guide Fee with `included`), `more` and `exclusions`.
-- Source: PK-W4 (Inclusions tab).
+- Provide: `items` `[{label,included}]`; optional `more` and `exclusions` text.
+- Included shows a green check, not included a red cross; both columns stack on phones.

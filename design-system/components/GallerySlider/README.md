@@ -1,6 +1,6 @@
 # GallerySlider
 
-A gallery's photos, one at a time: the gallery title above, the photo's title and caption over it, its position, arrows and dots.
+The partner’s gallery inside the Overview section: title, one photo at a time with its title and caption, position and arrows.
 
-- **You supply** `title` (the gallery title, else "Gallery") and `photos` (`src`, `title`, `caption`). It moves every 3 seconds and loops; `autoplay: false` stops that.
-- 16:7, `radius-md`. Use it on a package's Overview (the package gallery) and under an itinerary day (the day's gallery). Source: PK-W4.
+- Provide: `title`, `photos` `[{src,title,caption}]`; optional `index` and `autoplay` (default on: moves every 3 s and loops).
+- Arrows and dots are buttons with labels; pausing on hover keeps captions readable.

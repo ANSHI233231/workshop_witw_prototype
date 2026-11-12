@@ -12,10 +12,10 @@
 <script>
   var S = window.Starter, h = React.createElement, F = React.Fragment;
   function theme(t, el) { return h('div', { className: 'st-pair' }, h('div', { 'data-theme': t, className: 'st-theme' }, h('p', { className: 'st-theme-name' }, t === 'console' ? 'Console / Partner portal' : 'Portal (website)'), el)); }
-  var IMG = {"mark": "../assets/Logos/witw-mark.png", "cliff": "../assets/Images/safari-cliff.jpg", "grassland": "../assets/Images/safari-grassland.jpg", "forest": "../assets/Images/safari-forest.jpg", "hero": "../assets/Images/hero.jpg", "resting": "../assets/Images/safari-tiger-resting.jpg", "elephant": "../assets/Images/park-elephant.jpg", "lodge": "../assets/Images/stay-lodge.jpg", "pool": "../assets/Images/stay-resort-pool.jpg", "badger": "../assets/Images/park-honey-badger.jpg", "cheetahs": "../assets/Images/park-cheetahs.jpg"};
-  ReactDOM.createRoot(document.getElementById('root')).render(theme('portal', h('div', { className: 'pk-tabs' }, h('div', { className: 'pk-tabp' }, h('div', null,
-    h(S.ItineraryDay, { n: 1, title: 'Arrive in Moharli', text: 'Pick-up from Nagpur station and drive to the stay. Evening at leisure.', details: [['Start and end', 'Nagpur → Moharli'], ['Hotel', 'Tiger Trails Lodge'], ['Meals', 'Lunch, Dinner']] }),
-    h(S.ItineraryDay, { n: 2, title: 'Two core-zone safaris', text: 'Morning and afternoon gypsy safaris in the Moharli core zone.', details: [['Activity', '2 shared gypsy safaris'], ['Meals', 'Breakfast, Lunch, Dinner']], image: IMG.lodge }))))));
+  var IMG = {"mark": "../assets/Logos/witw-mark.png", "barasingha": "../assets/Images/package-barasingha.jpg", "elephant": "../assets/Images/package-elephant.jpg", "catamaran": "../assets/Images/package-catamaran.jpg", "cottage": "../assets/Images/package-cottage.jpg", "jeeps": "../assets/Images/package-jeeps.jpg", "leopard": "../assets/Images/package-leopard.jpg", "river": "../assets/Images/package-river-cruise.jpg", "cheetah": "../assets/Images/package-cheetah.jpg", "cliff": "../assets/Images/safari-cliff.jpg", "forest": "../assets/Images/safari-forest.jpg"};
+  ReactDOM.createRoot(document.getElementById('root')).render(theme('portal', h(S.PackageSection, { title: 'Itinerary' }, h('div', null,
+    h(S.ItineraryDay, { n: 1, title: 'Arrive in Kanha', text: 'Pick-up from Raipur airport and drive to the lodge. Evening walk with a naturalist.', details: [['Route', 'Raipur → Mukki'], ['Meals', 'Lunch, Dinner']] }),
+    h(S.ItineraryDay, { n: 2, title: 'Core zone safaris', text: 'Morning and afternoon Gypsy safaris in the Mukki core zone.', details: [['Meals', 'Breakfast, Lunch, Dinner'], ['Activity', '2 Gypsy safaris']], image: IMG.jeeps })))));
 </script>
 </body>
 </html>

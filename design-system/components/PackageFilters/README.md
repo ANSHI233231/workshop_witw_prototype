@@ -1,7 +1,6 @@
 # PackageFilters
 
-The Safari Packages list's filter column: search by name, park, price per person, nights, number of safaris, stay, features, inclusions, and Clear all.
+The left-hand filters of the Packages list (P1).
 
-- **You supply** `onClear`; the lists default to the workflow's reference lists (§13). `search: false` and `park: false` drop those two, as on a park page's Packages tab.
-- Ranges have two handles; ₹50,000+, 10+ and 10+ mean no upper limit. Checkbox groups match any chosen value.
-- Chosen filters show above the list as FilterChip. Source: PK-W2, PK-W8.
+- Park select; Cost (Per Person) 0–50,000 in steps of 1,000; Tour Duration (Nights) 0–10; Total Safaris 1–10; Stay Category, Features and Included as checklists.
+- Provide `parks`; optional `park`, `stays`, `features`, `inclusions`. Under 900px it moves into a sheet.

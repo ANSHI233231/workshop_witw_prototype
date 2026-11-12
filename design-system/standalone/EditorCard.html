@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en" data-theme="console">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components/bundle.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="../components/bundle.js"></script><title>EditorCard — preview</title></head>
+<body>
+<div id="root" class="st-root"></div>
+<script>
+  var S = window.Starter, h = React.createElement, F = React.Fragment;
+  function theme(t, el) { return h('div', { className: 'st-pair' }, h('div', { 'data-theme': t, className: 'st-theme' }, h('p', { className: 'st-theme-name' }, t === 'console' ? 'Console / Partner portal' : 'Portal (website)'), el)); }
+  var IMG = {"mark": "../assets/Logos/witw-mark.png", "barasingha": "../assets/Images/package-barasingha.jpg", "elephant": "../assets/Images/package-elephant.jpg", "catamaran": "../assets/Images/package-catamaran.jpg", "cottage": "../assets/Images/package-cottage.jpg", "jeeps": "../assets/Images/package-jeeps.jpg", "leopard": "../assets/Images/package-leopard.jpg", "river": "../assets/Images/package-river-cruise.jpg", "cheetah": "../assets/Images/package-cheetah.jpg", "cliff": "../assets/Images/safari-cliff.jpg", "forest": "../assets/Images/safari-forest.jpg"};
+  ReactDOM.createRoot(document.getElementById('root')).render(theme('console', h('div', { className: 'pq-ed-main' }, h(S.Banner, null, 'This is the live version v2. Choose Edit to make a new version; the live one stays on the website until the new one is approved.'),
+    h(S.EditorCard, { tabs: ['1. Basic', '2. Itinerary', '3. Inclusions', '4. Getting there', '5. FAQs'], footer: h(F, null, h(S.Button, { variant: 'secondary' }, 'Cancel'), h(S.Button, null, 'Save')) },
+      h(S.FormField, { label: 'Package name', required: true, value: 'Wild Kanha Special - Kanha' }),
+      h('div', { className: 'pq-3' }, h(S.FormField, { label: 'Days', required: true, value: '4' }), h(S.FormField, { label: 'Nights', value: '3 Nights' }), h(S.FormField, { label: 'Number of safaris', required: true, value: '4' }))))));
+</script>
+</body>
+</html>

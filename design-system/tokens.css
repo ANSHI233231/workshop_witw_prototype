@@ -53,9 +53,14 @@
   --hero-ground: #0D1D14;
   --strip-full: #5F6368;
   --face-more: #6B7280;
-  --on-accent: #1F2937;
-  --map-ground: #EEF3EA;
+  --map-ground: #DFE9D8;
+  --map-ground-2: #CFE0C4;
+  --map-ground-3: #BCD3AE;
   --header-current: #99FF33;
+  --hot-bg: #FDE8E6;
+  --hot-text: #B3261E;
+  --cold-bg: #E3EEFC;
+  --cold-text: #1D4ED8;
   --avatar-bg: #E7EFEB;
   --avatar-text: #09422D;
   --count-chip-bg: #F5F5F5;

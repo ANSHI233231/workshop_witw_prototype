@@ -1,6 +1,6 @@
 # PackageSummary
 
-The top of a package page: tag, name, parks, days / nights, activity line, and the facts box (vehicle, stay, theme, start and end place, meals, pick & drop).
+The top of a package page (P2): picture, name, parks, tags and nine facts.
 
-- **You supply** `tag`, `title`, `parks`, `days`, `activity` and `facts` as [label, value, included?]; `true` shows the value in `success`, `false` in `text-muted` (for Meals and Pick & Drop).
-- Put it in a `pk-top` grid with PriceBox on the right (340px). Source: PK-W4.
+- Provide: `image`, `title`, `parks`, optional `tag`, `best`, and `facts` `[{icon,label,value}]` with icons `duration` `safaris` `vehicle` `stay` `theme` `start` `end` `meals` `pickup`.
+- Facts are three across, two on phones.

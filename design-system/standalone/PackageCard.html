@@ -12,11 +12,11 @@
 <script>
   var S = window.Starter, h = React.createElement, F = React.Fragment;
   function theme(t, el) { return h('div', { className: 'st-pair' }, h('div', { 'data-theme': t, className: 'st-theme' }, h('p', { className: 'st-theme-name' }, t === 'console' ? 'Console / Partner portal' : 'Portal (website)'), el)); }
-  var IMG = {"mark": "../assets/Logos/witw-mark.png", "cliff": "../assets/Images/safari-cliff.jpg", "grassland": "../assets/Images/safari-grassland.jpg", "forest": "../assets/Images/safari-forest.jpg", "hero": "../assets/Images/hero.jpg", "resting": "../assets/Images/safari-tiger-resting.jpg", "elephant": "../assets/Images/park-elephant.jpg", "lodge": "../assets/Images/stay-lodge.jpg", "pool": "../assets/Images/stay-resort-pool.jpg", "badger": "../assets/Images/park-honey-badger.jpg", "cheetahs": "../assets/Images/park-cheetahs.jpg"};
-  ReactDOM.createRoot(document.getElementById('root')).render(theme('portal', h('div', { className: 'pk-w3' },
-    h(S.PackageCard, { image: IMG.cliff, title: 'Ranthambore Tiger Safari', park: 'Ranthambore Tiger Reserve', days: '3 Days / 2 Nights', activity: '4 Shared Safaris', price: '₹17,500', total: '₹35,000' }),
-    h(S.PackageCard, { image: IMG.grassland, tag: { text: 'Bestseller', bg: '#FD5634' }, best: true, title: 'Tadoba Tiger Trail – 3 Days', park: 'Tadoba-Andhari Tiger Reserve', days: '3 Days / 2 Nights', activity: '3 Shared Safaris', price: '₹18,500', before: '₹21,000', total: '₹37,000' }),
-    h(S.PackageCard, { variant: 'portal', image: IMG.resting, tag: { text: 'New', bg: '#09422D' }, title: 'Tadoba & Pench Explorer', park: 'Tadoba-Andhari Tiger Reserve', days: '5 Days / 4 Nights', price: '₹42,000', live: 'Live v1', status: { tone: 'success', label: 'Active' } }))));
+  var IMG = {"mark": "../assets/Logos/witw-mark.png", "barasingha": "../assets/Images/package-barasingha.jpg", "elephant": "../assets/Images/package-elephant.jpg", "catamaran": "../assets/Images/package-catamaran.jpg", "cottage": "../assets/Images/package-cottage.jpg", "jeeps": "../assets/Images/package-jeeps.jpg", "leopard": "../assets/Images/package-leopard.jpg", "river": "../assets/Images/package-river-cruise.jpg", "cheetah": "../assets/Images/package-cheetah.jpg", "cliff": "../assets/Images/safari-cliff.jpg", "forest": "../assets/Images/safari-forest.jpg"};
+  ReactDOM.createRoot(document.getElementById('root')).render(theme('portal', h('div', { className: 'pk-grid' },
+    h(S.PackageCard, { image: IMG.catamaran, title: 'Mangrove Majesty - Bhitarkanika National Park', park: 'Bhitarkanika National Park', duration: '3 Nights, 4 Days', activity: '3 Boat safaris on the Antara catamaran', price: '₹1,55,000', total: '₹1,55,000' }),
+    h(S.PackageCard, { image: IMG.barasingha, title: 'Wild Kanha Special - Kanha', park: 'Kanha Tiger Reserve', duration: '3 Nights, 4 Days', activity: '4 Private Safaris', price: '₹75,480', total: '₹75,480' }),
+    h(S.PackageCard, { image: IMG.elephant, best: true, tag: { text: 'Custom Tag', bg: '#FFFFFF', color: '#C0392B' }, title: 'Corbett Elephant Trails', park: 'Corbett Tiger Reserve', duration: '1 Night, 2 Days', activity: '2 elephant safaris in Bijrani', before: '₹22,000', price: '₹18,500', total: '₹37,000', message: 'For 2 people, taxes included' }))));
 </script>
 </body>
 </html>

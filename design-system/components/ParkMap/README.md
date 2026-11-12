@@ -1,5 +1,5 @@
 # ParkMap
 
-A park's location on its Overview: a pin with the name and coordinates on a faint green grid (`map-ground`), with "Open the map".
+The park page map: green ground with zoom buttons, a pin and the latitude and longitude.
 
-- **You supply** `name`, `lat`, `lng`; the link opens OpenStreetMap unless you give `href`. In the app this is a live Leaflet map; the board shows this offline stand-in. Source: PK-W8.
+- Provide: `name`, `lat`, `lng`. In the product this is a Leaflet map; the ground uses `map-ground`, `map-ground-2` and `map-ground-3`.

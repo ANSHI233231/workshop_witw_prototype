@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"Starter","components":[{"name":"Icon"},{"name":"Button"},{"name":"IconButton"},{"name":"SearchInput"},{"name":"Select"},{"name":"FormField"},{"name":"Toggle"},{"name":"StatusBadge"},{"name":"Table"},{"name":"Card"},{"name":"KpiCard"},{"name":"Dialog"},{"name":"Tabs"},{"name":"PageHeader"},{"name":"AppHeader"},{"name":"NotificationItem"},{"name":"NotificationPopover"},{"name":"Sidebar"},{"name":"MobileMenu"},{"name":"Footer"},{"name":"SignIn"},{"name":"NotFound"},{"name":"Toast"},{"name":"ToastStack"},{"name":"DialogError"},{"name":"SearchSelect"},{"name":"ServerSelect"},{"name":"SiteHeader"},{"name":"SiteHero"},{"name":"SiteFooter"},{"name":"SiteDialog"},{"name":"SafariCard"},{"name":"SafariFilters"},{"name":"FilterChip"},{"name":"SafariSummary"},{"name":"SitePanel"},{"name":"Comment"},{"name":"RadioList"},{"name":"WebNotificationItem"},{"name":"DetailList"},{"name":"PinButton"},{"name":"JoinedLeft"},{"name":"PackageTag"},{"name":"Tag"},{"name":"Banner"},{"name":"Segmented"},{"name":"ColorField"},{"name":"ImagePicker"},{"name":"FormSection"},{"name":"PackageCard"},{"name":"PackageFilters"},{"name":"PageBanner"},{"name":"PackageSummary"},{"name":"PriceBox"},{"name":"ContentTabs"},{"name":"GallerySlider"},{"name":"ItineraryDay"},{"name":"InclusionList"},{"name":"FaqItem"},{"name":"Disclaimer"},{"name":"ParkCard"},{"name":"ParkSummary"},{"name":"ParkMap"},{"name":"NotInUse"},{"name":"HotCold"},{"name":"EntityCell"},{"name":"GalleryCard"},{"name":"StatusPanel"},{"name":"PartnerIdentity"},{"name":"PortalNotification"}]} */
+/* @ds-bundle: {"format":4,"namespace":"Starter","components":[{"name":"Icon"},{"name":"Button"},{"name":"IconButton"},{"name":"SearchInput"},{"name":"Select"},{"name":"FormField"},{"name":"Toggle"},{"name":"StatusBadge"},{"name":"Table"},{"name":"Card"},{"name":"KpiCard"},{"name":"Dialog"},{"name":"Tabs"},{"name":"PageHeader"},{"name":"AppHeader"},{"name":"NotificationItem"},{"name":"NotificationPopover"},{"name":"Sidebar"},{"name":"MobileMenu"},{"name":"Footer"},{"name":"SignIn"},{"name":"NotFound"},{"name":"Toast"},{"name":"ToastStack"},{"name":"DialogError"},{"name":"SearchSelect"},{"name":"ServerSelect"},{"name":"SiteHeader"},{"name":"SiteHero"},{"name":"SiteFooter"},{"name":"SiteDialog"},{"name":"SafariCard"},{"name":"SafariFilters"},{"name":"FilterChip"},{"name":"SafariSummary"},{"name":"SitePanel"},{"name":"Comment"},{"name":"RadioList"},{"name":"WebNotificationItem"},{"name":"DetailList"},{"name":"PinButton"},{"name":"JoinedLeft"},{"name":"Banner"},{"name":"PackageCard"},{"name":"PackageFilters"},{"name":"PackageSummary"},{"name":"PriceBar"},{"name":"SectionTabs"},{"name":"PackageSection"},{"name":"GallerySlider"},{"name":"ItineraryDay"},{"name":"InclusionList"},{"name":"FaqItem"},{"name":"Disclaimer"},{"name":"QuoteForm"},{"name":"NotInUse"},{"name":"ParkCard"},{"name":"ParkMap"},{"name":"FormPanel"},{"name":"StepsPanel"},{"name":"ParkPicker"},{"name":"LogoField"},{"name":"PortalSignIn"},{"name":"AccessGuard"},{"name":"KpiTile"},{"name":"PackageListItem"},{"name":"PackageCell"},{"name":"VersionCell"},{"name":"EditorCard"},{"name":"SidePanel"},{"name":"VersionRow"},{"name":"DayEditor"},{"name":"FaqEditRow"},{"name":"ImageField"},{"name":"TagColors"},{"name":"PhotoTile"},{"name":"GalleryCard"},{"name":"HotCold"},{"name":"BusinessProfile"}]} */
 (function () {
   var React = window.React, h = React.createElement, Fragment = React.Fragment;
   function cx() { return Array.prototype.filter.call(arguments, Boolean).join(' '); }
@@ -680,125 +680,93 @@
     SafariSummary: SafariSummary, SitePanel: SitePanel, Comment: Comment, RadioList: RadioList, WebNotificationItem: WebNotificationItem, DetailList: DetailList, PinButton: PinButton, JoinedLeft: JoinedLeft });
 })();
 
-/* Packages: website, Partner portal and Console parts, from the Packages boards (PK-W1–W9, PK-P1–P8, PK-C1–C8). */
+/* Packages: website, Partner portal and Console parts, from the Responsive prototype's Packages boards (P1–P6, PP1–PP10, PC1–PC9). */
 (function () {
   var React = window.React, h = React.createElement, Fragment = React.Fragment, S = window.Starter;
   var useState = React.useState, useEffect = React.useEffect;
   function cx() { return Array.prototype.filter.call(arguments, Boolean).join(' '); }
-  var G = {"award":"<path d=\"m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526\"></path><circle cx=\"12\" cy=\"8\" r=\"6\"></circle>","calendar-days":"<path d=\"M8 2v4\"></path><path d=\"M16 2v4\"></path><rect width=\"18\" height=\"18\" x=\"3\" y=\"4\" rx=\"2\"></rect><path d=\"M3 10h18\"></path>","send":"<path d=\"M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z\"></path><path d=\"m21.854 2.147-10.94 10.939\"></path>","chevron-left":"<path d=\"m15 18-6-6 6-6\"></path>","chevron-right":"<path d=\"m9 18 6-6-6-6\"></path>","map-pinned":"<path d=\"M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0\"></path><circle cx=\"12\" cy=\"10\" r=\"3\"></circle>","indian-rupee":"<path d=\"M6 3h12\"></path><path d=\"M6 8h12\"></path><path d=\"m6 13 8.5 8\"></path><path d=\"M6 13h3\"></path><path d=\"M9 13c6.667 0 6.667-10 0-10\"></path>","map-pin":"<path d=\"M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0\"></path><circle cx=\"12\" cy=\"10\" r=\"3\"></circle>","package-x":"<path d=\"M21 10V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l2-1.14\"></path><path d=\"m7.5 4.27 9 5.15\"></path><polyline points=\"3.29 7 12 12 20.71 7\"></polyline><line x1=\"12\" x2=\"12\" y1=\"22\" y2=\"12\"></line><path d=\"m17 13 5 5m-5 0 5-5\"></path>","image":"<rect width=\"18\" height=\"18\" x=\"3\" y=\"3\" rx=\"2\" ry=\"2\"></rect><circle cx=\"9\" cy=\"9\" r=\"2\"></circle><path d=\"m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21\"></path>","upload":"<path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"></path><polyline points=\"17 8 12 3 7 8\"></polyline><line x1=\"12\" x2=\"12\" y1=\"3\" y2=\"15\"></line>","flame":"<path d=\"M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z\"></path>","snowflake":"<line x1=\"2\" x2=\"22\" y1=\"12\" y2=\"12\"></line><line x1=\"12\" x2=\"12\" y1=\"2\" y2=\"22\"></line><path d=\"m20 16-4-4 4-4\"></path><path d=\"m4 8 4 4-4 4\"></path><path d=\"m16 4-4 4-4-4\"></path><path d=\"m8 20 4-4 4 4\"></path>","info":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M12 16v-4\"></path><path d=\"M12 8h.01\"></path>","store":"<path d=\"m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7\"></path><path d=\"M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8\"></path><path d=\"M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4\"></path><path d=\"M2 7h20\"></path><path d=\"M22 7v3a2 2 0 0 1-2 2a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7\"></path>","search":"<circle cx=\"11\" cy=\"11\" r=\"8\"></circle><path d=\"m21 21-4.3-4.3\"></path>","car-front":"<path d=\"m21 8-2 2-1.5-3.7A2 2 0 0 0 15.646 5H8.4a2 2 0 0 0-1.903 1.257L5 10 3 8\"></path><path d=\"M7 14h.01\"></path><path d=\"M17 14h.01\"></path><rect width=\"18\" height=\"8\" x=\"3\" y=\"10\" rx=\"2\"></rect><path d=\"M5 18v2\"></path><path d=\"M19 18v2\"></path>","circle-check":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"m9 12 2 2 4-4\"></path>","circle-x":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"m15 9-6 6\"></path><path d=\"m9 9 6 6\"></path>","chevron-down":"<path d=\"m6 9 6 6 6-6\"></path>"};
+  var G = {"map-pin":"<path d=\"M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0\"></path><circle cx=\"12\" cy=\"10\" r=\"3\"></circle>","clock":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><polyline points=\"12 6 12 12 16 14\"></polyline>","car":"<path d=\"M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2\"></path><circle cx=\"7\" cy=\"17\" r=\"2\"></circle><path d=\"M9 17h6\"></path><circle cx=\"17\" cy=\"17\" r=\"2\"></circle>","bed":"<path d=\"M2 4v16\"></path><path d=\"M2 8h18a2 2 0 0 1 2 2v10\"></path><path d=\"M2 17h20\"></path><path d=\"M6 8v9\"></path>","camera":"<path d=\"M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z\"></path><circle cx=\"12\" cy=\"13\" r=\"3\"></circle>","flag":"<path d=\"M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528\"></path>","utensils":"<path d=\"M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2\"></path><path d=\"M7 2v20\"></path><path d=\"M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7\"></path>","star":"<path d=\"M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z\"></path>","chevron-left":"<path d=\"m15 18-6-6 6-6\"></path>","chevron-right":"<path d=\"m9 18 6-6-6-6\"></path>","chevron-down":"<path d=\"m6 9 6 6 6-6\"></path>","check":"<path d=\"M20 6 9 17l-5-5\"></path>","x":"<path d=\"M18 6 6 18\"></path><path d=\"m6 6 12 12\"></path>","package":"<path d=\"M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z\"></path><path d=\"M12 22V12\"></path><path d=\"m3.3 7 7.703 4.734a2 2 0 0 0 1.994 0L20.7 7\"></path><path d=\"m7.5 4.27 9 5.15\"></path>","external-link":"<path d=\"M15 3h6v6\"></path><path d=\"M10 14 21 3\"></path><path d=\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"></path>","circle-check":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"m16 9-5.5 5.5L8 12\"></path>","send":"<path d=\"M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z\"></path><path d=\"m21.854 2.147-10.94 10.939\"></path>"};
   function Glyph(p) {
     return h('svg', { className: cx('st-icon', p.className), viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': 'true', focusable: 'false', dangerouslySetInnerHTML: { __html: G[p.name] || '' } });
   }
   function Badge(s) { return s ? h(S.StatusBadge, { tone: s.tone || 'success' }, s.label) : null; }
+  function Field(p) {
+    return h('div', { className: 'st-field' }, h('label', { className: 'st-label', htmlFor: p.id }, p.label, p.required ? h('span', { className: 'st-req', 'aria-hidden': 'true' }, '*') : null), p.children, p.helper ? h('span', { className: 'st-helper' }, p.helper) : null);
+  }
+  function Tag(t) { return t ? h('span', { className: 'pk-tag', style: { background: t.bg || 'var(--primary)', color: t.color || '#FFFFFF' } }, t.text) : null; }
+  function Best(on) { return on ? h('span', { className: 'pk-best' }, h(Glyph, { name: 'star' }), 'Best deal') : null; }
 
-  /* ---- Small shared parts ---- */
-  function PackageTag(p) {
-    var style = { background: p.bg || 'var(--primary)', color: p.color || '#FFFFFF' };
-    if (p.inline) style.position = 'static';
-    return h('span', { className: 'pk-tag', style: style }, p.text || p.children);
-  }
-  function Tag(p) { return h('span', { className: cx('st-tag', p.tone !== 'plain' && 't-dash') }, p.children); }
+  /* Small shared part */
   function Banner(p) {
-    return h('div', { className: cx('st-banner', 'st-banner-' + (p.tone || 'info')), role: p.tone === 'danger' ? 'alert' : 'status' }, p.icon ? h(Glyph, { name: 'info' }) : null, h('span', null, p.children));
-  }
-  function Segmented(p) {
-    var st = useState(p.value != null ? p.value : (p.options[0] || {}).value), v = st[0];
-    var opts = p.options.map(function (o) { return typeof o === 'string' ? { value: o, label: o } : o; });
-    return h('div', { className: 'st-seg pk-seg', role: 'radiogroup', 'aria-label': p.label, style: { gridTemplateColumns: 'repeat(' + opts.length + ', minmax(0, 1fr))' } }, opts.map(function (o) {
-      var on = o.value === v;
-      return h('button', { key: o.value, type: 'button', role: 'radio', 'aria-checked': on, className: on ? 'is-on' : '', onClick: function () { st[1](o.value); if (p.onChange) p.onChange(o.value); } }, o.label);
-    }));
-  }
-  function ColorField(p) {
-    var st = useState(p.value || '#09422D');
-    return h('div', { className: 'st-field' }, h('label', { className: 'st-label', htmlFor: p.id }, p.label),
-      h('div', { className: 'pk-color' }, h('input', { id: p.id, type: 'color', value: st[0], onChange: function (e) { st[1](e.target.value.toUpperCase()); if (p.onChange) p.onChange(e.target.value); } }), h('span', { className: 'ss-cap' }, st[0].toUpperCase())));
-  }
-  function ImagePicker(p) {
-    var logo = p.variant === 'logo';
-    var shown = p.image ? h('img', { className: logo ? null : 'pk-imgprev', src: p.image, alt: (p.label || 'Image') + ' preview' })
-      : h('span', { className: cx(!logo && 'pk-imgprev', 'pk-ph') }, h(Glyph, { name: 'image' }));
-    return h('div', { className: 'st-field' }, h('span', { className: 'st-label' }, p.label),
-      h('div', { className: logo ? 'pk-logo' : 'pk-imgrow' }, shown,
-        h('input', { className: 'pk-file', type: 'file', accept: p.accept || '.jpg,.jpeg,.png', 'aria-label': p.label, tabIndex: -1 }),
-        h('button', { type: 'button', className: 'st-btn st-btn-secondary', onClick: p.onChoose }, h(Glyph, { name: 'upload' }), p.buttonLabel || (logo ? 'Choose logo' : 'Choose image')),
-        p.image && p.removable !== false && !logo ? h('button', { type: 'button', className: 'st-btn st-btn-text', onClick: p.onRemove }, 'Remove') : null),
-      p.helper ? h('span', { className: 'st-helper' }, p.helper) : null);
-  }
-  function FormSection(p) {
-    return h('section', { className: 'pk-sec' }, p.title ? h('h2', null, p.title) : null, p.children);
+    return h('div', { className: cx('st-banner', 'st-banner-' + (p.tone || 'info'), 'pq-banner'), role: p.tone === 'danger' ? 'alert' : 'status' }, p.children);
   }
 
   /* ---- Website ---- */
   function PackageCard(p) {
-    var portal = p.variant === 'portal';
-    var price = h('div', { className: 'pk-price' }, h('b', null, p.price), p.before ? h('s', null, p.before) : null, h('small', null, 'per person'));
-    return h('div', { className: 'wb-card pk-card' },
-      h('div', { className: 'wb-img' }, p.image ? h('img', { src: p.image, alt: '' }) : null, p.tag ? h(PackageTag, p.tag) : null,
-        p.best ? h('span', { className: 'pk-best' }, h(Glyph, { name: 'award' }), 'Best deal') : null),
-      h('div', { className: 'wb-body' },
-        h('h3', { className: 'wb-title' }, h('a', { href: p.href || '#' }, p.title)),
-        portal ? h('span', { className: 'pk-fact' }, h(Glyph, { name: 'map-pin' }), p.park)
-          : h('div', { className: 'wb-park' }, h(Glyph, { name: 'map-pin' }), h('span', null, p.park)),
-        h(portal ? 'span' : 'div', { className: 'pk-fact' }, h(Glyph, { name: 'calendar-days' }), portal ? p.days : h('span', null, p.days)),
-        !portal && p.activity ? h('div', { className: 'pk-fact' }, h(Glyph, { name: 'car-front' }), h('span', null, p.activity)) : null,
-        portal
-          ? h('div', { className: 'pk-cfoot' }, price, h('span', { className: 'ss-row' }, p.live ? h(Tag, null, p.live) : null, Badge(p.status)))
-          : h('div', { className: 'pk-cfoot' },
-              h('div', null, price, h('div', { className: 'pk-pmsg' }, p.message || 'Include taxes and fees'), h('div', { className: 'pk-total' }, 'Total price ' + p.total)),
-              h('a', { className: 'st-btn st-btn-primary wb-join pk-view', href: p.href || '#' }, p.actionLabel || 'View Details'))));
+    return h('div', { className: 'pk-card', onClick: p.onOpen },
+      h('div', { className: 'pk-img' }, p.image ? h('img', { src: p.image, alt: '' }) : null, Best(p.best), Tag(p.tag)),
+      h('div', { className: 'pk-body' },
+        h('h3', { className: 'pk-name' }, p.title),
+        h('div', { className: 'pk-park' }, h(Glyph, { name: 'map-pin' }), h('span', null, p.park)),
+        h('div', { className: 'pk-lines' }, h('span', { className: 'pk-line' }, h(Glyph, { name: 'clock' }), p.duration), p.activity ? h('span', { className: 'pk-line' }, h(Glyph, { name: 'car' }), p.activity) : null),
+        h('div', { className: 'pk-foot' },
+          h('div', null, p.before ? h('span', { className: 'pk-old' }, p.before) : null, h('span', { className: 'pk-ppp' }, p.price + ' ', h('small', null, '/Person')), h('span', { className: 'pk-tot' }, 'Total Price ' + p.total)),
+          h('button', { type: 'button', className: 'st-btn st-btn-primary pk-view', onClick: function (e) { e.stopPropagation(); if (p.onView) p.onView(); } }, p.actionLabel || 'View Details')),
+        h('div', { className: 'pk-msg' }, p.message || 'Include taxes and fees')));
   }
   function inr(n) { return '₹' + Number(n).toLocaleString('en-IN'); }
   function Range(p) {
     return h('div', { className: 'st-field' }, h('span', { className: 'st-label' }, p.label),
       h('div', { className: 'wb-range' },
-        h('input', { type: 'range', min: p.min, max: p.max, step: p.step || 1, 'aria-label': p.low, defaultValue: p.min }),
-        h('input', { type: 'range', min: p.min, max: p.max, step: p.step || 1, 'aria-label': p.high, defaultValue: p.max })),
+        h('input', { type: 'range', min: p.min, max: p.max, step: p.step || 1, 'aria-label': p.label + ', lowest', defaultValue: p.min }),
+        h('input', { type: 'range', min: p.min, max: p.max, step: p.step || 1, 'aria-label': p.label + ', highest', defaultValue: p.max })),
       h('div', { className: 'wb-range-v' }, h('span', null, p.minText), h('span', null, p.maxText)));
   }
   function Checks(label, list) {
     return h('div', { className: 'st-field' }, h('span', { className: 'st-label' }, label),
-      h('div', { className: 'pk-checks' }, list.map(function (o) { return h('label', { key: o, className: 'st-check' }, h('input', { type: 'checkbox' }), o); })));
+      h('div', { className: 'ss-checks' }, list.map(function (o) { return h('label', { key: o, className: 'st-check' }, h('input', { type: 'checkbox' }), o); })));
   }
   var STAYS = ['Premium', 'Standard', 'Economical', 'Not Included', 'Forest Rest House', 'Home Stay'];
   var FEATURES = ['Multiple Parks', 'Customizable', 'Private Room', 'Shared Room', 'Private Safari', 'Shared Safari', 'Photography Special', 'Forest Rest House Stay', 'Other Activities'];
   var INCLUSIONS = ['Accommodation', 'Meals', 'Pick & Drop', 'Camera Fee', 'Permit', 'Guide Fee'];
   function PackageFilters(p) {
     return h('aside', { className: 'wb-side' },
-      h('div', { className: 'wb-filters pk-filters', 'aria-label': 'Filters' }, h('h2', null, 'Select Filters'),
-        p.search === false ? null : h('div', { className: 'st-field' }, h('label', { className: 'st-label', htmlFor: 'f-q' }, 'Search by name'),
-          h('div', { className: 'st-input-group' }, h(Glyph, { name: 'search' }), h('input', { id: 'f-q', className: 'st-input', placeholder: 'Package name', maxLength: 100 }))),
+      h('div', { className: 'wb-filters', 'aria-label': 'Filters' }, h('h2', null, 'Select Filters'),
         p.park === false ? null : h('div', { className: 'st-field' }, h('label', { className: 'st-label', htmlFor: 'f-park' }, 'Park'),
-          h('div', { className: 'ss pk-ss' }, h('button', { type: 'button', id: 'f-park', className: 'st-select ss-sel is-empty', 'aria-haspopup': 'listbox', 'aria-expanded': false }, h('span', null, 'Any / All'), h(Glyph, { name: 'chevron-down' })))),
-        h(Range, { label: 'Price per person', min: 1000, max: 50000, step: 500, low: 'Lowest price per person', high: 'Highest price per person', minText: inr(1000), maxText: inr(50000) + '+' }),
-        h(Range, { label: 'Nights', min: 0, max: 10, low: 'Fewest nights', high: 'Most nights', minText: '0', maxText: '10+' }),
-        h(Range, { label: 'Number of safaris', min: 1, max: 10, low: 'Fewest safaris', high: 'Most safaris', minText: '1', maxText: '10+' }),
-        Checks('Stay', p.stays || STAYS), Checks('Features', p.features || FEATURES), Checks('Inclusions', p.inclusions || INCLUSIONS),
-        h('button', { type: 'button', className: 'st-btn st-btn-text', onClick: p.onClear }, h(S.Icon, { name: 'rotate-ccw' }), 'Clear all')));
+          h('select', { id: 'f-park', className: 'st-select' }, h('option', { value: '' }, 'Any / All'), (p.parks || []).map(function (o, i) { return h('option', { key: i, value: i + 1 }, o); }))),
+        h(Range, { label: 'Cost (Per Person)', min: 0, max: 50000, step: 1000, minText: inr(0), maxText: inr(50000) + '+' }),
+        h(Range, { label: 'Tour Duration (Nights)', min: 0, max: 10, minText: '0', maxText: '10+' }),
+        h(Range, { label: 'Total Safaris', min: 1, max: 10, minText: '1', maxText: '10+' }),
+        Checks('Stay Category', p.stays || STAYS), Checks('Features', p.features || FEATURES), Checks('Included', p.inclusions || INCLUSIONS)));
   }
-  function PageBanner(p) { return h('div', { className: 'pk-ban' }, p.image ? h('img', { src: p.image, alt: '' }) : null); }
+  var FACT = { duration: 'clock', safaris: 'car', vehicle: 'car', stay: 'bed', theme: 'camera', start: 'map-pin', end: 'flag', meals: 'utensils', pickup: 'car' };
   function PackageSummary(p) {
-    return h('div', { className: 'pk-head' }, p.tag ? h(PackageTag, p.tag) : null, h('h1', null, p.title),
-      h('div', { className: 'wb-park' }, h(Glyph, { name: 'map-pin' }), h('span', null, p.parks)),
-      h('div', { className: 'ss-row' }, h('span', { className: 'pk-fact' }, h(Glyph, { name: 'calendar-days' }), p.days), p.activity ? h('span', { className: 'pk-fact' }, h(Glyph, { name: 'car-front' }), p.activity) : null),
-      p.facts ? h('dl', { className: 'pk-facts' }, p.facts.map(function (f, i) {
-        return h('div', { key: i }, h('dt', null, f[0]), h('dd', { className: f[2] === true ? 'pk-yes' : f[2] === false ? 'pk-no' : null }, f[1]));
-      })) : null);
+    return h('div', { className: 'pk2-top' },
+      h('div', { className: 'pk2-main' },
+        h('div', { className: 'pk2-pic' }, p.image ? h('img', { src: p.image, alt: '' }) : null),
+        h('div', null, h('h2', { className: 'pk2-name' }, p.title),
+          h('div', { className: 'pk2-parks' }, h(Glyph, { name: 'map-pin' }), h('span', null, p.parks)),
+          h('div', { className: 'pk2-tags' }, Tag(p.tag), Best(p.best)))),
+      h('div', { className: 'pk2-facts' }, (p.facts || []).map(function (f, i) {
+        return h('div', { key: i, className: 'pk2-fact' }, h(Glyph, { name: FACT[f.icon] || f.icon }), h('div', null, h('small', null, f.label), h('b', null, f.value)));
+      })));
   }
-  function PriceBox(p) {
-    return h('aside', { className: 'pk-box', 'aria-label': 'Price' },
-      h('div', { className: 'pk-price' }, h('b', null, p.price), p.before ? h('s', null, p.before) : null, h('small', null, 'per person')),
-      h('div', { className: 'pk-pmsg' }, p.message || 'Include taxes and fees'),
-      h('div', { className: 'pk-total' }, 'Total price ' + p.total),
-      p.note ? h('div', { className: 'pk-note' }, p.note === true ? 'You are signed in as a partner. Quote requests for your packages are in the Partner portal.' : p.note, ' ', h('a', { href: p.noteHref || '#' }, 'Open the Partner portal')) : h('button', { type: 'button', className: 'st-btn st-btn-primary', onClick: p.onAction }, h(Glyph, { name: 'send' }), p.actionLabel || 'Request a quote'));
+  function PriceBar(p) {
+    return h('div', { className: 'pk2-pricebar' }, p.left ? h('span', { className: 'pk2-op' }, p.left) : h('span'),
+      h('div', { className: 'pk2-price' },
+        h('div', null, p.before ? h('span', { className: 'pk-old' }, p.before) : null, h('span', { className: 'pk-ppp' }, p.price + ' ', h('small', null, '/Person')),
+          h('span', { className: 'pk-tot' }, 'Total Price ' + p.total), h('span', { className: 'pk-tot' }, p.message || 'Include taxes and fees')),
+        p.action === false ? null : h('button', { type: 'button', className: 'st-btn st-btn-primary', onClick: p.onAction }, p.actionLabel || 'Request a quote')));
   }
-  function ContentTabs(p) {
+  function SectionTabs(p) {
     var st = useState(p.active || 0), a = st[0];
-    return h('div', { className: 'pk-tabs' },
-      h('div', { className: 'st-mtabs', role: 'tablist' }, p.tabs.map(function (t, i) {
-        return h('button', { key: i, type: 'button', role: 'tab', 'aria-selected': i === a, className: cx('st-mtab', i === a && 'is-on'), onClick: function () { st[1](i); if (p.onChange) p.onChange(i); } }, t);
-      })),
-      h('div', { className: 'pk-tabp', role: 'tabpanel' }, typeof p.children === 'function' ? p.children(a) : (Array.isArray(p.panels) ? p.panels[a] : p.children)));
+    return h('div', { className: 'nt-tabs pk2-tabs', role: 'tablist' }, p.tabs.map(function (t, i) {
+      t = typeof t === 'string' ? { label: t } : t;
+      return h('a', { key: i, className: cx('nt-tab', i === a && 'is-on'), role: 'tab', 'aria-selected': i === a, onClick: function () { st[1](i); if (p.onChange) p.onChange(i); } }, t.label, t.count != null ? h('span', null, t.count) : null);
+    }));
+  }
+  function PackageSection(p) {
+    return h('div', { className: cx('pk2-sec', p.className) }, h('div', { className: 'pk2-sec-h' }, p.title, p.aside ? h('span', null, p.aside) : null), h('div', { className: 'pk2-sec-b' }, p.children));
   }
   function GallerySlider(p) {
     var photos = p.photos || [], n = photos.length;
@@ -810,96 +778,171 @@
     }, [n, p.autoplay]);
     if (!n) return null;
     var ph = photos[i];
-    return h('div', { className: 'ss-stack' }, h('h3', { className: 'pk-h' }, p.title || 'Gallery'),
-      h('div', { className: 'pk-slider' }, h('img', { src: ph.src, alt: ph.title || '' }), h('span', { className: 'pk-pos' }, (i + 1) + ' / ' + n),
-        ph.title || ph.caption ? h('div', { className: 'pk-cap2' }, ph.title ? h('b', null, ph.title) : null, ph.caption || null) : null,
-        h('button', { type: 'button', className: 'pk-arrow is-l', 'aria-label': 'Previous photo', onClick: function () { st[1]((i + n - 1) % n); } }, h(Glyph, { name: 'chevron-left' })),
-        h('button', { type: 'button', className: 'pk-arrow is-r', 'aria-label': 'Next photo', onClick: function () { st[1]((i + 1) % n); } }, h(Glyph, { name: 'chevron-right' }))),
-      h('div', { className: 'pk-dots' }, photos.map(function (_, k) { return h('span', { key: k, className: cx('pk-dot', k === i && 'is-on') }); })));
+    return h(Fragment, null, h('p', { className: 'pk2-gt' }, p.title || 'Gallery'),
+      h('div', { className: 'pk2-slider', 'aria-roledescription': 'carousel', 'aria-label': p.title || 'Gallery' },
+        h('img', { src: ph.src, alt: ph.title || '' }), h('span', { className: 'pk2-dots' }, (i + 1) + ' / ' + n),
+        h('button', { type: 'button', className: 'pk2-arrow is-l', 'aria-label': 'Previous photo', onClick: function () { st[1]((i + n - 1) % n); } }, h(Glyph, { name: 'chevron-left' })),
+        h('button', { type: 'button', className: 'pk2-arrow is-r', 'aria-label': 'Next photo', onClick: function () { st[1]((i + 1) % n); } }, h(Glyph, { name: 'chevron-right' })),
+        ph.title || ph.caption ? h('div', { className: 'pk2-cap' }, ph.title ? h('b', null, ph.title) : null, ph.caption ? h('span', null, ph.caption) : null) : null));
   }
   function ItineraryDay(p) {
-    return h('div', { className: 'pk-day' }, h('span', { className: 'pk-dayn' }, p.label || 'Day ' + p.n),
-      h('div', { className: 'ss-stack' }, h('h3', { className: 'pk-h' }, p.title), h('p', { className: 'pk-p' }, p.text),
-        p.details && p.details.length ? h('dl', { className: 'pk-dl' }, p.details.map(function (d, i) { return h(Fragment, { key: i }, h('dt', null, d[0]), h('dd', null, d[1])); })) : null,
-        p.image ? h('img', { className: 'pk-dayimg', src: p.image, alt: p.title }) : null, p.children));
+    return h('div', { className: 'pk2-day' }, h('h3', null, h('span', null, (p.label || 'Day ' + p.n) + ':'), ' ' + p.title),
+      h('p', { className: 'pk2-text' }, p.text),
+      p.details && p.details.length ? h('dl', { className: 'pk2-dl' }, p.details.map(function (d, i) { return h(Fragment, { key: i }, h('dt', null, d[0]), h('dd', null, d[1])); })) : null,
+      p.image ? h('img', { className: 'pk2-dimg', src: p.image, alt: '' }) : null, p.children);
   }
   function InclusionList(p) {
-    return h(Fragment, null,
-      h('div', { className: 'pk-inc' }, p.items.map(function (x, i) {
-        return h('span', { key: i }, h('span', { className: x.included ? 'pk-yes' : 'pk-no' }, h(Glyph, { name: x.included ? 'circle-check' : 'circle-x' })), x.label);
-      })),
-      p.more ? h('div', { className: 'ss-stack' }, h('h3', { className: 'pk-h' }, 'More inclusions'), h('p', { className: 'pk-p' }, p.more)) : null,
-      p.exclusions ? h('div', { className: 'ss-stack' }, h('h3', { className: 'pk-h' }, 'Exclusions'), h('p', { className: 'pk-p' }, p.exclusions)) : null);
+    var yes = p.items.filter(function (x) { return x.included; }), no = p.items.filter(function (x) { return !x.included; });
+    function list(t, xs, cls, g) { return h('div', null, h('h3', null, t), h('ul', null, xs.map(function (x, i) { return h('li', { key: i, className: cls }, h(Glyph, { name: g }), x.label); }))); }
+    return h(Fragment, null, h('div', { className: 'pk2-inc' }, list('Included', yes, 'is-y', 'check'), list('Not included', no, 'is-n', 'x')),
+      p.more ? h('div', null, h('h3', { className: 'pk2-gt' }, 'More inclusions'), h('p', { className: 'pk2-text' }, p.more)) : null,
+      p.exclusions ? h('div', null, h('h3', { className: 'pk2-gt' }, 'Exclusions'), h('p', { className: 'pk2-text' }, p.exclusions)) : null);
   }
   function FaqItem(p) {
     var st = useState(!!p.open);
-    return h('div', { className: 'pk-faq' },
+    return h('div', { className: 'pk2-faq' },
       h('button', { type: 'button', 'aria-expanded': st[0], onClick: function () { st[1](!st[0]); } }, p.question, h(Glyph, { name: 'chevron-down' })),
       st[0] ? h('p', null, p.answer) : null);
   }
   var DISC = 'This tour is operated by our authorised safari tour operator, not directly by Walk Into The Wild. This tour is governed by the terms and conditions set forth by Walk Into The Wild.';
-  function Disclaimer(p) { return h('p', { className: 'pk-disc' }, p.children || DISC); }
-  function ParkCard(p) {
-    return h('div', { className: 'wb-card pk-park' }, h('a', { className: 'wb-img', href: p.href || '#' }, p.image ? h('img', { src: p.image, alt: '' }) : null),
-      h('div', { className: 'wb-body' }, h('h3', { className: 'wb-title' }, h('a', { href: p.href || '#' }, p.name)),
-        h('span', { className: 'pk-region' }, h(Glyph, { name: 'map-pinned' }), p.region),
-        h('div', { className: 'pk-cfoot' }, h('div', null, h('small', { className: 'pk-pmsg' }, 'Average safari price'), h('div', { className: 'pk-total' }, p.price || '–')),
-          h('a', { className: 'st-btn st-btn-secondary wb-join pk-view', href: p.href || '#' }, 'View Park'))));
-  }
-  function ParkSummary(p) {
-    return h('div', { className: 'pk-head' }, h('h1', null, p.name),
-      h('div', { className: 'ss-row' }, h('span', { className: 'pk-region' }, h(Glyph, { name: 'map-pinned' }), p.region),
-        p.price ? h('span', { className: 'pk-fact' }, h(Glyph, { name: 'indian-rupee' }), 'Average safari price ' + p.price) : null));
-  }
-  function ParkMap(p) {
-    var href = p.href || ('https://www.openstreetmap.org/?mlat=' + p.lat + '&mlon=' + p.lng + '#map=11/' + p.lat + '/' + p.lng);
-    return h('div', { className: 'ss-stack' }, h('h3', { className: 'pk-h' }, p.title || 'Location'),
-      h('div', { className: 'pk-map', role: 'img', 'aria-label': 'Map of ' + p.name },
-        h('span', { className: 'pk-pin' }, h(Glyph, { name: 'map-pin' }), p.name, h('small', { className: 'ss-cap' }, p.lat + ', ' + p.lng)),
-        h('a', { className: 'pk-maplink', href: href, target: '_blank', rel: 'noopener' }, 'Open the map')));
+  function Disclaimer(p) { return h('div', { className: 'pk2-disc' }, h('h2', null, 'Disclaimer'), h('p', null, p.children || DISC)); }
+  function QuoteForm(p) {
+    var body;
+    if (p.viewer === 'guest') body = h('div', { className: 'pk2-note' }, h('span', null, 'Log in to send a quote request to this operator.'), h('a', { className: 'st-btn st-btn-primary', href: p.loginHref || '#' }, 'Login'));
+    else if (p.viewer === 'partner') body = h('div', { className: 'pk2-note' }, h('span', null, 'Partners can’t send quote requests. Your own packages and quote requests are in the Partner portal.'), h('a', { className: 'st-btn st-btn-secondary', href: p.portalHref || '#' }, h(Glyph, { name: 'external-link' }), 'Partner portal'));
+    else body = h(Fragment, null,
+      h('div', { className: 'pk2-qrow' },
+        h(Field, { id: 'q-travellers', label: 'Travellers', required: true }, h('input', { id: 'q-travellers', className: 'st-input', type: 'number', min: 1, max: 100, inputMode: 'numeric' })),
+        h(Field, { id: 'q-start', label: 'Start date', required: true }, h('input', { id: 'q-start', className: 'st-input', type: 'date' }))),
+      h(Field, { id: 'q-notes', label: 'Notes', required: true }, h('textarea', { id: 'q-notes', className: 'st-textarea', rows: 4, maxLength: 1000, placeholder: 'Tell the operator about your group and what you need' })),
+      h('span', { className: 'pk-counter' }, '0 / 1,000'),
+      h('button', { type: 'button', className: 'st-btn st-btn-primary', onClick: p.onSend }, 'Request a quote'));
+    return h(PackageSection, { className: 'pk2-quote', title: 'Request a quote' }, body);
   }
   function NotInUse(p) {
-    return h('div', { className: 'st-card pk-nu' }, h(Glyph, { name: 'package-x' }), h('h1', null, p.title || 'Package Not In Use!'),
-      p.name ? h('p', { className: 'ss-muted', style: { margin: 0 } }, p.name) : null,
-      h('a', { className: 'st-btn st-btn-primary', href: p.href || '#' }, p.actionLabel || 'See all packages'));
+    return h('div', { className: 'pk2-state' }, h(Glyph, { name: 'package' }), h('h2', null, p.title || 'Package Not In Use!'),
+      h('p', null, p.text || 'This package isn’t available right now.'), h('a', { className: 'st-btn st-btn-primary', href: p.href || '#' }, p.actionLabel || 'See all packages'));
+  }
+  function ParkCard(p) {
+    return h('div', { className: 'pk-card pk5-card', onClick: p.onOpen },
+      h('div', { className: 'pk-img' }, p.image ? h('img', { src: p.image, alt: '' }) : null),
+      h('div', { className: 'pk-body' }, h('h3', { className: 'pk-name' }, p.name), h('span', { className: 'pk5-region' }, p.region),
+        h('span', { className: 'pk5-price' }, p.price ? [p.price + ' ', h('small', { key: 's' }, 'average safari price')] : 'Price not set')));
+  }
+  function ParkMap(p) {
+    return h('div', { className: 'pk6-map', role: 'img', 'aria-label': 'Map of ' + p.name },
+      h('div', { className: 'pk6-zoom', 'aria-hidden': 'true' }, h('span', null, '+'), h('span', null, '−')),
+      h('span', { className: 'pk6-pin' }, h(Glyph, { name: 'map-pin' })),
+      h('span', { className: 'pk6-ll' }, p.lat + ', ' + p.lng + ' · Leaflet map'));
+  }
+  function FormPanel(p) {
+    return h('div', { className: 'pk4-form' }, p.title ? h('h2', null, p.title) : null, p.children,
+      p.footer ? h('div', { className: 'ss-row' }, p.footer) : null);
+  }
+  function StepsPanel(p) {
+    return h('aside', { className: 'pk4-side' }, h('h3', null, p.title || 'How it works'), h('ol', null, p.steps.map(function (s, i) { return h('li', { key: i }, s); })));
+  }
+  function ParkPicker(p) {
+    var st = useState(p.value || []), v = st[0];
+    function toggle(x) { var n = v.indexOf(x) >= 0 ? v.filter(function (y) { return y !== x; }) : v.concat([x]); st[1](n); if (p.onChange) p.onChange(n); }
+    return h('div', { className: 'pk-parkbox' },
+      h('div', { className: 'st-input-group' }, h(S.Icon, { name: 'search' }), h('input', { className: 'st-input', placeholder: 'Search parks', 'aria-label': 'Search parks' })),
+      v.length && p.chips !== false ? h('div', { className: 'pk-picked' }, v.map(function (x) { return h(S.FilterChip, { key: x, label: x, onRemove: function () { toggle(x); } }); })) : null,
+      h('div', { className: 'pk-parklist', role: 'group', 'aria-label': 'Parks' }, p.parks.map(function (x) {
+        return h('label', { key: x, className: 'st-check' }, h('input', { type: 'checkbox', checked: v.indexOf(x) >= 0, onChange: function () { toggle(x); } }), x);
+      })));
+  }
+  function LogoField(p) {
+    return h('div', { className: 'st-field' }, h('label', { className: 'st-label', htmlFor: p.id || 'b-logo' }, p.label || 'Logo'),
+      h('div', { className: 'pk-logo' }, h('span', { className: 'pk-logo-box' }, p.image ? h('img', { src: p.image, alt: '' }) : (p.initials || 'Logo')),
+        h('div', { className: 'ss-stack' }, h('input', { id: p.id || 'b-logo', className: 'st-input', type: 'file', accept: p.accept || '.jpg,.jpeg,.png,.webp' }))),
+      h('span', { className: 'st-helper' }, p.helper || 'JPG, JPEG, PNG or WEBP, up to 1 MB'));
   }
 
   /* ---- Partner portal and Console ---- */
+  function PortalSignIn(p) {
+    return h('div', { className: 'pq-auth' }, h('form', { className: 'pq-auth-card', onSubmit: function (e) { e.preventDefault(); } },
+      p.logo ? h('img', { src: p.logo, alt: 'Walk Into The Wild', style: { background: 'var(--primary)', padding: '8px 12px', borderRadius: '8px', height: '36px' } }) : null,
+      h('h1', null, p.title || 'Partner Portal'), h('p', null, p.text || 'Sign in with your Walk Into The Wild website details.'),
+      h(Field, { id: 'si-email', label: 'Email', required: true }, h('input', { id: 'si-email', className: 'st-input', type: 'email', autoComplete: 'email' })),
+      h(Field, { id: 'si-password', label: 'Password', required: true }, h('input', { id: 'si-password', className: 'st-input', type: 'password', autoComplete: 'current-password' })),
+      h('a', { href: p.forgotHref || '#', style: { alignSelf: 'flex-end', marginTop: '-12px', font: '500 13px/18px var(--font-sans)' } }, 'Forgot password?'),
+      h('button', { type: 'button', className: 'st-btn st-btn-primary', style: { width: '100%' } }, 'Sign in'),
+      h('p', { style: { textAlign: 'center' } }, 'Not a partner yet? ', h('a', { href: p.partnerHref || '#', style: { fontWeight: 600 } }, 'Become a Partner')),
+      p.hint ? h('div', { className: 'pq-hint' }, p.hint) : null));
+  }
+  function AccessGuard(p) {
+    return h('div', { className: 'pq-guard' }, h(Glyph, { name: p.icon || 'circle-check', className: 'state-icon' }), h('h2', null, p.title), p.text ? h('p', null, p.text) : null, p.action || null);
+  }
+  function KpiTile(p) { return h('a', { className: 'pq-kpi', href: p.href || '#' }, h('span', null, p.label), h('b', null, p.value)); }
+  function PackageListItem(p) {
+    return h('div', { className: 'pq-pk' }, p.image ? h('img', { src: p.image, alt: '' }) : null,
+      h('div', null, h('b', null, p.title), h('span', { className: 'ss-cap' }, p.meta), h('br'), h('span', { className: 'ss-cap' }, p.price), h('br'), h('a', { href: p.href || '#' }, p.actionLabel || 'Open')));
+  }
+  function PackageCell(p) {
+    var text = h('div', { className: 'pq-cell' }, h('b', null, p.title), p.sub ? h('span', { className: 'ss-cap' }, p.sub) : null);
+    return p.image ? h('div', { className: 'ss-row', style: { flexWrap: 'nowrap' } }, h('img', { className: 'pq-thumb', src: p.image, alt: '' }), text) : text;
+  }
+  function VersionCell(p) { return h('div', { className: 'pq-ver' }, h('span', { className: 'ss-cap' }, p.live || 'Not live yet'), p.working ? Badge(p.working) : null); }
+  function EditorCard(p) {
+    var st = useState(p.active || 0), a = st[0];
+    var inner = h(Fragment, null,
+      p.tabs ? h('div', { className: 'nt-tabs', role: 'tablist' }, p.tabs.map(function (t, i) {
+        return h('a', { key: i, className: cx('nt-tab', i === a && 'is-on'), role: 'tab', 'aria-selected': i === a, 'aria-disabled': !!(p.disabledFrom && i >= p.disabledFrom), onClick: function () { st[1](i); if (p.onChange) p.onChange(i); } }, t);
+      })) : null,
+      h('div', { className: 'pq-body' }, typeof p.children === 'function' ? p.children(a) : p.children));
+    return h('div', { className: 'pq-card' }, p.readOnly ? h('div', { className: 'pq-ro' }, inner) : inner, p.footer ? h('div', { className: 'pq-foot' }, p.footer) : null);
+  }
+  function SidePanel(p) { return h('div', { className: 'pq-card' }, p.title ? h('h3', null, p.title) : null, p.children); }
+  function VersionRow(p) { return h('div', { className: 'pq-vrow' }, h('div', null, h('b', null, p.version), h('span', null, p.text)), Badge(p.status)); }
+  function DayEditor(p) { return h('div', { className: 'pq-day' }, h('h3', null, p.title || 'Day ' + p.n), p.children); }
+  function FaqEditRow(p) {
+    return h('div', { className: 'pq-faq' }, h('div', null, h('b', null, p.question), h('p', { className: 'ss-cap', style: { margin: '4px 0 0' } }, p.answer)),
+      h('div', { className: 'us-acts' }, h(S.IconButton, { icon: 'pencil', label: 'Edit', onClick: p.onEdit }), h(S.IconButton, { icon: 'x', label: 'Delete', danger: true, onClick: p.onDelete })));
+  }
+  function ImageField(p) {
+    return h(Field, { id: p.id, label: p.label, helper: p.helper },
+      h('div', { className: 'pq-img' }, p.image ? h('img', { src: p.image, alt: '' }) : null,
+        h('div', { className: 'ss-stack' }, h('input', { id: p.id, className: 'st-input', type: 'file', accept: p.accept || '.jpg,.jpeg,.png' }),
+          p.image ? h('button', { type: 'button', className: 'st-btn st-btn-text', style: { alignSelf: 'flex-start' }, onClick: p.onRemove }, 'Remove') : null)));
+  }
+  function TagColors(p) {
+    var bg = useState(p.bg || '#C0392B'), fg = useState(p.color || '#FFFFFF');
+    return h('div', { className: 'pq-colors' },
+      h('label', null, 'Background ', h('input', { type: 'color', value: bg[0], onChange: function (e) { bg[1](e.target.value); } })),
+      h('label', null, 'Text ', h('input', { type: 'color', value: fg[0], onChange: function (e) { fg[1](e.target.value); } })),
+      p.text ? h('span', { className: 'pq-tagprev', style: { background: bg[0], color: fg[0] } }, p.text) : null);
+  }
+  function PhotoTile(p) {
+    return h('div', { className: cx('pq-photo', p.thumbnail && 'is-thumb') },
+      h('div', { className: 'pq-photo-img' }, h('img', { src: p.image, alt: p.title || '' }), p.thumbnail ? h(S.StatusBadge, { tone: 'success' }, 'Thumbnail') : null),
+      h('input', { className: 'st-input', maxLength: 255, placeholder: 'Title (optional)', 'aria-label': 'Photo title', defaultValue: p.title }),
+      h('textarea', { className: 'st-textarea', rows: 2, placeholder: 'Caption (optional)', 'aria-label': 'Photo caption', defaultValue: p.caption }),
+      h('div', { className: 'pq-photo-acts' },
+        h('div', { className: 'us-acts' }, h(S.IconButton, { icon: 'chevron-left', label: 'Move left', disabled: p.first }), h(S.IconButton, { icon: 'chevron-right', label: 'Move right', disabled: p.last })),
+        h('div', { className: 'us-acts' }, h('button', { type: 'button', className: 'st-btn st-btn-text', disabled: p.thumbnail }, 'Set as thumbnail'),
+          h(S.IconButton, { icon: 'x', label: p.thumbnail ? 'The thumbnail can’t be removed' : 'Remove', danger: true, disabled: p.thumbnail }))));
+  }
+  function GalleryCard(p) {
+    return h('div', { className: 'pq-gal' }, p.image ? h('img', { src: p.image, alt: '' }) : null,
+      h('div', { className: 'pq-gal-b' }, h('b', null, p.title), p.meta ? h('span', { className: 'ss-cap' }, p.meta) : null, p.note ? h('span', { className: 'ss-cap' }, p.note) : null,
+        h('div', { className: 'pq-gal-f' }, Badge(p.status), h('div', { className: 'us-acts' }, h(S.IconButton, { icon: p.action === 'view' ? 'eye' : 'pencil', label: p.action === 'view' ? 'View' : 'Edit', onClick: p.onOpen })))));
+  }
   function HotCold(p) {
     var st = useState(p.value || null), v = st[0];
     function set(x) { var n = v === x ? null : x; st[1](n); if (p.onChange) p.onChange(n); }
-    return h('span', { className: 'pk-mks', role: 'group', 'aria-label': 'Mark' },
-      h('button', { type: 'button', className: cx('pk-mk', v === 'hot' && 'is-hot'), 'aria-pressed': v === 'hot', onClick: function () { set('hot'); } }, h(Glyph, { name: 'flame' }), 'Hot'),
-      h('button', { type: 'button', className: cx('pk-mk', v === 'cold' && 'is-cold'), 'aria-pressed': v === 'cold', onClick: function () { set('cold'); } }, h(Glyph, { name: 'snowflake' }), 'Cold'));
+    return h('div', { className: 'pq-seg', role: 'group', 'aria-label': 'Mark' },
+      h('button', { type: 'button', className: v === 'hot' ? 'is-hot' : '', 'aria-pressed': v === 'hot', onClick: function () { set('hot'); } }, 'Hot'),
+      h('button', { type: 'button', className: v === 'cold' ? 'is-cold' : '', 'aria-pressed': v === 'cold', onClick: function () { set('cold'); } }, 'Cold'));
   }
-  function EntityCell(p) {
-    var lead = p.image ? h('img', { className: 'pk-thumb', src: p.image, alt: '' }) : p.initials ? h('span', { className: 'pk-av' }, p.initials) : null;
-    var text = h('span', null, h('b', null, p.title), p.sub ? h('span', { className: 'pk-sub' }, p.sub) : null, p.reason ? h('span', { className: 'pk-reason' }, p.reason) : null);
-    return lead ? h('span', { className: 'pk-cell' }, lead, text) : text;
-  }
-  function GalleryCard(p) {
-    return h('button', { type: 'button', className: 'pk-gcard', onClick: p.onOpen }, p.image ? h('img', { src: p.image, alt: '' }) : null,
-      h('div', null, h('b', null, p.title), p.meta ? h('span', { className: 'ss-cap' }, p.meta) : null, Badge(p.status)));
-  }
-  function StatusPanel(p) {
-    return h('section', { className: 'pk-sec pk-status' }, Badge(p.status), h('h2', null, p.title), p.text ? h('p', { className: 'ss-muted', style: { margin: 0 } }, p.text) : null, p.action || null);
-  }
-  function PartnerIdentity(p) {
-    var size = p.size || 64;
-    return h('div', { className: 'pk-who' },
-      h('span', { className: 'pk-av', style: { width: size + 'px', height: size + 'px' } }, p.logo ? h('img', { src: p.logo, alt: '' }) : p.initials || h(Glyph, { name: 'store' })),
-      h('div', null, h('b', null, p.name), p.since ? h('small', null, p.since) : null), Badge(p.status));
+  function BusinessProfile(p) {
+    return h('div', { className: 'pq-card' }, h('div', { className: 'pq-prof' }, h('span', { className: 'pk-logo-box' }, p.logo ? h('img', { src: p.logo, alt: '' }) : p.initials),
+      h('dl', { className: 'ss-dl' }, (p.items || []).map(function (it, i) { return h(Fragment, { key: i }, h('dt', null, it[0]), h('dd', null, it[1])); }))));
   }
 
-  function PortalNotification(p) {
-    return h('button', { type: 'button', className: cx('pk-note-i', p.unread && 'is-unread'), onClick: p.onOpen },
-      h('span', { className: 'st-ntp-av' }, p.initials),
-      h('span', { style: { flex: '1 1 auto' } }, h('span', null, p.before || '', p.who ? h('b', null, p.who) : null, p.after || '', p.children || null), h('small', null, p.time)),
-      p.unread ? h('span', { className: 'pk-udot', 'aria-label': 'Unread' }) : null);
-  }
-
-  Object.assign(S, { PackageTag: PackageTag, PortalNotification: PortalNotification, Tag: Tag, Banner: Banner, Segmented: Segmented, ColorField: ColorField, ImagePicker: ImagePicker, FormSection: FormSection,
-    PackageCard: PackageCard, PackageFilters: PackageFilters, PageBanner: PageBanner, PackageSummary: PackageSummary, PriceBox: PriceBox, ContentTabs: ContentTabs,
-    GallerySlider: GallerySlider, ItineraryDay: ItineraryDay, InclusionList: InclusionList, FaqItem: FaqItem, Disclaimer: Disclaimer, ParkCard: ParkCard,
-    ParkSummary: ParkSummary, ParkMap: ParkMap, NotInUse: NotInUse, HotCold: HotCold, EntityCell: EntityCell, GalleryCard: GalleryCard, StatusPanel: StatusPanel, PartnerIdentity: PartnerIdentity });
+  Object.assign(S, { Banner: Banner, PackageCard: PackageCard, PackageFilters: PackageFilters, PackageSummary: PackageSummary, PriceBar: PriceBar, SectionTabs: SectionTabs, PackageSection: PackageSection,
+    GallerySlider: GallerySlider, ItineraryDay: ItineraryDay, InclusionList: InclusionList, FaqItem: FaqItem, Disclaimer: Disclaimer, QuoteForm: QuoteForm, NotInUse: NotInUse, ParkCard: ParkCard, ParkMap: ParkMap,
+    FormPanel: FormPanel, StepsPanel: StepsPanel, ParkPicker: ParkPicker, LogoField: LogoField, PortalSignIn: PortalSignIn, AccessGuard: AccessGuard, KpiTile: KpiTile, PackageListItem: PackageListItem,
+    PackageCell: PackageCell, VersionCell: VersionCell, EditorCard: EditorCard, SidePanel: SidePanel, VersionRow: VersionRow, DayEditor: DayEditor, FaqEditRow: FaqEditRow, ImageField: ImageField,
+    TagColors: TagColors, PhotoTile: PhotoTile, GalleryCard: GalleryCard, HotCold: HotCold, BusinessProfile: BusinessProfile });
 })();

@@ -145,37 +145,27 @@ export declare function PinButton(props: PinButtonProps): React.ReactElement;
 export interface JoinedLeftProps { joined: number; left: number; onJoined?: () => void; onLeft?: () => void }
 export declare function JoinedLeft(props: JoinedLeftProps): React.ReactElement;
 
-/* ---- Packages: website, Partner portal and Console (from the Packages boards) ---- */
-export interface PackageTagProps { text: string; bg?: string; color?: string; inline?: boolean }
-export declare function PackageTag(props: PackageTagProps): React.ReactElement;
-export interface TagProps { tone?: 'primary' | 'plain'; children: React.ReactNode }
-export declare function Tag(props: TagProps): React.ReactElement;
-export interface BannerProps { tone?: 'info' | 'success' | 'warning' | 'danger'; icon?: boolean; children: React.ReactNode }
+/* ---- Packages: website, Partner portal and Console (P1–P6, PP1–PP10, PC1–PC9, the Responsive prototype) ---- */
+export type StatusTone = 'success' | 'warning' | 'info' | 'danger' | 'neutral';
+export interface PackageTagStyle { text: string; bg?: string; color?: string }
+export type PackageFactIcon = 'duration' | 'safaris' | 'vehicle' | 'stay' | 'theme' | 'start' | 'end' | 'meals' | 'pickup';
+export interface BannerProps { tone?: 'info' | 'success' | 'warning' | 'danger'; children: React.ReactNode }
 export declare function Banner(props: BannerProps): React.ReactElement;
-export interface SegmentedProps { label: string; options: Array<string | { value: string; label: string }>; value?: string; onChange?: (value: string) => void }
-export declare function Segmented(props: SegmentedProps): React.ReactElement;
-export interface ColorFieldProps { id?: string; label: string; value?: string; onChange?: (hex: string) => void }
-export declare function ColorField(props: ColorFieldProps): React.ReactElement;
-export interface ImagePickerProps { label: string; variant?: 'logo' | 'image'; image?: string; accept?: string; buttonLabel?: string; helper?: string; removable?: boolean; onChoose?: () => void; onRemove?: () => void }
-export declare function ImagePicker(props: ImagePickerProps): React.ReactElement;
-export interface FormSectionProps { title?: string; children?: React.ReactNode }
-export declare function FormSection(props: FormSectionProps): React.ReactElement;
-export interface PackageCardProps { variant?: 'site' | 'portal'; image?: string; tag?: PackageTagProps; best?: boolean; title: string; href?: string; park: string; days: string; activity?: string; price: string; before?: string; message?: string; total?: string; actionLabel?: string; live?: string; status?: { tone: string; label: string } }
+export interface PackageCardProps { image?: string; best?: boolean; tag?: PackageTagStyle; title: string; park: string; duration: string; activity?: string; before?: string; price: string; total?: string; message?: string; actionLabel?: string; onOpen?: () => void; onView?: () => void }
 export declare function PackageCard(props: PackageCardProps): React.ReactElement;
-export interface PackageFiltersProps { search?: boolean; park?: boolean; stays?: string[]; features?: string[]; inclusions?: string[]; onClear?: () => void }
+export interface PackageFiltersProps { parks: string[]; park?: string; stays?: string[]; features?: string[]; inclusions?: string[] }
 export declare function PackageFilters(props: PackageFiltersProps): React.ReactElement;
-export interface PageBannerProps { image?: string }
-export declare function PageBanner(props: PageBannerProps): React.ReactElement;
-export interface PackageSummaryProps { tag?: PackageTagProps; title: string; parks: string; days: string; activity?: string; facts?: Array<[string, React.ReactNode, boolean?]> }
+export interface PackageSummaryProps { image?: string; title: string; parks: string; tag?: PackageTagStyle; best?: boolean; facts: Array<{ icon: PackageFactIcon; label: string; value: string }> }
 export declare function PackageSummary(props: PackageSummaryProps): React.ReactElement;
-export interface PriceBoxProps { price: string; before?: string; message?: string; total: string; actionLabel?: string; onAction?: () => void; note?: true | React.ReactNode; noteHref?: string }
-export declare function PriceBox(props: PriceBoxProps): React.ReactElement;
-export interface ContentTabsProps { tabs: string[]; active?: number; onChange?: (index: number) => void; panels?: React.ReactNode[]; children?: React.ReactNode | ((active: number) => React.ReactNode) }
-export declare function ContentTabs(props: ContentTabsProps): React.ReactElement;
-export interface SliderPhoto { src: string; title?: string; caption?: string }
-export interface GallerySliderProps { title?: string; photos: SliderPhoto[]; index?: number; autoplay?: boolean }
-export declare function GallerySlider(props: GallerySliderProps): React.ReactElement | null;
-export interface ItineraryDayProps { n: number; label?: string; title: string; text: string; details?: Array<[string, React.ReactNode]>; image?: string; children?: React.ReactNode }
+export interface PriceBarProps { left?: React.ReactNode; before?: string; price: string; total?: string; message?: string; action?: React.ReactNode; actionLabel?: string; onAction?: () => void }
+export declare function PriceBar(props: PriceBarProps): React.ReactElement;
+export interface SectionTabsProps { tabs: Array<string | { label: string; count?: number }>; active?: number; onChange?: (index: number) => void }
+export declare function SectionTabs(props: SectionTabsProps): React.ReactElement;
+export interface PackageSectionProps { title: string; aside?: React.ReactNode; className?: string; children?: React.ReactNode }
+export declare function PackageSection(props: PackageSectionProps): React.ReactElement;
+export interface GallerySliderProps { title?: string; photos: Array<{ src: string; title?: string; caption?: string }>; index?: number; autoplay?: boolean }
+export declare function GallerySlider(props: GallerySliderProps): React.ReactElement;
+export interface ItineraryDayProps { n: number; label?: string; title: string; text?: string; details?: Array<[string, string]>; image?: string; children?: React.ReactNode }
 export declare function ItineraryDay(props: ItineraryDayProps): React.ReactElement;
 export interface InclusionListProps { items: Array<{ label: string; included: boolean }>; more?: string; exclusions?: string }
 export declare function InclusionList(props: InclusionListProps): React.ReactElement;
@@ -183,25 +173,55 @@ export interface FaqItemProps { question: string; answer: string; open?: boolean
 export declare function FaqItem(props: FaqItemProps): React.ReactElement;
 export interface DisclaimerProps { children?: React.ReactNode }
 export declare function Disclaimer(props: DisclaimerProps): React.ReactElement;
-export interface ParkCardProps { image?: string; name: string; href?: string; region: string; price?: string }
-export declare function ParkCard(props: ParkCardProps): React.ReactElement;
-export interface ParkSummaryProps { name: string; region: string; price?: string }
-export declare function ParkSummary(props: ParkSummaryProps): React.ReactElement;
-export interface ParkMapProps { name: string; lat: string | number; lng: string | number; href?: string; title?: string }
-export declare function ParkMap(props: ParkMapProps): React.ReactElement;
-export interface NotInUseProps { title?: string; name?: string; actionLabel?: string; href?: string }
+export interface QuoteFormProps { viewer?: 'guest' | 'partner'; loginHref?: string; portalHref?: string; onSend?: () => void }
+export declare function QuoteForm(props: QuoteFormProps): React.ReactElement;
+export interface NotInUseProps { title?: string; text?: string; href?: string; actionLabel?: string }
 export declare function NotInUse(props: NotInUseProps): React.ReactElement;
-export interface HotColdProps { value?: 'hot' | 'cold' | null; onChange?: (value: 'hot' | 'cold' | null) => void }
-export declare function HotCold(props: HotColdProps): React.ReactElement;
-export interface EntityCellProps { title: string; sub?: string; reason?: string; image?: string; initials?: string }
-export declare function EntityCell(props: EntityCellProps): React.ReactElement;
-export interface GalleryCardProps { image?: string; title: string; meta?: string; status?: { tone: string; label: string }; onOpen?: () => void }
+export interface ParkCardProps { image?: string; name: string; region: string; price?: string; onOpen?: () => void }
+export declare function ParkCard(props: ParkCardProps): React.ReactElement;
+export interface ParkMapProps { name: string; lat: string | number; lng: string | number }
+export declare function ParkMap(props: ParkMapProps): React.ReactElement;
+export interface FormPanelProps { title: string; footer?: React.ReactNode; children?: React.ReactNode }
+export declare function FormPanel(props: FormPanelProps): React.ReactElement;
+export interface StepsPanelProps { title?: string; steps: string[] }
+export declare function StepsPanel(props: StepsPanelProps): React.ReactElement;
+export interface ParkPickerProps { parks: string[]; value?: string[]; onChange?: (value: string[]) => void; chips?: boolean }
+export declare function ParkPicker(props: ParkPickerProps): React.ReactElement;
+export interface LogoFieldProps { id?: string; label?: string; image?: string; initials?: string; accept?: string; helper?: string }
+export declare function LogoField(props: LogoFieldProps): React.ReactElement;
+export interface PortalSignInProps { logo?: string; title?: string; text?: string; forgotHref?: string; partnerHref?: string; hint?: React.ReactNode }
+export declare function PortalSignIn(props: PortalSignInProps): React.ReactElement;
+export interface AccessGuardProps { icon?: string; title: string; text?: string; action?: React.ReactNode }
+export declare function AccessGuard(props: AccessGuardProps): React.ReactElement;
+export interface KpiTileProps { label: string; value: React.ReactNode; href?: string }
+export declare function KpiTile(props: KpiTileProps): React.ReactElement;
+export interface PackageListItemProps { image?: string; title: string; meta: string; price: string; href?: string; actionLabel?: string }
+export declare function PackageListItem(props: PackageListItemProps): React.ReactElement;
+export interface PackageCellProps { image?: string; title: string; sub?: string }
+export declare function PackageCell(props: PackageCellProps): React.ReactElement;
+export interface VersionCellProps { live: string; working?: { tone: StatusTone; label: string } }
+export declare function VersionCell(props: VersionCellProps): React.ReactElement;
+export interface EditorCardProps { tabs: string[]; active?: number; onChange?: (index: number) => void; disabledFrom?: number; readOnly?: boolean; footer?: React.ReactNode; children?: React.ReactNode | ((active: number) => React.ReactNode) }
+export declare function EditorCard(props: EditorCardProps): React.ReactElement;
+export interface SidePanelProps { title: string; children?: React.ReactNode }
+export declare function SidePanel(props: SidePanelProps): React.ReactElement;
+export interface VersionRowProps { version: string; text: string; status: { tone: StatusTone; label: string } }
+export declare function VersionRow(props: VersionRowProps): React.ReactElement;
+export interface DayEditorProps { n: number; title?: string; children?: React.ReactNode }
+export declare function DayEditor(props: DayEditorProps): React.ReactElement;
+export interface FaqEditRowProps { question: string; answer: string; onEdit?: () => void; onDelete?: () => void }
+export declare function FaqEditRow(props: FaqEditRowProps): React.ReactElement;
+export interface ImageFieldProps { id: string; label: string; image?: string; helper?: string; accept?: string; onRemove?: () => void }
+export declare function ImageField(props: ImageFieldProps): React.ReactElement;
+export interface TagColorsProps { text: string; bg: string; color: string }
+export declare function TagColors(props: TagColorsProps): React.ReactElement;
+export interface PhotoTileProps { image: string; title: string; caption?: string; thumbnail?: boolean; first?: boolean; last?: boolean }
+export declare function PhotoTile(props: PhotoTileProps): React.ReactElement;
+export interface GalleryCardProps { image?: string; title: string; meta: string; note?: string; status: { tone: StatusTone; label: string }; action?: 'view' | 'edit'; onOpen?: () => void }
 export declare function GalleryCard(props: GalleryCardProps): React.ReactElement;
-export interface StatusPanelProps { status: { tone: string; label: string }; title: string; text?: string; action?: React.ReactNode }
-export declare function StatusPanel(props: StatusPanelProps): React.ReactElement;
-export interface PartnerIdentityProps { name: string; since?: string; logo?: string; initials?: string; size?: number; status?: { tone: string; label: string } }
-export declare function PartnerIdentity(props: PartnerIdentityProps): React.ReactElement;
-export interface PortalNotificationProps { initials: string; before?: string; who?: string; after?: string; children?: React.ReactNode; time: string; unread?: boolean; onOpen?: () => void }
-export declare function PortalNotification(props: PortalNotificationProps): React.ReactElement;
+export interface HotColdProps { value?: 'hot' | 'cold'; onChange?: (value: 'hot' | 'cold') => void }
+export declare function HotCold(props: HotColdProps): React.ReactElement;
+export interface BusinessProfileProps { logo?: string; initials?: string; items: Array<[string, string]> }
+export declare function BusinessProfile(props: BusinessProfileProps): React.ReactElement;
 
-declare global { interface Window { Starter: { Icon: typeof Icon; Button: typeof Button; IconButton: typeof IconButton; SearchInput: typeof SearchInput; Select: typeof Select; FormField: typeof FormField; Toggle: typeof Toggle; StatusBadge: typeof StatusBadge; Table: typeof Table; Card: typeof Card; KpiCard: typeof KpiCard; Dialog: typeof Dialog; Tabs: typeof Tabs; PageHeader: typeof PageHeader; AppHeader: typeof AppHeader; NotificationItem: typeof NotificationItem; NotificationPopover: typeof NotificationPopover; Sidebar: typeof Sidebar; MobileMenu: typeof MobileMenu; Footer: typeof Footer; SignIn: typeof SignIn; NotFound: typeof NotFound; Toast: typeof Toast; ToastStack: typeof ToastStack; DialogError: typeof DialogError; SearchSelect: typeof SearchSelect; ServerSelect: typeof ServerSelect; SiteHeader: typeof SiteHeader; SiteHero: typeof SiteHero; SiteFooter: typeof SiteFooter; SiteDialog: typeof SiteDialog; SafariCard: typeof SafariCard; SafariFilters: typeof SafariFilters; FilterChip: typeof FilterChip; SafariSummary: typeof SafariSummary; SitePanel: typeof SitePanel; Comment: typeof Comment; RadioList: typeof RadioList; WebNotificationItem: typeof WebNotificationItem; DetailList: typeof DetailList; PinButton: typeof PinButton; JoinedLeft: typeof JoinedLeft; PackageTag: typeof PackageTag; Tag: typeof Tag; Banner: typeof Banner; Segmented: typeof Segmented; ColorField: typeof ColorField; ImagePicker: typeof ImagePicker; FormSection: typeof FormSection; PackageCard: typeof PackageCard; PackageFilters: typeof PackageFilters; PageBanner: typeof PageBanner; PackageSummary: typeof PackageSummary; PriceBox: typeof PriceBox; ContentTabs: typeof ContentTabs; GallerySlider: typeof GallerySlider; ItineraryDay: typeof ItineraryDay; InclusionList: typeof InclusionList; FaqItem: typeof FaqItem; Disclaimer: typeof Disclaimer; ParkCard: typeof ParkCard; ParkSummary: typeof ParkSummary; ParkMap: typeof ParkMap; NotInUse: typeof NotInUse; HotCold: typeof HotCold; EntityCell: typeof EntityCell; GalleryCard: typeof GalleryCard; StatusPanel: typeof StatusPanel; PartnerIdentity: typeof PartnerIdentity; PortalNotification: typeof PortalNotification } } }
+declare global { interface Window { Starter: { Icon: typeof Icon; Button: typeof Button; IconButton: typeof IconButton; SearchInput: typeof SearchInput; Select: typeof Select; FormField: typeof FormField; Toggle: typeof Toggle; StatusBadge: typeof StatusBadge; Table: typeof Table; Card: typeof Card; KpiCard: typeof KpiCard; Dialog: typeof Dialog; Tabs: typeof Tabs; PageHeader: typeof PageHeader; AppHeader: typeof AppHeader; NotificationItem: typeof NotificationItem; NotificationPopover: typeof NotificationPopover; Sidebar: typeof Sidebar; MobileMenu: typeof MobileMenu; Footer: typeof Footer; SignIn: typeof SignIn; NotFound: typeof NotFound; Toast: typeof Toast; ToastStack: typeof ToastStack; DialogError: typeof DialogError; SearchSelect: typeof SearchSelect; ServerSelect: typeof ServerSelect; SiteHeader: typeof SiteHeader; SiteHero: typeof SiteHero; SiteFooter: typeof SiteFooter; SiteDialog: typeof SiteDialog; SafariCard: typeof SafariCard; SafariFilters: typeof SafariFilters; FilterChip: typeof FilterChip; SafariSummary: typeof SafariSummary; SitePanel: typeof SitePanel; Comment: typeof Comment; RadioList: typeof RadioList; WebNotificationItem: typeof WebNotificationItem; DetailList: typeof DetailList; PinButton: typeof PinButton; JoinedLeft: typeof JoinedLeft; Banner: typeof Banner; PackageCard: typeof PackageCard; PackageFilters: typeof PackageFilters; PackageSummary: typeof PackageSummary; PriceBar: typeof PriceBar; SectionTabs: typeof SectionTabs; PackageSection: typeof PackageSection; GallerySlider: typeof GallerySlider; ItineraryDay: typeof ItineraryDay; InclusionList: typeof InclusionList; FaqItem: typeof FaqItem; Disclaimer: typeof Disclaimer; QuoteForm: typeof QuoteForm; NotInUse: typeof NotInUse; ParkCard: typeof ParkCard; ParkMap: typeof ParkMap; FormPanel: typeof FormPanel; StepsPanel: typeof StepsPanel; ParkPicker: typeof ParkPicker; LogoField: typeof LogoField; PortalSignIn: typeof PortalSignIn; AccessGuard: typeof AccessGuard; KpiTile: typeof KpiTile; PackageListItem: typeof PackageListItem; PackageCell: typeof PackageCell; VersionCell: typeof VersionCell; EditorCard: typeof EditorCard; SidePanel: typeof SidePanel; VersionRow: typeof VersionRow; DayEditor: typeof DayEditor; FaqEditRow: typeof FaqEditRow; ImageField: typeof ImageField; TagColors: typeof TagColors; PhotoTile: typeof PhotoTile; GalleryCard: typeof GalleryCard; HotCold: typeof HotCold; BusinessProfile: typeof BusinessProfile } } }

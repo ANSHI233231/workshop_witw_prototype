@@ -1,0 +1,16 @@
+<!-- @dsCard group="Packages · Partner & Console" height=540 subtitle="Package status and its versions beside the editor" -->
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>SidePanel — preview</title></head>
+<body>
+<div id="root" class="st-root"></div>
+<script>
+  var S = window.Starter, h = React.createElement, F = React.Fragment;
+  function theme(t, el) { return h('div', { className: 'st-pair' }, h('div', { 'data-theme': t, className: 'st-theme' }, h('p', { className: 'st-theme-name' }, t === 'console' ? 'Console / Partner portal' : 'Portal (website)'), el)); }
+  var IMG = {"mark": "/_blob/2e725624cda8706e6cb43d2c6f9e1e4f", "barasingha": "/_blob/83416d32c1642c45066d803abe93fbcb", "elephant": "/_blob/b77396116ee034172b91273c3095aa34", "catamaran": "/_blob/90b97215adb1239323618afd5495bc3a", "cottage": "/_blob/242d799641b7e7f88c37d270b89a264e", "jeeps": "/_blob/9dd654aff2058d8f95dec81743526bc6", "leopard": "/_blob/77771ad86f8c6df613b306051f77ffd1", "river": "/_blob/b335b3f00e24bff1a9fb719a2b71bae2", "cheetah": "/_blob/22bfd13b4edab59ffb7021b106ce8987", "cliff": "/_blob/a2a10b184f0c6c4b1998b7b9e5a21822", "forest": "/_blob/533a1e37ab0613d2a0b76b1cdd821a93"};
+  ReactDOM.createRoot(document.getElementById('root')).render(theme('console', h('div', { className: 'pq-side', style: { width: '300px' } },
+    h(S.SidePanel, { title: 'Package' }, h('div', { className: 'ss-row' }, h(S.StatusBadge, { tone: 'neutral' }, 'Live v2'), h(S.StatusBadge, null, 'Active')), h(S.DetailList, { items: [['Package link', '/packages/wild-kanha-special-kanha'], ['Partner', 'Jungle Trails Safaris']] }), h(S.Button, null, 'Edit (makes version 3)'), h(S.Button, { variant: 'secondary' }, 'Make inactive')),
+    h(S.SidePanel, { title: 'Versions' }, h(S.VersionRow, { version: 'v2', text: 'Made 02 Oct 2026 14:00 · sent 02 Oct 2026 14:20 · approved 03 Oct 2026 10:00', status: { tone: 'success', label: 'Approved' } }), h(S.VersionRow, { version: 'v1', text: 'Made 15 Sep 2026 10:00 · sent 15 Sep 2026 12:00 · approved 16 Sep 2026 09:10', status: { tone: 'neutral', label: 'Replaced' } })))));
+</script>
+</body>
+</html>

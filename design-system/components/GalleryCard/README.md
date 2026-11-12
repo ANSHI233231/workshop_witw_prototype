@@ -1,5 +1,5 @@
 # GalleryCard
 
-A gallery in the Partner portal's Gallery list: first photo, title, park and photo count, and its status.
+A gallery in the Galleries list (PP6, PC8): cover, name, park and photo count, status and View or Edit.
 
-- **You supply** `image` (the thumbnail), `title`, `meta` ("Pench Tiger Reserve · 3 photos"), `status` and `onOpen`. Tabs: Approved · In Draft · Waiting for Approval. Source: PK-P6, PK-C6, PK-C7.
+- Provide: `image`, `title`, `meta`, `status` `{tone,label}`; optional `note`, `action` (`edit` default | `view`), `onOpen`.

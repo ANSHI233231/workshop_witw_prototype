@@ -91,7 +91,15 @@
         "park-honey-badger.jpg",
         "park-honey-badger-square.jpg",
         "stay-lodge.jpg",
-        "stay-resort-pool.jpg"
+        "stay-resort-pool.jpg",
+        "package-leopard.jpg",
+        "package-jeeps.jpg",
+        "package-river-cruise.jpg",
+        "package-catamaran.jpg",
+        "package-barasingha.jpg",
+        "package-elephant.jpg",
+        "package-cottage.jpg",
+        "package-cheetah.jpg"
       ],
       "files": {
         "hero.jpg": {
@@ -171,6 +179,54 @@
           "blob": "7e06dd8133c79b3abd8f52a9b7bdda5e",
           "size": 24646,
           "type": "image/jpeg"
+        },
+        "package-leopard.jpg": {
+          "name": "package-leopard.jpg",
+          "blob": "77771ad86f8c6df613b306051f77ffd1",
+          "size": 20486,
+          "type": "image/jpeg"
+        },
+        "package-jeeps.jpg": {
+          "name": "package-jeeps.jpg",
+          "blob": "9dd654aff2058d8f95dec81743526bc6",
+          "size": 23695,
+          "type": "image/jpeg"
+        },
+        "package-river-cruise.jpg": {
+          "name": "package-river-cruise.jpg",
+          "blob": "b335b3f00e24bff1a9fb719a2b71bae2",
+          "size": 18340,
+          "type": "image/jpeg"
+        },
+        "package-catamaran.jpg": {
+          "name": "package-catamaran.jpg",
+          "blob": "90b97215adb1239323618afd5495bc3a",
+          "size": 19815,
+          "type": "image/jpeg"
+        },
+        "package-barasingha.jpg": {
+          "name": "package-barasingha.jpg",
+          "blob": "83416d32c1642c45066d803abe93fbcb",
+          "size": 10683,
+          "type": "image/jpeg"
+        },
+        "package-elephant.jpg": {
+          "name": "package-elephant.jpg",
+          "blob": "b77396116ee034172b91273c3095aa34",
+          "size": 10718,
+          "type": "image/jpeg"
+        },
+        "package-cottage.jpg": {
+          "name": "package-cottage.jpg",
+          "blob": "242d799641b7e7f88c37d270b89a264e",
+          "size": 35346,
+          "type": "image/jpeg"
+        },
+        "package-cheetah.jpg": {
+          "name": "package-cheetah.jpg",
+          "blob": "22bfd13b4edab59ffb7021b106ce8987",
+          "size": 16724,
+          "type": "image/jpeg"
         }
       }
     }
@@ -182,8 +238,8 @@
   },
   "lastChange": {
     "by": "ANSHI233231",
-    "at": "2026-11-10T07:50:07Z",
+    "at": "2026-11-12T08:52:03Z",
     "via": "Claude Code",
-    "note": "Added Packages (website, Partner portal, Console) components and photos from the Packages prototype, and the green WITW header for the Console and Partner portal."
+    "note": "Rebuilt the Packages components from the Responsive prototype (P1–P6, PP1–PP10, PC1–PC9), added the tablet and phone rules, the hot/cold and map tokens and eight package photos."
   }
 }

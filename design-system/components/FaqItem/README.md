@@ -1,5 +1,5 @@
 # FaqItem
 
-One question of a package's FAQs; the answer opens under it.
+One question in the FAQs section, open or closed.
 
-- **You supply** `question`, `answer`, and `open` for the first one if wanted. Source: PK-W4 (FAQs tab).
+- Provide: `question`, `answer`; optional `open`. The question is the button; a chevron shows the state.
