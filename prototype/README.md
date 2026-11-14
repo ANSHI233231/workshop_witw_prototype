@@ -1,6 +1,6 @@
 # Starter Prototype
 
-Clickable HTML prototype of Walk Into The Wild (WITW): **Admin Console**, **website** (Portal), **Shared Safari**, and **Packages** with the **Partner portal**. Same boards as the design canvas "Starter Prototype – Repo Copy" (version 16). Works offline in any modern browser; no install or server.
+Clickable HTML prototype of Walk Into The Wild (WITW): **Admin Console**, **website** (Portal), **Shared Safari**, and **Packages** with the **Partner portal**. Same boards as the design canvas "Starter Prototype – Repo Copy" (version 21). Works offline in any modern browser; no install or server.
 
 ## How to open
 
@@ -55,12 +55,15 @@ Mobile files add `.mobile`, e.g. `screens/P6-Park-page.mobile.html`.
 | View an old (Replaced) version, read-only | PP5 › Wild Kanha Special › Versions › View |
 | Super Admin edits only name, prices, messages, overview, getting there | PC5 › Edit |
 | Delete a draft: "This draft will be discarded." | PP4 / PP5 |
-| Edit an approved gallery: shows in Approved and In Draft | PP6 |
+| Approved gallery with waiting changes: "Approved (live)" and "Changes to approved gallery" | PP6 › Approved / Waiting → PC7 |
+| Draft of an approved gallery (In Draft tab) | PP7 › Corbett Elephant Camp › Move back to draft |
 | Send a gallery: notification in the console bell | PP6 › In Draft › Send → PC7 bell |
-| Add / edit a park: description, location, feature image | C5 / C6 → P5 / P6 |
+| Add / edit a park: description, location, feature image (JPG, JPEG or PNG, up to 250 KB) | C5 / C6 → P5 / P6 |
 | Park page: Overview (map), Packages, Shared Safaris | P6 |
 | Plan Safari in the website top bar opens the Parks list | Any website screen → P5 |
-| Partner notifications: bell, then Show all notifications (not in the sidebar) | PP3 bell → PP10 |
+| Partner notifications: sidebar Notifications, or bell › Show all notifications | PP3 → PP10 |
+| Demo sign-in: pick a card (Partner, Partner 2, Pending, Rejected, Inactive, No request), then Sign in | PP1 |
+| Console Partner card opens the Partner portal sign-in | Admin-Sign-In → PP1 |
 
 ## Notes
 
@@ -71,4 +74,5 @@ Mobile files add `.mobile`, e.g. `screens/P6-Park-page.mobile.html`.
 | Data | Sample data, kept in this browser until Reset data |
 | Map | Park page shows a static Leaflet-style map with a pin (no live map offline) |
 | Plan Safari | Opens the Parks list (P5); greyed out on Sign In, Sign Up and Forgot Password |
-| To confirm | Items marked "to confirm" in the review (e.g. price checks, park image 2 MB, description 1,000 characters) are assumptions, not signed-off rules |
+| To confirm | Items marked "to confirm" in the review (e.g. price checks, description 1,000 characters) are assumptions, not signed-off rules |
+| Demo only | Sign-in cards, demo password "password123" and the pre-loaded gallery state are prototype conveniences, not workflow rules |
