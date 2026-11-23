@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" data-theme="console">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components/bundle.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="../components/bundle.js"></script><title>WishlistButton — preview</title></head>
+<body>
+<div id="root" class="st-root"></div>
+<script>
+  var S = window.Starter, h = React.createElement, F = React.Fragment;
+  function theme(t, el) { return h('div', { className: 'st-pair' }, h('div', { 'data-theme': t, className: 'st-theme' }, h('p', { className: 'st-theme-name' }, t === 'console' ? 'Console / Partner portal' : 'Portal (website)'), el)); }
+  var IMG = {"grassland": "../assets/Images/safari-grassland.jpg", "cliff": "../assets/Images/safari-cliff.jpg", "forest": "../assets/Images/safari-forest.jpg", "elephant": "../assets/Images/package-elephant.jpg", "barasingha": "../assets/Images/package-barasingha.jpg", "jeeps": "../assets/Images/package-jeeps.jpg", "leopard": "../assets/Images/package-leopard.jpg", "hero": "../assets/Images/hero.jpg"};
+  ReactDOM.createRoot(document.getElementById('root')).render(theme('portal', h('div', { className: 'st-col' },
+    h('div', { className: 'ss-row', style: { gap: '16px', alignItems: 'center' } },
+      h('div', { className: 'pk-img', style: { width: '220px', borderRadius: '8px' } }, h('img', { src: IMG.elephant, alt: '' }), h(S.WishlistButton, { saved: false })),
+      h('div', { className: 'pk-img', style: { width: '220px', borderRadius: '8px' } }, h('img', { src: IMG.barasingha, alt: '' }), h(S.WishlistButton, { saved: true })),
+      h('div', { className: 'st-col', style: { gap: '12px' } }, h(S.WishlistButton, { variant: 'inline' }), h(S.WishlistButton, { variant: 'inline', saved: true }), h(S.WishlistButton, { variant: 'inline', state: 'focus' }))),
+    h(S.Toast, null, 'You added the Package to your wishlist!'),
+    h(S.Toast, null, 'You removed the Shared Safari from your wishlist!'))));
+</script>
+</body>
+</html>

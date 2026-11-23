@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"Starter","components":[{"name":"Icon"},{"name":"Button"},{"name":"IconButton"},{"name":"SearchInput"},{"name":"Select"},{"name":"FormField"},{"name":"Toggle"},{"name":"StatusBadge"},{"name":"Table"},{"name":"Card"},{"name":"KpiCard"},{"name":"Dialog"},{"name":"Tabs"},{"name":"PageHeader"},{"name":"AppHeader"},{"name":"NotificationItem"},{"name":"NotificationPopover"},{"name":"Sidebar"},{"name":"MobileMenu"},{"name":"Footer"},{"name":"SignIn"},{"name":"NotFound"},{"name":"Toast"},{"name":"ToastStack"},{"name":"DialogError"},{"name":"SearchSelect"},{"name":"ServerSelect"},{"name":"SiteHeader"},{"name":"SiteHero"},{"name":"SiteFooter"},{"name":"SiteDialog"},{"name":"SafariCard"},{"name":"SafariFilters"},{"name":"FilterChip"},{"name":"SafariSummary"},{"name":"SitePanel"},{"name":"Comment"},{"name":"RadioList"},{"name":"WebNotificationItem"},{"name":"DetailList"},{"name":"PinButton"},{"name":"JoinedLeft"},{"name":"Banner"},{"name":"PackageCard"},{"name":"PackageFilters"},{"name":"PackageSummary"},{"name":"PriceBar"},{"name":"SectionTabs"},{"name":"PackageSection"},{"name":"GallerySlider"},{"name":"ItineraryDay"},{"name":"InclusionList"},{"name":"FaqItem"},{"name":"Disclaimer"},{"name":"QuoteForm"},{"name":"NotInUse"},{"name":"ParkCard"},{"name":"ParkMap"},{"name":"FormPanel"},{"name":"StepsPanel"},{"name":"ParkPicker"},{"name":"LogoField"},{"name":"PortalSignIn"},{"name":"AccessGuard"},{"name":"KpiTile"},{"name":"PackageListItem"},{"name":"PackageCell"},{"name":"VersionCell"},{"name":"EditorCard"},{"name":"SidePanel"},{"name":"VersionRow"},{"name":"DayEditor"},{"name":"FaqEditRow"},{"name":"ImageField"},{"name":"TagColors"},{"name":"PhotoTile"},{"name":"GalleryCard"},{"name":"HotCold"},{"name":"BusinessProfile"}]} */
+/* @ds-bundle: {"format":4,"namespace":"Starter","components":[{"name":"Icon"},{"name":"Button"},{"name":"IconButton"},{"name":"SearchInput"},{"name":"Select"},{"name":"FormField"},{"name":"Toggle"},{"name":"StatusBadge"},{"name":"Table"},{"name":"Card"},{"name":"KpiCard"},{"name":"Dialog"},{"name":"Tabs"},{"name":"PageHeader"},{"name":"AppHeader"},{"name":"NotificationItem"},{"name":"NotificationPopover"},{"name":"Sidebar"},{"name":"MobileMenu"},{"name":"Footer"},{"name":"SignIn"},{"name":"NotFound"},{"name":"Toast"},{"name":"ToastStack"},{"name":"DialogError"},{"name":"SearchSelect"},{"name":"ServerSelect"},{"name":"SiteHeader"},{"name":"SiteHero"},{"name":"SiteFooter"},{"name":"SiteDialog"},{"name":"SafariCard"},{"name":"SafariFilters"},{"name":"FilterChip"},{"name":"SafariSummary"},{"name":"SitePanel"},{"name":"Comment"},{"name":"RadioList"},{"name":"WebNotificationItem"},{"name":"DetailList"},{"name":"PinButton"},{"name":"JoinedLeft"},{"name":"Banner"},{"name":"PackageCard"},{"name":"PackageFilters"},{"name":"PackageSummary"},{"name":"PriceBar"},{"name":"SectionTabs"},{"name":"PackageSection"},{"name":"GallerySlider"},{"name":"ItineraryDay"},{"name":"InclusionList"},{"name":"FaqItem"},{"name":"Disclaimer"},{"name":"QuoteForm"},{"name":"NotInUse"},{"name":"ParkCard"},{"name":"ParkMap"},{"name":"FormPanel"},{"name":"StepsPanel"},{"name":"ParkPicker"},{"name":"LogoField"},{"name":"PortalSignIn"},{"name":"AccessGuard"},{"name":"KpiTile"},{"name":"PackageListItem"},{"name":"PackageCell"},{"name":"VersionCell"},{"name":"EditorCard"},{"name":"SidePanel"},{"name":"VersionRow"},{"name":"DayEditor"},{"name":"FaqEditRow"},{"name":"ImageField"},{"name":"TagColors"},{"name":"PhotoTile"},{"name":"GalleryCard"},{"name":"HotCold"},{"name":"BusinessProfile"},{"name":"WishlistButton"},{"name":"EmptyList"},{"name":"LoadMore"},{"name":"ProfileLink"},{"name":"SignInPrompt"},{"name":"UserProfileHeader"},{"name":"PartnerProfileHeader"},{"name":"SocialLinks"},{"name":"ProfileAbout"},{"name":"PhotoUpload"},{"name":"AccountMenu"},{"name":"ConversationItem"},{"name":"MessageBubble"},{"name":"ChatComposer"},{"name":"ChatThread"},{"name":"MessagesLayout"}]} */
 (function () {
   var React = window.React, h = React.createElement, Fragment = React.Fragment;
   function cx() { return Array.prototype.filter.call(arguments, Boolean).join(' '); }
@@ -559,7 +559,7 @@
   function SafariCard(p) {
     var a = ACTIONS[p.action || 'join'] || ACTIONS.join, faces = p.faces || [];
     return h('div', { className: 'wb-card', onClick: p.onOpen },
-      h('div', { className: 'wb-img' }, p.image ? h('img', { src: p.image, alt: '' }) : null, p.month ? h('span', { className: 'wb-date' }, p.month, h('br'), p.day) : null),
+      h('div', { className: 'wb-img' }, p.image ? h('img', { src: p.image, alt: '' }) : null, p.month ? h('span', { className: 'wb-date' }, p.month, h('br'), p.day) : null, p.onWish || p.saved != null ? h(S.WishlistButton, { saved: p.saved, onToggle: p.onWish }) : null),
       h('div', { className: cx('wb-strip', (p.full || p.action === 'full') && 'is-full') }, h('span', null, 'Safaris', h('b', null, p.safaris)), h('span', null, 'Seats', h('b', null, p.seats))),
       h('div', { className: 'wb-body' },
         h('h3', { className: 'wb-title' }, h('a', { href: p.href || '#' }, p.title)),
@@ -704,7 +704,7 @@
   /* ---- Website ---- */
   function PackageCard(p) {
     return h('div', { className: 'pk-card', onClick: p.onOpen },
-      h('div', { className: 'pk-img' }, p.image ? h('img', { src: p.image, alt: '' }) : null, Best(p.best), Tag(p.tag)),
+      h('div', { className: 'pk-img' }, p.image ? h('img', { src: p.image, alt: '' }) : null, Best(p.best), Tag(p.tag), p.onWish || p.saved != null ? h(S.WishlistButton, { saved: p.saved, onToggle: p.onWish }) : null),
       h('div', { className: 'pk-body' },
         h('h3', { className: 'pk-name' }, p.title),
         h('div', { className: 'pk-park' }, h(Glyph, { name: 'map-pin' }), h('span', null, p.park)),
@@ -937,7 +937,8 @@
   }
   function BusinessProfile(p) {
     return h('div', { className: 'pq-card' }, h('div', { className: 'pq-prof' }, h('span', { className: 'pk-logo-box' }, p.logo ? h('img', { src: p.logo, alt: '' }) : p.initials),
-      h('dl', { className: 'ss-dl' }, (p.items || []).map(function (it, i) { return h(Fragment, { key: i }, h('dt', null, it[0]), h('dd', null, it[1])); }))));
+      h('div', null, h('dl', { className: 'ss-dl' }, (p.items || []).map(function (it, i) { return h(Fragment, { key: i }, h('dt', null, it[0]), h('dd', null, it[1])); })),
+        p.publicHref ? h('a', { className: 'pq-prof-pub', href: p.publicHref, target: '_blank', rel: 'noopener' }, h(Glyph, { name: 'external-link' }), 'View public page') : null)));
   }
 
   Object.assign(S, { Banner: Banner, PackageCard: PackageCard, PackageFilters: PackageFilters, PackageSummary: PackageSummary, PriceBar: PriceBar, SectionTabs: SectionTabs, PackageSection: PackageSection,
@@ -945,4 +946,185 @@
     FormPanel: FormPanel, StepsPanel: StepsPanel, ParkPicker: ParkPicker, LogoField: LogoField, PortalSignIn: PortalSignIn, AccessGuard: AccessGuard, KpiTile: KpiTile, PackageListItem: PackageListItem,
     PackageCell: PackageCell, VersionCell: VersionCell, EditorCard: EditorCard, SidePanel: SidePanel, VersionRow: VersionRow, DayEditor: DayEditor, FaqEditRow: FaqEditRow, ImageField: ImageField,
     TagColors: TagColors, PhotoTile: PhotoTile, GalleryCard: GalleryCard, HotCold: HotCold, BusinessProfile: BusinessProfile });
+})();
+
+/* Wishlist, Profiles and Direct Chat: website parts designed from WITW-Profiles-Wishlist-Chat-Workflow.md (no boards yet). */
+(function () {
+  var React = window.React, h = React.createElement, Fragment = React.Fragment, S = window.Starter;
+  function cx() { return Array.prototype.filter.call(arguments, Boolean).join(' '); }
+  /* Lucide glyphs (inner SVG markup, stroke 2). */
+  var G = {
+    'heart': '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>',
+    'lock': '<rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path>',
+    'user': '<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>',
+    'image': '<rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path>',
+    'message-circle': '<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>',
+    'send': '<path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path><path d="m21.854 2.147-10.94 10.939"></path>',
+    'pencil': '<path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path><path d="m15 5 4 4"></path>',
+    'arrow-left': '<path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path>',
+    'log-out': '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" x2="9" y1="12" y2="12"></line>',
+    'users': '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>',
+    'file-text': '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path>',
+    'store': '<path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"></path><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"></path><path d="M2 7h20"></path>',
+    'external-link': '<path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>',
+    'facebook': '<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>',
+    'x-brand': '<path d="M4 4l11.733 16H20L8.267 4z"></path><path d="M4 20l6.768-6.768"></path><path d="M20 4l-6.768 6.768"></path>',
+    'instagram': '<rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>',
+    'youtube': '<path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path><path d="m10 15 5-3-5-3z"></path>',
+    'inbox': '<polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path>',
+    'upload': '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" x2="12" y1="3" y2="15"></line>'
+  };
+  function Glyph(p) {
+    return h('svg', { className: cx('st-icon', p.className), viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': 'true', focusable: 'false', dangerouslySetInnerHTML: { __html: G[p.name] || '' } });
+  }
+  /* A round picture, or initials, or the placeholder figure when there is neither. */
+  function Face(p) {
+    return h('span', { className: cx('pf-face', p.size && 'is-' + p.size, p.className), title: p.title },
+      p.photo ? h('img', { src: p.photo, alt: '' }) : p.initials ? p.initials : h(Glyph, { name: 'user' }));
+  }
+  var SOCIAL = { facebook: ['Facebook', 'facebook', 'rgb(59, 89, 152)'], x: ['X', 'x-brand', 'rgb(0, 0, 0)'], instagram: ['Instagram', 'instagram', 'rgb(225, 48, 108)'], youtube: ['YouTube', 'youtube', 'rgb(255, 0, 0)'] };
+
+  /* ---- Wishlist ---- */
+  function WishlistButton(p) {
+    var on = !!p.saved, label = on ? 'Remove from wishlist' : 'Add to wishlist';
+    return h('button', { type: 'button', className: cx('wl-heart', p.variant === 'inline' ? 'is-inline' : 'is-overlay', on && 'is-on', p.state && 'is-' + p.state, p.className),
+      'aria-pressed': on, 'aria-label': label, 'data-tooltip': p.variant === 'inline' ? undefined : label,
+      onClick: function (e) { e.stopPropagation(); if (p.onToggle) p.onToggle(!on); } },
+      h(Glyph, { name: 'heart' }), p.variant === 'inline' ? h('span', null, p.label || (on ? 'Saved' : 'Wishlist')) : null);
+  }
+  function EmptyList(p) {
+    return h('div', { className: 'wl-empty' }, h(Glyph, { name: p.icon || 'inbox' }), h('p', null, p.children || p.text), p.action || null);
+  }
+  function LoadMore(p) {
+    if (p.done) return null;
+    return h('div', { className: 'wl-more' }, h('button', { type: 'button', className: 'st-btn st-btn-secondary', disabled: p.loading, onClick: p.onClick }, p.loading ? 'Loading…' : (p.label || 'Load More')));
+  }
+
+  /* ---- Profiles ---- */
+  function ProfileLink(p) {
+    return h('a', { className: cx('pf-link', p.partner && 'is-partner'), href: p.href || '#', onClick: p.onClick }, p.children || p.name);
+  }
+  function SignInPrompt(p) {
+    return h('div', { className: 'pf-gate' }, h(Glyph, { name: 'lock' }),
+      h('p', null, p.text || 'Please sign in to view the full profile.'),
+      h('a', { className: 'st-btn st-btn-primary', href: p.href || '#', onClick: p.onSignIn }, p.actionLabel || 'Sign in'));
+  }
+  function UserProfileHeader(p) {
+    var a = p.action;
+    var btn = a === 'message' ? h('button', { type: 'button', className: 'st-btn st-btn-primary', onClick: p.onAction }, h(Glyph, { name: 'message-circle' }), 'Message')
+      : a === 'edit' ? h('a', { className: 'st-btn st-btn-secondary', href: p.editHref || '#', onClick: p.onAction }, h(Glyph, { name: 'pencil' }), 'Edit Profile') : null;
+    return h('section', { className: 'pf-head' },
+      h('div', { className: cx('pf-cover', !p.cover && 'is-empty') }, p.cover ? h('img', { src: p.cover, alt: '' }) : h(Glyph, { name: 'image' })),
+      h('div', { className: 'pf-id' },
+        h(Face, { photo: p.photo, initials: p.photo ? null : p.initials, size: 'xl', className: 'pf-ring' }),
+        h('div', { className: 'pf-who' }, h('h1', null, p.name), p.sub ? h('span', null, p.sub) : null),
+        btn ? h('div', { className: 'pf-acts' }, btn) : null));
+  }
+  function PartnerProfileHeader(p) {
+    var counts = p.counts || [];
+    return h('section', { className: 'pf-phead' },
+      h('span', { className: 'pf-logo' }, p.logo ? h('img', { src: p.logo, alt: '' }) : p.initials || h(Glyph, { name: 'store' })),
+      h('div', { className: 'pf-pinfo' },
+        h('h1', null, p.name),
+        p.about ? h('p', null, p.about) : null),
+      h('div', { className: 'pf-tiles' }, counts.map(function (c, i) {
+        return h('button', { key: i, type: 'button', className: cx('pf-tile', p.active === i && 'is-on'), 'aria-pressed': p.active === i, onClick: p.onTile ? function () { p.onTile(i); } : undefined },
+          h('b', null, c.value), h('span', null, c.label));
+      })));
+  }
+  function SocialLinks(p) {
+    var links = p.links || {};
+    var keys = ['facebook', 'x', 'instagram', 'youtube'].filter(function (k) { return links[k]; });
+    if (!keys.length) return h('span', { className: 'pf-none' }, p.empty || 'No social links added.');
+    return h('div', { className: 'pf-soc' }, keys.map(function (k) {
+      var s = SOCIAL[k];
+      return h('a', { key: k, href: links[k], target: '_blank', rel: 'noopener noreferrer', 'aria-label': s[0], title: s[0], style: { background: s[2] } }, h(Glyph, { name: s[1] }));
+    }));
+  }
+  function ProfileAbout(p) {
+    function block(title, text) {
+      return h('div', { className: 'pf-block' }, h('h2', null, title), text ? h('p', { className: 'ss-pre' }, text) : h('span', { className: 'pf-none' }, 'Not added yet.'));
+    }
+    return h('div', { className: 'pf-about' }, block('Bio', p.bio), block('About', p.about),
+      h('div', { className: 'pf-block' }, h('h2', null, 'Social links'), h(SocialLinks, { links: p.links })));
+  }
+  function PhotoUpload(p) {
+    var cover = p.kind === 'cover';
+    var id = p.id || (cover ? 'pf-cover-file' : 'pf-photo-file');
+    return h('div', { className: cx('pf-up', cover && 'is-cover') },
+      h('div', { className: 'pf-up-prev' }, cover
+        ? h('div', { className: cx('pf-cover', !p.image && 'is-empty') }, p.image ? h('img', { src: p.image, alt: 'Cover photo' }) : h(Glyph, { name: 'image' }))
+        : h(Face, { photo: p.image, size: 'xl' })),
+      h('div', { className: 'pf-up-side' },
+        h('label', { className: 'st-btn st-btn-secondary', htmlFor: id }, h(Glyph, { name: 'upload' }), p.image ? 'Change photo' : 'Upload photo'),
+        h('input', { id: id, type: 'file', accept: p.accept || '.jpg,.jpeg,.png', className: 'pf-file' }),
+        p.image ? h('button', { type: 'button', className: 'st-btn st-btn-text', onClick: p.onRemove }, 'Remove photo') : null,
+        h('span', { className: 'st-helper' }, p.helper || (cover ? 'JPG, JPEG or PNG, up to 500 KB' : 'JPG, JPEG or PNG, up to 250 KB')),
+        p.error ? h('span', { className: 'st-error', role: 'alert' }, p.error) : null));
+  }
+  function AccountMenu(p) {
+    var items = p.items || [
+      { label: 'My Profile', icon: 'user' }, { label: 'Wishlist', icon: 'heart' }, { label: 'Messages', icon: 'message-circle', count: p.unread },
+      { label: 'My Shared Safaris', icon: 'users' }, { label: 'My Quote Requests', icon: 'file-text' }, { label: 'Log out', icon: 'log-out', divider: true }];
+    return h('div', { className: 'pf-menu', role: 'menu', 'aria-label': 'Account' },
+      p.user ? h('div', { className: 'pf-menu-me' }, h(Face, { photo: p.user.photo, initials: p.user.initials }), h('div', null, h('b', null, p.user.name), p.user.sub ? h('span', null, p.user.sub) : null)) : null,
+      items.map(function (it, i) {
+        return h(Fragment, { key: i }, it.divider ? h('hr') : null,
+          h('a', { role: 'menuitem', className: cx(p.current === it.label && 'is-on'), href: it.href || '#' }, h(Glyph, { name: it.icon }), h('span', null, it.label),
+            it.count ? h('span', { className: 'pf-count', 'aria-label': it.count + ' unread' }, it.count) : null));
+      }));
+  }
+
+  /* ---- Direct Chat ---- */
+  function clip(t, n) { t = String(t || ''); n = n || 50; return t.length > n ? t.slice(0, n) + '…' : t; }
+  function ConversationItem(p) {
+    return h('button', { type: 'button', className: cx('dm-conv', p.active && 'is-on', p.unread && 'is-unread'), 'aria-current': p.active ? 'true' : undefined, onClick: p.onOpen },
+      h(Face, { photo: p.photo, initials: p.initials }),
+      h('span', { className: 'dm-conv-b' },
+        h('span', { className: 'dm-conv-h' }, h('b', null, p.name), h('time', null, p.time)),
+        h('span', { className: 'dm-conv-t' }, h('span', null, clip(p.preview, 50)), p.unread ? h('span', { className: 'pf-count', 'aria-label': p.unread + ' unread' }, p.unread) : null)));
+  }
+  function MessageBubble(p) {
+    return h('div', { className: cx('dm-msg', p.mine ? 'is-mine' : 'is-theirs') },
+      h('p', { className: 'ss-pre' }, p.children || p.text), h('time', null, p.time));
+  }
+  function ChatComposer(p) {
+    var max = p.max || 1000;
+    var st = React.useState(p.value || ''), v = st[0], set = st[1];
+    var blocked = !!p.deactivated, empty = !v.trim();
+    return h('form', { className: 'dm-compose', onSubmit: function (e) { e.preventDefault(); if (empty || blocked) return; if (p.onSend) p.onSend(v.trim()); set(''); } },
+      blocked ? h(S.Banner, { tone: 'warning' }, p.deactivatedText || 'This account is deactivated. Your message can’t be sent.') : null,
+      h('div', { className: 'dm-compose-row' },
+        h('textarea', { className: 'st-textarea', rows: 1, maxLength: max, placeholder: 'Type a Message', 'aria-label': 'Type a Message', value: v, disabled: blocked, onChange: function (e) { set(e.target.value); } }),
+        h('button', { type: 'submit', className: 'st-btn st-btn-primary', disabled: empty || blocked }, h(Glyph, { name: 'send' }), 'Send')),
+      h('span', { className: 'dm-cnt' }, v.length.toLocaleString('en-IN') + ' / ' + max.toLocaleString('en-IN')));
+  }
+  function ChatThread(p) {
+    var other = p.other || {};
+    return h('section', { className: 'dm-thread', 'aria-label': 'Conversation with ' + (other.name || '') },
+      h('header', { className: 'dm-th' },
+        p.onBack ? h('button', { type: 'button', className: 'st-iconbtn dm-back', 'aria-label': 'Back to conversations', onClick: p.onBack }, h(Glyph, { name: 'arrow-left' })) : null,
+        h(Face, { photo: other.photo, initials: other.initials }),
+        h('div', null, h(ProfileLink, { href: other.href }, other.name), other.deactivated ? h('span', { className: 'dm-tag' }, 'Deactivated') : null)),
+      h('div', { className: 'dm-msgs', 'aria-live': 'polite' },
+        (p.messages || []).map(function (m, i) {
+          return m.day ? h('div', { key: i, className: 'dm-day' }, h('span', null, m.day)) : h(MessageBubble, { key: i, mine: m.mine, time: m.time }, m.text);
+        })),
+      h(ChatComposer, { deactivated: other.deactivated, onSend: p.onSend, value: p.draft }));
+  }
+  function MessagesLayout(p) {
+    var list = p.conversations || [];
+    var phone = p.view === 'list' || p.view === 'thread';
+    return h('div', { className: cx('dm-page', phone && 'is-phone', phone && 'show-' + p.view) },
+      h('aside', { className: 'dm-list', 'aria-label': 'Conversations' },
+        h('h2', null, 'Messages'),
+        list.length ? list.map(function (c, i) { return h(ConversationItem, Object.assign({ key: i, active: p.active === i }, c, { onOpen: p.onOpen ? function () { p.onOpen(i); } : undefined })); })
+          : h(EmptyList, { icon: 'message-circle' }, 'No messages yet.')),
+      list.length && p.active != null ? h(ChatThread, { other: list[p.active], messages: p.messages, onSend: p.onSend, onBack: phone ? p.onBack || function () {} : undefined })
+        : h('section', { className: 'dm-thread dm-pick' }, h(EmptyList, { icon: 'message-circle' }, 'Choose a conversation.')));
+  }
+
+  Object.assign(S, { WishlistButton: WishlistButton, EmptyList: EmptyList, LoadMore: LoadMore, ProfileLink: ProfileLink, SignInPrompt: SignInPrompt, UserProfileHeader: UserProfileHeader,
+    PartnerProfileHeader: PartnerProfileHeader, SocialLinks: SocialLinks, ProfileAbout: ProfileAbout, PhotoUpload: PhotoUpload, AccountMenu: AccountMenu,
+    ConversationItem: ConversationItem, MessageBubble: MessageBubble, ChatComposer: ChatComposer, ChatThread: ChatThread, MessagesLayout: MessagesLayout });
 })();

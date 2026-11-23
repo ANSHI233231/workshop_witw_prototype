@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en" data-theme="console">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components/bundle.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="../components/bundle.js"></script><title>MessageBubble — preview</title></head>
+<body>
+<div id="root" class="st-root"></div>
+<script>
+  var S = window.Starter, h = React.createElement, F = React.Fragment;
+  function theme(t, el) { return h('div', { className: 'st-pair' }, h('div', { 'data-theme': t, className: 'st-theme' }, h('p', { className: 'st-theme-name' }, t === 'console' ? 'Console / Partner portal' : 'Portal (website)'), el)); }
+  var IMG = {"grassland": "../assets/Images/safari-grassland.jpg", "cliff": "../assets/Images/safari-cliff.jpg", "forest": "../assets/Images/safari-forest.jpg", "elephant": "../assets/Images/package-elephant.jpg", "barasingha": "../assets/Images/package-barasingha.jpg", "jeeps": "../assets/Images/package-jeeps.jpg", "leopard": "../assets/Images/package-leopard.jpg", "hero": "../assets/Images/hero.jpg"};
+  ReactDOM.createRoot(document.getElementById('root')).render(theme('portal', h('div', { className: 'dm-msgs', style: { borderRadius: '8px' } }, h(S.MessageBubble, { time: '10:40 AM' }, 'Hi! Is there still a seat on the Bandhavgarh safari in December?'), h(S.MessageBubble, { mine: true, time: '10:45 AM' }, 'Yes, two seats are left. Join from the safari page and I will confirm.'))));
+</script>
+</body>
+</html>

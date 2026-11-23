@@ -1,0 +1,14 @@
+<!-- @dsCard group="Wishlist, Profiles & Chat" height=380 subtitle="The Profile tab: bio, about and social links" -->
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>ProfileAbout — preview</title></head>
+<body>
+<div id="root" class="st-root"></div>
+<script>
+  var S = window.Starter, h = React.createElement, F = React.Fragment;
+  function theme(t, el) { return h('div', { className: 'st-pair' }, h('div', { 'data-theme': t, className: 'st-theme' }, h('p', { className: 'st-theme-name' }, t === 'console' ? 'Console / Partner portal' : 'Portal (website)'), el)); }
+  var IMG = {"grassland": "/_blob/cdd482e4b79b2b9a6dee5122708fa275", "cliff": "/_blob/a2a10b184f0c6c4b1998b7b9e5a21822", "forest": "/_blob/533a1e37ab0613d2a0b76b1cdd821a93", "elephant": "/_blob/b77396116ee034172b91273c3095aa34", "barasingha": "/_blob/83416d32c1642c45066d803abe93fbcb", "jeeps": "/_blob/9dd654aff2058d8f95dec81743526bc6", "leopard": "/_blob/77771ad86f8c6df613b306051f77ffd1", "hero": "/_blob/5fea177381dd9c40efb95e46a2190175"};
+  ReactDOM.createRoot(document.getElementById('root')).render(theme('portal', h('div', { className: 'pk2-sec' }, h(S.SectionTabs, { tabs: ['Profile', 'Shared Safaris'] }), h('div', { className: 'pk2-sec-b' }, h(S.ProfileAbout, { bio: 'Wildlife photographer from Pune. Tigers, birds and long drives.', about: 'I have been on more than 40 safaris across central India.\nI usually go in winter and like to share a Gypsy with other photographers.', links: { facebook: '#', instagram: '#', youtube: '#' } })))));
+</script>
+</body>
+</html>
