@@ -7,3 +7,4 @@ The left column of the Shared Safaris list: the Organize button and the Select F
 - Leave out the Organize button for guests with `organise: false`.
 - Chosen filters show above the list as FilterChip.
 - Source: W1 (and W5, which opens Organize from it).
+- **Partner** (`viewer: 'partner'`): the Organize a Shared Safari button is not shown; partners can only browse (workflow, 24 Nov 2026). On the safari page, leave the Join button out of SafariSummary's `actions` for a partner too.

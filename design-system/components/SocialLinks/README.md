@@ -1,5 +1,6 @@
 # SocialLinks
 
-The user's social links as round brand-coloured buttons: Facebook, X, Instagram, YouTube.
+The user's social links as outline pills with a link icon: Facebook, X, Instagram, YouTube, in that order.
 
-- Provide: `links` `{facebook, x, instagram, youtube}`; only the ones given show. With none: "No social links added."
+- Provide: `links` `{facebook, x, instagram, youtube}`; only the ones given show. With none, "–".
+- Source: U3.

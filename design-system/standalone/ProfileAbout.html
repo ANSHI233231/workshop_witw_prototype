@@ -12,8 +12,8 @@
 <script>
   var S = window.Starter, h = React.createElement, F = React.Fragment;
   function theme(t, el) { return h('div', { className: 'st-pair' }, h('div', { 'data-theme': t, className: 'st-theme' }, h('p', { className: 'st-theme-name' }, t === 'console' ? 'Console / Partner portal' : 'Portal (website)'), el)); }
-  var IMG = {"grassland": "../assets/Images/safari-grassland.jpg", "cliff": "../assets/Images/safari-cliff.jpg", "forest": "../assets/Images/safari-forest.jpg", "elephant": "../assets/Images/package-elephant.jpg", "barasingha": "../assets/Images/package-barasingha.jpg", "jeeps": "../assets/Images/package-jeeps.jpg", "leopard": "../assets/Images/package-leopard.jpg", "hero": "../assets/Images/hero.jpg"};
-  ReactDOM.createRoot(document.getElementById('root')).render(theme('portal', h('div', { className: 'pk2-sec' }, h(S.SectionTabs, { tabs: ['Profile', 'Shared Safaris'] }), h('div', { className: 'pk2-sec-b' }, h(S.ProfileAbout, { bio: 'Wildlife photographer from Pune. Tigers, birds and long drives.', about: 'I have been on more than 40 safaris across central India.\nI usually go in winter and like to share a Gypsy with other photographers.', links: { facebook: '#', instagram: '#', youtube: '#' } })))));
+  var IMG = {"grassland": "../assets/Images/safari-grassland.jpg", "cliff": "../assets/Images/safari-cliff.jpg", "forest": "../assets/Images/safari-forest.jpg", "elephant": "../assets/Images/package-elephant.jpg", "barasingha": "../assets/Images/package-barasingha.jpg", "cheetah": "../assets/Images/package-cheetah.jpg", "river": "../assets/Images/package-river-cruise.jpg"};
+  ReactDOM.createRoot(document.getElementById('root')).render(theme('portal', h(S.ProfileAbout, { bio: 'Wildlife photographer from Delhi. Tiger country every winter.', about: 'I have been driving to the central Indian parks for ten years, mostly Bandhavgarh and Kanha. I plan small groups for photographers who want early gates and patient drivers.', links: { facebook: '#', x: '#', instagram: '#' } })));
 </script>
 </body>
 </html>

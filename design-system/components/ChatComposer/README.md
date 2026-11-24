@@ -1,6 +1,7 @@
 # ChatComposer
 
-The Type a Message box and Send under a conversation.
+Type a Message (2 rows) and Send under a conversation.
 
-- Send stays disabled while the box is empty or only spaces. Up to 1,000 characters, with the counter (the number is not yet confirmed by the client).
-- `deactivated` shows a warning Banner ("This account is deactivated. Your message can’t be sent.") and disables the box. Optional `value`, `max`, `onSend(text)`, `deactivatedText`.
+- Errors under the box, from the board: "Type a message." (empty), "Use up to 1,000 characters.", and "This account is deactivated. Your message can’t be sent." (`deactivated`). The 1,000 limit is not yet confirmed by the client.
+- Optional `value`, `max`, `error`, `deactivated`, `onSend(text)`.
+- Source: U5.

@@ -10,3 +10,4 @@ Use it in a 3-column grid (2 under 1280px, 1 on phones) on the Shared Safaris li
 - Clicking the card opens the safari (`onOpen`); the button's click does not.
 - Source: W1 Shared Safaris list, W2 Safari card.
 - Wishlist: give `saved` (and `onWish`) to draw the WishlistButton in the picture's top left corner, clear of the date tag. Saved shared safaris stay in the Wishlist whatever their status; new ones can be saved while Active or Seat full and not started. A host can save their own.
+- **Partner** (`viewer: 'partner'`): shared safaris are view only for partners (workflow, 24 Nov 2026), so Join Safari is not shown. The card still opens the safari page. Partners have no wishlist either: leave out `saved`.

@@ -1,6 +1,7 @@
 # LoadMore
 
-The Load More button under a list.
+Load More under a list: a secondary button, centred.
 
 - Optional `onClick`, `loading`, `done` (hides it), `label`.
-- Wishlist loads 6 at a time; the Partner Profile tabs 12 at a time.
+- The Wishlist loads 6 at a time; each Partner Profile tab 12 at a time.
+- Source: U1, U2.

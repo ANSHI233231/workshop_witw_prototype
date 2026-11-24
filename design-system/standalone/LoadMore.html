@@ -12,8 +12,8 @@
 <script>
   var S = window.Starter, h = React.createElement, F = React.Fragment;
   function theme(t, el) { return h('div', { className: 'st-pair' }, h('div', { 'data-theme': t, className: 'st-theme' }, h('p', { className: 'st-theme-name' }, t === 'console' ? 'Console / Partner portal' : 'Portal (website)'), el)); }
-  var IMG = {"grassland": "../assets/Images/safari-grassland.jpg", "cliff": "../assets/Images/safari-cliff.jpg", "forest": "../assets/Images/safari-forest.jpg", "elephant": "../assets/Images/package-elephant.jpg", "barasingha": "../assets/Images/package-barasingha.jpg", "jeeps": "../assets/Images/package-jeeps.jpg", "leopard": "../assets/Images/package-leopard.jpg", "hero": "../assets/Images/hero.jpg"};
-  ReactDOM.createRoot(document.getElementById('root')).render(theme('portal', h('div', { className: 'ss-row', style: { gap: '24px', justifyContent: 'center' } }, h(S.LoadMore, null), h(S.LoadMore, { loading: true }))));
+  var IMG = {"grassland": "../assets/Images/safari-grassland.jpg", "cliff": "../assets/Images/safari-cliff.jpg", "forest": "../assets/Images/safari-forest.jpg", "elephant": "../assets/Images/package-elephant.jpg", "barasingha": "../assets/Images/package-barasingha.jpg", "cheetah": "../assets/Images/package-cheetah.jpg", "river": "../assets/Images/package-river-cruise.jpg"};
+  ReactDOM.createRoot(document.getElementById('root')).render(theme('portal', h(S.LoadMore, null)));
 </script>
 </body>
 </html>

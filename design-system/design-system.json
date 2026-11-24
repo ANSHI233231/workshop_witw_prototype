@@ -238,8 +238,8 @@
   },
   "lastChange": {
     "by": "ANSHI233231",
-    "at": "2026-11-23T05:22:39Z",
+    "at": "2026-11-24T06:44:01Z",
     "via": "Claude Code",
-    "note": "Added the Wishlist, Profiles and Direct Chat components (designed from WITW-Profiles-Wishlist-Chat-Workflow.md; no boards yet), the wishlist heart on PackageCard and SafariCard, and View public page on BusinessProfile."
+    "note": "Rebuilt the Wishlist, Profiles and Direct Chat components to the U1–U5 boards (canvas version 33); added FileUpload, the partner account menu and view-only shared safaris for partners (workflow of 24 Nov 2026), Operated by and the heart on PriceBar, underline tabs, and four tokens for empty covers and pictures."
   }
 }

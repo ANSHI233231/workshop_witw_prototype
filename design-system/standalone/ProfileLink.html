@@ -12,8 +12,8 @@
 <script>
   var S = window.Starter, h = React.createElement, F = React.Fragment;
   function theme(t, el) { return h('div', { className: 'st-pair' }, h('div', { 'data-theme': t, className: 'st-theme' }, h('p', { className: 'st-theme-name' }, t === 'console' ? 'Console / Partner portal' : 'Portal (website)'), el)); }
-  var IMG = {"grassland": "../assets/Images/safari-grassland.jpg", "cliff": "../assets/Images/safari-cliff.jpg", "forest": "../assets/Images/safari-forest.jpg", "elephant": "../assets/Images/package-elephant.jpg", "barasingha": "../assets/Images/package-barasingha.jpg", "jeeps": "../assets/Images/package-jeeps.jpg", "leopard": "../assets/Images/package-leopard.jpg", "hero": "../assets/Images/hero.jpg"};
-  ReactDOM.createRoot(document.getElementById('root')).render(theme('portal', h('p', { className: 'ss-pre' }, 'Organized by ', h(S.ProfileLink, { name: 'Riya Sharma' }), ' · Operated by ', h(S.ProfileLink, { name: 'Jungle Trails Safaris', partner: true }))));
+  var IMG = {"grassland": "../assets/Images/safari-grassland.jpg", "cliff": "../assets/Images/safari-cliff.jpg", "forest": "../assets/Images/safari-forest.jpg", "elephant": "../assets/Images/package-elephant.jpg", "barasingha": "../assets/Images/package-barasingha.jpg", "cheetah": "../assets/Images/package-cheetah.jpg", "river": "../assets/Images/package-river-cruise.jpg"};
+  ReactDOM.createRoot(document.getElementById('root')).render(theme('portal', h('div', { className: 'st-col' }, h('div', { className: 'wb-by' }, h(S.ProfileLink, { name: 'Riya Sharma' }), ' has shared a safari'), h('span', { className: 'pk2-op' }, 'Operated by ', h(S.ProfileLink, { name: 'Jungle Trails Safaris', partner: true })))));
 </script>
 </body>
 </html>

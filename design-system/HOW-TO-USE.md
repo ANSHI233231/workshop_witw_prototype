@@ -1,6 +1,6 @@
 # WITW Design System anshika — local copy
 
-Exported from the Starter design system on 30 Oct 2026 (the version with SearchSelect and ServerSelect), then moved to the Walk Into The Wild theme on 2 Nov 2026 and renamed the WITW Design System. On 5 Nov 2026 it was re-extracted from this prototype (as the WITW Design System anshika) and gained the WITW website shell and the Shared Safari components, with the logos, icons and images from the boards. On 10 Nov 2026 it gained the Packages parts (website, Partner portal and Console) from the Packages prototype, more photos, and the green WITW header for the Console and Partner portal. On 12 Nov 2026 the Packages parts were rebuilt from the Responsive prototype (boards P1–P6, PP1–PP10, PC1–PC9), with tablet and phone rules, hot/cold and map tokens and eight package photos. On 23 Nov 2026 it gained the Wishlist, Profiles and Direct Chat components, designed from the workflow (there are no boards for them yet). The components still load as `window.Starter`.
+Exported from the Starter design system on 30 Oct 2026 (the version with SearchSelect and ServerSelect), then moved to the Walk Into The Wild theme on 2 Nov 2026 and renamed the WITW Design System. On 5 Nov 2026 it was re-extracted from this prototype (as the WITW Design System anshika) and gained the WITW website shell and the Shared Safari components, with the logos, icons and images from the boards. On 10 Nov 2026 it gained the Packages parts (website, Partner portal and Console) from the Packages prototype, more photos, and the green WITW header for the Console and Partner portal. On 12 Nov 2026 the Packages parts were rebuilt from the Responsive prototype (boards P1–P6, PP1–PP10, PC1–PC9), with tablet and phone rules, hot/cold and map tokens and eight package photos. On 23 Nov 2026 it gained the Wishlist, Profiles and Direct Chat components, designed from the workflow (there are no boards for them yet). On 24 Nov 2026 those were rebuilt to the U1–U5 boards (canvas version 33), with FileUpload, the partner account menu and view-only shared safaris for partners, and underline tabs. The components still load as `window.Starter`.
 
 ## What's here
 
@@ -9,7 +9,7 @@ Exported from the Starter design system on 30 Oct 2026 (the version with SearchS
 | `README.md` | The brand book: usage rules, content, messages, colour, type, sizes, states, icons, logo |
 | `tokens.json` | Every token: colours per theme, type styles, spacing, radius, shadows, sizes, durations, z-index |
 | `tokens.css` | The same tokens as CSS custom properties, generated from tokens.json; switch with `data-theme="console"` or `"portal"` |
-| `components/bundle.js` | All 95 components as `window.Starter` (load React 18 and ReactDOM 18 first): the 27 Console / Portal ones, 15 for the website and Shared Safari, 37 for Packages, and 16 for Wishlist, Profiles and Direct Chat |
+| `components/bundle.js` | All 96 components as `window.Starter` (load React 18 and ReactDOM 18 first): the 27 Console / Portal ones, 15 for the website and Shared Safari, 37 for Packages, and 17 for Wishlist, Profiles and Direct Chat |
 | `components/bundle.css` | Component styles (load after tokens.css) |
 | `components/index.d.ts` | Props for every component |
 | `components/<Name>/README.md` | Guidelines for each component |
